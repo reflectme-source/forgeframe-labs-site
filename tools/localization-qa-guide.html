@@ -48,6 +48,11 @@ score,"Score: %d","Wynik: %d","Punkte: %d"</pre>
     <strong>Privacy and safety</strong>
     <p>The browser tool does not submit your CSV to ForgeFrame Labs. It has no third-party runtime dependencies, login form or analytics. Inspect exported reports before sharing because they contain localization keys and excerpts.</p>
   </div>
+  <h2>Optional command-line CI gate</h2>
+  <p>For automation, the same validation core also runs with Node.js 20+ and no package dependencies. Run it in your own repository or local build after obtaining the source files from the <a href="https://github.com/reflectme-source/forgeframe-labs-site">public demo repository</a>.</p>
+  <pre>node tools/localization-cli.mjs --file Assets/Localization/strings.csv --source en --fail-on error</pre>
+  <p>The command exits with <code>0</code> for a passing gate, <code>2</code> when blocking findings occur, and <code>64</code> for invalid input or options. Use <code>--fail-on any</code> for strict ICU review gates, <code>--fail-on never</code> for reporting without failing a build, or <code>--format json</code> for a machine-readable report.</p>
+  <p><a href="https://github.com/reflectme-source/forgeframe-labs-site/blob/main/examples/localization-ci.example.yml">Example GitHub Actions configuration</a>. This is an optional sample, not an automatically enabled action. Review the hosting platform's Actions billing terms before using it in a private repository.</p>
   <h2>Unity Editor release status</h2>
   <p>The native EditorWindow is being developed for Unity 2022.3+ and uses a project-local TextAsset. Its C# core has been independently compiled and tested, but a real Unity Editor import, runtime test, package-upload validation and Asset Store review are still outstanding. Do not rely on the native package for production until those steps pass.</p>
   <h2>Limitations</h2>

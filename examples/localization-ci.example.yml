@@ -1,0 +1,21 @@
+# Example only. Place the ForgeFrame Labs CLI files in your repository
+# at tools/localization-cli.mjs and tools/localization-core.mjs first.
+# Inspect GitHub Actions usage/billing before enabling this in private repos.
+name: Localization QA
+on:
+  pull_request:
+    paths:
+      - 'Assets/Localization/**.csv'
+      - 'tools/localization-*.mjs'
+jobs:
+  check-localization:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate localization
+        run: node tools/localization-cli.mjs --file Assets/Localization/strings.csv --source en --fail-on error

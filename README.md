@@ -12,6 +12,16 @@ Check localization CSV files for missing translations, duplicate keys, incorrect
 - [Publisher website](https://reflectme-source.github.io/forgeframe-labs-site/)
 - [Support](https://reflectme-source.github.io/forgeframe-labs-site/support.html)
 
+### Command-line CI gate
+
+The same checks can run in a build pipeline using Node.js 20+ without third-party packages:
+
+```bash
+node tools/localization-cli.mjs --file Assets/Localization/strings.csv --source en --fail-on error
+```
+
+Exit **0** means pass, **2** means a blocking localization issue, and **64** means configuration or CSV parsing failed. [GitHub Actions example](examples/localization-ci.example.yml) (not enabled automatically; inspect Actions billing before copying it to a private repository).
+
 ### Unity Asset Store version
 
 A native Unity Editor implementation is being developed and has been registered as a private **Draft**, but is **not** publicly released or offered for sale. Unity compilation/import testing, packaging and review are still required.
