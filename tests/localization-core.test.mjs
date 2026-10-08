@@ -51,6 +51,10 @@ test('missing HTML tag pair detected',()=>{
   const r=scan('key,en,pl\nx,<b>Hi</b>,Cześć');
   assert.equal(r.findings[0].code,'TOKEN_MISMATCH');
 });
+test('opening tags cannot masquerade as closing tags',()=>{
+  const r=scan('key,en,pl\nx,<b>Hi</b>,<b>Witaj<b>');
+  assert.equal(r.findings[0].code,'TOKEN_MISMATCH');
+});
 test('invalid row widths reject silent shifting',()=>{
   const r=scan('key,en,pl\nx,Hi');
   assert.equal(r.findings[0].code,'ROW_WIDTH');

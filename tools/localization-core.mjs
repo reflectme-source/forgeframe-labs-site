@@ -57,7 +57,7 @@ function signature(text) {
     if (m[0] === "%%") continue;
     printf.push("%" + (m[1] ? m[1] + "$" : "") + m[2]);
   }
-  const tags = [...text.matchAll(/<\/?([a-zA-Z][a-zA-Z0-9]*)\b[^>]*>/g)].map(m => "<" + m[1].toLowerCase() + ">");
+  const tags = [...text.matchAll(/<\/?([a-zA-Z][a-zA-Z0-9]*)\b[^>]*>/g)].map(m => (m[0].startsWith("</") ? "</" : "<") + m[1].toLowerCase() + ">");
   return COUNT([...named,...printf,...tags]);
 }
 function signatureDiff(base, target) {
