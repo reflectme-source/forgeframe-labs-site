@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Localization QA Inspector documentation: supported Unity localization CSV format, validation checks, known limits and release status.">
+<title>Localization QA Inspector — Documentation | ForgeFrame Labs</title>
+<link rel="icon" href="../assets/forgeframe-avatar.png" type="image/png">
+<style>
+:root{color-scheme:dark;font:16px/1.7 system-ui,-apple-system,Segoe UI,sans-serif;color:#e8f0fa;background:#0b111b}
+*{box-sizing:border-box}body{margin:0}main{max-width:850px;padding:60px 24px 100px;margin:auto}header{border-bottom:1px solid #273953;padding:23px max(24px,calc((100vw - 800px)/2))}a{color:#b9dcff}h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.17;letter-spacing:-.045em;margin:19px 0}h2{font-size:1.5rem;margin:43px 0 12px}h3{font-size:1.08rem;margin-top:25px}p,li{color:#b9c9dc}pre{padding:18px;overflow:auto;border:1px solid #344c69;border-radius:10px;background:#122033;color:#d2e9ff}code{background:#233248;padding:2px 5px;border-radius:4px;color:#dcecff}.tag{display:inline-flex;padding:5px 13px;border-radius:100px;background:#213852;color:#b9ddff;font-size:.77rem;font-weight:750;letter-spacing:.08em;text-transform:uppercase}.box{padding:17px 22px;background:#15283d;border:1px solid #345473;border-radius:12px;margin:26px 0}.button{display:inline-flex;padding:10px 17px;text-decoration:none;border-radius:9px;background:#d5eaff;color:#081b31;font-weight:750}
+table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;border-bottom:1px solid #34465d;padding:10px 12px}th{color:#c7e0f6}footer{border-top:1px solid #273953;padding:25px;color:#9ab1c7;text-align:center;font-size:.85rem}
+</style>
+</head>
+<body>
+<header><a href="../index.html">← ForgeFrame Labs</a></header>
+<main>
+  <span class="tag">Developer documentation · Preview</span>
+  <h1>Localization QA Inspector</h1>
+  <p>Verify the structure of CSV localization files before a game update. The public browser demo is available now. A native Unity Editor version is in development, and is not yet an Asset Store product.</p>
+  <p><a class="button" href="./localization-qa.html">Run the browser demo</a></p>
+  <h2>CSV input format</h2>
+  <p>Supply UTF-8 text with a <code>key</code> column followed by a source locale and one or more target locales. The default source column is <code>en</code> and can be changed before analysis.</p>
+  <pre>key,en,pl,de
+welcome,"Welcome {name}","Witaj {name}","Hallo {name}"
+score,"Score: %d","Wynik: %d","Punkte: %d"</pre>
+  <p>Rows may include commas and newlines inside properly quoted cells. The CSV parser accepts escaped double quotes and CRLF/LF line endings.</p>
+  <h2>What the checks mean</h2>
+  <table>
+    <thead><tr><th>Code</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><code>EMPTY_TRANSLATION</code></td><td>A target language cell is blank.</td></tr>
+      <tr><td><code>MISSING_SOURCE</code></td><td>The base-language string is blank.</td></tr>
+      <tr><td><code>MISSING_KEY</code></td><td>A row has no localization identifier.</td></tr>
+      <tr><td><code>DUPLICATE_KEY</code></td><td>The same key appears more than once (case-insensitive).</td></tr>
+      <tr><td><code>ROW_WIDTH</code></td><td>Row has a different number of cells than the header.</td></tr>
+      <tr><td><code>TOKEN_MISMATCH</code></td><td>Named placeholders, printf format codes or markup tag counts differ from the source text.</td></tr>
+      <tr><td><code>ICU_REVIEW</code></td><td>Complex ICU plural/select syntax needs specialized inspection.</td></tr>
+    </tbody>
+  </table>
+  <h2>How to use the browser demo</h2>
+  <ol>
+    <li>Open <a href="./localization-qa.html">Localization QA Inspector</a>.</li>
+    <li>Select or drop a CSV file up to 2 MB. The file is parsed locally in your browser.</li>
+    <li>Confirm the source locale, then select <strong>Analyze CSV</strong>.</li>
+    <li>Inspect the report. Use <strong>Export JSON report</strong> to save all findings.</li>
+  </ol>
+  <div class="box">
+    <strong>Privacy and safety</strong>
+    <p>The browser tool does not submit your CSV to ForgeFrame Labs. It has no third-party runtime dependencies, login form or analytics. Inspect exported reports before sharing because they contain localization keys and excerpts.</p>
+  </div>
+  <h2>Unity Editor release status</h2>
+  <p>The native EditorWindow is being developed for Unity 2022.3+ and uses a project-local TextAsset. Its C# core has been independently compiled and tested, but a real Unity Editor import, runtime test, package-upload validation and Asset Store review are still outstanding. Do not rely on the native package for production until those steps pass.</p>
+  <h2>Limitations</h2>
+  <p>Structural checks do not guarantee language quality, runtime compatibility, correct pluralization, locale completeness or accessibility. Complex ICU messages should be processed by a dedicated ICU parser. This utility does not automatically rewrite source files.</p>
+  <h2>Contact</h2>
+  <p>For questions, compatibility requests or issue reports, contact <a href="mailto:forgeframe.lab@gmail.com">forgeframe.lab@gmail.com</a>. Do not send credentials or private game source code.</p>
+</main>
+<footer>ForgeFrame Labs · <a href="../support.html">Support</a> · <a href="../privacy.html">Privacy</a></footer>
+</body>
+</html>
