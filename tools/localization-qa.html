@@ -3,85 +3,233 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Check Unity localization CSV files for missing translations, duplicate keys, and placeholder mismatches. Runs entirely in your browser.">
+<meta name="theme-color" content="#0b1220">
+<meta name="description" content="Find missing translations, duplicate keys and broken placeholders in localization CSV files. Review actionable issues instantly, privately in your browser.">
+<link rel="canonical" href="https://reflectme-source.github.io/forgeframe-labs-site/tools/localization-qa.html">
+<link rel="icon" type="image/png" href="../assets/forgeframe-avatar.png">
 <title>Localization QA Inspector — ForgeFrame Labs</title>
-<link rel="icon" href="../assets/forgeframe-avatar.png" type="image/png">
 <style>
-:root{color-scheme:dark;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:#eaf1fb;background:#0b111b}
-*{box-sizing:border-box}body{margin:0;min-width:320px;line-height:1.55}a{color:#b7dbff}
-.shell{max-width:1120px;margin:auto;padding:0 24px}
-header{border-bottom:1px solid #283750}nav{display:flex;justify-content:space-between;align-items:center;min-height:78px;gap:15px;font-size:.9rem}nav a{text-decoration:none}
-.brand{font-weight:800;color:#eff7ff;letter-spacing:-.025em}
-main{padding:60px 0 110px}.eyebrow{font-size:.78rem;letter-spacing:.11em;text-transform:uppercase;font-weight:700;color:#92c4ff}
-h1{font-size:clamp(2.6rem,5.8vw,4.6rem);letter-spacing:-.055em;line-height:1.07;margin:17px 0}
-.lead{max-width:750px;color:#b4c4d6;font-size:1.1rem;margin:0 0 25px}
-.privacy{display:inline-flex;align-items:center;gap:9px;font-size:.84rem;background:#173326;border:1px solid #37674a;color:#bde8c8;border-radius:100px;padding:6px 12px;margin-bottom:38px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.panel{border:1px solid #293b54;border-radius:18px;background:#121d2b;padding:24px}
-label{display:block;font-weight:680;margin-bottom:10px}
-.drop{display:flex;align-items:center;justify-content:center;flex-direction:column;min-height:190px;border:2px dashed #476487;border-radius:13px;padding:24px;text-align:center;background:#12253a;cursor:pointer;transition:background .1s}
-.drop.drag{background:#193956;border-color:#8cc4ff}.drop strong{font-size:1.08rem}.drop span{font-size:.88rem;color:#aebed3;margin-top:7px}
-input[type=file]{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
-.controls{display:flex;flex-wrap:wrap;gap:14px;margin-top:23px;align-items:end}.control{flex:1;min-width:120px}
-input[type=text]{width:100%;padding:10px 12px;border-radius:9px;border:1px solid #476080;background:#0b1826;color:white;font:inherit}
-button{font:inherit;border-radius:10px;padding:11px 17px;border:1px solid #6586ad;background:#203752;color:#e4f2ff;cursor:pointer;font-weight:700}
-button.primary{background:#c7e5ff;color:#0a1929;border:1px solid #c7e5ff}
-button:disabled{opacity:.45;cursor:not-allowed}button:hover:not(:disabled){filter:brightness(1.12)}
-.panel h2{margin:0 0 10px;font-size:1.2rem}.panel p{margin:0 0 16px;color:#bbcadd}
-code{color:#c1e2ff;background:#253248;padding:2px 5px;border-radius:4px}
-pre{overflow:auto;padding:14px;background:#091521;border:1px solid #273952;border-radius:10px;color:#bfd2e6;font-size:.78rem;line-height:1.7}
-#results{margin-top:25px}.summary{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
-.stat{flex:1;min-width:130px;background:#172638;border:1px solid #344963;border-radius:12px;padding:15px}
-.stat strong{display:block;font-size:1.7rem;line-height:1.35}.stat span{font-size:.8rem;color:#aebed3}
-.scroll{overflow-x:auto}.report{width:100%;border-collapse:collapse;font-size:.86rem}
-.report th{text-align:left;color:#a6b8d0;font-weight:700}.report td,.report th{padding:12px;border-bottom:1px solid #293b54;vertical-align:top}
-.report td:first-child{font-variant-numeric:tabular-nums}.code{font-weight:700;color:#ffd58a;white-space:nowrap}
-.notice{padding:12px 15px;border:1px solid #426a91;background:#14283d;border-radius:10px;color:#bdd7f2;margin-top:14px}
-.hidden{display:none!important}.danger{color:#ffb6b6}.success{color:#bbebc7}
-footer{border-top:1px solid #273850;padding:26px 0 45px;color:#90a8be;font-size:.87rem}
-@media(max-width:800px){.grid{grid-template-columns:1fr}main{padding-top:42px}}
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#eaf2ff;background:#0b1220;font-synthesis:none}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-width:320px;line-height:1.55;font-size:15px}
+button,input,select{font:inherit}button{cursor:pointer}
+a{color:#aacfff;text-underline-offset:3px}a:hover{color:#fff}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:3px solid #a8e4ff;outline-offset:3px}
+button:disabled{opacity:.45;cursor:not-allowed}
+.hidden{display:none!important}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.shell{max-width:1192px;padding:0 32px;margin:auto}
+header{border-bottom:1px solid #27394e;background:#0d1626}
+nav{display:flex;justify-content:space-between;align-items:center;gap:20px;min-height:80px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#eef7ff;font-size:16px;font-weight:750;letter-spacing:-.015em}
+.brand img{width:34px;height:34px;border-radius:10px}
+.nav-right{display:flex;align-items:center;gap:24px}
+.nav-right a{text-decoration:none;color:#b0c3d7;font-size:13px;font-weight:600}
+.nav-right a:hover{color:#fff}
+.nav-pill{padding:5px 10px;border:1px solid #314962;border-radius:99px;color:#b7d4ee;font-size:11px;font-weight:700;white-space:nowrap}
+main{padding-bottom:94px}
+.intro{padding:70px 0 46px;position:relative}
+.intro:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 620px 260px at 87% 28%,#13375a55,transparent 72%);pointer-events:none}
+.intro .shell{position:relative}
+.eyebrow{display:flex;align-items:center;gap:9px;letter-spacing:.13em;color:#87bcff;font-size:11px;font-weight:800;text-transform:uppercase}
+.eyebrow:before{content:"";display:block;width:7px;height:7px;border-radius:100%;background:#7fd4b2;box-shadow:0 0 0 3px #7fd4b226}
+h1{font-size:clamp(36px,5.25vw,61px);line-height:1.075;letter-spacing:-.052em;font-weight:790;max-width:890px;margin:18px 0 20px}
+.lead{font-size:clamp(16px,1.75vw,19px);max-width:760px;color:#afc0d2;line-height:1.64;margin:0}
+.trust{display:flex;gap:14px;flex-wrap:wrap;margin:27px 0 0}
+.trust span{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;background:#16263a;border:1px solid #2e4560;border-radius:99px;color:#c4d8ea;font-size:12px}
+.trust span:before{content:"✓";color:#7de7b6;font-weight:800}
+.workspace{border:1px solid #2c4059;background:linear-gradient(145deg,#101e31,#111b2b 70%);border-radius:22px;overflow:hidden;box-shadow:0 20px 58px #0002}
+.workspace-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:19px 27px;border-bottom:1px solid #2e425d;background:#162438}
+.workspace-bar h2{font-size:16px;letter-spacing:-.02em;margin:0}
+.step{font-size:11px;font-weight:750;color:#9ec9ec;text-transform:uppercase;letter-spacing:.09em}
+.workspace-body{padding:30px;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(260px,.8fr);gap:30px}
+.dropzone{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:236px;padding:24px;background:linear-gradient(145deg,#162c45,#15263a);border:2px dashed #4a6688;border-radius:16px;transition:background .15s,border-color .15s}
+.dropzone:hover,.dropzone.drag{background:#1b3551;border-color:#9bcef8}
+.dropzone:focus-visible{outline:3px solid #a8e4ff;outline-offset:3px}
+.drop-icon{width:50px;height:50px;border-radius:14px;border:1px solid #4d6d90;background:#25425e;display:grid;place-items:center;margin-bottom:15px;color:#d4eaff}
+.drop-icon svg{width:25px;height:25px}
+.drop-title{font-weight:750;font-size:17px;color:#f3f9ff}
+.drop-sub{font-size:13px;margin-top:6px;color:#b3c9df}
+.drop-meta{color:#96aec6;font-size:12px;margin-top:14px}
+input[type=file]{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.settings-row{display:flex;align-items:flex-end;gap:18px;margin:20px 0 0;flex-wrap:wrap}
+.field{display:flex;flex-direction:column;gap:7px}
+.field label,.field-label{font-size:12px;color:#b9cbdd;font-weight:700}
+.locale-input{border:1px solid #445b78;color:#edf6ff;background:#102035;border-radius:10px;width:118px;padding:11px 12px;outline-offset:2px}
+.field-help{font-size:11px;color:#92a8be}
+.actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:19px}
+.primary,.secondary,.ghost,.toolbar-btn{border-radius:10px;padding:11px 19px;font-weight:760;font-size:13px;transition:filter .12s,transform .12s}
+.primary{background:#c6e2ff;color:#102338;border:1px solid #c6e2ff}
+.primary:hover:not(:disabled){filter:brightness(1.07)}
+.secondary{background:#233c57;border:1px solid #587796;color:#e2efff}
+.secondary:hover:not(:disabled){background:#2b4869}
+.ghost{color:#b9d9f8;border:1px solid transparent;background:none;padding-left:10px;padding-right:10px}
+.ghost:hover{color:white}
+.message{border:1px solid #426a8c;background:#18314a;color:#d4e8ff;border-radius:10px;padding:12px 15px;margin:18px 0 0;font-size:13px}
+.message.danger{background:#35242c;border-color:#9a5065;color:#ffdbdf}
+.right-rail{border-left:1px solid #2a3c53;padding-left:30px}
+.right-rail h3{font-size:15px;letter-spacing:-.01em;margin:4px 0 12px}
+.right-rail p{color:#aec1d3;font-size:13px;margin:0}
+.check{display:flex;gap:12px;padding:17px 0;border-bottom:1px solid #273a53}
+.check:last-child{border-bottom:none}
+.check-icon{border:1px solid #3f5876;background:#1d3550;color:#9dd9fa;width:35px;height:35px;flex:none;border-radius:10px;display:grid;place-items:center;font-size:16px;font-weight:800}
+.check strong{display:block;color:#e6f1ff;font-size:13px;margin-bottom:3px}
+.check p{font-size:12px;line-height:1.58}
+.results{margin-top:28px;border:1px solid #2a415b;background:#0f1b2a;border-radius:20px;overflow:hidden}
+.results-head{padding:27px 30px;border-bottom:1px solid #2b4058;display:flex;justify-content:space-between;gap:20px;align-items:flex-start;flex-wrap:wrap}
+.results-head h2{font-size:22px;margin:0 0 4px;letter-spacing:-.03em}
+.results-head p{margin:0;color:#acc0d2;font-size:13px}
+.outcome{border:1px solid #375b7a;background:#1a3147;color:#a8dcff;border-radius:99px;padding:6px 12px;font-weight:750;font-size:12px}
+.outcome.good{background:#153828;border-color:#326f4d;color:#a4eed1}
+.outcome.bad{background:#412b32;border-color:#915365;color:#ffb8c5}
+.stat-grid{padding:22px 30px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;border-bottom:1px solid #263d53}
+.stat{background:#17283b;border:1px solid #2f4962;border-radius:12px;padding:15px 18px}
+.stat strong{font-size:26px;display:block;font-variant-numeric:tabular-nums;letter-spacing:-.04em;line-height:1.2}
+.stat span{font-size:12px;color:#acc2d4;display:block;margin-top:6px}
+.filter-panel{padding:22px 30px;border-bottom:1px solid #2b4058}
+.filter-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:15px}
+.filter-top h3{margin:0;font-size:15px}
+.filter-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.chip{padding:8px 13px;background:#182a3d;border:1px solid #3c5470;color:#bed0e2;font-size:12px;font-weight:650;border-radius:9px}
+.chip[aria-pressed=true]{background:#2b4868;border-color:#91badf;color:white}
+.filters{display:flex;gap:10px;flex-wrap:wrap}
+.search{flex:1;min-width:240px}
+.filters input,.filters select{border:1px solid #425b75;border-radius:9px;padding:10px 12px;background:#14253a;color:#eaf4ff;font-size:13px;min-height:43px}
+.filters select{min-width:170px;max-width:100%}
+.downloads{display:flex;gap:10px;flex-wrap:wrap}
+.toolbar-btn{font-size:12px;background:#223750;border:1px solid #4b698a;color:#dcf0ff;padding:9px 14px}
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse;text-align:left}
+th{background:#142539;color:#aec1d5;font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:780;padding:15px 19px;white-space:nowrap}
+td{padding:17px 19px;font-size:13px;color:#d1e0ee;border-bottom:1px solid #243850;vertical-align:top}
+tbody tr:last-child td{border-bottom:0}tbody tr:hover{background:#15283b}
+.location{white-space:nowrap;color:#d0e9ff;font-variant-numeric:tabular-nums;font-weight:680}
+.key-name{color:#dce9f7;max-width:150px;overflow-wrap:anywhere}
+.issue-title{display:block;color:#f3f7ff;font-size:13px;font-weight:730}
+.issue-detail{display:block;color:#b3c7d9;margin-top:4px;font-size:12px;max-width:430px;overflow-wrap:anywhere}
+.issue-fix{display:block;color:#93c5e8;font-size:12px;margin-top:6px}
+.sev{border-radius:99px;padding:5px 9px;font-size:11px;white-space:nowrap;display:inline-block;font-weight:770}
+.sev-blocking{color:#ffbec6;background:#432831;border:1px solid #985767}
+.sev-review{color:#ffe0ac;background:#483823;border:1px solid #8f7040}
+.empty-state{padding:46px 20px;text-align:center;color:#b1c6da}
+.empty-state strong{display:block;color:#e9f5ff;font-size:16px;margin-bottom:5px}
+.empty-state button{margin-top:13px}
+.results-foot{background:#142238;border-top:1px solid #2b4058;padding:13px 30px;color:#96aec7;font-size:12px}
+.bottom{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:30px}
+.bottom article{border:1px solid #2c435a;background:#111f30;border-radius:15px;padding:25px}
+.bottom h3{font-size:16px;margin:0 0 10px}
+.bottom p{font-size:13px;color:#aec1d5;line-height:1.7;margin:0}
+code{font-size:.87em;color:#b9e1fb;background:#253950;border-radius:5px;padding:2px 5px}
+footer{border-top:1px solid #26384e;padding:26px 0 40px;background:#0a111c}
+footer .shell{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:#8ea5bb;font-size:12px}
+footer a{color:#a3bdd5}
+@media(max-width:920px){.workspace-body{grid-template-columns:1fr}.right-rail{border-left:0;border-top:1px solid #2a3c53;padding:18px 0 0}.right-rail .checks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.check{border:0}.stat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){.shell{padding:0 18px}.nav-pill{display:none}.nav-right{gap:14px}.intro{padding:48px 0 34px}.workspace-body{padding:18px}.workspace-bar{padding:17px 20px}.right-rail .checks{grid-template-columns:1fr}.check{border-bottom:1px solid #273a53}.results-head,.stat-grid,.filter-panel{padding:18px}.stat-grid{gap:8px}.stat{padding:12px}.stat strong{font-size:23px}.bottom{grid-template-columns:1fr}td,th{padding:12px 10px}.results-foot{padding:15px 18px}}
+@media(max-width:650px){
+  .table-wrap{overflow:visible}
+  table,tbody{display:block;width:100%}
+  thead{display:none}
+  tbody tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px 13px;margin:12px 14px;padding:16px;border:1px solid #344a65;border-radius:13px;background:#142438}
+  tbody tr:hover{background:#192d44}
+  tbody td{display:block;border:0;padding:0!important;min-width:0}
+  tbody td:nth-child(1){grid-column:1 / -1}
+  tbody td:nth-child(2){grid-column:1}
+  tbody td:nth-child(3){grid-column:2;align-self:center}
+  tbody td:nth-child(4){grid-column:1 / -1;padding-top:13px!important;border-top:1px solid #32455d}
+  .location{white-space:normal}
+  .key-name{max-width:none}
+  .filter-controls{gap:6px}
+  .chip{padding:8px 12px}
+  .filters select{min-width:100%;max-width:100%}
+  .filters input{min-width:100%}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
-<header><nav class="shell"><a class="brand" href="../index.html">← ForgeFrame Labs</a><div style="display:flex;gap:22px"><a href="./localization-qa-guide.html">Documentation</a><a href="../support.html">Support</a></div></nav></header>
-<main class="shell">
-<div class="eyebrow">Free browser demo · Localization QA</div>
-<h1>Catch translation bugs<br>before your build.</h1>
-<p class="lead">Drop in a Unity-friendly localization CSV. Find missing strings, duplicate keys, mismatched placeholders and malformed rows — with a clear, exportable report.</p>
-<div class="privacy">● Local processing only: your CSV never leaves this browser</div>
-
-<div class="grid">
-<section class="panel" aria-label="CSV analysis">
-  <label for="csv">Localization CSV</label>
-  <label class="drop" id="drop" for="csv" tabindex="0"><strong id="fileLabel">Choose or drop a .csv file</strong><span>CSV header example: key,en,pl,de · 2 MB max</span></label>
-  <input type="file" id="csv" accept=".csv,text/csv,text/plain">
-  <div class="controls">
-    <div class="control"><label for="sourceLocale">Source locale</label><input id="sourceLocale" type="text" value="en" maxlength="18" aria-describedby="localeInfo"><small id="localeInfo">Column name from the CSV header</small></div>
-    <button type="button" class="primary" id="analyze" disabled>Analyze CSV</button>
-  </div>
-  <p class="notice hidden" id="message" role="status" aria-live="polite"></p>
-</section>
-<section class="panel" aria-label="CSV sample and scope">
-  <h2>Expected format</h2>
-  <p>One row per localization key. Use the same named placeholders in all languages.</p>
-  <pre>key,en,pl,de
-welcome,"Welcome {name}","Witaj {name}","Hallo {name}"
-score,"Score: %d","Wynik: %d","Punkte: %d"</pre>
-  <button id="sample" type="button">Try a sample with defects</button>
-  <p class="notice">Detects named <code>{name}</code>, printf <code>%s</code>/<code>%d</code>, markup tags, duplicate keys, empty cells and malformed CSV. Complex ICU messages are flagged for human review. It does not validate linguistic quality or Unity package compatibility.</p>
-</section>
+<header>
+<nav class="shell" aria-label="Primary navigation">
+  <a class="brand" href="../index.html"><img src="../assets/forgeframe-avatar.png" alt="" width="34" height="34">ForgeFrame Labs</a>
+  <div class="nav-right"><span class="nav-pill">Localization QA Inspector</span><a href="./localization-qa-guide.html">Documentation</a><a href="../support.html">Support</a></div>
+</nav>
+</header>
+<main>
+<section class="intro">
+<div class="shell">
+  <div class="eyebrow">Localization quality assurance</div>
+  <h1>Find broken translations before they reach your build.</h1>
+  <p class="lead">Drop in your CSV to find missing strings, duplicate keys and broken placeholders. Get an actionable report in seconds — without uploading project data.</p>
+  <div class="trust"><span>Runs locally in your browser</span><span>No account required</span><span>Exportable results</span></div>
 </div>
-
-<section id="results" class="panel hidden" aria-labelledby="reportHeading">
-  <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-    <h2 id="reportHeading">Analysis report</h2><button type="button" id="download">Export JSON report</button>
-  </div>
-  <div class="summary" id="summary"></div>
-  <div class="scroll"><table class="report" aria-label="Localization findings"><thead><tr><th>CSV row</th><th>Key</th><th>Locale</th><th>Issue</th><th>Details</th></tr></thead><tbody id="findings"></tbody></table></div>
-  <p id="empty" class="success hidden">No structural issues found in this CSV. Review translations in context before release.</p>
 </section>
+<div class="shell">
+  <section class="workspace" id="workbench" aria-label="Localization inspector workspace">
+    <div class="workspace-bar"><h2>Inspect your file</h2><span class="step">01 / Analyze</span></div>
+    <div class="workspace-body">
+      <div>
+        <label class="dropzone" id="drop" for="csv" tabindex="0">
+          <span class="drop-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4m0 0L7 9m5-5 5 5"/><path d="M5 14v4a2 2 0 002 2h10a2 2 0 002-2v-4"/></svg></span>
+          <strong class="drop-title" id="fileLabel">Choose a CSV file or drop it here</strong>
+          <span class="drop-sub" id="fileHint">Your file stays on this device</span>
+          <span class="drop-meta">CSV · UTF-8 · Up to 2 MB</span>
+        </label>
+        <input type="file" id="csv" accept=".csv,text/csv,text/plain" tabindex="-1" aria-label="Choose localization CSV file">
+        <div class="settings-row"><div class="field"><label for="sourceLocale">Source language column</label><input class="locale-input" id="sourceLocale" type="text" value="en" maxlength="18" spellcheck="false" autocomplete="off" aria-describedby="localeInfo"><span class="field-help" id="localeInfo">For example: en, en-US</span></div></div>
+        <div class="actions">
+          <button class="primary" id="analyze" type="button" disabled>Analyze CSV <span aria-hidden="true">→</span></button>
+          <button class="secondary" id="sample" type="button">Try example</button>
+          <a class="ghost" href="./localization-qa-guide.html">CSV format guide</a>
+        </div>
+        <div class="message hidden" id="message" role="alert" aria-live="assertive"></div>
+      </div>
+      <aside class="right-rail" aria-label="Quality checks">
+        <h3>What gets checked</h3>
+        <div class="checks">
+          <div class="check"><span class="check-icon" aria-hidden="true">{ }</span><div><strong>Broken placeholders</strong><p>Detect variables and formatting tokens that differ between languages.</p></div></div>
+          <div class="check"><span class="check-icon" aria-hidden="true">✓</span><div><strong>Missing or duplicate strings</strong><p>Catch empty translations, duplicate keys and missing source text.</p></div></div>
+          <div class="check"><span class="check-icon" aria-hidden="true">≡</span><div><strong>CSV structure</strong><p>Identify malformed rows and flag complex ICU messages for review.</p></div></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+  <section id="results" class="results hidden" aria-labelledby="resultTitle">
+    <div class="results-head">
+      <div><div class="step">02 / Review</div><h2 id="resultTitle">Your analysis</h2><p id="reportFile">File summary</p></div>
+      <span class="outcome" id="outcome">Review results</span>
+    </div>
+    <div class="stat-grid" id="summary" aria-label="Analysis summary"></div>
+    <div class="filter-panel">
+      <div class="filter-top"><h3>Issues <span id="visibleCount" aria-live="polite"></span></h3><div class="downloads"><button class="toolbar-btn" type="button" id="downloadCsv">Export CSV</button><button class="toolbar-btn" type="button" id="download">Export JSON</button></div></div>
+      <div class="filter-controls" role="group" aria-label="Issue severity">
+        <button type="button" class="chip" data-severity="all" aria-pressed="true">All issues</button>
+        <button type="button" class="chip" data-severity="blocking" aria-pressed="false">Blocking</button>
+        <button type="button" class="chip" data-severity="review" aria-pressed="false">Review</button>
+      </div>
+      <div class="filters" style="margin-top:13px">
+        <input class="search" id="searchIssues" type="search" placeholder="Search key, language or issue" aria-label="Search issues">
+        <select id="localeFilter" aria-label="Filter by locale"><option value="all">All languages</option></select>
+        <select id="typeFilter" aria-label="Filter by issue type"><option value="all">All issue types</option></select>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table aria-label="Localization issues">
+        <thead><tr><th scope="col">Priority</th><th scope="col">Location</th><th scope="col">Key</th><th scope="col">Issue &amp; suggested fix</th></tr></thead>
+        <tbody id="findings"></tbody>
+      </table>
+      <div class="empty-state hidden" id="emptyMatches"><strong>No matching issues</strong><span>Try another filter or clear your search.</span><br><button type="button" class="secondary" id="resetFilters">Clear filters</button></div>
+      <div class="empty-state hidden" id="empty"><strong>No structural issues found</strong><span>Your CSV passed the available checks. Review translations in context before release.</span></div>
+    </div>
+    <div class="results-foot" id="resultsFoot">Files are processed locally in this browser.</div>
+  </section>
+  <div class="bottom">
+    <article><h3>Keep project text private</h3><p>Analysis runs entirely on your device. No sign-up, external API calls or project text uploads are required.</p></article>
+    <article><h3>Need to run this in CI?</h3><p>Use the same validator in a local Node.js build step. <a href="./localization-qa-guide.html">Read the integration guide →</a></p></article>
+  </div>
+</div>
+<p id="resultAnnouncement" class="sr-only" role="status" aria-live="polite"></p>
 </main>
-<footer><div class="shell">ForgeFrame Labs · Preview utility, not yet a published Unity Asset Store package. <a href="../privacy.html">Privacy</a> · <a href="../support.html">Support</a></div></footer>
+<footer><div class="shell"><span>© 2026 ForgeFrame Labs · Localization QA Inspector</span><span><a href="../privacy.html">Privacy</a> · <a href="../support.html">Support</a></span></div></footer>
 <script type="module" src="./localization-qa.mjs"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Localization QA Inspector documentation: supported Unity localization CSV format, validation checks, known limits and release status.">
+<meta name="description" content="Localization QA Inspector help: prepare CSV files, understand translation errors, export findings and check localization data in CI.">
 <title>Localization QA Inspector — Documentation | ForgeFrame Labs</title>
 <link rel="icon" href="../assets/forgeframe-avatar.png" type="image/png">
 <style>
@@ -14,10 +14,10 @@ table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;
 <body>
 <header><a href="../index.html">← ForgeFrame Labs</a></header>
 <main>
-  <span class="tag">Developer documentation · Preview</span>
+  <span class="tag">Localization QA · User guide</span>
   <h1>Localization QA Inspector</h1>
-  <p>Verify the structure of CSV localization files before a game update. The public browser demo is available now. A native Unity Editor version is in development, and is not yet an Asset Store product.</p>
-  <p><a class="button" href="./localization-qa.html">Run the browser demo</a></p>
+  <p>Check CSV localization files before release, understand the results and use the same checks in your build process.</p>
+  <p><a class="button" href="./localization-qa.html">Open Localization QA Inspector</a></p>
   <h2>CSV input format</h2>
   <p>Supply UTF-8 text with a <code>key</code> column followed by a source locale and one or more target locales. The default source column is <code>en</code> and can be changed before analysis.</p>
   <pre>key,en,pl,de
@@ -37,12 +37,12 @@ score,"Score: %d","Wynik: %d","Punkte: %d"</pre>
       <tr><td><code>ICU_REVIEW</code></td><td>Complex ICU plural/select syntax needs specialized inspection.</td></tr>
     </tbody>
   </table>
-  <h2>How to use the browser demo</h2>
+  <h2>Run your first check</h2>
   <ol>
     <li>Open <a href="./localization-qa.html">Localization QA Inspector</a>.</li>
     <li>Select or drop a CSV file up to 2 MB. The file is parsed locally in your browser.</li>
     <li>Confirm the source locale, then select <strong>Analyze CSV</strong>.</li>
-    <li>Inspect the report. Use <strong>Export JSON report</strong> to save all findings.</li>
+    <li>Review blocking issues first, filter by language or issue type, and export findings as <strong>CSV</strong> or <strong>JSON</strong>.</li>
   </ol>
   <div class="box">
     <strong>Privacy and safety</strong>
@@ -53,8 +53,8 @@ score,"Score: %d","Wynik: %d","Punkte: %d"</pre>
   <pre>node tools/localization-cli.mjs --file Assets/Localization/strings.csv --source en --fail-on error</pre>
   <p>The command exits with <code>0</code> for a passing gate, <code>2</code> when blocking findings occur, and <code>64</code> for invalid input or options. Use <code>--fail-on any</code> for strict ICU review gates, <code>--fail-on never</code> for reporting without failing a build, or <code>--format json</code> for a machine-readable report.</p>
   <p><a href="https://github.com/reflectme-source/forgeframe-labs-site/blob/main/examples/localization-ci.example.yml">Example GitHub Actions configuration</a>. This is an optional sample, not an automatically enabled action. Review the hosting platform's Actions billing terms before using it in a private repository.</p>
-  <h2>Unity Editor release status</h2>
-  <p>The native EditorWindow is being developed for Unity 2022.3+ and uses a project-local TextAsset. Its C# core has been independently compiled and tested, but a real Unity Editor import, runtime test, package-upload validation and Asset Store review are still outstanding. Do not rely on the native package for production until those steps pass.</p>
+  <h2>Unity Editor integration</h2>
+  <p>The browser inspector and Node.js command-line utility are available now. A native Unity Editor package is not yet available in the Asset Store. For integration questions, <a href="mailto:forgeframe.lab@gmail.com?subject=Unity%20Editor%20integration">contact ForgeFrame Labs</a>.</p>
   <h2>Limitations</h2>
   <p>Structural checks do not guarantee language quality, runtime compatibility, correct pluralization, locale completeness or accessibility. Complex ICU messages should be processed by a dedicated ICU parser. This utility does not automatically rewrite source files.</p>
   <h2>Contact</h2>

@@ -1,0 +1,66 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import {readFileSync,existsSync} from "node:fs";
+import {resolve,dirname,join} from "node:path";
+import {fileURLToPath} from "node:url";
+
+const root=resolve(dirname(fileURLToPath(import.meta.url)),"..");
+const pages=[
+ "index.html","support.html","privacy.html","products/localization-qa.html",
+ "tools/localization-qa.html","tools/localization-qa-guide.html"
+];
+function html(file) {return readFileSync(join(root,file),"utf8");}
+function localTargets(page) {
+ const hits=[];
+ const re=/\b(?:href|src)=["']([^"']+)["']/g;
+ for(const [,ref] of html(page).matchAll(re)){
+  if(!ref || ref[0]==="#" || ref.startsWith("mailto:") || ref.startsWith("http:") ||
+   ref.startsWith("https:") || ref.startsWith("data:")) continue;
+  const path=ref.split("#")[0].split("?")[0];
+  if(!path)continue;
+  hits.push(resolve(root,dirname(page),decodeURIComponent(path)));
+ }
+ return hits;
+}
+test("every public page has local links and assets pointing to existing files",()=>{
+ let count=0;
+ for(const page of pages){
+  for(const target of localTargets(page)){
+   assert.ok(target.startsWith(root),"Link outside site root: "+target);
+   assert.ok(existsSync(target),page+" references missing "+target);
+   count++;
+  }
+ }
+ assert.ok(count>=20,"Unexpectedly few linked assets");
+});
+test("marketing pages contain a useful product and honest CTA",()=>{
+ const main=html("index.html");
+ const product=html("products/localization-qa.html");
+ assert.match(main,/Localization QA Inspector/);
+ assert.match(main,/tools\/localization-qa\.html/);
+ assert.match(product,/free inspector/i);
+ assert.match(product,/not currently available on the Asset Store/i);
+});
+test("public-facing marketing does not include engineering status artifacts",()=>{
+ const market=html("index.html")+html("support.html")+html("products/localization-qa.html");
+ for(const text of ["internal note","safety block","private draft","pre-release test",
+ "staging build","technical handoff","source for a native Unity Editor window has been prepared"]){
+  assert.doesNotMatch(market,new RegExp(text,"i"),"Customer-facing internal term: "+text);
+ }
+});
+test("inspector provides basic accessibility and mobile navigation",()=>{
+ const page=html("tools/localization-qa.html");
+ assert.match(page,/aria-pressed="true"/);
+ assert.match(page,/aria-live="polite"/);
+ assert.match(page,/for="sourceLocale"/);
+ assert.match(page,/:focus-visible/);
+ assert.match(page,/prefers-reduced-motion/);
+ assert.match(page,/table,tbody\{display:block/);
+ assert.match(page,/aria-label="Localization issues"/);
+});
+test("only first-party local JS modules run in the inspector",()=>{
+ const page=html("tools/localization-qa.html");
+ const scripts=[...page.matchAll(/<script\b[^>]*src="([^"]+)"/g)].map(m=>m[1]);
+ assert.deepEqual(scripts,["./localization-qa.mjs"]);
+ assert.doesNotMatch(page,/google-analytics|gtag|segment\.com|hotjar|mixpanel/i);
+});
