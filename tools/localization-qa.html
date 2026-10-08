@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Check Unity localization CSV files for missing translations, duplicate keys, and placeholder mismatches. Runs entirely in your browser.">
+<title>Localization QA Inspector — ForgeFrame Labs</title>
+<link rel="icon" href="../assets/forgeframe-avatar.png" type="image/png">
+<style>
+:root{color-scheme:dark;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:#eaf1fb;background:#0b111b}
+*{box-sizing:border-box}body{margin:0;min-width:320px;line-height:1.55}a{color:#b7dbff}
+.shell{max-width:1120px;margin:auto;padding:0 24px}
+header{border-bottom:1px solid #283750}nav{display:flex;justify-content:space-between;align-items:center;min-height:78px;gap:15px;font-size:.9rem}nav a{text-decoration:none}
+.brand{font-weight:800;color:#eff7ff;letter-spacing:-.025em}
+main{padding:60px 0 110px}.eyebrow{font-size:.78rem;letter-spacing:.11em;text-transform:uppercase;font-weight:700;color:#92c4ff}
+h1{font-size:clamp(2.6rem,5.8vw,4.6rem);letter-spacing:-.055em;line-height:1.07;margin:17px 0}
+.lead{max-width:750px;color:#b4c4d6;font-size:1.1rem;margin:0 0 25px}
+.privacy{display:inline-flex;align-items:center;gap:9px;font-size:.84rem;background:#173326;border:1px solid #37674a;color:#bde8c8;border-radius:100px;padding:6px 12px;margin-bottom:38px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.panel{border:1px solid #293b54;border-radius:18px;background:#121d2b;padding:24px}
+label{display:block;font-weight:680;margin-bottom:10px}
+.drop{display:flex;align-items:center;justify-content:center;flex-direction:column;min-height:190px;border:2px dashed #476487;border-radius:13px;padding:24px;text-align:center;background:#12253a;cursor:pointer;transition:background .1s}
+.drop.drag{background:#193956;border-color:#8cc4ff}.drop strong{font-size:1.08rem}.drop span{font-size:.88rem;color:#aebed3;margin-top:7px}
+input[type=file]{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+.controls{display:flex;flex-wrap:wrap;gap:14px;margin-top:23px;align-items:end}.control{flex:1;min-width:120px}
+input[type=text]{width:100%;padding:10px 12px;border-radius:9px;border:1px solid #476080;background:#0b1826;color:white;font:inherit}
+button{font:inherit;border-radius:10px;padding:11px 17px;border:1px solid #6586ad;background:#203752;color:#e4f2ff;cursor:pointer;font-weight:700}
+button.primary{background:#c7e5ff;color:#0a1929;border:1px solid #c7e5ff}
+button:disabled{opacity:.45;cursor:not-allowed}button:hover:not(:disabled){filter:brightness(1.12)}
+.panel h2{margin:0 0 10px;font-size:1.2rem}.panel p{margin:0 0 16px;color:#bbcadd}
+code{color:#c1e2ff;background:#253248;padding:2px 5px;border-radius:4px}
+pre{overflow:auto;padding:14px;background:#091521;border:1px solid #273952;border-radius:10px;color:#bfd2e6;font-size:.78rem;line-height:1.7}
+#results{margin-top:25px}.summary{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.stat{flex:1;min-width:130px;background:#172638;border:1px solid #344963;border-radius:12px;padding:15px}
+.stat strong{display:block;font-size:1.7rem;line-height:1.35}.stat span{font-size:.8rem;color:#aebed3}
+.scroll{overflow-x:auto}.report{width:100%;border-collapse:collapse;font-size:.86rem}
+.report th{text-align:left;color:#a6b8d0;font-weight:700}.report td,.report th{padding:12px;border-bottom:1px solid #293b54;vertical-align:top}
+.report td:first-child{font-variant-numeric:tabular-nums}.code{font-weight:700;color:#ffd58a;white-space:nowrap}
+.notice{padding:12px 15px;border:1px solid #426a91;background:#14283d;border-radius:10px;color:#bdd7f2;margin-top:14px}
+.hidden{display:none!important}.danger{color:#ffb6b6}.success{color:#bbebc7}
+footer{border-top:1px solid #273850;padding:26px 0 45px;color:#90a8be;font-size:.87rem}
+@media(max-width:800px){.grid{grid-template-columns:1fr}main{padding-top:42px}}
+</style>
+</head>
+<body>
+<header><nav class="shell"><a class="brand" href="../index.html">← ForgeFrame Labs</a><a href="../support.html">Support</a></nav></header>
+<main class="shell">
+<div class="eyebrow">Free browser demo · Localization QA</div>
+<h1>Catch translation bugs<br>before your build.</h1>
+<p class="lead">Drop in a Unity-friendly localization CSV. Find missing strings, duplicate keys, mismatched placeholders and malformed rows — with a clear, exportable report.</p>
+<div class="privacy">● Local processing only: your CSV never leaves this browser</div>
+
+<div class="grid">
+<section class="panel" aria-label="CSV analysis">
+  <label for="csv">Localization CSV</label>
+  <label class="drop" id="drop" for="csv" tabindex="0"><strong id="fileLabel">Choose or drop a .csv file</strong><span>CSV header example: key,en,pl,de · 2 MB max</span></label>
+  <input type="file" id="csv" accept=".csv,text/csv,text/plain">
+  <div class="controls">
+    <div class="control"><label for="sourceLocale">Source locale</label><input id="sourceLocale" type="text" value="en" maxlength="18" aria-describedby="localeInfo"><small id="localeInfo">Column name from the CSV header</small></div>
+    <button type="button" class="primary" id="analyze" disabled>Analyze CSV</button>
+  </div>
+  <p class="notice hidden" id="message" role="status" aria-live="polite"></p>
+</section>
+<section class="panel" aria-label="CSV sample and scope">
+  <h2>Expected format</h2>
+  <p>One row per localization key. Use the same named placeholders in all languages.</p>
+  <pre>key,en,pl,de
+welcome,"Welcome {name}","Witaj {name}","Hallo {name}"
+score,"Score: %d","Wynik: %d","Punkte: %d"</pre>
+  <button id="sample" type="button">Try a sample with defects</button>
+  <p class="notice">Detects named <code>{name}</code>, printf <code>%s</code>/<code>%d</code>, markup tags, duplicate keys, empty cells and malformed CSV. Complex ICU messages are flagged for human review. It does not validate linguistic quality or Unity package compatibility.</p>
+</section>
+</div>
+
+<section id="results" class="panel hidden" aria-labelledby="reportHeading">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+    <h2 id="reportHeading">Analysis report</h2><button type="button" id="download">Export JSON report</button>
+  </div>
+  <div class="summary" id="summary"></div>
+  <div class="scroll"><table class="report" aria-label="Localization findings"><thead><tr><th>CSV row</th><th>Key</th><th>Locale</th><th>Issue</th><th>Details</th></tr></thead><tbody id="findings"></tbody></table></div>
+  <p id="empty" class="success hidden">No structural issues found in this CSV. Review translations in context before release.</p>
+</section>
+</main>
+<footer><div class="shell">ForgeFrame Labs · Preview utility, not yet a published Unity Asset Store package. <a href="../privacy.html">Privacy</a> · <a href="../support.html">Support</a></div></footer>
+<script type="module" src="./localization-qa.mjs"></script>
+</body>
+</html>
