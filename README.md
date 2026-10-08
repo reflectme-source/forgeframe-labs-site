@@ -1,37 +1,84 @@
 # ForgeFrame Labs
 
-Focused game development utilities from the ForgeFrame Labs Unity publisher brand.
+Practical developer tools for more reliable game releases.
 
-## Localization QA Inspector — free browser demo
+## Localization QA Inspector
 
-[**Run Localization QA Inspector**](https://reflectme-source.github.io/forgeframe-labs-site/tools/localization-qa.html)
+**Find broken translations before they reach your build.**
 
-Check localization CSV files for missing translations, duplicate keys, incorrect placeholder counts and structural errors. Choose a file and see an actionable report. The CSV is processed **inside your browser**, not sent to a server.
+[Open the free Localization QA Inspector](https://reflectme-source.github.io/forgeframe-labs-site/tools/localization-qa.html)
 
-- [Documentation and CSV format](https://reflectme-source.github.io/forgeframe-labs-site/tools/localization-qa-guide.html)
-- [Publisher website](https://reflectme-source.github.io/forgeframe-labs-site/)
+Localization QA Inspector analyzes Unity-friendly CSV localization files, highlights structural problems and suggests what to fix. The browser tool works entirely on your device. No account, external API or upload of your file to a server is required.
+
+### What it checks
+
+- Missing source text and translations
+- Missing or duplicate localization keys
+- Placeholder mismatches, including named variables and printf tokens
+- Markup tag differences
+- CSV rows with incorrect column counts
+- Complex ICU messages that require separate review
+
+Results are organized by priority. Search for a key, filter by language or issue type, and export findings as CSV or JSON.
+
+### Try it in your browser
+
+1. [Open Localization QA Inspector](https://reflectme-source.github.io/forgeframe-labs-site/tools/localization-qa.html).
+2. Drop in your CSV, or choose **Try example** to see a sample report immediately.
+3. Confirm the source-language column, normally en.
+4. Select **Analyze CSV** and review the results.
+5. Export a report for your development or localization team.
+
+The browser accepts UTF-8 CSV files up to 2 MB.
+
+### CSV file format
+
+The first column is named key. The other columns identify languages, for example:
+
+    key,en,pl,de
+    welcome,"Welcome {name}","Witaj {name}","Willkommen {name}"
+    score,"Score: %d","Wynik: %d","Punkte: %d"
+    start,Start,Start,Starten
+
+Quoted commas, escaped quotes and quoted line breaks are supported.
+
+### Optional command-line checks
+
+The repository also contains a dependency-free Node.js command-line validator for local builds or CI jobs. Node.js 20 or later is recommended.
+
+From the repository root, run:
+
+    node tools/localization-cli.mjs --file Assets/Localization/strings.csv --source en --fail-on error
+
+Exit codes:
+
+| Code | Meaning |
+| --- | --- |
+| 0 | All required checks passed |
+| 2 | Blocking localization issues were detected |
+| 64 | The input or command options were invalid |
+
+Add the --format json option for structured results. Use --fail-on any to treat advisory checks as blocking, or --fail-on never to generate a report without failing your build.
+
+An optional [GitHub Actions configuration example](examples/localization-ci.example.yml) is included. Review your hosting platform's billing settings before enabling an automated workflow.
+
+### More documentation
+
+- [CSV format, checks and CLI guide](https://reflectme-source.github.io/forgeframe-labs-site/tools/localization-qa-guide.html)
+- [Product overview](https://reflectme-source.github.io/forgeframe-labs-site/products/localization-qa.html)
+- [ForgeFrame Labs website](https://reflectme-source.github.io/forgeframe-labs-site/)
 - [Support](https://reflectme-source.github.io/forgeframe-labs-site/support.html)
 
-### Command-line CI gate
+### Unity Editor integration
 
-The same checks can run in a build pipeline using Node.js 20+ without third-party packages:
+A native Unity Editor package is not yet available for purchase on the Asset Store. The browser inspector and command-line utility can be used today.
 
-```bash
-node tools/localization-cli.mjs --file Assets/Localization/strings.csv --source en --fail-on error
-```
+### Privacy and limitations
 
-Exit **0** means pass, **2** means a blocking localization issue, and **64** means configuration or CSV parsing failed. [GitHub Actions example](examples/localization-ci.example.yml) (not enabled automatically; inspect Actions billing before copying it to a private repository).
+CSV analysis happens locally. The browser inspector does not require login, telemetry, analytics or network uploads of your localization text. It does not rewrite the original file.
 
-### Unity Asset Store version
+Structural checks cannot guarantee linguistic accuracy, correct pluralization, layout in a running game or compatibility with a particular localization framework. Advanced ICU syntax needs a dedicated parser.
 
-A native Unity Editor implementation is being developed and has been registered as a private **Draft**, but is **not** publicly released or offered for sale. Unity compilation/import testing, packaging and review are still required.
+## Support
 
-### Scope
-
-This demo checks CSV structure, not linguistic quality. It flags complex ICU messages for specialized review and does not change source files.
-
-### Contact
-
-Questions, bug reports or requests for Unity-specific workflow improvements: **forgeframe.lab@gmail.com**.
-
-The public repository contains the standalone website and browser demo; it does not contain Unity Asset Store seller credentials, payouts or private Unity package source.
+For usage questions, bug reports or feature requests, contact **forgeframe.lab@gmail.com**. Include the input format and steps to reproduce; do not send passwords, secret keys or confidential project files.
