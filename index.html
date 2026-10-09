@@ -79,13 +79,15 @@ footer a{color:#adc3d8}
 @media(max-width:600px){.shell{padding:0 19px}nav{min-height:73px}.navlinks{gap:14px}.navlinks a:nth-child(2){display:none}.hero{padding:61px 0 65px}.frame-inner{padding:15px}.hero .shell{gap:34px}h1{font-size:clamp(39px,10vw,53px)}section{padding:48px 0}.feature{padding:23px}.banner{padding:25px}.banner h2{font-size:23px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}.btn:hover{transform:none}}
 </style>
+<link rel="stylesheet" href="./assets/interaction.css">
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <header><nav class="shell" aria-label="Main navigation">
  <a class="logo" href="./index.html"><img src="./assets/forgeframe-avatar.png" alt="" width="36" height="36">ForgeFrame Labs</a>
- <div class="navlinks"><a href="#features">Features</a><a href="./tools/localization-qa-guide.html">Documentation</a><a class="nav-cta" href="./tools/localization-qa.html">Open inspector →</a></div>
+ <div class="navlinks"><a href="#features">Features</a><a href="./tools/localization-qa-guide.html" aria-label="Documentation"><span class="nav-label-full">Documentation</span><span class="nav-label-short">Docs</span></a><a class="nav-cta" href="./tools/localization-qa.html">Open inspector →</a></div>
 </nav></header>
-<main>
+<main id="main-content">
 <section class="hero">
  <div class="shell">
   <div>

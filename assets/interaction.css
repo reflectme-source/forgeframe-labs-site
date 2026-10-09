@@ -1,0 +1,66 @@
+/* ForgeFrame Labs — interaction primitives shared by public pages.
+   High-visibility keyboard focus, predictable touch targets and skip navigation. */
+:root {
+  --ff-focus-ring: #a8e4ff;
+  --ff-focus-shadow: #081320;
+}
+*, *::before, *::after { box-sizing: border-box; }
+.skip-link {
+  position: fixed;
+  z-index: 10000;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 11px 17px;
+  border: 2px solid #bfe5ff;
+  border-radius: 10px;
+  background: #e6f4ff;
+  color: #0b1727 !important;
+  font: 700 14px/1.3 system-ui, -apple-system, "Segoe UI", sans-serif;
+  text-decoration: none;
+  box-shadow: 0 7px 26px #0008;
+  transform: translateY(-160%);
+  transition: transform 120ms ease-out;
+}
+.skip-link:focus, .skip-link:focus-visible { transform: translateY(0); }
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible,
+label[tabindex="0"]:focus-visible {
+  outline: 3px solid var(--ff-focus-ring);
+  outline-offset: 3px;
+}
+header a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+header nav a {
+  justify-content: center;
+}
+.nav-label-short { display: none; }
+@media (max-width: 600px) {
+  .navlinks a:nth-child(1) { display: none; }
+  .navlinks a:nth-child(2) { display: inline-flex; }
+  .nav-label-full { display: none; }
+  .nav-label-short { display: inline; }
+}
+header nav .navlinks a,
+header nav .nav-right a,
+header nav .links a {
+  min-height: 44px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .skip-link { transition: none; }
+}
