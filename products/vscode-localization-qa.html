@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1220">
+<meta name="description" content="Free preview: inspect CSV localization files in VS Code, highlight missing translations and broken placeholders, and export actionable reports. Runs locally.">
+<link rel="canonical" href="https://reflectme-source.github.io/forgeframe-labs-site/products/vscode-localization-qa.html">
+<link rel="icon" type="image/png" href="../assets/forgeframe-avatar.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ForgeFrame Localization QA — VS Code extension">
+<meta property="og:description" content="Catch missing translations, duplicate keys and placeholder mismatches directly inside VS Code.">
+<meta property="og:url" content="https://reflectme-source.github.io/forgeframe-labs-site/products/vscode-localization-qa.html">
+<title>ForgeFrame Localization QA for VS Code — Preview</title>
+<style>
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#eff7ff;background:#0b1422}
+*{box-sizing:border-box}body{margin:0;min-width:320px;line-height:1.56}html{scroll-behavior:smooth}a{color:#bce0ff;text-underline-offset:4px}a:hover{color:#fff}
+a:focus-visible,button:focus-visible{outline:3px solid #9ae4ff;outline-offset:3px}
+.wrap{max-width:1110px;margin:auto;padding:0 30px}
+header{border-bottom:1px solid #263f5a;background:#0d1727}nav{min-height:76px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:12px;color:#edf7ff;font-size:16px;font-weight:760;text-decoration:none}.logo img{height:36px;width:36px;border-radius:10px}
+.links{display:flex;align-items:center;gap:23px}.links a{font-size:13px;text-decoration:none;color:#b7cfe4;font-weight:670}
+.hero{padding:87px 0 69px;background:radial-gradient(ellipse 660px 350px at 83% 25%,#1c466c7d,transparent 71%)}
+.hero-grid{display:grid;grid-template-columns:1fr minmax(300px,.84fr);gap:45px;align-items:center}
+.badge{display:inline-flex;gap:8px;align-items:center;background:#19344c;border:1px solid #4a7591;padding:7px 12px;border-radius:99px;font-size:11px;font-weight:790;letter-spacing:.06em;color:#aad7f8;text-transform:uppercase}
+.badge:before{content:"";background:#9be3b7;border-radius:100%;width:7px;height:7px}
+h1{font-size:clamp(40px,5vw,64px);letter-spacing:-.058em;line-height:1.07;margin:22px 0 22px}
+.lead{color:#acc5da;font-size:clamp(16px,1.8vw,19px);line-height:1.7;max-width:680px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:47px;padding:12px 18px;border-radius:11px;text-decoration:none;font-size:13px;font-weight:770;border:1px solid #567c9f}
+.btn.primary{background:#cbe6ff;border-color:#cbe6ff;color:#16273a}.btn.secondary{background:#1f3750;color:#e6f4ff}
+.small{font-size:12px;color:#93abc0;line-height:1.6}
+.trust{display:flex;flex-wrap:wrap;gap:16px;margin-top:25px;color:#a9c3d8;font-size:12px}.trust span:before{content:"✓ ";font-weight:800;color:#81e6b4}
+.preview{border:1px solid #405d7a;border-radius:17px;background:#101e30;box-shadow:0 22px 56px #0004;overflow:hidden}
+.preview-bar{background:#16283e;border-bottom:1px solid #324b65;padding:15px 20px;display:flex;justify-content:space-between;font-size:11px;color:#abc8e1;font-weight:770}
+.preview-body{padding:20px}.preview-heading{font-weight:800;font-size:13px;color:#e8f5ff;padding-bottom:14px}
+.issue{display:flex;gap:13px;padding:14px 0;border-top:1px solid #2b435a}
+.issue-badge{font-size:10px;border:1px solid #a45b67;color:#ffc7cd;background:#502e38;border-radius:7px;padding:4px 7px;height:max-content;font-weight:780}
+.issue strong{display:block;font-size:12px}.issue p{color:#b2c9dc;font-size:11px;margin:4px 0 0}
+section{padding:65px 0}.kicker{color:#8cbfef;font-size:11px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
+h2{font-size:clamp(28px,3.6vw,43px);letter-spacing:-.045em;line-height:1.2;margin:10px 0 17px}
+.section-desc{color:#b0c6d9;max-width:720px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.card{border:1px solid #304c67;background:#12233a;border-radius:15px;padding:26px}
+.card h3{font-size:17px;margin:0 0 11px}.card p{color:#b3c6d9;font-size:13px;line-height:1.65;margin:0}
+.flow{background:#0f1d2f;border-top:1px solid #2c4359;border-bottom:1px solid #2c4359}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin-top:28px}
+.step{border-top:2px solid #4b7794;padding:18px 0}.step b{font-size:11px;color:#8bc4ef}.step h3{font-size:16px;margin:10px 0}
+.step p{font-size:13px;color:#aec7d9;line-height:1.6}
+.notice{border:1px solid #426784;border-radius:12px;background:#183049;color:#cbe0f0;padding:17px 21px;margin-top:28px;font-size:13px}
+.cta{background:linear-gradient(120deg,#18334d,#172b42);border:1px solid #4a7193;border-radius:17px;padding:29px 36px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.cta h2{font-size:28px;margin:0 0 8px}.cta p{color:#aec7da;margin:0}
+footer{border-top:1px solid #294158;padding:30px 0;color:#90acbf;font-size:12px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+@media(max-width:910px){.hero-grid{grid-template-columns:1fr}.preview{max-width:670px}.cards{grid-template-columns:1fr}.steps{grid-template-columns:1fr}}
+@media(max-width:600px){.wrap{padding:0 19px}.hero{padding:53px 0 44px}h1{font-size:clamp(37px,10vw,52px)}section{padding:48px 0}.links a:first-child{display:none}.cta{display:block;padding:24px}.cta a{margin-top:20px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ForgeFrame Localization QA","applicationCategory":"DeveloperApplication","operatingSystem":"Windows, macOS, Linux","description":"Offline localization CSV diagnostics for Visual Studio Code.","softwareVersion":"0.1.0","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"downloadUrl":"https://github.com/reflectme-source/forgeframe-localization-vscode/releases/tag/v0.1.0"}
+</script>
+</head>
+<body>
+<header><nav class="wrap" aria-label="Main navigation">
+<a class="logo" href="../index.html"><img src="../assets/forgeframe-avatar.png" width="36" height="36" alt="">ForgeFrame Labs</a>
+<div class="links"><a href="../tools/localization-qa.html">Browser tool</a><a href="https://github.com/reflectme-source/forgeframe-localization-vscode" rel="noopener noreferrer">Documentation</a></div>
+</nav></header>
+<main>
+<section class="hero"><div class="wrap hero-grid">
+<div>
+<div class="badge">Free preview for VS Code</div>
+<h1>Find localization issues where you write code.</h1>
+<p class="lead">ForgeFrame Localization QA checks CSV translations inside VS Code, puts actionable problems in the editor and helps you fix broken placeholders, missing strings and duplicate keys before release.</p>
+<div class="actions"><a class="btn primary" href="https://github.com/reflectme-source/forgeframe-localization-vscode/releases/tag/v0.1.0" rel="noopener noreferrer">Download preview VSIX →</a><a class="btn secondary" href="../tools/localization-qa.html">Try the browser inspector</a></div>
+<p class="small">Version 0.1.0 · Preview distribution on GitHub, not yet listed in the Visual Studio Marketplace. No account or payment required.</p>
+<div class="trust"><span>No file uploads</span><span>Works locally</span><span>Export CSV reports</span></div>
+</div>
+<div class="preview" aria-label="Illustrative example of VS Code diagnostics">
+<div class="preview-bar"><span>PROBLEMS · Localization</span><span>ILLUSTRATIVE</span></div>
+<div class="preview-body">
+<div class="preview-heading">2 issues requiring attention</div>
+<div class="issue"><span class="issue-badge">ERROR</span><div><strong>Formatting mismatch · row 12</strong><p>German translation uses {user} instead of {name}. Make the placeholders consistent.</p></div></div>
+<div class="issue"><span class="issue-badge">ERROR</span><div><strong>Missing translation · row 28</strong><p>Polish text is empty. Add the translated string.</p></div></div>
+</div></div>
+</div></section>
+<section><div class="wrap">
+<div class="kicker">A smaller quality-control loop</div><h2>Understand the issue. Jump to the row. Export what changed.</h2>
+<p class="section-desc">No extra dashboard or translation platform. Keep working in your project and inspect only the CSV documents you choose to open or save.</p>
+<div class="cards">
+<article class="card"><h3>Readable diagnostics</h3><p>Blocking problems and advisory ICU warnings appear in VS Code's Problems panel with helpful explanations.</p></article>
+<article class="card"><h3>Jump to the right line</h3><p>Browse issues by key and language and navigate to the start of the affected logical CSV row, even with quoted line breaks.</p></article>
+<article class="card"><h3>Safe report exports</h3><p>Save priority, key, language, issue and suggested fix in a CSV file. Your original localization file stays unchanged.</p></article>
+</div></div></section>
+<section class="flow"><div class="wrap">
+<div class="kicker">Get started</div><h2>Three steps to your first report.</h2>
+<div class="steps">
+<div class="step"><b>01 / INSTALL</b><h3>Add the VSIX preview</h3><p>Download the release, open VS Code Extensions, choose the menu and select “Install from VSIX”.</p></div>
+<div class="step"><b>02 / INSPECT</b><h3>Open a localization CSV</h3><p>Use columns like key, en, pl and de. Run “ForgeFrame Localization QA: Inspect Current CSV” from the Command Palette.</p></div>
+<div class="step"><b>03 / FIX</b><h3>Review and export</h3><p>Open Problems, correct blocking issues and export the findings if you want to share them with the team.</p></div>
+</div>
+<div class="notice">This is an early preview. Validate results against your development CSV before depending on them for a production release. The checker detects structural issues; it does not assess translation quality or in-game layout.</div>
+</div></section>
+<section><div class="wrap"><div class="cta">
+<div><h2>Start with the preview.</h2><p>Install the lightweight offline tool or try the same checks in your browser.</p></div>
+<a class="btn primary" href="https://github.com/reflectme-source/forgeframe-localization-vscode/releases/tag/v0.1.0" rel="noopener noreferrer">Get ForgeFrame Localization QA →</a>
+</div></div></section>
+</main>
+<footer><div class="wrap"><span>© 2026 ForgeFrame Labs · Independent developer tools</span><span><a href="../support.html">Support</a> · <a href="../privacy.html">Privacy</a> · <a href="../index.html">All tools</a></span></div></footer>
+</body>
+</html>
