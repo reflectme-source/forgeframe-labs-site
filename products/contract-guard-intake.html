@@ -53,6 +53,7 @@ footer .wrap{display:flex;gap:20px;flex-wrap:wrap;justify-content:space-between}
 <div class="field"><label for="email">Work email *</label><input id="email" name="email" type="email" autocomplete="email" maxlength="180" placeholder="engineer@company.com" required></div>
 <div class="field"><label for="company">Company / team *</label><input id="company" name="company" maxlength="120" autocomplete="organization" placeholder="Your company" required></div>
 </div>
+<div class="field"><label for="country">Customer country *</label><input id="country" name="country" maxlength="90" autocomplete="country-name" placeholder="e.g. Germany" required><small>Used to confirm eligibility, billing and tax handling before a quote is sent.</small></div>
 <div class="field"><label for="repository">GitHub repository URL (optional)</label><input id="repository" name="repository" type="url" maxlength="400" placeholder="https://github.com/org/repository"><small>Share only a public URL. For private repositories, write "private repository" in the notes instead.</small></div>
 <div class="field-grid">
 <div class="field"><label for="format">OpenAPI specification *</label><select id="format" name="format" required><option value="">Choose format</option><option>OpenAPI 3.x YAML</option><option>OpenAPI 3.x JSON</option><option>OpenAPI 2.0 / Swagger</option><option>Unsure or generated from code</option></select></div>
@@ -95,6 +96,7 @@ footer .wrap{display:flex;gap:20px;flex-wrap:wrap;justify-content:space-between}
       'Please assess our repository for your one-time $149 Contract Guard setup.','',
       'Work email: '+name('email'),
       'Company/team: '+name('company'),
+      'Customer country: '+name('country'),
       'Public repository URL (if any): '+(name('repository')||'Not provided / private'),
       'OpenAPI specification: '+name('format'),
       'CI runner: '+name('runner'),
