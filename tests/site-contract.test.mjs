@@ -81,3 +81,16 @@ test("ForgeFrame home offers a browsable multi-platform portfolio with honest re
  assert.match(home,/solutions\/otomoto-vehicle-monitoring\.html/);
  assert.doesNotMatch(home,/AcqPath|ExtensionOps/);
 });
+
+test("brand-wide support and privacy are aligned with multi-platform products",()=>{
+ const support=html("support.html");
+ const privacy=html("privacy.html");
+ assert.match(support,/OTOMOTO Change Intelligence/);
+ assert.match(support,/Localization QA Inspector/);
+ assert.match(support,/API and platform inquiries/);
+ assert.match(support,/Skip to content/);
+ assert.match(privacy,/October 10, 2026/);
+ assert.match(privacy,/GitHub Pages/);
+ assert.match(privacy,/Apify and other marketplaces/);
+ assert.doesNotMatch(privacy,/Unity developer publishing brand/);
+});
