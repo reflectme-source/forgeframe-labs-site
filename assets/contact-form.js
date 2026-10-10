@@ -14,6 +14,8 @@ const products=new Map([
 ["unity","Unity assets"],
 ["jetbrains","JetBrains MV3 Inspector"],
 ["shopify","Shopify workflows"],
+["digital-packager","Digital Packager"],
+["originduty","OriginDuty"],
 ["other","Other ForgeFrame product"]]);
 const params=new URLSearchParams(location.search);
 const requested=(params.get("product")||"general").trim().toLowerCase();
