@@ -64,3 +64,20 @@ test("only first-party local JS modules run in the inspector",()=>{
  assert.deepEqual(scripts,["./localization-qa.mjs"]);
  assert.doesNotMatch(page,/google-analytics|gtag|segment\.com|hotjar|mixpanel/i);
 });
+
+test("ForgeFrame home offers a browsable multi-platform portfolio with honest readiness",()=>{
+ const home=html("index.html");
+ assert.match(home,/<main id="main">/);
+ assert.match(home,/href="#main">Skip to content/);
+ assert.equal((home.match(/<article class="project"/g)||[]).length,6);
+ for(const platform of ["apify","web","unity","roblox","jetbrains","integrations"]){
+  assert.match(home,new RegExp('data-platform="'+platform+'"'));
+  assert.match(home,new RegExp('data-filter="'+platform+'"'));
+ }
+ for(const label of ["Published","Available","In development","In validation","Compatibility QA"]){
+  assert.ok(home.includes(label),"Missing honest availability label: "+label);
+ }
+ assert.match(home,/tools\/localization-qa\.html/);
+ assert.match(home,/solutions\/otomoto-vehicle-monitoring\.html/);
+ assert.doesNotMatch(home,/AcqPath|ExtensionOps/);
+});
