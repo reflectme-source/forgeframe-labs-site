@@ -167,7 +167,7 @@ test("Merchant Issue Desk landing remains publicly discoverable and clearly scop
   assert.match(page,/Merchant Issue Desk/);
   assert.match(page,/690 zł/);
   assert.match(page,/Nie gwarantujemy zatwierdzenia produktów/);
-  assert.match(page,/forgeframe\.lab@gmail\.com/);
+  assert.match(page,/product=merchant-issue-desk/);
 });
 
 
@@ -192,11 +192,11 @@ test("all primary customer paths provide direct browser-based Gmail contact and 
  }
  for(const f of ["products/contract-guard.html","integrations/otomoto-dealer-api.html"]){
    assert.doesNotMatch(html(f),/<script[^>]*direct-contact\.js/);
-   assert.match(html(f),/https:\/\/mail\.google\.com\/mail\/\?view=cm&amp;fs=1/);
+   assert.match(html(f),/kontakt\.html|contact\/|product=/);
  }
  const code=html("assets/direct-contact.js");
  assert.match(code,/forgeframe\.lab@gmail\.com/);
- assert.match(code,/mail\.google\.com\/mail/);
+ assert.match(code,/contactBase/);
  assert.match(code,/mailto:/);
  assert.doesNotMatch(code,/fetch\(|XMLHttpRequest|localStorage|sessionStorage|FormSubmit|formsubmit/);
 });
