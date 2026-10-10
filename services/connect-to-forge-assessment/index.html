@@ -120,20 +120,13 @@ h2{font-size:clamp(28px,3.1vw,40px);line-height:1.18;letter-spacing:-.035em;marg
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 <link rel="stylesheet" href="../../assets/product-details.css">
+<link rel="icon" href="../../assets/forgeframe-avatar.png" type="image/png">
+<link rel="stylesheet" href="../../assets/forgeframe-global.css">
+<link rel="stylesheet" href="./connect-theme.css">
 </head>
-<body>
+<body class="ff-connect">
 <a class="skip" href="#main">Skip to content</a>
-<nav class="nav" aria-label="Primary">
-  <div class="wrap">
-    <a class="logo" href="#top" aria-label="ForgeFrame Labs home">FORGEFRAME <mark>LABS</mark></a>
-    <div class="links">
-      <a href="#service">What we assess</a>
-      <a href="#scope">Scope & price</a>
-      <a href="#questions">Questions</a>
-      <a class="nav-contact" href="../../contact/?product=connect-to-forge" target="_blank" rel="noopener noreferrer">Request scope</a>
-    </div>
-  </div>
-</nav>
+<header class="ffg-header"><div class="ffg-inner"><a class="ffg-brand" href="../../en/"><img class="ffg-brand-logo" src="../../assets/forgeframe-avatar.png" alt="" width="38" height="38">ForgeFrame <span class="ffg-brand-blue">Labs</span></a><nav class="ffg-nav" aria-label="Main navigation"><a href="../../en/">Home</a><a href="../../en/products/" aria-current="page">Products</a><a href="../../en/solutions/">Solutions</a><a href="../../en/developers/">Developers</a><a href="../../en/about/">About</a><a href="../../contact/">Contact</a><span class="ffg-language" aria-label="Language"><a class="ffg-locale" lang="pl" href="../../services/connect-to-forge-assessment/pl/">PL</a><a class="ffg-locale" aria-current="page" lang="en" href="../../services/connect-to-forge-assessment/">EN</a></span></nav></div></header>
 <header class="hero" id="top">
   <div class="wrap">
     <div>
@@ -167,9 +160,9 @@ h2{font-size:clamp(28px,3.1vw,40px);line-height:1.18;letter-spacing:-.035em;marg
         <p>Atlassian offers free Connect-to-Forge tooling. We focus on the application-specific work those tools cannot complete for you: preserved behavior, permission boundaries and existing customer data.</p>
       </header>
       <div class="cards">
-        <article class="card"><span class="number">01 / DEPENDENCY MAP</span><h3>What must be rebuilt?</h3><p>Inventory UI surfaces, webhook handlers, custom fields and scheduled jobs. Separate genuine Forge module equivalents from assumptions that need testing.</p></article>
-        <article class="card"><span class="number">02 / DATA & ACCESS</span><h3>What must not be lost?</h3><p>Identify stored configuration, install lifecycle, tenant secrets, entity properties and permission assumptions before any destructive cutover.</p></article>
-        <article class="card"><span class="number">03 / RELEASE PLAN</span><h3>How do you prove parity?</h3><p>Written acceptance criteria, staging-test matrix, owner approval points, safe rollback approach and an implementation estimate.</p></article>
+        <article class="card"><span class="card-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="8" height="7" rx="1.5"/><rect x="13" y="4" width="8" height="7" rx="1.5"/><path d="M7 11v5h10v-5M12 16v4m-4 0h8"/></svg></span><span class="number">01 / DEPENDENCY MAP</span><h3>What must be rebuilt?</h3><p>Inventory UI surfaces, webhook handlers, custom fields and scheduled jobs. Separate genuine Forge module equivalents from assumptions that need testing.</p></article>
+        <article class="card"><span class="card-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="m8.5 12 2.4 2.5 4.8-5.2"/></svg></span><span class="number">02 / DATA & ACCESS</span><h3>What must not be lost?</h3><p>Identify stored configuration, install lifecycle, tenant secrets, entity properties and permission assumptions before any destructive cutover.</p></article>
+        <article class="card"><span class="card-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h7M4 12h10M4 18h7"/><path d="m16 6 4 4-4 4m4-4h-7"/></svg></span><span class="number">03 / RELEASE PLAN</span><h3>How do you prove parity?</h3><p>Written acceptance criteria, staging-test matrix, owner approval points, safe rollback approach and an implementation estimate.</p></article>
       </div>
     </div>
   </section>
@@ -228,11 +221,6 @@ h2{font-size:clamp(28px,3.1vw,40px);line-height:1.18;letter-spacing:-.035em;marg
     </div>
   </section>
 </main>
-<footer class="footer">
-  <div class="wrap">
-    <div><strong>ForgeFrame Labs</strong><div>Independent software engineering services</div></div>
-    <div class="smallprint">Not affiliated with or endorsed by Atlassian. Jira, Confluence, Connect and Forge are trademarks of their respective owners. This page describes a proposed service; no checkout, certification, published customer case study or contractual guarantee is represented. <a href="https://www.atlassian.com/blog/development/getting-ready-for-connect-end-of-support">Official end-of-support guidance</a> · <a href="../../privacy.html">Privacy</a> · <a href="../../support.html">Support</a>.</div>
-  </div>
-</footer>
+<div class="ff-connect-disclaimer"><div class="wrap">Independent service, not affiliated with Atlassian. The quoted price is indicative; no live checkout or completed client migrations are claimed. <a href="https://www.atlassian.com/blog/developer/getting-ready-for-connect-end-of-support" target="_blank" rel="noopener noreferrer">Atlassian's official guidance ↗</a>.</div></div><footer class="ffg-footer"><div class="ffg-footer-content"><div><div class="ffg-footer-brand"><img src="../../assets/forgeframe-avatar.png" alt="" width="29" height="29">ForgeFrame <span>Labs</span></div><div class="ffg-footer-tagline">Technology · People · Real Impact</div></div><nav class="ffg-footer-links" aria-label="Footer navigation"><a href="../../en/">Home</a><a href="../../en/products/">Products</a><a href="../../en/solutions/">Solutions</a><a href="../../en/developers/">Developers</a><a href="../../en/about/">About</a><a href="../../contact/">Contact</a></nav><div class="ffg-footer-meta">© 2026 ForgeFrame Labs<br><a href="../../privacy.html">Privacy</a><a href="../../terms.html">Terms</a></div></div></footer>
 <script src="../../assets/direct-contact.js" defer></script></body>
 </html>
