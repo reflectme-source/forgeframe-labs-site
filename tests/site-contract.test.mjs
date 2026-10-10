@@ -67,7 +67,7 @@ test("only first-party local JS modules run in the inspector",()=>{
 
 test("main homepage features accurate products and separate category routes",()=>{const home=html("index.html"),en=html("en/index.html");assert.match(home,/<html lang="pl">/);assert.match(en,/<html lang="en">/);for(const name of ["OTOMOTO Change Intelligence","Localization QA Inspector","Contract Guard"])assert.match(home,new RegExp(name));for(const page of ["products/index.html","solutions/index.html","developers/index.html","about/index.html"]){assert.ok(existsSync(join(root,page)),page+" must exist")}for(const route of ["products/","solutions/","developers/","about/"])assert.ok(home.includes('href="./'+route+'"'));for(const path of ["index.html","en/index.html"])assert.doesNotMatch(html(path),/AcqPath|ExtensionOps/);});
 
-test("navigation now opens dedicated pages rather than legacy scroll sections",()=>{const pl=html("index.html");for(const page of ["pl/pomoc.html","pl/prywatnosc.html","pl/lokalizacja.html"])assert.match(html(page),/<html lang="pl">/);assert.doesNotMatch(pl,/href="#rozwiazania"|href="#studio"/);for(const path of ["solutions/index.html","developers/index.html","about/index.html","products/index.html"])assert.match(html(path),/class="site-nav"/);});
+test("navigation now opens dedicated pages rather than legacy scroll sections",()=>{const pl=html("index.html");for(const page of ["pl/pomoc.html","pl/prywatnosc.html","pl/lokalizacja.html"])assert.match(html(page),/<html lang="pl">/);assert.doesNotMatch(pl,/href="#rozwiazania"|href="#studio"/);for(const path of ["solutions/index.html","developers/index.html","about/index.html","products/index.html"])assert.match(html(path),/class="ffg-nav"/);});
 
 test("local navigation fragments resolve",()=>{for(const page of pages){const source=html(page),ids=new Set([...source.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]));for(const [,fragment] of source.matchAll(/href="#([^"]+)"/g))assert.ok(ids.has(fragment),page+" #"+fragment);}});
 
@@ -327,7 +327,7 @@ test("every interactive tool and sample report returns to the right product offe
 });
 
 
-test("OriginDuty points to a real product offer and independently hosted research remains available",()=>{const home=html("index.html"),catalog=html("products/index.html"),en=html("en/index.html");assert.match(home,/products\/originduty\//);assert.match(catalog,/products\/originduty\//);assert.match(en,/products\/originduty\//);});
+test("OriginDuty points to a real product offer and independently hosted research remains available",()=>{const home=html("index.html"),catalog=html("products/index.html"),en=html("en/index.html");assert.match(home,/products\/originduty\//);assert.match(catalog,/href="\.\/originduty\//);assert.match(en,/products\/originduty\//);});
 
 test("domain binding uses the selected owned apex hostname",()=>{
  assert.equal(readFileSync(join(root,"CNAME"),"utf8").trim(),"forgeframelabs.app");
