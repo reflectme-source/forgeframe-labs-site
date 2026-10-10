@@ -62,6 +62,10 @@
     .price p,.price li{color:#c1d2de}.price ul{padding-left:20px}
     .price .button{margin-top:12px}
     .plain{padding:20px 0 0;color:#acc0d0}
+    .proof-strip{display:flex;gap:16px;flex-wrap:wrap;align-items:center;padding:22px 0;color:#aecadf;font-size:13px}.proof-strip strong{color:#eef7ff}.proof-strip a{white-space:normal}
+    .buyer-steps{list-style:none;margin:29px 0 0;padding:0;display:grid;gap:18px}.buyer-steps li{border-left:2px solid #497798;padding-left:16px}.buyer-steps strong{display:block;color:#f1f7fc;font-size:14px}.buyer-steps span{display:block;color:#b5c9d8;font-size:13px}
+    .approved-checkout{border-top:1px solid #33536b;padding-top:16px;margin-top:18px}.approved-checkout summary{cursor:pointer;color:#c9e8ff;font-size:13px;font-weight:700}.approved-checkout p{font-size:12px;margin-bottom:8px}.approved-checkout .button{margin-top:6px}
+    .service-notice{color:#aebfce;font-size:12px;margin:14px 0 0}
     .faq{border-top:1px solid #2d4457;padding:24px 0}.faq h3{margin:0 0 8px;font-size:17px}.faq p{margin:0;color:#aabed1}
     footer{border-top:1px solid #284257;padding:28px 0;color:#9db1c2;font-size:13px}
     .footer{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
@@ -111,6 +115,7 @@
       </div>
     </div></section>
     <div class="stripe"><div class="wrap stripe-inner"><p><strong>Built on oasdiff.</strong> Open-source comparison engine, not a proprietary replacement.</p><p><strong>Paid work is optional.</strong> You can use the Action without a subscription.</p></div></div>
+    <div class="wrap proof-strip" aria-label="Reproducible evidence examples"><strong>Verified examples from the actual CLI:</strong><a href="https://github.com/reflectme-source/forgeframe-contract-guard/blob/v0.1.3/examples/breaking/report.json" rel="noopener noreferrer">Breaking change — 2 blockers ↗</a><a href="https://github.com/reflectme-source/forgeframe-contract-guard/blob/v0.1.3/examples/safe/report.json" rel="noopener noreferrer">Safe change — 0 blockers ↗</a><a href="https://github.com/reflectme-source/forgeframe-contract-guard/actions/runs/38062484273" rel="noopener noreferrer">See successful CI verification ↗</a></div>
     <section class="content wrap" aria-labelledby="features">
       <div class="eyebrow">How it works</div>
       <h2 id="features">Clear decisions. Reviewable evidence.</h2>
@@ -143,7 +148,13 @@ with:
           <div class="eyebrow">Fixed scope · Async delivery</div>
           <h2 id="managed">Prefer to have it configured for you?</h2>
           <p class="section-lead">We'll integrate the same open-source gate into your engineering workflow, define appropriate review policy, validate a breaking and non-breaking fixture, and hand over the setup with evidence artifacts.</p>
-          <p class="plain">No calls required. We confirm repository access requirements and supported spec format by email before accepting an order.</p>
+          <p class="plain">No sales call and no subscription required. We qualify the existing spec and CI before accepting a paid setup. The Action remains free for teams that prefer self-service.</p>
+          <ol class="buyer-steps" aria-label="Managed setup buying process">
+            <li><strong>01 — Request a scope check</strong><span>Email the spec path, version, runner and expected delivery window. Do not send secrets or a private API file.</span></li>
+            <li><strong>02 — Receive written acceptance</strong><span>We confirm eligibility, what is included, the legal seller and a delivery date before asking for payment.</span></li>
+            <li><strong>03 — Pay securely via Stripe</strong><span>After accepting the scope, use the hosted one-time payment page. Stripe confirms the payment; no card details go to ForgeFrame.</span></li>
+            <li><strong>04 — Install, verify, hand over</strong><span>We request least-privilege access, configure the CI workflow, demonstrate safe/breaking cases and hand over evidence and instructions.</span></li>
+          </ol>
         </div>
         <div class="price">
           <div class="eyebrow">Contract Guard Setup</div>
@@ -155,10 +166,9 @@ with:
             <li>Breaking and safe change verification</li>
             <li>JSON/Markdown evidence handover</li>
           </ul>
-          <a class="button primary" href="mailto:forgeframe.lab@gmail.com?subject=Contract%20Guard%20Setup%20%24149&amp;body=Hello%20ForgeFrame%2C%0A%0AWe%20would%20like%20Contract%20Guard%20Setup.%0ARepository%20host%3A%0ANumber%20of%20repositories%3A%0AOpenAPI%20version%20and%20spec%20format%3A%0A%0A">Request managed setup →</a>
-          <p style="font-size:12px;margin:13px 0 0">Confirm repository scope and delivery schedule by email before paying. Secure Stripe Checkout is available after your request is accepted; there is no subscription.</p>
-          <a class="button" href="https://buy.stripe.com/fZu8wR6FX4q962E81z73G00" rel="noopener noreferrer">Pay $149 via Stripe — after scope approval ↗</a>
-          <p style="font-size:12px;margin:13px 0 0">Review the <a href="../terms.html">service terms and cancellation policy</a> before payment. Please do not pay for an unsupported repository without prior written scope confirmation.</p>
+          <a class="button primary" href="mailto:forgeframe.lab@gmail.com?subject=Contract%20Guard%20%E2%80%94%20%24149%20one-repository%20setup%20scope&amp;body=Hello%20ForgeFrame%20Labs%2C%0A%0APlease%20confirm%20whether%20our%20repository%20qualifies%20for%20the%20%24149%20Contract%20Guard%20setup.%0A%0ARepository%20URL%20(public%20only%3B%20optional)%3A%0AGitHub%20repository%20name%20(no%20private%20code)%3A%0AOpenAPI%20version%20and%20path%20(YAML%2FJSON)%3A%0AGitHub%20Actions%20runner%20%2F%20environment%3A%0AExternal%20%24refs%20or%20generated%20spec%3F%20(yes%2Fno)%3A%0ADesired%20delivery%20date%3A%0ACompany%20and%20country%3A%0A%0APlease%20confirm%20exact%20scope%2C%20delivery%20date%2C%20legal%20seller%20and%20Stripe%20payment%20instructions%20before%20we%20pay.%0A%0ANo%20secrets%20or%20private%20specification%20files%20attached.">Request a scope check — email ↗</a>
+          <p class="service-notice">Confirm repository scope and delivery schedule by email before paying. The service is limited to one qualifying repository; there is no recurring charge. Read the <a href="../terms.html">service terms, cancellation and refund information</a>.</p>
+          <details class="approved-checkout"><summary>Already approved by email? Access secure payment</summary><p>Only pay after ForgeFrame Labs has confirmed your exact scope, legal seller and delivery date in writing. The $149 charge is processed by Stripe. No automatic hosted account is created.</p><a class="button" href="https://buy.stripe.com/fZu8wR6FX4q962E81z73G00" rel="noopener noreferrer">Continue to Stripe LIVE — $149 ↗</a></details>
         </div>
       </div>
     </section>
@@ -167,7 +177,9 @@ with:
       <div class="faq"><h3>Does this upload our API specification?</h3><p>No. The comparison happens on your own machine or CI runner. Installing the Action downloads a checksum-verified engine binary from GitHub Releases. You choose whether the resulting evidence is stored in GitHub Actions artifacts.</p></div>
       <div class="faq"><h3>Is this a runtime contract test?</h3><p>No. It checks changes in OpenAPI specifications. It cannot detect undocumented runtime behavior, deployment drift or actual consumer impact without additional tests.</p></div>
       <div class="faq"><h3>Does the report certify audit compliance?</h3><p>No. The SHA-256 hashes help reviewers match evidence to the original specifications, but do not constitute a digital signature or formal certification.</p></div>
-      <div class="faq"><h3>Why pay for setup when the Action is free?</h3><p>You pay only for a correctly configured CI workflow, scoped exception policy, verification and handover. The self-hosted tool remains free to use.</p></div>
+      <div class="faq"><h3>Why pay for setup when the Action is free?</h3><p>You pay for an implemented, verified workflow and handover in your repository — not for access to the open-source detector. The self-hosted tool remains free to use.</p></div>
+      <div class="faq"><h3>What is not included in the $149 fixed scope?</h3><p>It does not include custom API development, multi-repository migration, runtime contract testing, a hosted dashboard or continuous monitoring. Additional work requires a separate proposal.</p></div>
+      <div class="faq"><h3>What if my repository does not qualify, or I need to cancel?</h3><p>We verify eligibility and timing before payment. If setup cannot be delivered as agreed, contact support; the <a href="../terms.html">service terms</a> explain cancellation, refunds and statutory rights.</p></div>
     </section>
   </main>
   <footer><div class="wrap footer"><span>© 2026 ForgeFrame Labs</span><span><a href="../privacy.html">Privacy</a> · <a href="../terms.html">Service terms</a> · <a href="../support.html">Support</a> · <a href="mailto:forgeframe.lab@gmail.com">Contact</a></span></div></footer>

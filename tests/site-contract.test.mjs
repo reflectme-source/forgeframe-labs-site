@@ -129,7 +129,7 @@ test("OpenAPI guide has a genuine developer journey to the public action and the
  assert.match(page,/github.com\/reflectme-source\/forgeframe-contract-guard/);
  assert.match(page,/mailto:forgeframe\.lab@gmail\.com/);
  assert.match(page,/\$149/);
- assert.match(page,/No instant checkout/);
+ assert.match(page,/scope, legal seller and delivery by email before you use the secure Stripe payment link/);
  assert.match(page,/not a paid SaaS/);
  assert.doesNotMatch(page,/<script\b[^>]*src=/);
  assert.match(html("products/contract-guard.html"),/guides\/openapi-breaking-changes-github-actions\.html/);
