@@ -12,7 +12,9 @@
     "ForgeFrame Labs";
   const subject="ForgeFrame Labs - "+product+" - "+(pl?"zapytanie":"inquiry");
   const inbox="forgeframe.lab@gmail.com";
-  const gmail="https://mail.google.com/mail/?view=cm&fs=1&to="+encodeURIComponent(inbox)+"&su="+encodeURIComponent(subject);
+  const contactBase=pl?"/forgeframe-labs-site/pl/kontakt.html":"/forgeframe-labs-site/contact/";
+  const sku=path.includes("merchant-issue-desk")?"merchant-issue-desk":path.includes("contract-guard")||path.includes("openapi-breaking-changes")?"contract-guard":path.includes("connect-to-forge")?"connect-to-forge":path.includes("otomoto")?"otomoto":path.includes("localization")||path.includes("lokalizacja")?"localization-qa":"general";
+  const gmail=contactBase+"?product="+encodeURIComponent(sku);
   const mailto="mailto:"+inbox+"?subject="+encodeURIComponent(subject);
   const section=document.createElement("section");
   section.setAttribute("data-forgeframe-direct-contact","");
@@ -31,8 +33,8 @@
   const actions=document.createElement("div");
   actions.style.cssText="display:flex;align-items:center;gap:10px;flex-wrap:wrap";
   const gmailLink=document.createElement("a");
-  gmailLink.href=gmail;gmailLink.target="_blank";gmailLink.rel="noopener noreferrer";
-  gmailLink.textContent=pl?"Napisz w Gmailu ↗":"Compose in Gmail ↗";
+  gmailLink.href=gmail;
+  gmailLink.textContent=pl?"Wyślij zapytanie ↗":"Send an inquiry ↗";
   gmailLink.style.cssText="display:inline-flex;align-items:center;min-height:46px;padding:10px 17px;background:#d4edff;border-radius:9px;color:#10283c;font-weight:800;text-decoration:none";
   const appLink=document.createElement("a");
   appLink.href=mailto;appLink.textContent=pl?"Inna poczta ↗":"Other email app ↗";

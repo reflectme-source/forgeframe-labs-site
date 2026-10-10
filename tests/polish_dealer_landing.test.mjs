@@ -24,7 +24,7 @@ test('Polish B2B landing is discoverable, honest and commercially actionable',()
  assert.match(pl,/nie jest oficjalnym API/);
  assert.match(pl,/modelu Pay-per-Event/);
  assert.match(pl,/indywidualnie/);
- assert.ok((pl.match(/mailto:forgeframe.lab@gmail.com/g)||[]).length>=2);
+ assert.ok(pl.includes("product=otomoto"),"Missing contextual form for OTOMOTO");
  assert.ok((pl.match(/https:\/\/apify.com\/green_amazement\/otomoto-change-intelligence/g)||[]).length>=4);
  assert.doesNotMatch(pl,/reflectme.project@gmail.com|extensionops@gmail.com|AcqPath/i);
  assert.doesNotMatch(pl,/\\b\d+\s+(płacących klientów|zadowolonych dealerów)\b/i);

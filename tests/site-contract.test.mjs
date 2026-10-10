@@ -167,7 +167,7 @@ test("Merchant Issue Desk landing remains publicly discoverable and clearly scop
   assert.match(page,/Merchant Issue Desk/);
   assert.match(page,/690 zł/);
   assert.match(page,/Nie gwarantujemy zatwierdzenia produktów/);
-  assert.match(page,/forgeframe\.lab@gmail\.com/);
+  assert.match(page,/product=merchant-issue-desk/);
 });
 
 
@@ -188,15 +188,15 @@ test("all primary customer paths provide direct browser-based Gmail contact and 
  }
  for(const f of ["index.html","en/index.html","services/merchant-issue-desk.html",
   "services/connect-to-forge-assessment/index.html","services/connect-to-forge-assessment/pl/index.html"]){
-   assert.match(html(f),/https:\/\/mail\.google\.com\/mail\/\?view=cm&amp;fs=1/,f+" missing direct browser contact");
+   assert.match(html(f),/kontakt\.html|contact\/|product=/,f+" missing form route");
  }
  for(const f of ["products/contract-guard.html","integrations/otomoto-dealer-api.html"]){
    assert.doesNotMatch(html(f),/<script[^>]*direct-contact\.js/);
-   assert.match(html(f),/https:\/\/mail\.google\.com\/mail\/\?view=cm&amp;fs=1/);
+   assert.match(html(f),/kontakt\.html|contact\/|product=/);
  }
  const code=html("assets/direct-contact.js");
  assert.match(code,/forgeframe\.lab@gmail\.com/);
- assert.match(code,/mail\.google\.com\/mail/);
+ assert.match(code,/contactBase/);
  assert.match(code,/mailto:/);
  assert.doesNotMatch(code,/fetch\(|XMLHttpRequest|localStorage|sessionStorage|FormSubmit|formsubmit/);
 });
@@ -211,7 +211,7 @@ test("ForgeFrame bilingual contact forms have safe fields and working local asse
   assert.match(page,/method="POST"/);
   assert.match(page,/action="https:\/\/formsubmit\.co\/forgeframe\.lab@gmail\.com"/);
   assert.match(page,/name="email" type="email"[^>]*required/);
-  assert.match(page,/name="message" minlength="20" maxlength="2000"/);
+  assert.match(page,/name="message" minlength="10" maxlength="2000"/);
   assert.match(page,/name="_honey"/);
   assert.match(page,/name="privacy_notice_read"/);
   assert.match(page,/name="product" required/);
@@ -224,4 +224,29 @@ test("ForgeFrame bilingual contact forms have safe fields and working local asse
  assert.match(html("pl/prywatnosc.html"),/FormSubmit/);
  assert.match(html("assets/contact-form.js"),/forgeframe\.lab@gmail\.com/);
  assert.match(html("assets/contact-form.css"),/@media\(max-width:650px\)/);
+});
+
+
+test("customer inquiries use one bilingual contextual form",()=>{
+ const pl=html("index.html"),en=html("en/index.html");
+ assert.doesNotMatch(pl,/href="#kontakt"/);
+ assert.doesNotMatch(en,/href="#kontakt"/);
+ assert.match(pl,/href="\.\/pl\/kontakt\.html"/);
+ assert.match(en,/href="\.\.\/contact\/"/);
+ for(const [page,target] of [
+ ["services/merchant-issue-desk.html","product=merchant-issue-desk"],
+ ["products/contract-guard.html","product=contract-guard"],
+ ["services/connect-to-forge-assessment/index.html","product=connect-to-forge"],
+ ["services/connect-to-forge-assessment/pl/index.html","product=connect-to-forge"],
+ ["integrations/otomoto-dealer-api.html","product=otomoto"],
+ ["support.html","contact/"],["pl/pomoc.html","kontakt.html"]
+ ])assert.match(html(page),new RegExp(target),page);
+ for(const f of ["pl/kontakt.html","contact/index.html"]){
+  const page=html(f);
+  assert.match(page,/minlength="10"/);
+  assert.doesNotMatch(page,/minlength="20"/);
+ }
+ const script=html("assets/direct-contact.js");
+ assert.match(script,/contactBase/);
+ assert.match(script,/product=/);
 });
