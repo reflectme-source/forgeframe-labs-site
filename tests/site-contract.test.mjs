@@ -250,3 +250,91 @@ test("customer inquiries use one bilingual contextual form",()=>{
  assert.match(script,/contactBase/);
  assert.match(script,/product=/);
 });
+
+
+test("live products have tailored buyer scope, deliverables and truthful access",()=>{
+ const files=[
+  "services/merchant-issue-desk.html",
+  "products/contract-guard.html",
+  "solutions/otomoto-vehicle-monitoring.html",
+  "integrations/otomoto-dealer-api.html",
+  "products/localization-qa.html",
+  "products/digital-packager.html",
+  "products/originduty/index.html",
+  "services/connect-to-forge-assessment/index.html",
+  "services/connect-to-forge-assessment/pl/index.html"
+ ];
+ const subjects=new Set();
+ for(const file of files){
+   const p=html(file);
+   assert.match(p,/class="ff-detail"/,file+" needs a factual commercial quick-reference");
+   assert.match(p,/assets\/product-details\.css/,file+" missing editorial shared styles");
+   assert.match(p,/class="ff-detail__grid"/,file+" missing buyer\/output\/pricing blocks");
+   assert.match(p,/class="ff-detail__actions"/,file+" missing actionable product CTA");
+   for(const dest of localTargets(file)){
+     assert.ok(dest.startsWith(root),file+" outside root: "+dest);
+     assert.ok(existsSync(dest),file+" broken local asset or CTA: "+dest);
+   }
+   const heading=(p.match(/class="ff-detail__title">([^<]+)<\/h2>/)||[])[1];
+   assert.ok(heading&&heading.length>30,file+" needs a meaningful unique title");
+   assert.ok(!subjects.has(heading),file+" duplicated product content");
+   subjects.add(heading);
+ }
+ assert.equal(subjects.size,files.length);
+ const styles=html("assets/product-details.css");
+ assert.match(styles,/max-width:760px/);
+ assert.match(styles,/__action--primary/);
+ assert.doesNotMatch(styles,/url\(/);
+});
+test("product catalog links to real product decisions, not generic sales promises",()=>{
+ const home=html("index.html"),en=html("en/index.html");
+ for(const p of [home,en]){
+   assert.equal((p.match(/<article class="product\b/g)||[]).length,7);
+   for(const name of ["OriginDuty","Digital Packager","Localization QA Inspector","Contract Guard","Merchant Issue Desk"]){
+     assert.match(p,new RegExp(name),name+" not discoverable on homepage");
+   }
+   assert.match(p,/connect-to-forge-assessment/);
+ }
+ assert.match(home,/przedpremier|przygotowaniu/i);
+ assert.match(en,/PRE-LAUNCH/);
+ assert.match(home,/integrations\/otomoto-dealer-api\.html/);
+ assert.match(en,/services\/merchant-issue-desk-en\.html/);
+});
+test("Polish localization product page has actual sample format, privacy and clear free access",()=>{
+ const p=html("pl/lokalizacja.html");
+ assert.match(p,/lang="pl"/);
+ assert.match(p,/key,en,pl,de/);
+ assert.match(p,/CSV UTF-8 do 2 MB/);
+ assert.match(p,/Natywna wtyczka Unity Editor nie jest obecnie dostępna/);
+ assert.match(p,/tools\/localization-qa\.html/);
+ assert.match(p,/kontakt\.html\?product=localization-qa/);
+ assert.equal((p.match(/<h1\b/g)||[]).length,1);
+});
+test("English Merchant Issue Desk page is complete and language-specific",()=>{
+ const p=html("services/merchant-issue-desk-en.html");
+ assert.match(p,/<html lang="en">/);
+ assert.match(p,/from 690 PLN/);
+ assert.match(p,/merchant-issue-desk-demo\.html/);
+ assert.match(p,/contact\/\?product=merchant-issue-desk/);
+ assert.match(p,/Synthetic data/);
+ assert.match(p,/No live checkout/);
+ assert.equal((p.match(/<h1\b/g)||[]).length,1);
+ for(const d of localTargets("services/merchant-issue-desk-en.html"))assert.ok(existsSync(d),"Missing route "+d);
+});
+test("sitemap includes actual current store offer, pilots, locales and leads",()=>{
+ const s=html("sitemap.xml"),urls=[...s.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
+ assert.equal(urls.length,new Set(urls).size);
+ for(const name of ["products/digital-packager.html","products/originduty/","services/merchant-issue-desk-en.html","services/merchant-issue-desk-demo.html","services/connect-to-forge-assessment/pl/","pl/kontakt.html","contact/"]){
+  assert.ok(urls.some(u=>u.endsWith("/"+name)),name+" missing from sitemap");
+ }
+});
+test("product-aware contact respects two newly included offerings",()=>{
+ for(const f of ["pl/kontakt.html","contact/index.html"]){
+   const s=html(f);
+   assert.match(s,/<option value="digital-packager">/);
+   assert.match(s,/<option value="originduty">/);
+ }
+ const js=html("assets/contact-form.js");
+ assert.match(js,/\["digital-packager","Digital Packager"\]/);
+ assert.match(js,/\["originduty","OriginDuty"\]/);
+});
