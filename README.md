@@ -9,11 +9,12 @@ Independent developer tools, data automation and scoped API integrations.
 - **OTOMOTO Change Intelligence** — [product overview](https://reflectme-source.github.io/forgeframe-labs-site/solutions/otomoto-vehicle-monitoring.html), [Polish how-to guide with BMW/Audi/Škoda examples](https://reflectme-source.github.io/forgeframe-labs-site/guides/otomoto-price-monitoring.html), and [public Apify Actor](https://apify.com/green_amazement/otomoto-change-intelligence). Compare observed public search results; charges apply on Apify. This is not OTOMOTO's official API. Confirm source-data rights before commercial redistribution.
 - **Contract Guard** — [product and managed setup](https://reflectme-source.github.io/forgeframe-labs-site/products/contract-guard.html), [GitHub Actions OpenAPI guide](https://reflectme-source.github.io/forgeframe-labs-site/guides/openapi-breaking-changes-github-actions.html), and [free self-hosted Action source](https://github.com/reflectme-source/forgeframe-contract-guard). Spec-level breaking-change detection and release evidence; an optional one-time implementation service costs $149 for a scoped setup, with payment and terms agreed in writing.
 - **Localization QA Inspector** — [free browser tool](https://reflectme-source.github.io/forgeframe-labs-site/tools/localization-qa.html). Private, local-first CSV structural checks, with offline validation instructions below.
+- **Localization Upload Guard for Roblox Studio** — [verified paid itch.io release](https://reflectmeproject.itch.io/localization-upload-guard-for-roblox-studio), [features and installation](https://reflectme-source.github.io/forgeframe-labs-site/products/roblox-localization-upload-guard.html). One-time $5.99, local CSV structural preflight, Windows 11 Studio tested; no Roblox affiliation claimed.
 - **API integration services** — individually scoped work connecting documented events to an existing system. Contact **forgeframe.lab@gmail.com** with the intended source, rights/permissions and receiving API; any implementation is quoted after technical review.
 
 ## Products in validation
 
-Unity Editor Localization QA, Roblox Localization Upload Guard and JetBrains MV3 Release Inspector are not currently available to purchase. Additional marketplaces are being evaluated, but account presence alone is not a product release.
+Unity Editor Localization QA and JetBrains MV3 Release Inspector are not currently available to purchase. The Roblox Studio Localization Upload Guard is available for purchase via itch.io. Additional marketplaces are being evaluated, but account presence alone is not a product release.
 
 ## Localization QA Inspector
 
