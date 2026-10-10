@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101f2c"><meta name="robots" content="index,follow">
+<meta name="description" content="Merchant Issue Desk by ForgeFrame Labs: a human-reviewed issue-to-SKU repair queue from authorized Merchant Center and catalog CSV exports. Fixed-scope B2B service starting from 690 PLN.">
+<link rel="canonical" href="https://reflectme-source.github.io/forgeframe-labs-site/services/merchant-issue-desk-en.html">
+<link rel="alternate" hreflang="pl" href="https://reflectme-source.github.io/forgeframe-labs-site/services/merchant-issue-desk.html">
+<link rel="alternate" hreflang="en" href="https://reflectme-source.github.io/forgeframe-labs-site/services/merchant-issue-desk-en.html">
+<link rel="icon" href="../assets/forgeframe-avatar.png" type="image/png">
+<title>Merchant Issue Desk — actionable Merchant Center fix queues | ForgeFrame Labs</title>
+<style>
+:root{font:16px/1.65 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:#f4f6f5;color:#152832;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0;min-width:320px}a{color:inherit;text-underline-offset:4px}
+a:focus-visible{outline:3px solid #197ea9;outline-offset:3px}
+.wrap{max-width:1150px;margin-inline:auto;padding:0 28px}
+.skip{position:absolute;left:15px;top:-90px;padding:9px 14px;background:#fff;z-index:5}.skip:focus{top:12px}
+nav{border-bottom:1px solid #cfdada;min-height:78px;display:flex;justify-content:space-between;align-items:center;gap:18px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:830;font-size:14px}.brand img{width:34px;height:34px;border-radius:8px}
+.links{display:flex;align-items:center;gap:23px;font-size:12px;font-weight:740}.links a{text-decoration:none}
+.hero{padding:87px 0 79px;background:#f4f6f5}.hero-grid{display:grid;grid-template-columns:1fr .91fr;align-items:center;gap:56px}
+.kicker{color:#3a656e;font-weight:830;font-size:11px;text-transform:uppercase;letter-spacing:.14em}
+h1{font-size:clamp(40px,5.1vw,67px);line-height:1.075;letter-spacing:-.066em;margin:18px 0 22px}
+h1 em{font-style:normal;color:#3b6c77}.lead{color:#516a72;font-size:16px;line-height:1.8;max-width:620px}
+.actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:28px}.button{display:inline-flex;align-items:center;justify-content:center;min-height:47px;text-decoration:none;padding:10px 19px;border:1px solid #315a67;border-radius:5px;font-size:13px;font-weight:800}
+.button.primary{background:#173c4a;border-color:#173c4a;color:white}.button:hover{background:#315c69;color:#fff}
+.hero-note{margin-top:19px;font-size:12px;color:#56737b}.example{background:#fff;border:1px solid #cad8d8;border-radius:11px;overflow:hidden;box-shadow:0 20px 55px #1a343016}
+.example-head{padding:18px 20px;display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid #d4dfdf;font-size:11px;text-transform:uppercase;letter-spacing:.085em;font-weight:800;color:#567780}
+.example-head span:last-child{color:#326b51}.metrics{display:grid;grid-template-columns:repeat(3,1fr);padding:20px;gap:12px}.metric{border-left:1px solid #cbd8d8;padding-left:12px}.metric:first-child{border-left:none;padding:0}
+.metric strong{font-size:28px;letter-spacing:-.05em;line-height:1}.metric span{display:block;font-size:11px;color:#58727a;margin-top:7px}
+.example table{border-collapse:collapse;width:100%;font-size:12px}.example th,.example td{padding:12px 19px;text-align:left;border-top:1px solid #dee6e5}.example th{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#58737a}.p1{font-weight:800;color:#9d4f40}.example-note{font-size:11px;color:#6c8286;padding:14px 19px;border-top:1px solid #dee6e5}
+.dark{background:#122532;color:#eaf5f7}.section{padding:78px 0}.section h2{font-size:clamp(31px,4vw,48px);line-height:1.13;letter-spacing:-.05em;max-width:820px;margin:13px 0 17px}
+.section .intro{max-width:770px;color:#adc5cf;font-size:15px;line-height:1.8}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:31px}
+.card{border-top:2px solid #6d9cac;padding-top:19px}.card small{font-size:11px;letter-spacing:.1em;color:#b5d5df;font-weight:800}.card h3{font-size:19px;letter-spacing:-.025em;margin:16px 0 10px}.card p{font-size:14px;line-height:1.82;color:#b7cbd4;margin:0}
+.soft{background:#e9efed}.steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:34px}.step{border-top:1px solid #b7c9c9;padding-top:17px}.step b{font-size:11px;color:#3e6c78;letter-spacing:.1em}.step h3{font-size:18px;margin:13px 0 7px}.step p{font-size:14px;color:#526972;margin:0}
+.offer{display:grid;grid-template-columns:1fr .9fr;gap:60px;align-items:start}.price{font-size:57px;letter-spacing:-.07em;line-height:1.15;margin:18px 0 16px;font-weight:850}.price small{font-size:15px;letter-spacing:0;color:#596f77}.offer p,.offer li{font-size:14px;color:#526b73;line-height:1.8}.offer ul{padding-left:19px}
+.faq{padding:72px 0}.faq details{border-bottom:1px solid #c2d0ce;padding:18px 0}.faq summary{cursor:pointer;font-size:15px;font-weight:790}.faq details p{max-width:820px;color:#536b72;font-size:14px;margin:13px 0 0}
+footer{background:#102431;color:#c3d7de;padding:27px 0;font-size:12px}.foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+@media(max-width:870px){.hero-grid,.offer{grid-template-columns:1fr}.hero-grid{gap:36px}.grid,.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:570px){.wrap{padding:0 19px}nav{min-height:67px}.links{gap:11px}.hero{padding:52px 0}.grid,.steps{grid-template-columns:1fr}.section{padding:60px 0}h1{font-size:clamp(39px,10vw,51px)}.button{width:100%}.example th,.example td{padding:11px 9px;font-size:11px}.metrics{padding:13px}.metric strong{font-size:24px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head><body>
+<a class="skip" href="#main">Skip to content</a>
+<header><nav class="wrap" aria-label="Main navigation">
+<a class="brand" href="../en/"><img src="../assets/forgeframe-avatar.png" alt="" width="34" height="34">ForgeFrame Labs</a>
+<div class="links"><a href="../en/">Products</a><a href="../support.html">Support</a><a href="./merchant-issue-desk.html" lang="pl">Polski</a></div>
+</nav></header>
+<main id="main">
+<section class="hero"><div class="wrap hero-grid"><div>
+<span class="kicker">Merchant Issue Desk / fixed-scope service</span>
+<h1>Turn Merchant Center issues into <em>a real fix queue per SKU.</em></h1>
+<p class="lead">Two merchant-authorized CSV exports in. A reviewed list of specific product issues and unresolved exceptions out. Built for e-commerce and Shopping agencies handing remediation work to an implementer.</p>
+<div class="actions"><a class="button primary" href="../contact/?product=merchant-issue-desk">Request a paid report ↗</a><a class="button" href="./merchant-issue-desk-demo.html">See the sample report →</a></div>
+<p class="hero-note">No Google account login, live crawlers or customer passwords required to request scope.</p>
+</div><div class="example" aria-label="Synthetic issue queue example">
+<div class="example-head"><span>Example / issue-to-SKU handoff</span><span>Synthetic data</span></div>
+<div class="metrics"><div class="metric"><strong>05</strong><span>catalog products</span></div><div class="metric"><strong>06</strong><span>unique issue records</span></div><div class="metric"><strong>01</strong><span>unmatched product ID</span></div></div>
+<table><thead><tr><th>SKU</th><th>Reported issue</th><th>Action state</th></tr></thead>
+<tbody><tr><td>PL-001</td><td>Missing GTIN</td><td>Source verification</td></tr><tr><td>PL-003</td><td>Price mismatch</td><td>Compare feed/page</td></tr><tr><td>PL-404</td><td>Unknown identifier</td><td class="p1">Unmatched ID</td></tr></tbody></table>
+<div class="example-note">Illustration based on an offline synthetic export — not evidence of real customer sales or Google approvals.</div>
+</div></div></section>
+<section class="section dark"><div class="wrap">
+<span class="kicker">One bounded deliverable</span><h2>Not another generic feed validator.</h2>
+<p class="intro">Merchant Center already reports issues. The paid work here is a checked handoff: exact product mapping, exceptions that need human judgment, and a clear task list the merchant's team can use.</p>
+<div class="grid"><article class="card"><small>01 / MATCH</small><h3>Find the source product</h3><p>Join reported item IDs to authorized catalog records. Missing or mismatched identifiers stay visible instead of being guessed by title.</p></article>
+<article class="card"><small>02 / REVIEW</small><h3>Separate the exceptions</h3><p>Distinguish product issues, account-level cases and unknown statuses. Record the next manual check rather than claiming an automatic policy fix.</p></article>
+<article class="card"><small>03 / HANDOFF</small><h3>Give the implementer a queue</h3><p>Deliver a shareable HTML summary, CSV work queue and JSON report, with one correction for our mapping error in the agreed scope.</p></article></div>
+</div></section>
+<section class="section soft"><div class="wrap"><span class="kicker">How an engagement works</span><h2>From two exports to a scoped delivery.</h2>
+<div class="steps"><div class="step"><b>01 / SCOPE</b><h3>Describe your source</h3><p>Provide catalog size, market and CSV headers. We confirm whether the fields and identifier pattern are supported.</p></div>
+<div class="step"><b>02 / AUTHORIZE</b><h3>Agree on safe input</h3><p>Supply minimum customer-authorized exports through an agreed channel. No ad-account credentials or confidential customer profiles.</p></div>
+<div class="step"><b>03 / RECEIVE</b><h3>Review the task pack</h3><p>Get the agreed fix list, exception notes and report outputs. Your authorized operator applies any changes.</p></div></div>
+</div></section>
+<section class="section" id="scope"><div class="wrap offer">
+<div><span class="kicker">Pricing and availability</span><h2>One catalog. One snapshot. A clear handoff.</h2>
+<p>Indicative fixed-scope service for one merchant/feed/market snapshot, up to 10,000 catalog records and 2,000 reported issue rows. We confirm supported CSV headers and delivery terms before accepting an order.</p>
+<ul><li>Reviewed issue-to-SKU work queue with exact-ID exceptions</li><li>HTML / CSV / JSON deliverables</li><li>One revision for a mapping error in our work</li><li>Optional deeper price/availability evidence by separate written scope</li></ul>
+</div><div><div class="price">from 690 PLN <small>/ report</small></div>
+<p>Indicative quote only. No live checkout is connected to this page. Final amount, seller identity, taxes and payment terms require a written confirmation.</p>
+<a class="button primary" href="../contact/?product=merchant-issue-desk">Request written scope ↗</a>
+<p style="margin-top:18px"><a href="./merchant-issue-desk-demo.html">Open the complete generated synthetic sample →</a></p>
+</div></div></section>
+<section class="faq"><div class="wrap"><span class="kicker">Before you request a quote</span><h2>What this service does not claim.</h2>
+<details><summary>Does it approve rejected Google products?</summary><p>No. It organizes issues from supplied exports for human remediation. It is not a Google approval service, account appeal, live landing-page audit or guarantee of renewed ad delivery.</p></details>
+<details><summary>Do you need my Merchant Center login?</summary><p>No. We start with CSV headers and a scope inquiry. Actual catalog data is handled only after authorization and an agreed secure exchange method.</p></details>
+<details><summary>Is this the same as a free CSV matching tool?</summary><p>No unique CSV-join technology is claimed. The offered value is a human-reviewed, merchant-specific remediation handoff; if you already have that workflow covered internally, the service may not be useful.</p></details>
+<p style="margin-top:27px"><a href="../contact/?product=merchant-issue-desk">Send the catalog size and field headers to get a concrete quote →</a></p>
+</div></section>
+</main>
+<footer><div class="wrap foot"><span>© 2026 ForgeFrame Labs · Independent service</span><span><a href="../en/">Products</a> · <a href="../privacy.html">Privacy</a> · <a href="../support.html">Support</a></span></div></footer>
+<script src="../assets/direct-contact.js" defer></script></body></html>
