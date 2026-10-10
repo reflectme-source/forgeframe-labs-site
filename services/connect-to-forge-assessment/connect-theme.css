@@ -1,0 +1,49 @@
+/* Connect → Forge product-only presentation. Global ForgeFrame shell remains owner-managed. */
+body.ff-connect{--ink:#edf7ff;--muted:#b6cada;--canvas:#061827;--paper:#0c263b;--navy:#071a2a;--blue:#80cdff;--accent:#63b7f5;--stroke:#2a506d;color:var(--ink);background:var(--canvas);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+body.ff-connect .skip{color:#102436;background:#fff;z-index:200}
+body.ff-connect .ffg-header,body.ff-connect .ffg-footer{isolation:isolate}
+body.ff-connect .ffg-header .ffg-inner,body.ff-connect .ffg-footer-content{max-width:1510px}
+body.ff-connect .ffg-header .ffg-nav a{min-height:36px;display:inline-flex;align-items:center}
+body.ff-connect .ffg-header .ffg-locale[aria-current="page"]{background:#1d6399}
+body.ff-connect header.hero{background:linear-gradient(115deg,#061827 0%,#0b2a45 62%,#143d5b 100%);border-bottom:1px solid #305271}
+body.ff-connect .eyebrow{color:#9fd6ff}
+body.ff-connect .lead{color:#d0e2f1}
+body.ff-connect .fine{color:#bed1e2}
+body.ff-connect .fine a{color:#94d3ff}
+body.ff-connect .primary{background:#74c3f7;color:#082037!important;border:1px solid #97d5fc;box-shadow:0 4px 20px #0002}
+body.ff-connect .primary:hover{background:#a4dcff}
+body.ff-connect .primary:focus-visible{outline:3px solid #ffce89;outline-offset:4px}
+body.ff-connect .subtle{color:#dceefa}
+body.ff-connect .section{background:#061827}
+body.ff-connect .section.band{background:#0a2238;border-block:1px solid #2b506c}
+body.ff-connect .section p{color:#b5ccde}
+body.ff-connect .kicker{color:#8acfff}
+body.ff-connect .card,body.ff-connect .scope,body.ff-connect .faq article{background:linear-gradient(155deg,#12344f,#0a253d);color:#f0f8ff;border:1px solid #345a79;box-shadow:0 12px 28px #0001}
+body.ff-connect .card p,body.ff-connect .scope p,body.ff-connect .faq p{color:#bdd1e1}
+body.ff-connect .card h3,body.ff-connect .scope h3,body.ff-connect .faq h3{color:#f6fbff}
+body.ff-connect .bullets li{border-bottom:1px solid #345670;color:#d8e8f5}
+body.ff-connect .bullets li:before{color:#7bd8c7}
+body.ff-connect .scope .line{background:#345670}
+body.ff-connect .price strong{color:#f8fcff}
+body.ff-connect .price small,body.ff-connect .legal{color:#b1c8dc!important}
+body.ff-connect .steps article{border-left:2px solid #5caadd}
+body.ff-connect .steps p{color:#b5ccde}
+body.ff-connect .contact{background:linear-gradient(110deg,#0a2a44,#0b2036);border-top:1px solid #305774}
+body.ff-connect .contact p{color:#d1e2ef}
+body.ff-connect .migration-map{border-color:#487398;background:linear-gradient(145deg,#123c5d,#0c2b45);box-shadow:0 30px 75px #0005}
+body.ff-connect .map-node{background:#133a5c;border-color:#497ca1}
+body.ff-connect .map-node.review{background:#314867;border-color:#f0b76c}
+body.ff-connect .map-label{color:#b2dcff}
+body.ff-connect .map-node small{color:#c7ddec}
+body.ff-connect .card-symbol{width:54px;height:54px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #4a88b4;background:#133d5f;color:#a0dfff;margin-bottom:13px}
+body.ff-connect .card-symbol svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+body.ff-connect .card:nth-child(2) .card-symbol{color:#76ebce;border-color:#328976;background:#0c403c}
+body.ff-connect .card:nth-child(3) .card-symbol{color:#ffcd8f;border-color:#91734e;background:#443224}
+body.ff-connect .card .number{color:#9fd9ff}
+body.ff-connect .card h3{margin-top:6px}
+body.ff-connect .ff-connect-disclaimer{border-top:1px solid #254763;padding:15px 0 24px;background:#04111f;color:#a9c2d5;font-size:12px}
+body.ff-connect .ff-connect-disclaimer a{color:#9ed8ff}
+body.ff-connect .ff-connect-disclaimer .wrap{max-width:1100px}
+body.ff-connect .ffg-footer-meta{color:#9bb4c8}
+@media(max-width:700px){body.ff-connect .cards{grid-template-columns:1fr}body.ff-connect .card{padding:23px}body.ff-connect .contact .primary{width:auto}}
+@media(prefers-reduced-motion:reduce){body.ff-connect .primary{transition:none}}
