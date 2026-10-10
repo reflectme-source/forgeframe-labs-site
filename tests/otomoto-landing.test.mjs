@@ -51,7 +51,7 @@ test("outbound links use expected HTTPS host and non-credential URL",()=>{
   assert.ok(outgoing.length>=5);
   for(const url of outgoing){
     const parsed=new URL(url);
-    assert.ok(["apify.com","reflectme-source.github.io"].includes(parsed.hostname),parsed.hostname);
+    assert.ok(["apify.com","reflectme-source.github.io","forgeframelabs.app"].includes(parsed.hostname),parsed.hostname);
     assert.equal(parsed.username,"");
     assert.equal(parsed.password,"");
     assert.equal(parsed.search,"");
