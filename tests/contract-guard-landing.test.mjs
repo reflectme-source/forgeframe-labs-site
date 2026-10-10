@@ -15,9 +15,12 @@ test('landing is reachable from portfolio and sitemap',()=>{
 });
 test('landing has honest monetization path and does not claim payments exist',()=>{
   assert.match(landing,/Managed setup · \$149/i);
-  assert.match(landing,/one-time fee per organization/i);
+  assert.match(landing,/one GitHub repository with an existing OpenAPI 3\.x contract/i);
   assert.match(landing,/mailto:forgeframe\.lab@gmail\.com/);
-  assert.match(landing,/not an instant automated checkout/);
+  assert.match(landing,/confirm repository scope and delivery schedule by email before paying/i);
+  assert.match(landing,/https:\/\/buy\.stripe\.com\/fZu8wR6FX4q962E81z73G00/);
+  assert.match(landing,/one GitHub repository with an existing OpenAPI 3\.x contract/i);
+  assert.doesNotMatch(landing,/up to two repositories|buy\.stripe\.com\/test_/i);
   assert.doesNotMatch(landing,/customer testimonials|guaranteed income|guaranteed compliance|instant checkout available/i);
 });
 test('landing offers source-verified runnable software rather than a dead concept',()=>{
