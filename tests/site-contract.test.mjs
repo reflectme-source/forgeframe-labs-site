@@ -168,3 +168,30 @@ test("Merchant Issue Desk landing remains publicly discoverable and clearly scop
   assert.match(page,/Nie gwarantujemy zatwierdzenia produktów/);
   assert.match(page,/forgeframe\.lab@gmail\.com/);
 });
+
+
+test("all primary customer paths provide direct browser-based Gmail contact and fallback",()=>{
+ const files=[
+  "index.html","en/index.html","pl/pomoc.html","support.html","pl/lokalizacja.html",
+  "products/localization-qa.html","products/contract-guard.html",
+  "integrations/otomoto-dealer-api.html","solutions/otomoto-vehicle-monitoring.html",
+  "tools/contract-guard-report.html","tools/localization-qa-guide.html",
+  "services/merchant-issue-desk.html","services/merchant-issue-desk-demo.html",
+  "services/connect-to-forge-assessment/index.html",
+  "services/connect-to-forge-assessment/pl/index.html",
+  "services/connect-to-forge-assessment/checklist.html"
+ ];
+ for(const file of files){
+  const body=html(file);
+  assert.match(body,/assets\/direct-contact\.js/,file+" missing contact strip");
+ }
+ for(const f of ["index.html","en/index.html","services/merchant-issue-desk.html",
+  "services/connect-to-forge-assessment/index.html","services/connect-to-forge-assessment/pl/index.html"]){
+   assert.match(html(f),/https:\/\/mail\.google\.com\/mail\/\?view=cm&amp;fs=1/,f+" missing direct browser contact");
+ }
+ const code=html("assets/direct-contact.js");
+ assert.match(code,/forgeframe\.lab@gmail\.com/);
+ assert.match(code,/mail\.google\.com\/mail/);
+ assert.match(code,/mailto:/);
+ assert.doesNotMatch(code,/fetch\(|XMLHttpRequest|localStorage|sessionStorage|FormSubmit|formsubmit/);
+});
