@@ -85,7 +85,7 @@ test("language-specific legal and help pages exist",()=>{
  for(const path of ["pl/pomoc.html","pl/prywatnosc.html","pl/lokalizacja.html"]){assert.match(html(path),/<html lang="pl">/);assert.match(html(path),/ForgeFrame Labs/);}
 });
 test("all local fragment links resolve to an id",()=>{
- for(const path of pages){const s=html(path);const ids=new Set([...s.matchAll(/\\bid="([^"]+)"/g)].map(x=>x[1]));for(const [,ref] of s.matchAll(/href="#([^"]+)"/g))assert.ok(ids.has(ref),path+" #"+ref);}
+ for(const path of pages){const s=html(path);const ids=new Set([...s.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]));for(const [,ref] of s.matchAll(/href="#([^"]+)"/g))assert.ok(ids.has(ref),path+" #"+ref);}
 });
 
 test("brand-wide support and privacy are aligned with multi-platform products",()=>{
