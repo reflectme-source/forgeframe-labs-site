@@ -173,8 +173,8 @@ test("Merchant Issue Desk landing remains publicly discoverable and clearly scop
 test("all primary customer paths provide direct browser-based Gmail contact and fallback",()=>{
  const files=[
   "index.html","en/index.html","pl/pomoc.html","support.html","pl/lokalizacja.html",
-  "products/localization-qa.html","products/contract-guard.html",
-  "integrations/otomoto-dealer-api.html","solutions/otomoto-vehicle-monitoring.html",
+  "products/localization-qa.html",
+  "solutions/otomoto-vehicle-monitoring.html",
   "tools/contract-guard-report.html","tools/localization-qa-guide.html",
   "services/merchant-issue-desk.html","services/merchant-issue-desk-demo.html",
   "services/connect-to-forge-assessment/index.html",
@@ -188,6 +188,10 @@ test("all primary customer paths provide direct browser-based Gmail contact and 
  for(const f of ["index.html","en/index.html","services/merchant-issue-desk.html",
   "services/connect-to-forge-assessment/index.html","services/connect-to-forge-assessment/pl/index.html"]){
    assert.match(html(f),/https:\/\/mail\.google\.com\/mail\/\?view=cm&amp;fs=1/,f+" missing direct browser contact");
+ }
+ for(const f of ["products/contract-guard.html","integrations/otomoto-dealer-api.html"]){
+   assert.doesNotMatch(html(f),/<script[^>]*direct-contact\.js/);
+   assert.match(html(f),/https:\/\/mail\.google\.com\/mail\/\?view=cm&amp;fs=1/);
  }
  const code=html("assets/direct-contact.js");
  assert.match(code,/forgeframe\.lab@gmail\.com/);
