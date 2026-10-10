@@ -18,7 +18,9 @@ Rozwijaj swój konkretny biznes samodzielnie do produkcyjnej gotowości, na wsp�
 - Zmieniaj tylko swoje pliki na osobnej gałęzi. Każdy PR musi przejść CI; bez force push na main.
 
 ## Płatności (Stripe i PayPal)
-- Stripe LIVE ForgeFrame Labs: istnieje konto, centralny protokół w docs/STRIPE-INTEGRATION-CONTRACT.md. Nie zakładaj osobnego konta Stripe.
+- **AKTUALNE KONTO FIRMOWE Stripe LIVE:** ForgeFrame Labs — ReflectMe sp. z o.o., Stripe account ID `acct_1UP8qDBmCd7XeVjj`, `business_type=company`, kraj PL. Potwierdzone bezpośrednim odczytem Stripe API: `charges_enabled=true`, `payouts_enabled=true`, `details_submitted=true`, brak bieżących wymagań KYC (11.10.2026). To konto należy wybierać w połączeniu Stripe do wszystkich NOWYCH produktów ForgeFrame Labs.
+- **NIE UŻYWAJ starego prywatnego Stripe:** `acct_1UP12zPcgNc4d33c` (`individual`). Nie ruszaj jego płatności, historii i wypłat ani konta ExtensionOps. Produkty/Price IDs ze starego konta nie działają automatycznie na nowym.
+- Centralny protokół: `docs/STRIPE-INTEGRATION-CONTRACT.md`. Nie zakładaj nowych kont Stripe. Każdy produkt wymaga własnych Product/Price IDs, gotowego fulfillment i serwerowej weryfikacji płatności.
 - PayPal: wspólna integracja jest planowana, ale NIE jest jeszcze potwierdzona jako sprawdzony LIVE checkout; nie umieszczaj przycisku 'Kup', dopóki nie ma rzeczywistego checkoutu i procesu doręczenia zamówienia.
 - Produkt operator określa cenę, walutę, payment vs subscription, podatki/warunki, model realizacji, refundy, dostęp do produktu i odpowiedzialny backend; operator centralny weryfikuje billing/wspólne konto.
 - Żadnych client-side secretów. Weryfikacja płatności musi być serwerowa; webhook signature, idempotencja, log zamówień i rekoncyliacja. Sam success URL nie oznacza zapłaty.
