@@ -1,7 +1,7 @@
 import {load} from 'cheerio';
 import {q,db} from './db.mjs';
 import {OFFICIAL_OJ,classifyAct,countriesFromTitle,extractCandidateCodes,sourceUrl,sha256} from './core.mjs';
-const HEADERS={'User-Agent':'OriginDuty/0.1 EU regulatory change research (+https://reflectme-source.github.io/forgeframe-labs-site/)','Accept-Language':'en'};
+const HEADERS={'User-Agent':'OriginDuty/0.1 EU regulatory change research (+https://forgeframelabs.app/)','Accept-Language':'en'};
 async function fetchOfficial(url){
  const parsed=new URL(url);
  if(parsed.protocol!=='https:'||!['eur-lex.europa.eu'].includes(parsed.hostname))throw new Error('UNAPPROVED_SOURCE');
