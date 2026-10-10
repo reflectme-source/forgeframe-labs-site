@@ -1,0 +1,38 @@
+name: OriginDuty - official EU source refresh
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "41 5 * * *"
+permissions:
+  contents: write
+concurrency:
+  group: originduty-official-source
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - name: Checkout pinned
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: true
+      - name: Node 22 pinned action
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: "22"
+      - name: Locked dependencies (install scripts disabled)
+        working-directory: tools/originduty-monitor
+        run: npm ci --ignore-scripts --omit=dev --no-audit --no-fund
+      - name: Verify official-source parsing, preserve old data on failure
+        working-directory: tools/originduty-monitor
+        run: npm run refresh
+      - name: Commit the source snapshot only
+        run: |
+          git add products/originduty/regulations.json
+          if git diff --cached --quiet; then
+            echo "No source changes"
+            exit 0
+          fi
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "Refresh OriginDuty OJ-L evidence snapshot"
+          git push origin HEAD:main
