@@ -93,10 +93,11 @@ test("brand-wide support and privacy are aligned with multi-platform products",(
 test("public sitemap lists real brand routes including Polish automotive landing",()=>{
  const sm=readFileSync(join(root,"sitemap.xml"),"utf8");
  const urls=[...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
- assert.equal(urls.length,18);
+ assert.equal(urls.length,19);
  assert.equal(new Set(urls).size,urls.length,"Sitemap must not contain duplicate pages");
  assert.ok(urls.some(url=>url.endsWith("/services/connect-to-forge-assessment/")));
  assert.ok(urls.some(url=>url.endsWith("/services/connect-to-forge-assessment/checklist.html")));
+ assert.ok(urls.some(url=>url.endsWith("/services/merchant-issue-desk.html")),"Merchant Issue Desk landing missing from sitemap");
  assert.ok(urls.some(url=>url.endsWith("/integrations/otomoto-dealer-api.html")));
  assert.ok(urls.some(url=>url.endsWith("/products/contract-guard.html")));
  for(const u of urls){
