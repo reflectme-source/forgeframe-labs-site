@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://reflectme-source.github.io/forgeframe-labs-site/services/connect-to-forge-assessment/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reflectme-source.github.io/forgeframe-labs-site/services/connect-to-forge-assessment/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://reflectme-source.github.io/forgeframe-labs-site/services/connect-to-forge-assessment/pl/"/>
+  </url>
+  <url>
+    <loc>https://reflectme-source.github.io/forgeframe-labs-site/services/connect-to-forge-assessment/pl/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://reflectme-source.github.io/forgeframe-labs-site/services/connect-to-forge-assessment/pl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reflectme-source.github.io/forgeframe-labs-site/services/connect-to-forge-assessment/"/>
+  </url>
+</urlset>

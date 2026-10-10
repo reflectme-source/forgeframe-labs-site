@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="description" content="Niezależny audyt migracji prywatnych aplikacji Atlassian Connect do Forge. Ryzyka danych, uprawnień i modułów przed końcem wsparcia 31 stycznia 2027 r.">
+<link rel="canonical" href="https://reflectme-source.github.io/forgeframe-labs-site/services/connect-to-forge-assessment/pl/">
+<link rel="alternate" hreflang="pl" href="https://reflectme-source.github.io/forgeframe-labs-site/services/connect-to-forge-assessment/pl/">
+<link rel="alternate" hreflang="en" href="https://reflectme-source.github.io/forgeframe-labs-site/services/connect-to-forge-assessment/">
+<link rel="alternate" hreflang="x-default" href="https://reflectme-source.github.io/forgeframe-labs-site/services/connect-to-forge-assessment/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Migracja Connect do Forge — audyt aplikacji prywatnej | ForgeFrame Labs">
+<meta property="og:description" content="Pisemna analiza modułów, uprawnień i zachowania danych w prywatnej aplikacji Jira lub Confluence.">
+<meta property="og:url" content="https://reflectme-source.github.io/forgeframe-labs-site/services/connect-to-forge-assessment/pl/">
+<title>Migracja Connect do Forge — audyt prywatnej aplikacji | ForgeFrame Labs</title>
+<style>
+:root {
+  --ink:#102239; --muted:#586579; --canvas:#f6f8fa; --paper:#fff;
+  --navy:#0d2137; --blue:#245dc2; --accent:#e7a154; --stroke:#dce2e8;
+  --radius:18px; --max:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
+body{margin:0;background:var(--canvas);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit}
+button,a{touch-action:manipulation}
+a:focus-visible{outline:3px solid #df8739;outline-offset:4px}
+.skip{position:absolute;left:16px;top:-80px;padding:12px 16px;background:white;border-radius:10px;z-index:20}
+.skip:focus{top:12px}
+.wrap{width:min(var(--max),calc(100% - 44px));margin-inline:auto}
+.nav{background:var(--paper);border-bottom:1px solid var(--stroke)}
+.nav .wrap{min-height:78px;display:flex;align-items:center;gap:28px}
+.logo{text-decoration:none;font-weight:780;letter-spacing:.06em;font-size:14px}
+.logo mark{background:none;color:var(--blue)}
+.links{display:flex;align-items:center;gap:28px;margin-left:auto}
+.links a{font-size:14px;text-decoration:none;color:#40526a;padding:10px 0}
+.links a:hover{text-decoration:underline}
+.links .nav-contact{background:var(--navy);color:#fff;border-radius:9px;padding:10px 15px;font-weight:700}
+header.hero{background:var(--navy);color:white;overflow:hidden;position:relative}
+.hero::before{content:"";position:absolute;right:-5%;top:-220px;width:620px;height:620px;pointer-events:none;border-radius:50%;border:1px solid #ffffff15;box-shadow:0 0 0 90px #ffffff04,0 0 0 180px #ffffff03}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:5%;align-items:center;padding:88px 0 106px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#aad0ff;font-weight:760}
+h1{font-size:clamp(36px,4.7vw,64px);line-height:1.11;letter-spacing:-.048em;max-width:780px;margin:16px 0 24px;font-weight:790}
+.lead{font-size:clamp(17px,1.6vw,19px);line-height:1.6;color:#c5d3e5;max-width:610px;margin:0 0 32px}
+.actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.primary{display:inline-flex;justify-content:center;align-items:center;min-height:48px;background:var(--accent);color:#172134!important;font-weight:750;text-decoration:none;border-radius:10px;padding:12px 21px}
+.primary:hover{background:#f2b978}
+.subtle{color:#e7ecf4;font-weight:640;text-decoration:underline;text-underline-offset:4px}
+.fine{font-size:13px;color:#a9bbcd;margin-top:22px}
+.migration-map{padding:26px;background:#15314c;border:1px solid #35506d;border-radius:20px;box-shadow:0 22px 65px #0003}
+.map-label{font-size:12px;color:#90b5d6;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.map-node{margin-top:16px;background:#1c3c5b;border:1px solid #4a6885;border-radius:12px;padding:17px 18px}
+.map-node strong{display:block;font-size:17px}
+.map-node small{display:block;color:#bed0e3;font-size:12px}
+.map-node.current{background:#273849}
+.map-node.review{border-color:#ebad62;background:#394057}
+.map-arrow{text-align:center;color:#edba7e;font-size:22px;margin:3px}
+.section{padding:82px 0}
+.section header{max-width:740px;margin-bottom:32px}
+h2{font-size:clamp(28px,3.1vw,40px);line-height:1.18;letter-spacing:-.035em;margin:8px 0 18px}
+.section p{color:var(--muted)}
+.kicker{font-size:12px;letter-spacing:.14em;font-weight:800;text-transform:uppercase;color:var(--blue)}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:var(--paper);border:1px solid var(--stroke);border-radius:var(--radius);padding:28px}
+.card .number{font-size:13px;color:var(--blue);font-weight:780;letter-spacing:.08em}
+.card h3{font-size:20px;line-height:1.35;margin:18px 0 10px;letter-spacing:-.022em}
+.card p{margin:0;font-size:15px}
+.band{background:#eef3fa;border-block:1px solid var(--stroke)}
+.split{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(270px,.9fr);gap:8%;align-items:start}
+.bullets{padding:0;list-style:none;margin:20px 0 0}
+.bullets li{padding:13px 0 13px 27px;position:relative;border-bottom:1px solid #d7e0eb;color:#3b5069}
+.bullets li:before{content:"✓";position:absolute;left:0;color:#22659b;font-weight:800}
+.scope{background:#fff;border:1px solid var(--stroke);border-radius:var(--radius);padding:30px}
+.scope h3{margin:0 0 12px;font-size:18px}
+.scope p{font-size:15px;margin:0}
+.scope .line{height:1px;background:var(--stroke);margin:20px 0}
+.price{display:flex;align-items:baseline;gap:8px;margin:4px 0}
+.price strong{font-size:38px;letter-spacing:-.04em}
+.price small{color:var(--muted)}
+.legal{font-size:12px!important;color:#617389}
+.steps{counter-reset:step;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.steps article{padding-left:20px;border-left:2px solid #b5cae1}
+.steps h3{font-size:19px;margin:0 0 9px}
+.steps p{margin:0;font-size:15px}
+.faq{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.faq article{padding:22px 24px;background:white;border:1px solid var(--stroke);border-radius:14px}
+.faq h3{font-size:16px;margin:0 0 7px}
+.faq p{font-size:14px;margin:0}
+.contact{background:#132d47;color:white;padding:75px 0}
+.contact .wrap{display:flex;align-items:center;justify-content:space-between;gap:35px}
+.contact h2{max-width:640px;margin:9px 0 12px}
+.contact p{color:#cad8e7;margin:0}
+.footer{background:var(--navy);color:#a8bacb;font-size:13px;padding:32px 0}
+.footer .wrap{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+.footer a{color:#d1e0ef}
+.smallprint{max-width:650px}
+@media(max-width:900px){
+ .hero .wrap{grid-template-columns:1fr;padding:66px 0 70px}
+ .migration-map{max-width:620px}
+ .cards,.steps{grid-template-columns:1fr 1fr}
+ .split{grid-template-columns:1fr}
+ .scope{margin-top:16px}
+}
+@media(max-width:640px){
+ .wrap{width:min(var(--max),calc(100% - 32px))}
+ .nav .wrap{min-height:68px;gap:10px}
+ .logo{font-size:12px}
+ .links{gap:10px}
+ .links a:not(.nav-contact){display:none}
+ .links .nav-contact{font-size:12px;padding:9px 11px}
+ .section{padding:58px 0}
+ .cards,.steps,.faq{grid-template-columns:1fr}
+ .card{padding:22px}
+ .contact .wrap,.footer .wrap{align-items:flex-start;flex-direction:column}
+ .contact{padding:60px 0}
+ .primary{width:100%}
+ .hero .actions{align-items:stretch;flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Przejdź do treści</a>
+<nav class="nav" aria-label="Nawigacja główna">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="ForgeFrame Labs — początek strony">FORGEFRAME <mark>LABS</mark></a>
+    <div class="links">
+      <a href="#service">Co sprawdzamy</a>
+      <a href="#scope">Zakres i cena</a>
+      <a href="#questions">Pytania</a>
+      <a href="../" lang="en" hreflang="en">English</a>
+      <a class="nav-contact" href="mailto:forgeframe.lab@gmail.com?subject=Prywatna%20aplikacja%20Connect%20-%20zapytanie%20o%20audyt">Zapytaj o audyt</a>
+    </div>
+  </div>
+</nav>
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Atlassian Cloud · ciągłość prywatnych aplikacji</div>
+      <h1>Sprawdź ryzyka, zanim przeniesiesz aplikację Connect do Forge.</h1>
+      <p class="lead">Pisemny audyt techniczny dla firm utrzymujących własne aplikacje Connect w Jira Cloud lub Confluence Cloud. Ustalamy ryzyka modułów, uprawnień i danych przed zakończeniem wsparcia Connect w styczniu 2027 roku.</p>
+      <div class="actions">
+        <a class="primary" href="mailto:forgeframe.lab@gmail.com?subject=Prywatna%20aplikacja%20Connect%20-%20zapytanie%20o%20audyt&amp;body=Produkt%3A%20Jira%20lub%20Confluence%0ACel%20prywatnej%20aplikacji%3A%0ALiczba%20modulow%3A%0ATermin%3A%0A">Poproś o pisemną wycenę</a>
+        <a class="subtle" href="../sample.html" aria-label="Otwórz fikcyjny przykład raportu audytu po angielsku">Zobacz przykładowy raport ↗</a>
+      </div>
+      <p class="fine">Wstępne ustalenia przez e-mail, bez rozmów telefonicznych. Nie przesyłaj haseł ani dostępu do produkcji. <a href="../" lang="en" hreflang="en">English ↗</a></p>
+    </div>
+    <div class="migration-map" role="group" aria-label="Schemat etapów oceny migracji, a nie działający system migracyjny">
+      <div class="map-label">Etapy audytu</div>
+      <div class="map-node current"><strong>Istniejąca prywatna aplikacja Connect</strong><small>Panele · webhooki · pola · uprawnienia</small></div>
+      <div class="map-arrow" aria-hidden="true">↓</div>
+      <div class="map-node review"><strong>Ocena architektury i ryzyka</strong><small>Zgodność modułów · ciągłość danych · możliwość wycofania zmian</small></div>
+      <div class="map-arrow" aria-hidden="true">↓</div>
+      <div class="map-node"><strong>Plan migracji do Forge</strong><small>Środowisko klienta · kontrolowane wdrożenie</small></div>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <section class="section" id="service">
+    <div class="wrap">
+      <header>
+        <div class="kicker">Usługa</div>
+        <h2>Sprawdzamy ryzyka, których nie rozwiąże sama konwersja manifestu.</h2>
+        <p>Atlassian udostępnia darmowe narzędzia oceny migracji. Nasza oferta dotyczy pracy specyficznej dla aplikacji klienta: zachowania funkcji, uprawnień i danych oraz kryteriów bezpiecznego odbioru.</p>
+      </header>
+      <div class="cards">
+        <article class="card"><span class="number">01 / MAPA FUNKCJI</span><h3>Co trzeba przenieść lub przebudować?</h3><p>Analizujemy interfejsy, webhooki, pola niestandardowe i zadania. Nie zakładamy bez dowodów istnienia odpowiednika każdego modułu Connect w Forge.</p></article>
+        <article class="card"><span class="number">02 / DANE I DOSTĘP</span><h3>Co musi pozostać nienaruszone?</h3><p>Identyfikujemy konfigurację, cykl instalacji, sekrety aplikacji, dane najemców i uprawnienia, zanim nastąpią nieodwracalne zmiany.</p></article>
+        <article class="card"><span class="number">03 / PLAN WDROŻENIA</span><h3>Jak potwierdzić zgodność działania?</h3><p>Przygotowujemy kryteria odbioru, testy na środowisku staging, zasady wycofania zmian oraz zakres przyszłej implementacji.</p></article>
+      </div>
+    </div>
+  </section>
+  <section class="section band" id="scope">
+    <div class="wrap split">
+      <div>
+        <div class="kicker">Ograniczony pierwszy etap</div>
+        <h2>Najpierw zakres i ryzyka, dopiero potem decyzja o implementacji.</h2>
+        <p>Pisemna analiza architektury jest odrębna od migracji kodu. Jej wyniki mają ułatwić decyzję, czy wykonać prace we własnym zespole, czy zamówić osobne wdrożenie.</p>
+        <ul class="bullets">
+          <li>Jedna prywatna aplikacja Connect w Jira lub Confluence Cloud, maksymalnie 10 instancji modułów</li>
+          <li>Jeden backend i zanonimizowany deskryptor przekazany za zgodą właściciela</li>
+          <li>Analiza modułów i uprawnień z rejestrem nierozstrzygniętych ryzyk</li>
+          <li>Pisemne zalecenia, kryteria testów i plan kolejnych kroków</li>
+          <li>Opcjonalna implementacja wyceniana osobno, bez automatycznych zobowiązań</li>
+        </ul>
+      </div>
+      <aside class="scope" aria-labelledby="offer-title">
+        <h3 id="offer-title">Pisemny audyt migracji</h3>
+        <div class="price"><strong>490 €</strong><small>orientacyjna cena za ograniczony zakres</small></div>
+        <p>Oferta dotyczy maksymalnie 10 instancji modułów i jednego backendu. Wiele środowisk, rozbudowane pola niestandardowe i dodatkowe repozytoria wymagają odrębnej wyceny. Formalne dane sprzedawcy, warunki i terminy ustalamy na piśmie przed płatnością. To nie jest kasa ani zamówienie.</p>
+        <div class="line"></div>
+        <h3>Czego nie obejmuje</h3>
+        <p>Wdrożenia produkcyjnego, przenoszenia danych klienta, opłat Atlassian, porad prawnych i podatkowych, szerokiej administracji Jira ani gwarancji zachowania nieobsługiwanych funkcji.</p>
+        <div class="line"></div>
+        <a class="primary" href="mailto:forgeframe.lab@gmail.com?subject=Migracja%20Connect%20Forge%20-%20wycena">Zapytaj o wycenę</a>
+        <p class="legal">Nie wysyłaj kodu źródłowego ani danych klientów w pierwszej wiadomości. Cena jest niewiążącą propozycją i zależy od zakresu.</p>
+      </aside>
+    </div>
+  </section>
+  <section class="section" id="process">
+    <div class="wrap">
+      <header><div class="kicker">Jak współpracujemy</div><h2>Bez udostępniania haseł i bez niespodziewanego wdrożenia.</h2></header>
+      <div class="steps">
+        <article><h3>1. Opisz zastosowanie</h3><p>Napisz, z jakiego produktu Atlassian korzystasz, do czego służy prywatna aplikacja, ile ma modułów i jaki jest termin. Bez sekretów i danych klientów.</p></article>
+        <article><h3>2. Uzgodnij bezpieczny zakres</h3><p>Potwierdzamy prawa do aplikacji, warunki pisemne i bezpieczny kanał przekazania tylko potrzebnych materiałów.</p></article>
+        <article><h3>3. Otrzymaj decyzje techniczne</h3><p>Otrzymujesz plan migracji, testów, ocenę ryzyk oraz osobną wycenę ewentualnej implementacji.</p></article>
+      </div>
+    </div>
+  </section>
+  <section class="section band" id="questions">
+    <div class="wrap">
+      <header><div class="kicker">Najczęstsze pytania</div><h2>Audyt prywatnych, istotnych biznesowo integracji.</h2></header>
+      <div class="faq">
+        <article><h3>Czy zastępujecie darmowe narzędzia Atlassian?</h3><p>Nie. Tam, gdzie to możliwe, wykorzystujemy oficjalne narzędzia, a dodatkowo analizujemy architekturę, ryzyka i kryteria odbioru konkretnej aplikacji.</p></article>
+        <article><h3>Czy cena obejmuje migrację kodu?</h3><p>Nie. Wykonanie implementacji, instalacja testowa i przejście na produkcję wymagają odrębnej umowy, zgody i weryfikacji wykonalności.</p></article>
+        <article><h3>Czy muszę przesłać dane z Jira?</h3><p>Nie na etapie zapytania. Materiały do audytu przekazuje się dopiero uzgodnionym bezpiecznym kanałem, w ustalonym zakresie i z regułami usunięcia danych.</p></article>
+        <article><h3>Kiedy kończy się wsparcie Connect?</h3><p>Atlassian wskazuje <strong>31 stycznia 2027 r.</strong> jako początek końca wsparcia Connect. Nie oznacza to, że każda aplikacja przestanie działać dokładnie tego dnia.</p></article>
+      </div>
+    </div>
+  </section>
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div><div class="eyebrow">Prywatna aplikacja · kontakt pisemny</div><h2>Opisz problem, bez przekazywania danych dostępowych.</h2><p>Krótki opis funkcji i liczby modułów wystarczy, aby ocenić zasadność audytu.</p></div>
+      <a class="primary" href="mailto:forgeframe.lab@gmail.com?subject=Prywatna%20aplikacja%20Connect%20-%20zapytanie%20o%20audyt">Wyślij zapytanie</a>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div><strong>ForgeFrame Labs</strong><div>Niezależne usługi inżynierii oprogramowania</div></div>
+    <div class="smallprint">Nie jesteśmy powiązani z Atlassian ani przez Atlassian rekomendowani. Jira, Confluence, Connect i Forge są znakami ich właścicieli. Strona opisuje proponowaną usługę, nie aktywną płatność, certyfikację ani istniejące realizacje klientów. <a href="https://www.atlassian.com/blog/developer/getting-ready-for-connect-end-of-support">Informacja Atlassian o końcu wsparcia</a> · <a href="../../../privacy.html">Prywatność</a> · <a href="../../../support.html">Kontakt</a>.</div>
+  </div>
+</footer>
+</body>
+</html>
