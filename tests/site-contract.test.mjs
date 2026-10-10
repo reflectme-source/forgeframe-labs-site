@@ -133,13 +133,13 @@ test("OpenAPI guide has a genuine developer journey to the public action and the
 
 test("Connect-to-Forge service remains discoverable from central catalog",()=>{const pl=html("products/index.html"),en=html("en/index.html");assert.match(pl,/connect-to-forge-assessment/);assert.match(en,/Connect → Forge/);assert.match(html("services/connect-to-forge-assessment/index.html"),/€490/);assert.ok(existsSync(join(root,"services/connect-to-forge-assessment/pl/index.html")));});
 
-test("Contract Guard sales page uses a copyable immutable-pinned v0.1.3 action",()=>{
+test("Contract Guard sales page uses a copyable immutable-pinned v0.1.4 action",()=>{
   const p=html("products/contract-guard.html");
-  const expected="uses: reflectme-source/forgeframe-contract-guard@47857973aeba8bf5bb6b034544bddaa2be6c8ad5";
-  assert.ok(p.includes(expected),"The action example must pin the verified v0.1.3 commit");
+  const expected="uses: reflectme-source/forgeframe-contract-guard@b7a7edc4368eabb123763cf40929a9cba9ff7b83";
+  assert.ok(p.includes(expected),"The action example must pin the verified v0.1.4 commit");
   assert.doesNotMatch(p,/uses: reflectme-source\/\s*\n\s*forgeframe-contract-guard/);
   assert.match(p,/upload-evidence: 'false'/);
-  assert.match(p,/# v0\.1\.3/);
+  assert.match(p,/# v0\.1\.4/);
 });
 
 test("Merchant Issue Desk remains discoverable and factually scoped",()=>{const homepage=html("index.html"),catalog=html("products/index.html"),page=html("services/merchant-issue-desk.html");assert.match(homepage,/services\/merchant-issue-desk\.html/);assert.match(catalog,/merchant-issue-desk\.html/);assert.match(page,/690 zł/);assert.match(page,/Nie gwarantujemy zatwierdzenia produktów/);assert.match(page,/product=merchant-issue-desk/);});
