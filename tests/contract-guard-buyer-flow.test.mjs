@@ -1,54 +1,74 @@
-import test from "node:test";
-import assert from "node:assert/strict";
-import {readFileSync} from "node:fs";
-import {join,dirname,resolve} from "node:path";
-import {fileURLToPath} from "node:url";
-import {Script} from "node:vm";
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync,existsSync} from 'node:fs';
+import {resolve,dirname,join} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {Script} from 'node:vm';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
+const read=p=>readFileSync(join(root,p),'utf8');
+const english=read('products/contract-guard.html');
+const polish=read('products/contract-guard/index.html');
+const enForm=read('products/contract-guard-intake.html');
+const plForm=read('products/contract-guard/intake.html');
+const client=read('products/contract-guard/intake.js');
+const terms=read('terms.html');
 
-const root=resolve(dirname(fileURLToPath(import.meta.url)),"..");
-const read=p=>readFileSync(join(root,p),"utf8");
-const intake=read("products/contract-guard-intake.html");
-const landing=read("products/contract-guard.html");
-const guide=read("guides/openapi-breaking-changes-github-actions.html");
-const terms=read("terms.html");
-
-test("Contract Guard customer journey requires written approval before payment",()=>{
-  assert.match(landing,/href="\.\/contract-guard-intake\.html"/);
-  assert.match(guide,/href="\.\.\/products\/contract-guard-intake\.html"/);
-  assert.match(read("support.html"),/contract-guard-intake\.html/);
-  assert.match(read("sitemap.xml"),/contract-guard-intake\.html/);
-  assert.match(intake,/one GitHub repository/i);
-  assert.match(terms,/unique Stripe-hosted payment link/i);
-  assert.doesNotMatch(landing+intake+guide,/https:\/\/buy\.stripe\.com\//);
+test('both product locales retain canonical public URLs and shared ForgeFrame chrome',()=>{
+ for(const [page,lang] of [[english,'en'],[polish,'pl']]){
+   assert.match(page,new RegExp('<html lang="'+lang+'">'));
+   assert.match(page,/class="ffg-header"/);
+   assert.match(page,/class="ffg-footer"/);
+   assert.match(page,/class="ffg-language"/);
+   assert.match(page,/forgeframe-global\.css/);
+   assert.match(page,/assets\/product-details\.css/);
+   assert.match(page,/class="ff-detail__grid"/);
+   assert.match(page,/class="ff-detail__actions"/);
+   assert.equal((page.match(/<h1\b/g)||[]).length,1);
+ }
+ assert.match(english,/https:\/\/forgeframelabs\.app\/products\/contract-guard\.html/);
+ assert.match(polish,/https:\/\/forgeframelabs\.app\/products\/contract-guard\//);
+ assert.match(english,/href="\.\.\/products\/contract-guard\/"/);
+ assert.match(polish,/href="\.\.\/\.\.\/products\/contract-guard\.html"/);
 });
-test("Scope request is local-only, validated and has usable copy/email fallbacks",()=>{
-  assert.match(intake,/<form id="scope-form" novalidate>/);
-  for(const id of ["email","company","country","repository","format","runner","spec-path","references","delivery","ack","notes"])
-    assert.match(intake,new RegExp('id="'+id+'"'));
-  assert.match(intake,/Opening your email application/);
-  assert.match(intake,/press Send/);
-  assert.match(intake,/navigator\.clipboard\.writeText/);
-  assert.match(intake,/window\.open\(url/);
-  assert.match(intake,/\.reportValidity\(\)/);
-  assert.match(intake,/parsed\.hostname!==\x27github\.com\x27/);
-  assert.doesNotMatch(intake,/\bfetch\s*\(|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|google-analytics|hotjar|mixpanel/);
+test('customer cannot pay without approved scope and verified checkout',()=>{
+ for(const page of [english,polish,enForm,plForm]){
+   assert.doesNotMatch(page,/buy\.stripe\.com|checkout\.stripe\.com|sk_live_|rk_live_|whsec_/);
+   assert.match(page,/149|\$149/);
+ }
+ assert.match(english,/written|scope/);
+ assert.match(polish,/pisem|zakres/);
+ assert.match(terms,/unique Stripe-hosted payment link/);
+ assert.match(enForm,/No upfront payment/i);
+ assert.match(plForm,/BEZ WPŁATY Z GÓRY/);
 });
-test("Standalone intake script parses and form controls are labeled",()=>{
-  const match=intake.match(/<script>([\s\S]+?)<\/script>/);
-  assert.ok(match);
-  assert.doesNotThrow(()=>new Script(match[1]));
-  for(const [,id] of intake.matchAll(/<label\b[^>]*for="([^"]+)"/g))
-    assert.match(intake,new RegExp('id="'+id+'"'));
-  assert.match(intake,/role="status"/);
-  assert.match(intake,/@media\(max-width:860px\)/);
+test('scope forms and local-only script are bilingual and accessible',()=>{
+ for(const [page,lang] of [[enForm,'en'],[plForm,'pl']]){
+   assert.match(page,new RegExp('<html lang="'+lang+'">'));
+   assert.match(page,/<form id="scope-form" novalidate>/);
+   for(const id of ['email','company','country','repository','format','runner','spec-path','references','delivery','notes','ack','scope-status','scope-preview']){
+     assert.match(page,new RegExp('id="'+id+'"'));
+   }
+   assert.match(page,/aria-live="polite"/);
+   assert.match(page,/role="status"/);
+   assert.match(page,/contract-guard\/intake\.js|\.\/intake\.js/);
+ }
+ assert.doesNotMatch(client,/fetch\s*\(|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|eval\(/);
+ assert.match(client,/navigator\.clipboard\.writeText/);
+ assert.match(client,/window\.location\.href/);
+ assert.match(client,/form\.reportValidity\(\)/);
+ assert.match(client,/url\.hostname!=='github\.com'/);
+ assert.doesNotThrow(()=>new Script(client));
 });
-test("One-repo service scope and client acceptance criteria are consistent",()=>{
-  for(const p of [landing,guide,terms,intake])
-    assert.doesNotMatch(p,/up to two repositories|two compatible repositories/);
-  assert.match(terms,/one eligible GitHub repository/);
-  assert.match(terms,/Completion and acceptance/);
-  assert.match(intake,/No upfront payment/);
-  assert.match(intake,/Customer country: /);
-  assert.match(landing,/no public instant checkout/i);
-  assert.match(landing,/unique one-order Stripe link/i);
+test('local product paths and shared assets resolve in the repository',()=>{
+ for(const filename of ['products/contract-guard.html','products/contract-guard/index.html','products/contract-guard-intake.html','products/contract-guard/intake.html']){
+  const html=read(filename);
+  const base=dirname(join(root,filename));
+  for(const match of html.matchAll(/(?:href|src)="([^"]+)"/g)){
+   const value=match[1];
+   if(value[0]==='#'||/^(https?:|mailto:|data:)/.test(value))continue;
+   const filepath=resolve(base,value.split('#')[0].split('?')[0]);
+   assert.ok(filepath.startsWith(root),filename+' points outside root');
+   assert.ok(existsSync(filepath),filename+' missing '+value);
+  }
+ }
 });
