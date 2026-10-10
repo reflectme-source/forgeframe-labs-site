@@ -139,12 +139,12 @@ test("OpenAPI guide has a genuine developer journey to the public action and the
 
 test("both language homes link to the genuine private Connect-to-Forge service",()=>{
   const pl=html("index.html"),en=html("en/index.html");
-  const link="https://reflectme-source.github.io/forgeframe-labs-site/services/connect-to-forge-assessment/";
-  for(const home of [pl,en]){
-    assert.ok(home.includes('href="'+link+'"'),"Missing scoped Atlassian service link");
-  }
-  assert.match(pl,/Ocena migracji Connect/);
+  assert.ok(pl.includes('href="./services/connect-to-forge-assessment/pl/"'),"Polish portfolio must link to Polish assessment");
+  assert.ok(en.includes('href="../services/connect-to-forge-assessment/"'),"English portfolio must link to English assessment");
+  assert.match(pl,/Audyt Connect/);
   assert.match(en,/Connect → Forge assessment/);
+  assert.ok(existsSync(join(root,"services/connect-to-forge-assessment/pl/index.html")));
+  assert.ok(existsSync(join(root,"services/connect-to-forge-assessment/index.html")));
   const service=html("services/connect-to-forge-assessment/index.html");
   assert.match(service,/31 January 2027/);
   assert.match(service,/€490/);
