@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0c1520">
-  <meta name="description" content="Explore ForgeFrame Labs: practical developer tools, game-production utilities, marketplace data and scoped integrations. Discover available products and projects in development.">
+  <meta name="description" content="Monitor public OTOMOTO listing and price changes on Apify, or check localization CSV files with a free browser inspector. Explore available ForgeFrame Labs tools and scoped integrations.">
   <link rel="canonical" href="https://reflectme-source.github.io/forgeframe-labs-site/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="ForgeFrame Labs — Independent developer tools and products">
-  <meta property="og:description" content="A home for purpose-built products across data automation, game tooling and developer workflows. Explore what's available and what's being built.">
+  <meta property="og:title" content="ForgeFrame Labs — Vehicle market monitoring and localization QA">
+  <meta property="og:description" content="Two ready-to-use tools: monitor public vehicle market changes on Apify or catch localization CSV issues in your browser.">
   <meta property="og:url" content="https://reflectme-source.github.io/forgeframe-labs-site/">
   <meta property="og:image" content="https://reflectme-source.github.io/forgeframe-labs-site/assets/forgeframe-banner.png">
   <link rel="icon" href="./assets/forgeframe-avatar.png" type="image/png">
-  <title>ForgeFrame Labs | Products, platforms & integrations</title>
+  <title>ForgeFrame Labs | Market monitoring and localization tools</title>
   <style>
     :root{
       color-scheme:dark;
@@ -72,6 +72,9 @@
     .action.secondary{background:#1a2d40;border:1px solid #3f5d75;color:#d9eaf7}
     .action.secondary:hover{background:#253d54}
     .hero-note{font-size:12px;color:#91adc2;margin:21px 0 0}
+    .hero-local-route{font-size:13px;margin:12px 0 0;font-weight:740}
+    .hero-local-route a{color:#c8e9ff;text-decoration-thickness:1px;text-underline-offset:4px}
+    .hero-local-route a:hover{color:#fff}
     .index-panel{border:1px solid #405c73;background:#102234;border-radius:19px;
       box-shadow:0 35px 85px #0004;overflow:hidden}
     .index-head{padding:19px 21px;display:flex;align-items:center;justify-content:space-between;
@@ -105,18 +108,12 @@
     h2{font-size:clamp(34px,4vw,52px);letter-spacing:-.055em;line-height:1.14;margin:13px 0 17px}
     .section-head p{max-width:660px;color:var(--paper-muted);font-size:16px;line-height:1.72;margin:0}
     .section-count{flex:none;align-self:flex-end;border-top:2px solid #a5bfd1;padding-top:9px;
-      font-size:12px;color:#697b8b;font-weight:720;min-width:160px}
-    .filters{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:26px;border-bottom:1px solid #d9e2e8;margin-bottom:26px}
-    .filter{cursor:pointer;padding:10px 16px;min-height:43px;border:1px solid #d4dfe6;border-radius:9px;
-      background:#fff;color:#475b6b;font-size:12px;font-weight:750;transition:background .15s,border-color .15s}
-    .filter:hover{border-color:#809caf;background:#eaf0f4}
-    .filter[aria-pressed="true"]{background:#152a3e;border-color:#152a3e;color:white}
+      font-size:12px;color:#52687b;font-weight:720;min-width:160px}
     .project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
     .project{display:flex;flex-direction:column;min-width:0;min-height:335px;border:1px solid var(--paper-stroke);
       background:#fff;border-radius:16px;padding:26px 26px 23px;box-shadow:0 4px 16px rgba(24,44,65,.025);
       transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease}
     .project:hover{border-color:#a9c0d2;transform:translateY(-2px);box-shadow:0 18px 38px rgba(24,44,65,.06)}
-    .project[hidden]{display:none!important}
     .project-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:28px}
     .project-symbol{display:grid;place-items:center;width:43px;height:43px;border-radius:12px;
       background:#e9f1f7;color:#235477;font-size:19px;font-weight:850;letter-spacing:-.05em}
@@ -126,25 +123,40 @@
     .state.preview{color:#80602e;background:#faf1de}
     .state.service{color:#39658a;background:#e7f0fa}
     .state::before{content:"";height:6px;width:6px;background:currentColor;border-radius:50%}
-    .project-platform{display:block;color:#658294;font-size:11px;font-weight:820;text-transform:uppercase;letter-spacing:.12em}
+    .project-platform{display:block;color:#526d7f;font-size:11px;font-weight:820;text-transform:uppercase;letter-spacing:.12em}
     .project h3{font-size:21px;letter-spacing:-.038em;line-height:1.27;margin:9px 0 13px}
     .project p{font-size:13px;color:#53697a;line-height:1.73;margin:0 0 23px;flex:1}
     .project-foot{border-top:1px solid #e4ebf0;padding-top:16px;display:flex;justify-content:space-between;
-      align-items:center;gap:12px}
-    .project-foot span{font-size:11px;color:#718494}
+      align-items:center;gap:12px;flex-wrap:wrap}
+    .project-links{display:flex;align-items:center;flex-wrap:wrap;gap:8px 13px;margin-left:auto}
+    .project-links .details-link{color:#5b7182;font-weight:720}
+    .project-foot span{font-size:11px;color:#526777}
     .project-foot a{font-size:12px;font-weight:820;color:#1b597f;text-decoration:none;min-height:32px;
       display:inline-flex;align-items:center}
     .project-foot a:hover{text-decoration:underline}
-    .localized-link{display:inline-block;margin-top:10px;color:#205d82;font-size:12px;font-weight:800;line-height:1.5}
+    .localized-link{display:block;margin-top:12px;color:#205d82;font-size:12px;font-weight:800;line-height:1.5}
     .localized-link:hover{color:#102f48}
-    .no-results{padding:28px;border:1px dashed #a4b9c9;border-radius:12px;color:#4d6477}
-    .no-results[hidden]{display:none}
-    .portfolio-note{font-size:12px;color:#667b8a;margin:22px 0 0;line-height:1.75}
+    .roadmap{margin-top:38px;border-top:1px solid #d1dde6;padding-top:22px}
+    .roadmap>summary{display:flex;align-items:center;gap:18px;cursor:pointer;list-style:none;
+      min-height:76px;padding:19px 23px;border-radius:13px;border:1px solid #cad8e3;
+      background:#e9f0f5;color:#18344a;transition:background .18s,border-color .18s}
+    .roadmap>summary::-webkit-details-marker{display:none}
+    .roadmap>summary:hover{background:#e1ebf3;border-color:#9bb8cc}
+    .roadmap>summary::after{content:"+";font-size:24px;font-weight:500;line-height:1;order:3;color:#285d80}
+    .roadmap[open]>summary::after{content:"−"}
+    .roadmap-title{font-size:17px;font-weight:800;letter-spacing:-.025em}
+    .roadmap-meta{font-size:12px;color:#4d6576;margin-left:auto;line-height:1.4}
+    .roadmap-grid{margin-top:18px}
+    .roadmap-grid .project{min-height:277px;background:#fbfcfd;box-shadow:none}
+    .roadmap-grid .project:hover{transform:none;box-shadow:none}
+    .roadmap-grid .project-foot{border-top:1px solid #e5edf2}
+    .roadmap-grid .project-top{margin-bottom:18px}
+    .portfolio-note{font-size:12px;color:#526878;margin:22px 0 0;line-height:1.75}
     .research{margin-top:38px;border-top:1px solid #d9e2e8;padding-top:25px;
       display:flex;align-items:start;justify-content:space-between;gap:32px}
     .research-title{max-width:300px}
     .research-title strong{display:block;font-size:14px;letter-spacing:-.012em}
-    .research-title p{font-size:12px;color:#667a89;line-height:1.65;margin:6px 0 0}
+    .research-title p{font-size:12px;color:#526978;line-height:1.65;margin:6px 0 0}
     .platform-list{display:flex;flex-wrap:wrap;gap:9px;max-width:680px;justify-content:flex-end}
     .platform-list span{display:inline-flex;padding:8px 12px;border:1px solid #d5e0e7;background:#eaf0f4;
       border-radius:7px;color:#526a7b;font-size:11px;font-weight:730}
@@ -157,6 +169,8 @@
     .principle .num{display:block;color:#89badb;font-size:11px;font-weight:810;letter-spacing:.12em;margin-bottom:21px}
     .principle h3{font-size:19px;letter-spacing:-.027em;margin:0 0 10px}
     .principle p{margin:0;font-size:13px;line-height:1.8;color:#aec3d4}
+    .principle a{display:inline-flex;align-items:center;min-height:43px;margin-top:15px;color:#bfdef7;font-size:13px;font-weight:790;text-decoration:none}
+    .principle a:hover{color:white;text-decoration:underline}
     .contact{background:#d9ecfa;color:#162d40;padding:74px 0}
     .contact-inner{display:flex;align-items:center;justify-content:space-between;gap:32px}
     .contact .section-eyebrow{color:#367398}
@@ -219,9 +233,11 @@
       .portfolio{padding:55px 0 65px}
       .project-grid{grid-template-columns:1fr}
       .project{min-height:unset;padding:23px}
-      .filters{display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;padding-bottom:19px;
-        margin-right:-19px;padding-right:19px}
-      .filter{white-space:nowrap;flex:none}
+      .roadmap>summary{padding:17px 18px;flex-wrap:wrap;gap:4px 14px}
+      .roadmap-title{width:calc(100% - 32px);font-size:16px}
+      .roadmap-meta{width:calc(100% - 32px);margin:0}
+      .roadmap>summary::after{margin-left:auto;position:absolute;right:18px}
+      .roadmap>summary{position:relative}
       .research{display:block}
       .platform-list{justify-content:flex-start;margin-top:17px}
       .approach-top{margin-bottom:28px}
@@ -232,7 +248,7 @@
     }
     @media(prefers-reduced-motion:reduce){
       html{scroll-behavior:auto}
-      .action,.project,.filter{transition:none}
+      .action,.project,.roadmap>summary{transition:none}
       .action:hover,.project:hover{transform:none}
     }
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
@@ -245,7 +261,7 @@
   <nav class="wrap header-inner" aria-label="Main navigation">
     <a class="brand" href="./index.html"><img src="./assets/forgeframe-avatar.png" alt="" width="37" height="37"><span>ForgeFrame Labs</span></a>
     <div class="desktop-nav">
-      <a href="#portfolio">Products &amp; platforms</a>
+      <a href="#portfolio">Products</a>
       <a href="#approach">About the lab</a>
       <a href="./support.html">Support</a>
       <a class="nav-contact" href="mailto:forgeframe.lab@gmail.com?subject=ForgeFrame%20Labs%20inquiry">Get in touch ↗</a>
@@ -253,7 +269,7 @@
     <details class="mobile-nav">
       <summary>Menu</summary>
       <div class="menu">
-        <a href="#portfolio">Products &amp; platforms</a>
+        <a href="#portfolio">Products</a>
         <a href="#approach">About the lab</a>
         <a href="./support.html">Support</a>
         <a href="mailto:forgeframe.lab@gmail.com?subject=ForgeFrame%20Labs%20inquiry">Get in touch ↗</a>
@@ -265,14 +281,15 @@
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap hero-grid">
       <div>
-        <span class="overline">Independent product studio</span>
-        <h1 id="hero-title">One lab. <em>Purpose-built tools.</em> Many ways to work better.</h1>
-        <p class="hero-lead">ForgeFrame Labs builds practical software for developers, game creators and businesses. Explore our products across platforms — from published data automation to focused quality tools and integrations.</p>
+        <span class="overline">Independent product studio · Available now</span>
+        <h1 id="hero-title">Monitor market changes. <em>Catch release issues.</em></h1>
+        <p class="hero-lead">Track new vehicle listings and asking-price changes with our published Apify Actor. Check localization CSV files for structural problems in a free browser inspector. For custom workflows, request a scoped API integration.</p>
         <div class="actions">
-          <a class="action primary" href="#portfolio">Explore the products <span aria-hidden="true">↗</span></a>
-          <a class="action secondary" href="mailto:forgeframe.lab@gmail.com?subject=ForgeFrame%20Labs%20project%20inquiry">Discuss an integration <span aria-hidden="true">→</span></a>
+          <a class="action primary" href="https://apify.com/green_amazement/otomoto-change-intelligence" rel="noopener noreferrer">Open OTOMOTO on Apify <span aria-hidden="true">↗</span></a>
+          <a class="action secondary" href="./tools/localization-qa.html">Try free localization QA <span aria-hidden="true">→</span></a>
         </div>
-        <p class="hero-note">Clearly labeled availability. No account needed to browse.</p>
+        <p class="hero-note">Apify bills for Actor usage. The localization inspector is free and runs in your browser.</p>
+        <p class="hero-local-route"><a lang="pl" href="./integrations/otomoto-dealer-api.html">Po polsku: monitoring OTOMOTO dla dealerów i CRM ↗</a></p>
       </div>
       <div class="index-panel" aria-label="Quick links to available tools">
         <div class="index-head"><span>THE LAB / START HERE</span><small>01 — PRODUCTS</small></div>
@@ -287,7 +304,7 @@
           <a class="index-row" href="mailto:forgeframe.lab@gmail.com?subject=ForgeFrame%20API%20integration%20inquiry">
             <span class="index-no">03</span><span><span class="index-name">Custom API integrations</span><span class="index-sub">B2B · Scoped by requirements</span></span><span class="index-arrow" aria-hidden="true">↗</span>
           </a>
-          <p class="index-foot">More platform-specific tools are in development.</p>
+          <p class="index-foot">Additional tools are in development — see the roadmap below.</p>
         </div>
       </div>
     </div>
@@ -303,28 +320,18 @@
       <div class="section-head">
         <div>
           <span class="section-eyebrow">01 / ForgeFrame portfolio</span>
-          <h2 id="portfolio-title">Choose the right product.</h2>
-          <p>Browse by platform. Each entry shows what it solves, where it belongs and whether you can use it today. Projects still in validation are not presented as published products.</p>
+          <h2 id="portfolio-title">Available now. Ready for real work.</h2>
+          <p>Use the published automotive monitor, run the free localization inspector, or request a carefully scoped integration. Projects not yet released are listed separately below.</p>
         </div>
-        <span class="section-count">PRODUCT DIRECTORY<br>AVAILABLE + IN DEVELOPMENT</span>
+        <span class="section-count">2 AVAILABLE TOOLS<br>+ SCOPED INTEGRATIONS</span>
       </div>
-      <div class="filters" role="group" aria-label="Filter projects by platform">
-        <button class="filter" type="button" data-filter="all" aria-pressed="true">All projects</button>
-        <button class="filter" type="button" data-filter="apify" aria-pressed="false">Apify</button>
-        <button class="filter" type="button" data-filter="web" aria-pressed="false">Web tools</button>
-        <button class="filter" type="button" data-filter="unity" aria-pressed="false">Unity</button>
-        <button class="filter" type="button" data-filter="roblox" aria-pressed="false">Roblox</button>
-        <button class="filter" type="button" data-filter="jetbrains" aria-pressed="false">JetBrains</button>
-        <button class="filter" type="button" data-filter="integrations" aria-pressed="false">Integrations</button>
-      </div>
-      <p id="filter-status" class="sr-only" role="status" aria-live="polite">Showing all 6 projects.</p>
       <div class="project-grid" id="project-grid">
         <article class="project" data-platform="apify">
           <div class="project-top"><span class="project-symbol" aria-hidden="true">↗</span><span class="state live">Published</span></div>
           <span class="project-platform">Apify / Data automation</span>
           <h3>OTOMOTO Change Intelligence</h3>
           <p>Compare repeat snapshots of a public OTOMOTO search. Retrieve new listings, asking-price changes and listings that leave the tracked results as structured events.<a class="localized-link" lang="pl" href="./integrations/otomoto-dealer-api.html">Integracje dla polskich dealerów i CRM ↗</a></p>
-          <div class="project-foot"><span>Usage billed on Apify</span><a href="./solutions/otomoto-vehicle-monitoring.html">View product ↗</a></div>
+          <div class="project-foot"><span>Usage billed on Apify</span><div class="project-links"><a class="details-link" href="./solutions/otomoto-vehicle-monitoring.html">Details</a><a href="https://apify.com/green_amazement/otomoto-change-intelligence" rel="noopener noreferrer">Open on Apify ↗</a></div></div>
         </article>
         <article class="project" data-platform="web">
           <div class="project-top"><span class="project-symbol" aria-hidden="true">{ }</span><span class="state live">Available</span></div>
@@ -340,28 +347,33 @@
           <p>Bring useful events into an existing dealer or operational system. Work is individually scoped around the target API, data boundaries and acceptance criteria.</p>
           <div class="project-foot"><span>Scope &amp; quote required</span><a href="mailto:forgeframe.lab@gmail.com?subject=API%20integration%20scope%20inquiry">Discuss scope ↗</a></div>
         </article>
+      </div>
+      <details class="roadmap" id="roadmap">
+        <summary><span class="roadmap-title">What we are building next</span><span class="roadmap-meta">3 products in development · not for sale</span></summary>
+        <div class="project-grid roadmap-grid">
         <article class="project" data-platform="unity">
           <div class="project-top"><span class="project-symbol" aria-hidden="true">U</span><span class="state preview">In development</span></div>
           <span class="project-platform">Unity / Editor tooling</span>
           <h3>Localization QA for Unity</h3>
           <p>A native editor workflow for finding localization issues before release. The Unity package is not currently available on the Asset Store.</p>
-          <div class="project-foot"><span>Not yet released</span><a href="mailto:forgeframe.lab@gmail.com?subject=Unity%20Localization%20QA%20availability">Ask about availability ↗</a></div>
+          <div class="project-foot"><span>Not available for purchase</span></div>
         </article>
         <article class="project" data-platform="roblox">
           <div class="project-top"><span class="project-symbol" aria-hidden="true">R</span><span class="state preview">In validation</span></div>
           <span class="project-platform">Roblox / Creator workflow</span>
           <h3>Localization Upload Guard</h3>
           <p>A creator-focused localization validation plugin. Store eligibility and native Roblox Studio behavior must be confirmed before a public release.</p>
-          <div class="project-foot"><span>Not yet released</span><a href="mailto:forgeframe.lab@gmail.com?subject=Roblox%20Localization%20Upload%20Guard">Ask about availability ↗</a></div>
+          <div class="project-foot"><span>Not available for purchase</span></div>
         </article>
         <article class="project" data-platform="jetbrains">
           <div class="project-top"><span class="project-symbol" aria-hidden="true">JB</span><span class="state preview">Compatibility QA</span></div>
           <span class="project-platform">JetBrains / IDE tooling</span>
           <h3>MV3 Release Inspector</h3>
           <p>An IDE plugin focused on Chrome-extension release checks. Marketplace compatibility, license flow and distribution are still being validated.</p>
-          <div class="project-foot"><span>Not yet released</span><a href="mailto:forgeframe.lab@gmail.com?subject=MV3%20Release%20Inspector%20availability">Ask about availability ↗</a></div>
+          <div class="project-foot"><span>Not available for purchase</span></div>
         </article>
-      </div>
+        </div>
+      </details>
       <p class="portfolio-note">Availability reflects verified product readiness, not account ownership. OTOMOTO monitoring is an independent tool, not an official OTOMOTO product; events describe observations, not confirmed sales. Published tools have their own usage terms and limitations.</p>
       <div class="research">
         <div class="research-title"><strong>Additional platforms under evaluation</strong><p>These channels are part of the lab's product research, not public product launches.</p></div>
@@ -374,13 +386,13 @@
   <section class="approach" id="approach" aria-labelledby="approach-title">
     <div class="wrap">
       <div class="approach-top">
-        <div><span class="overline">02 / How we build</span><h2 id="approach-title">Practical software. Honest boundaries.</h2></div>
-        <p>Every product starts with a specific workflow and a concrete output. Availability, costs and integration requirements should be clear before a customer commits.</p>
+        <div><span class="overline">02 / The workflows</span><h2 id="approach-title">Start with a real task, not a sales pitch.</h2></div>
+        <p>Use a published tool yourself, see its output, or describe the integration you need in writing. Each path has a clear next step.</p>
       </div>
       <div class="approach-grid">
-        <div class="principle"><span class="num">01 / USEFUL OUTPUTS</span><h3>Built around a job</h3><p>Find a localization issue. Detect a market change. Connect an event to an existing system. The workflow defines the product.</p></div>
-        <div class="principle"><span class="num">02 / TRANSPARENT SCOPE</span><h3>No invented promises</h3><p>Published, free and in-development offerings are clearly separated. Platform limits and known gaps belong in the product description.</p></div>
-        <div class="principle"><span class="num">03 / DIRECT CONTACT</span><h3>Less friction, more clarity</h3><p>Open a product directly or describe an integration by email. There is no requirement to schedule a sales call.</p></div>
+        <div class="principle"><span class="num">01 / OTOMOTO</span><h3>Monitor a saved search</h3><p>Run a baseline for a public search, then compare later scans to see new listings, asking-price changes and listings leaving the tracked result set.</p><a href="./solutions/otomoto-vehicle-monitoring.html">See how monitoring works ↗</a></div>
+        <div class="principle"><span class="num">02 / LOCALIZATION QA</span><h3>Check your CSV in-browser</h3><p>Drop in a localization file to find missing strings, duplicate keys and placeholder mismatches. Your CSV stays on your device.</p><a href="./tools/localization-qa.html">Open the free inspector ↗</a></div>
+        <div class="principle"><span class="num">03 / INTEGRATIONS</span><h3>Scope a specific API workflow</h3><p>Describe the source, destination and outcome you need. Custom work is priced only after the requirements and acceptance criteria are agreed.</p><a href="mailto:forgeframe.lab@gmail.com?subject=ForgeFrame%20integration%20scope">Describe your integration ↗</a></div>
       </div>
     </div>
   </section>
@@ -399,23 +411,12 @@
 </footer>
 <script>
   (function () {
-    const buttons = Array.from(document.querySelectorAll('[data-filter]'));
-    const projects = Array.from(document.querySelectorAll('.project[data-platform]'));
-    const announcement = document.getElementById('filter-status');
-    const labels = {all:'all',apify:'Apify',web:'web tools',unity:'Unity',roblox:'Roblox',jetbrains:'JetBrains',integrations:'integration'};
-    buttons.forEach(function (button) {
-      button.addEventListener('click', function () {
-        const selected = button.getAttribute('data-filter');
-        buttons.forEach(function (item) {item.setAttribute('aria-pressed',String(item === button));});
-        let count = 0;
-        projects.forEach(function (project) {
-          const show = selected === 'all' || project.getAttribute('data-platform') === selected;
-          project.hidden = !show;
-          if (show) count += 1;
-        });
-        announcement.textContent = 'Showing ' + count + ' ' + (count === 1 ? 'project' : 'projects') + ' for ' + labels[selected] + '.';
+    const mobileNav = document.querySelector('.mobile-nav');
+    if (mobileNav) {
+      mobileNav.querySelectorAll('.menu a').forEach(function (link) {
+        link.addEventListener('click', function () { mobileNav.open = false; });
       });
-    });
+    }
   }());
 </script>
 </body>
