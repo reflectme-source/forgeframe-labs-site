@@ -364,3 +364,12 @@ test("every interactive tool and sample report returns to the right product offe
  assert.match(css,/max-width:730px/);
  assert.match(css,/focus-visible/);
 });
+
+
+test("OriginDuty has one consistent external product destination on both homepages",()=>{
+ const url="https://reflectme-source.github.io/originduty-site/";
+ for(const file of ["index.html","en/index.html"]){
+   assert.match(html(file),/OriginDuty/);
+   assert.ok(html(file).includes('href="'+url+'"'),file+" must link to OriginDuty's verified dedicated site");
+ }
+});
