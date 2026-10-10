@@ -23,7 +23,7 @@ test("Contract Guard customer journey requires written approval before payment",
 });
 test("Scope request is local-only, validated and has usable copy/email fallbacks",()=>{
   assert.match(intake,/<form id="scope-form" novalidate>/);
-  for(const id of ["email","company","repository","format","runner","spec-path","references","delivery","ack","notes"])
+  for(const id of ["email","company","country","repository","format","runner","spec-path","references","delivery","ack","notes"])
     assert.match(intake,new RegExp('id="'+id+'"'));
   assert.match(intake,/Opening your email application/);
   assert.match(intake,/press Send/);
@@ -48,6 +48,7 @@ test("One-repo service scope and client acceptance criteria are consistent",()=>
   assert.match(terms,/one eligible GitHub repository/);
   assert.match(terms,/Completion and acceptance/);
   assert.match(intake,/No upfront payment/);
+  assert.match(intake,/Customer country: /);
   assert.match(landing,/no public instant checkout/i);
   assert.match(landing,/unique one-order Stripe link/i);
 });
