@@ -1,26 +1,68 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="ForgeFrame Labs support and publisher contact information.">
-<title>Support — ForgeFrame Labs</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0c1520">
+<meta name="description" content="Support for ForgeFrame Labs developer tools, Apify market monitoring, localization QA and scoped integrations.">
+<link rel="canonical" href="https://reflectme-source.github.io/forgeframe-labs-site/support.html">
 <link rel="icon" href="./assets/forgeframe-avatar.png" type="image/png">
+<title>Support & Contact | ForgeFrame Labs</title>
 <style>
-:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#ebf4ff;background:#0b111b}
-*{box-sizing:border-box}body{margin:0;line-height:1.7}.shell{max-width:850px;margin:auto;padding:0 26px}header{padding:25px 0;border-bottom:1px solid #293a51}a{color:#b9dbff}h1{font-size:clamp(2.4rem,5vw,4rem);line-height:1.15;letter-spacing:-.045em;margin:80px 0 20px}h2{font-size:1.4rem;margin-top:36px}p,li{color:#b9c9da}.panel{border:1px solid #34506e;border-radius:16px;background:#132236;padding:28px;margin:35px 0 55px}strong{color:#e5f2ff}footer{padding:30px 0;border-top:1px solid #293a51;font-size:.9rem}
+:root{color-scheme:dark;font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;color:#edf6fd;background:#0c1520}
+*{box-sizing:border-box}
+body{margin:0;min-width:320px}a{color:#b8e0fc;text-underline-offset:4px}a:focus-visible{outline:3px solid #65caff;outline-offset:4px;border-radius:4px}
+.wrap{max-width:1100px;margin:auto;padding:0 28px}.skip{position:absolute;top:-80px;left:15px;background:white;color:#122233;border-radius:8px;padding:10px 16px;z-index:40}.skip:focus{top:12px}
+header{border-bottom:1px solid #294159;background:#0e1b2a}.nav{display:flex;justify-content:space-between;align-items:center;gap:20px;min-height:78px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-size:15px;font-weight:800;color:#f0f8ff;white-space:nowrap}.brand img{height:36px;width:36px;border-radius:9px}
+nav .links{display:flex;gap:26px;align-items:center}nav .links a{text-decoration:none;font-size:13px;font-weight:730;color:#bbd4e7;min-height:42px;display:flex;align-items:center}nav .links a:hover{color:#fff}
+main{padding-top:76px;padding-bottom:95px}.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#91c8ea}
+h1{font-size:clamp(43px,6vw,66px);line-height:1.09;letter-spacing:-.06em;margin:15px 0 22px;max-width:810px}
+.lead{font-size:17px;color:#acc6da;max-width:710px;margin:0;line-height:1.8}
+.contact{display:flex;gap:28px;justify-content:space-between;align-items:center;border:1px solid #44647e;background:#162b40;border-radius:18px;padding:30px 33px;margin-top:39px}
+.contact strong{font-size:18px}.contact p{margin:8px 0 0;color:#bad0e0;font-size:13px;max-width:630px}
+.button{display:inline-flex;text-align:center;justify-content:center;align-items:center;border:1px solid #d5ebfb;background:#d5ebfb;color:#10283d;text-decoration:none;font-size:13px;font-weight:800;padding:12px 20px;min-height:48px;border-radius:10px;white-space:nowrap}.button:hover{background:white}
+.section-head{margin:79px 0 25px}
+h2{font-size:clamp(27px,3.6vw,39px);letter-spacing:-.045em;line-height:1.2;margin:9px 0}
+.section-head p{color:#afc6d8;max-width:660px}
+.resources{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.resource{border:1px solid #344e65;border-radius:16px;background:#112337;padding:25px;min-width:0;display:flex;flex-direction:column}
+.resource small{font-size:11px;color:#94bed9;letter-spacing:.1em;font-weight:800;text-transform:uppercase}
+.resource h3{font-size:19px;letter-spacing:-.028em;line-height:1.35;margin:13px 0 9px}
+.resource p{font-size:13px;color:#acc5d7;line-height:1.76;margin:0 0 22px;flex:1}
+.resource a{font-size:13px;font-weight:780;text-decoration:none;min-height:32px;display:inline-flex;align-items:center}.resource a:hover{text-decoration:underline}
+.help{display:grid;grid-template-columns:1fr 1fr;gap:50px;margin-top:65px;padding-top:34px;border-top:1px solid #35506a}
+.help h2{font-size:27px;margin:0 0 12px}.help p,.help li{font-size:14px;line-height:1.78;color:#b8cedf}.help ul{padding-left:22px;margin:0}
+footer{border-top:1px solid #2b4159;padding:30px 0;font-size:12px;color:#a1b9cb}footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}footer a{color:#c1d6e4}
+@media(max-width:780px){.resources{grid-template-columns:1fr}.contact{flex-direction:column;align-items:start}.help{grid-template-columns:1fr;gap:19px}}
+@media(max-width:490px){.wrap{padding:0 19px}.nav{min-height:69px}.nav .links{gap:12px}.nav .links a{font-size:12px}.nav .links a:last-child{display:none}main{padding-top:53px;padding-bottom:66px}.contact{padding:24px}.contact .button{width:100%}.section-head{margin-top:60px}.help{margin-top:45px}}
 </style>
 </head>
 <body>
-<header><div class="shell"><a href="./index.html">← ForgeFrame Labs</a></div></header>
-<main class="shell">
-<h1>Support &amp; contact</h1>
-<p>ForgeFrame Labs develops focused Unity editor tools, validation helpers and reusable workflows.</p>
-<div class="panel"><strong>Publisher support</strong><p>For product questions, integration feedback, reporting bugs or general inquiries, write to:</p><p><a href="mailto:forgeframe.lab@gmail.com">forgeframe.lab@gmail.com</a></p></div>
-<h2>When reporting a technical issue</h2>
-<p>Please include the Unity Editor version, the affected tool and version (if applicable), steps to reproduce and the expected behavior. Do not email passwords, API keys or confidential project files.</p>
-<h2>Start with Localization QA Inspector</h2>
-<p>Check your file using the <a href="./tools/localization-qa.html">free browser inspector</a>, or follow the <a href="./tools/localization-qa-guide.html">CSV format and integration guide</a>. For a specific issue, include your operating environment and the steps needed to reproduce the problem.</p>
+<a href="#main" class="skip">Skip to content</a>
+<header><nav class="wrap nav" aria-label="Main navigation">
+<a class="brand" href="./index.html"><img src="./assets/forgeframe-avatar.png" alt="" width="36" height="36">ForgeFrame Labs</a>
+<div class="links"><a href="./index.html#portfolio">Products</a><a href="./privacy.html">Privacy</a></div>
+</nav></header>
+<main class="wrap" id="main">
+<span class="eyebrow">Support / ForgeFrame Labs</span>
+<h1>Help with the tool you use.</h1>
+<p class="lead">Find documentation for published products, report a reproducible issue or ask a specific question about a platform integration. Email is our primary contact channel.</p>
+<div class="contact">
+<div><strong>Contact ForgeFrame Labs</strong><p>For product support, technical issues, integration questions and relevant business inquiries. No sales call is required.</p></div>
+<a class="button" href="mailto:forgeframe.lab@gmail.com?subject=ForgeFrame%20Labs%20support">Email support ↗</a>
+</div>
+<div class="section-head"><span class="eyebrow">Product resources</span><h2>Go directly to the right documentation.</h2><p>Start with the published product you are using. Marketplace purchases and billing take place on the respective platform.</p></div>
+<div class="resources">
+<article class="resource"><small>Apify / Automotive</small><h3>OTOMOTO Change Intelligence</h3><p>How tracked searches, snapshots, observed events and usage limits work. A listing leaving search results does not prove a vehicle was sold.</p><a href="./solutions/otomoto-vehicle-monitoring.html">Open product guidance ↗</a></article>
+<article class="resource"><small>Web / Localization</small><h3>Localization QA Inspector</h3><p>Open the free private browser checker or see the CSV format and offline build-validation instructions.</p><a href="./tools/localization-qa-guide.html">Read localization guide ↗</a></article>
+<article class="resource"><small>Integrations / Marketplaces</small><h3>API and platform inquiries</h3><p>For custom API integrations or tools marked in development, describe the receiving system or platform and intended use case.</p><a href="mailto:forgeframe.lab@gmail.com?subject=ForgeFrame%20integration%20or%20platform%20inquiry">Ask about a project ↗</a></article>
+</div>
+<section class="help" aria-labelledby="report-title">
+<div><h2 id="report-title">Reporting an issue</h2><p>Describe a specific failure so we can reproduce it. Helpful reports save time for both sides and make fixes more reliable.</p><p>Please don't email API keys, passwords, confidential customer records or full private source files.</p></div>
+<div><ul><li>Name the product and platform (Apify, browser, Unity, Roblox or IDE).</li><li>Include the relevant version, expected behavior and what occurred instead.</li><li>Provide minimal reproducible steps and sanitized example data if necessary.</li><li>For OTOMOTO monitoring, specify whether it was a first baseline scan or a later comparison.</li></ul></div>
+</section>
 </main>
-<footer><div class="shell"><a href="./index.html">Home</a> · <a href="./privacy.html">Privacy</a></div></footer>
+<footer><div class="wrap"><span>© 2026 ForgeFrame Labs</span><span><a href="./index.html">Products</a> · <a href="./privacy.html">Privacy</a> · <a href="mailto:forgeframe.lab@gmail.com">Email</a></span></div></footer>
 </body>
 </html>

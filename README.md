@@ -1,6 +1,18 @@
 # ForgeFrame Labs
 
-Practical developer tools for more reliable game releases.
+Independent developer tools, data automation and scoped API integrations.
+
+[Browse ForgeFrame Labs products and platforms](https://reflectme-source.github.io/forgeframe-labs-site/)
+
+## Available products and services
+
+- **OTOMOTO Change Intelligence** — [product overview](https://reflectme-source.github.io/forgeframe-labs-site/solutions/otomoto-vehicle-monitoring.html) and [Apify listing](https://apify.com/green_amazement/otomoto-change-intelligence). Compare successful observations of a public OTOMOTO search and consume structured changes. Apify usage charges apply.
+- **Localization QA Inspector** — [free browser tool](https://reflectme-source.github.io/forgeframe-labs-site/tools/localization-qa.html). Private, local-first CSV structural checks, with offline validation instructions below.
+- **API integration services** — individually scoped work connecting events to an existing system. Contact **forgeframe.lab@gmail.com** with the target platform and receiving API.
+
+## Products in validation
+
+Unity Editor Localization QA, Roblox Localization Upload Guard and JetBrains MV3 Release Inspector are not currently available to purchase. Additional marketplaces are being evaluated, but account presence alone is not a product release.
 
 ## Localization QA Inspector
 
