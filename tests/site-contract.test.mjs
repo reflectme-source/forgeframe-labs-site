@@ -116,7 +116,7 @@ test("buyer guide directs qualified visitors to real Apify tasks and a scoped in
  for(const slug of ["bmw-3-series-price-changes","audi-a4-market-price-watch","skoda-octavia-new-listing-monitor"]){
   assert.ok(page.includes("/examples/"+slug),"Missing verified Apify example "+slug);
  }
- assert.match(page,/mailto:forgeframe\.lab@gmail\.com/);
+ assert.match(page,/product=otomoto/);
  assert.match(page,/Nie\. To niezależny Actor/);
  assert.doesNotMatch(page,/<script\b[^>]*src=/);
  assert.match(html("integrations/otomoto-dealer-api.html"),/guides\/otomoto-price-monitoring\.html/);
