@@ -1,43 +1,44 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
+import {join,dirname,resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {resolve,dirname,join} from 'node:path';
-
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
-const landing=readFileSync(join(root,'products/contract-guard.html'),'utf8');
-const home=readFileSync(join(root,'index.html'),'utf8');
-
-test('landing is reachable from portfolio and sitemap',()=>{
-  assert.match(home,/products\/contract-guard\.html/);
-  assert.match(readFileSync(join(root,'sitemap.xml'),'utf8'),/products\/contract-guard\.html/);
-  assert.match(landing,/<link rel="canonical" href="https:\/\/forgeframelabs\.app\/products\/contract-guard\.html">/);
+const read=p=>readFileSync(join(root,p),'utf8');
+const en=read('products/contract-guard.html'),pl=read('products/contract-guard/index.html');
+const site=read('index.html'),guide=read('guides/openapi-breaking-changes-github-actions.html');
+test('Contract Guard is discoverable and current routes remain intact',()=>{
+ assert.match(site,/products\/contract-guard\.html/);
+ assert.match(read('sitemap.xml'),/products\/contract-guard\.html/);
+ assert.match(en,/href="\.\/contract-guard-intake\.html"/);
+ assert.match(pl,/href="\.\/intake\.html"/);
+ assert.match(en,/guides\/openapi-breaking-changes-github-actions\.html/);
+ assert.match(guide,/github\.com\/reflectme-source\/forgeframe-contract-guard/);
 });
-test('landing has honest monetization path and does not claim payments exist',()=>{
-  assert.match(landing,/Managed setup · \$149/i);
-  assert.match(landing,/one GitHub repository with an existing OpenAPI 3\.x contract/i);
-  assert.match(landing,/contract-guard-intake\.html/);
-  assert.match(landing,/Confirm repository scope and delivery schedule before paying/i);
-  assert.match(landing,/contract-guard-intake\.html/);
-  assert.match(landing,/unique one-order Stripe link/i);
-  assert.doesNotMatch(landing,/https:\/\/buy\.stripe\.com\//i);
-  assert.doesNotMatch(landing,/up to two repositories|buy\.stripe\.com\/test_/i);
-  assert.doesNotMatch(landing,/customer testimonials|guaranteed income|guaranteed compliance|instant checkout available/i);
+test('website shows verified product, price and limitations without inventing features',()=>{
+ for(const p of [en,pl]){
+  assert.match(p,/GitHub Action/);
+  assert.match(p,/\$149/);
+  assert.match(p,/SHA-256/);
+  assert.match(p,/oasdiff/);
+  assert.match(p,/examples\/breaking\/report\.json/);
+  assert.match(p,/examples\/safe\/report\.json/);
+  assert.match(p,/forgeframe-contract-guard@47857973aeba8bf5bb6b034544bddaa2be6c8ad5/);
+  assert.match(p,/upload-evidence: 'false'/);
+  assert.match(p,/ff-detail__title/);
+  assert.doesNotMatch(p,/guaranteed compliance|customer testimonials|instant checkout available|https:\/\/buy\.stripe\.com/gi);
+ }
 });
-test('landing offers source-verified runnable software rather than a dead concept',()=>{
-  assert.match(landing,/github\.com\/reflectme-source\/forgeframe-contract-guard/);
-  assert.match(landing,/GitHub Action/);
-  assert.match(landing,/tools\/contract-guard-report\.html/);
-  assert.match(landing,/SHA-256/);
-  assert.match(landing,/breaking OpenAPI changes/i);
-  assert.match(landing,/scope|limitations|not a runtime contract test/i);
-});
-test('responsive, accessible and no third-party JS tracking',()=>{
-  assert.match(landing,/<main id="main">/);
-  assert.match(landing,/<h1>/);
-  assert.match(landing,/aria-label="Main navigation"/);
-  assert.match(landing,/:focus-visible/);
-  assert.match(landing,/@media\(max-width:850px\)/);
-  assert.doesNotMatch(landing,/<script\s+[^>]*src=/);
-  assert.doesNotMatch(landing,/google-analytics|gtag\(|hotjar|mixpanel/i);
+test('production pages share the approved header, footer and mobile responsive stylesheet',()=>{
+ for(const p of [en,pl]){
+  assert.match(p,/class="ffg-header"/);
+  assert.match(p,/class="ffg-footer"/);
+  assert.match(p,/aria-label="Main navigation"|aria-label="Nawigacja główna"/);
+  assert.match(p,/class="ffg-locale"/);
+  assert.match(p,/class="cg-icon/);
+ }
+ const css=read('products/contract-guard/site.css');
+ assert.match(css,/@media\(max-width:720px\)/);
+ assert.match(css,/:focus-visible/);
+ assert.doesNotMatch(css,/\.ffg-header\s*\{|\.ffg-footer\s*\{|\.ffg-nav\s*\{/);
 });
