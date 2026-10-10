@@ -1,0 +1,58 @@
+/* ForgeFrame Labs — shared homepage/catalog unification, 2026-10 */
+.ff-home{background:#06111f;color:#ecf6ff}
+.ff-home header{background:#061323f5;border-bottom:1px solid #214a70;backdrop-filter:blur(18px)}
+.ff-home .wrap{max-width:1440px}
+.ff-home .header-row{min-height:75px}
+.ff-home .identity{font-size:21px;letter-spacing:-.045em}
+.ff-home .identity img{border-radius:11px;width:37px;height:37px}
+.ff-home .nav a{color:#c5d5e7;font-size:13px}.ff-home .nav a:hover{color:#6dcdff}
+.ff-home .hero{padding:85px 0;background:radial-gradient(ellipse at 88% 20%,#164f857a,transparent 48%),linear-gradient(110deg,#04101f,#0b2645);border-bottom:1px solid #235078}
+.ff-home .hero-grid{gap:65px;grid-template-columns:minmax(0,1.1fr) minmax(310px,.9fr)}
+.ff-home .eyebrow{color:#6bceff;font-weight:850;letter-spacing:.16em}
+.ff-home h1{font-size:clamp(43px,5vw,73px);line-height:1.08;max-width:810px;letter-spacing:-.068em}
+.ff-home h1 em{color:#4aaeff}
+.ff-home .lead{color:#bdd1e5;max-width:720px}
+.ff-home .btn.primary{background:linear-gradient(110deg,#168fff,#0860e9);border-color:#268cf6;color:white;box-shadow:0 8px 28px #0077ed42}
+.ff-home .btn.secondary{background:#0d1f33;color:#e9f5ff;border-color:#3975a0}
+.ff-home .start-card{background:linear-gradient(145deg,#0f2a45,#091a2e);border:1px solid #3773a4;border-radius:18px;box-shadow:0 18px 60px #0006,0 0 28px #1077d724}
+.ff-home .start-head{color:#79ceff;border-color:#315c81}
+.ff-home .start-row{border-color:#274e71;min-height:78px}
+.ff-home .start-row:hover{background:#143a5c}
+.ff-home .start-arrow{color:#6bc9ff}
+.ff-home .strip{background:#091e32;border-color:#25496a}
+.ff-home .strip span{color:#b7d0e6}
+.ff-home .section-light{background:linear-gradient(160deg,#071523,#06111e);color:#eef6ff}
+.ff-home .section-light .number{color:#6bc8ff}
+.ff-home .section-light h2{color:#f2f8ff}
+.ff-home .section-light .section-desc{color:#a9c0d6}
+.ff-home .section-side{color:#a8bed2;border-color:#36709c}
+.ff-home .products{gap:17px}
+.ff-home .product{background:linear-gradient(145deg,#10273d,#091b2c);border:1px solid #2d5272;color:#f2f8ff;border-radius:15px;box-shadow:inset 0 1px #28557740}
+.ff-home .product.featured{border-color:#449ce0;box-shadow:0 12px 40px #0a65ab2c}
+.ff-home .product .tag{color:#87d2ff}
+.ff-home .product .tag.service{color:#8fbcff}
+.ff-home .product p,.ff-home .product .meta{color:#b8cbdc}
+.ff-home .product .meta{border-color:#2a4762}
+.ff-home .product-links a{color:#69c7ff}
+.ff-home .roadmap{border-color:#35506b}
+.ff-home .roadmap summary{background:#10283e;border-color:#315977;color:#ecf5ff}
+.ff-home .roadmap summary small{color:#adc4d7}
+.ff-home .roadmap summary:after{color:#6bcaff}
+.ff-home .roadmap-content div{background:#0e2438;border-color:#31536f;color:#e7f4ff}
+.ff-home .roadmap-content span{color:#aac4d8}
+.ff-home .solutions{background:#081726}
+.ff-home .studio{background:#0a1c2d}
+.ff-home .contact{background:linear-gradient(115deg,#103553,#0d2740);color:#f2f9ff;border-top:1px solid #2a608b}
+.ff-home .contact p{color:#bfd6e8}
+.ff-home .contact .btn{background:linear-gradient(100deg,#118df8,#075bea);border:1px solid #238bf7;color:white}
+.ff-home footer{background:#06101e;border-color:#294762}
+.ff-home footer .legal{color:#9eb6cb}
+.ff-site .ff-portfolio-heading{width:100%;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:22px}
+.ff-site .ff-portfolio-heading>div:first-child{min-width:0}
+.ff-site .ff-portfolio-aside{display:flex;align-items:center;gap:20px;flex-wrap:wrap;line-height:1.35}
+.ff-site .ff-portfolio-aside strong{display:block}
+.ff-site .ff-portfolio-aside span{display:block}
+.ff-site .ff-intro{clear:both}
+@media(max-width:980px){.ff-home .hero-grid{grid-template-columns:1fr}.ff-home .start-card{max-width:650px}}
+@media(max-width:700px){.ff-home .hero{padding:60px 0}.ff-home h1{font-size:clamp(39px,10vw,56px)}.ff-home .wrap{padding-inline:20px}.ff-site .ff-portfolio-aside{display:none}}
+@media(prefers-reduced-motion:reduce){.ff-home *{transition:none!important}}
