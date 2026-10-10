@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="robots" content="noindex,nofollow">
+<title>Private Connect Migration Assessment | ForgeFrame Labs</title>
+<style>
+:root{--ink:#10233a;--muted:#586c80;--stroke:#dce3ea;--bg:#f5f8fb;--blue:#194f89;--gold:#8b5b00;--red:#a12334}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1040px;margin:auto;padding:42px 26px 100px}
+.top{display:flex;justify-content:space-between;gap:24px;padding-bottom:20px;border-bottom:1px solid var(--stroke);align-items:center}
+.brand{font-size:13px;letter-spacing:.11em;font-weight:800}.meta{color:var(--muted);font-size:12px}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.13;letter-spacing:-.04em;margin:34px 0 14px}
+h2{font-size:22px;letter-spacing:-.02em;margin:42px 0 14px}.intro{max-width:700px;color:var(--muted)}
+.synthetic{background:#fff3de;border:1px solid #e7d0a7;border-radius:12px;padding:17px 20px;margin:26px 0}
+.synthetic.private{background:#eaf2fa;border-color:#c7dae9}.synthetic strong,.synthetic span{display:block}
+.synthetic span{color:#536477;font-size:13px;margin-top:3px}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:28px}
+.metric{padding:22px;border:1px solid var(--stroke);border-radius:14px;background:#fff}
+.metric span{color:var(--muted);font-size:12px;display:block}
+.metric strong{font-size:28px;font-variant-numeric:tabular-nums}
+section{margin-top:26px}.table{overflow-x:auto;border-radius:12px;border:1px solid var(--stroke);background:white}
+table{width:100%;border-collapse:collapse;min-width:640px}
+th{background:#eef2f6;text-align:left;text-transform:uppercase;font-size:11px;letter-spacing:.07em;color:var(--muted)}
+td,th{padding:14px 17px;border-bottom:1px solid var(--stroke);vertical-align:top}
+tr:last-child td{border:0}td p{color:var(--muted);font-size:13px;margin:6px 0 0}
+.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.num{font-variant-numeric:tabular-nums}
+.chip{font-size:11px;font-weight:780;border-radius:6px;padding:5px 9px;display:inline-block}
+.danger{background:#fcecef;color:var(--red)}.warning{background:#fff2d5;color:var(--gold)}
+ol{padding-left:22px;color:#364f67}li{padding:5px 0}
+footer{margin-top:48px;padding-top:21px;border-top:1px solid var(--stroke);font-size:12px;color:var(--muted)}
+@media(max-width:700px){.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.top{align-items:flex-start;flex-direction:column}main{padding:24px 16px 64px}}
+@media print{body{background:white}main{padding:0}.metric{break-inside:avoid}tr{break-inside:avoid}}
+</style>
+</head>
+<body><main><header class="top"><div class="brand">FORGEFRAME LABS</div><div class="meta">Architecture desk assessment · Pre-migration</div></header>
+<h1>Private Connect → Forge assessment</h1>
+<p class="intro">Initial structural review of a private Atlassian Connect application. This deliverable identifies implementation decisions requiring investigation, not guaranteed feature equivalence or a production cutover.</p>
+<div class="synthetic" role="note"><strong>Illustrative sample only</strong><span>All records are invented. No customer environment, source code or Jira tenancy was analyzed.</span></div>
+<div class="metrics" aria-label="Findings overview">
+<div class="metric"><span>Modules identified</span><strong>4</strong></div>
+<div class="metric"><span>Module groups</span><strong>4</strong></div>
+<div class="metric"><span>Critical blockers</span><strong>0</strong></div>
+<div class="metric"><span>Review items</span><strong>12</strong></div>
+</div>
+<section><h2>Feature inventory</h2><div class="table"><table><thead><tr><th>Connect module type</th><th>Review category</th><th>Count</th></tr></thead><tbody><tr><td class="mono">jiraCustomFieldTypes</td><td>Custom field continuity</td><td class="num">1</td></tr><tr><td class="mono">jiraIssuePanels</td><td>Jira user interface</td><td class="num">1</td></tr><tr><td class="mono">jiraWorkflowValidators</td><td>Workflow continuity</td><td class="num">1</td></tr><tr><td class="mono">webhooks</td><td>Event delivery</td><td class="num">1</td></tr></tbody></table></div></section>
+<section><h2>Technical findings</h2><div class="table"><table><thead><tr><th>Priority</th><th>Finding / next check</th><th>Area</th></tr></thead><tbody><tr><td><span class="chip warning">REVIEW</span></td><td><b>CONNECT JWT MIGRATION</b><p>Plan the transition from Connect JWT and tenant secrets to Forge OAuth and permission checks.</p></td><td>security</td></tr><tr><td><span class="chip warning">REVIEW</span></td><td><b>CONNECT UNINSTALL BEHAVIOR CHANGED</b><p>Since September 2026, Connect uninstalled hooks are suppressed during Forge-only upgrades. Validate cleanup and migration state transitions separately; do not interpret every upgrade as a real tenant uninstall.</p></td><td>lifecycle</td></tr><tr><td><span class="chip warning">REVIEW</span></td><td><b>FORGE SCOPE UPGRADE IMPACT</b><p>Native Forge modules need explicit classic or granular scopes; verify privilege elevation, major-version behavior and any admin approvals against current Atlassian scope guidance.</p></td><td>security</td></tr><tr><td><span class="chip warning">REVIEW</span></td><td><b>INSTALL LIFECYCLE</b><p>Document tenant install/uninstall and migration semantics; no automatic lifecycle parity.</p></td><td>lifecycle</td></tr><tr><td><span class="chip warning">REVIEW</span></td><td><b>MODULE REVIEW</b><p>Check a matching Forge surface and verify user-visible behavior on a consented test site.</p></td><td>modules</td></tr><tr><td><span class="chip warning">REVIEW</span></td><td><b>MODULE REVIEW</b><p>Events must be remapped and processed with Forge permissions and retry semantics.</p></td><td>modules</td></tr><tr><td><span class="chip warning">REVIEW</span></td><td><b>MODULE REVIEW</b><p>Locked custom field identity, schema, data and migration listener may need separate treatment.</p></td><td>modules</td></tr><tr><td><span class="chip warning">REVIEW</span></td><td><b>MODULE REVIEW</b><p>Verify workflow validator parity and failed-transition handling.</p></td><td>modules</td></tr><tr><td><span class="chip warning">REVIEW</span></td><td><b>POTENTIAL DATA OR WORKFLOW MIGRATION</b><p>Record the current behavior, stored values, settings and acceptance tests before upgrading.</p></td><td>data</td></tr><tr><td><span class="chip warning">REVIEW</span></td><td><b>POTENTIAL DATA OR WORKFLOW MIGRATION</b><p>Record the current behavior, stored values, settings and acceptance tests before upgrading.</p></td><td>data</td></tr><tr><td><span class="chip warning">REVIEW</span></td><td><b>REMOTE BACKEND DEPENDENCY</b><p>Assess whether backend code can move to Forge functions, Forge Remote or remain external by design.</p></td><td>hosting</td></tr><tr><td><span class="chip warning">REVIEW</span></td><td><b>USER IMPERSONATION</b><p>Validate user identity, consent and permissions before porting impersonated operations.</p></td><td>security</td></tr></tbody></table></div></section>
+<section><h2>Acceptance plan — next scope</h2><ol><li>Review the real Connect module inventory, tenant events and authentication controls</li><li>Verify existing app identity, custom-field data, entity properties and workflow parity</li><li>Map actual Forge capabilities, scopes and costs with official documentation</li><li>Specify staging tests, data verification, rollback and owner go/no-go decision</li></ol></section>
+<footer>Not affiliated with Atlassian. Review uses sanitized descriptor structure only. No live permission checks, data portability verification, API compatibility guarantee, infrastructure spend or migration authorization. Consult Atlassian's official guidance before production changes.</footer>
+</main></body></html>
