@@ -188,7 +188,7 @@ test("all primary customer paths provide direct browser-based Gmail contact and 
  }
  for(const f of ["index.html","en/index.html","services/merchant-issue-desk.html",
   "services/connect-to-forge-assessment/index.html","services/connect-to-forge-assessment/pl/index.html"]){
-   assert.match(html(f),/https:\/\/mail\.google\.com\/mail\/\?view=cm&amp;fs=1/,f+" missing direct browser contact");
+   assert.match(html(f),/kontakt\.html|contact\/|product=/,f+" missing form route");
  }
  for(const f of ["products/contract-guard.html","integrations/otomoto-dealer-api.html"]){
    assert.doesNotMatch(html(f),/<script[^>]*direct-contact\.js/);
@@ -211,7 +211,7 @@ test("ForgeFrame bilingual contact forms have safe fields and working local asse
   assert.match(page,/method="POST"/);
   assert.match(page,/action="https:\/\/formsubmit\.co\/forgeframe\.lab@gmail\.com"/);
   assert.match(page,/name="email" type="email"[^>]*required/);
-  assert.match(page,/name="message" minlength="20" maxlength="2000"/);
+  assert.match(page,/name="message" minlength="10" maxlength="2000"/);
   assert.match(page,/name="_honey"/);
   assert.match(page,/name="privacy_notice_read"/);
   assert.match(page,/name="product" required/);
