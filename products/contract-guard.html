@@ -88,6 +88,7 @@
         </div>
         <p class="minor">Runs in your CI · No source upload · Read-only GitHub access</p>
         <p><a href="../tools/contract-guard-report.html">Explore the private evidence viewer →</a></p>
+        <p><a href="../guides/openapi-breaking-changes-github-actions.html">How to catch breaking OpenAPI changes in GitHub Actions →</a></p>
       </div>
       <div class="example" aria-label="Example of a breaking-change report generated from local test fixtures">
         <div class="example-head"><span>CONTRACT-GUARD / CI EVIDENCE</span><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
@@ -129,7 +130,7 @@
           <a href="https://github.com/reflectme-source/forgeframe-contract-guard#github-actions" rel="noopener noreferrer">Installation instructions and complete workflow →</a>
         </div>
         <div class="code"><pre>uses: reflectme-source/
-  forgeframe-contract-guard@v0.1.0
+  forgeframe-contract-guard@v0.1.1
 with:
   base: baseline.yaml
   head: openapi.yaml
