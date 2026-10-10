@@ -1,0 +1,22 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Przykładowy raport Merchant Issue Desk — dane syntetyczne</title>
+<style>body{font:16px/1.6 system-ui;background:#f7f8fa;color:#182233;margin:0}
+main{max-width:1140px;margin:auto;padding:40px 20px}h1{font-size:clamp(26px,4vw,42px)}
+p,small{color:#506174}table{border-collapse:collapse;width:100%;background:white}
+th,td{padding:12px;text-align:left;border:1px solid #dce3e9;vertical-align:top}
+th{background:#e7eef4}div.wrap{overflow-x:auto}
+.warning{border-left:4px solid #7b6573;padding:12px 16px;background:white}
+</style></head><body><main><p><a href="./merchant-issue-desk.html">← Wróć do opisu usługi</a></p><div class="warning"><strong>WYŁĄCZNIE DANE SYNTETYCZNE</strong>. To przykładowy wynik wygenerowany z lokalnych plików CSV. Nie prezentuje rzeczywistego sklepu ani decyzji Google.</div><h1>Merchant Issue Desk</h1>
+<p>Uporządkowana lista napraw z dwóch eksportów CSV — bez dostępu do konta Google.</p>
+<section><h2>Podsumowanie</h2><p>Katalog: 5 produktów · unikalne problemy: 6 · bez dopasowania ID: 1 · bez ID / do oceny konta: 1</p></section><div class="wrap"><table><thead><tr><th>Priorytet</th><th>ID</th><th>Problem</th>
+<th>Dopasowanie</th><th>Następny krok</th></tr></thead><tbody><tr><td>P1_DISAPPROVED</td><td>PL-404</td><td>Incorrect product identifier</td><td>MISSING_IN_CATALOG</td><td>Resolve exact product ID/feed/country mapping; do not auto-apply a fix.</td></tr>
+<tr><td>P1_DISAPPROVED</td><td>PL-001</td><td>Missing GTIN</td><td>MATCHED</td><td>Verify manufacturer-issued GTIN and product identifiers; never invent one.</td></tr>
+<tr><td>P1_DISAPPROVED</td><td>PL-003</td><td>Price mismatch</td><td>MATCHED</td><td>Compare catalog price, landing page and checkout, including currency/tax.</td></tr>
+<tr><td>P2_WARNING</td><td>PL-004</td><td>Image quality</td><td>MATCHED</td><td>Review actual product image, URL accessibility and applicable image policy.</td></tr>
+<tr><td>P2_WARNING</td><td>PL-005</td><td>Missing attribute: shipping</td><td>MATCHED</td><td>Check the named attribute in the primary source and resubmit corrected data.</td></tr>
+<tr><td>REVIEW_UNKNOWN_STATUS</td><td>PL-002</td><td>Unrecognized issue code</td><td>MATCHED</td><td>Review Google&#x27;s issue details and source policy; classify manually before fixing.</td></tr></tbody></table></div><p class="warning">To narzędzie nie łączy się z Merchant Center,
+nie potwierdza zgodności strony ani nie gwarantuje zatwierdzenia reklam czy produktów.
+Status UNKNOWN oznacza konieczność ręcznej oceny źródłowego komunikatu Google.</p>
+<footer><small>ForgeFrame Labs · wewnętrzny raport roboczy; bez danych klientów w demo</small></footer>
+</main></body></html>
