@@ -6,7 +6,7 @@ import {fileURLToPath} from "node:url";
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),"..");
 const pages=[
- "index.html","support.html","privacy.html","products/localization-qa.html",
+ "index.html","products/index.html","solutions/index.html","developers/index.html","about/index.html","en/products/index.html","en/solutions/index.html","en/developers/index.html","en/about/index.html","pl/kontakt.html","contact/index.html","support.html","privacy.html","products/localization-qa.html",
  "tools/localization-qa.html","tools/localization-qa-guide.html","products/contract-guard.html","products/contract-guard-intake.html","terms.html","tools/contract-guard-report.html","integrations/otomoto-dealer-api.html","guides/otomoto-price-monitoring.html","en/index.html","pl/pomoc.html","pl/prywatnosc.html","pl/lokalizacja.html","guides/openapi-breaking-changes-github-actions.html"
 ];
 function html(file) {return readFileSync(join(root,file),"utf8");}
@@ -259,7 +259,7 @@ test("live products have tailored buyer scope, deliverables and truthful access"
  assert.match(styles,/__action--primary/);
  assert.doesNotMatch(styles,/url\(/);
 });
-test("central product catalog is complete and avoids unsupported sales promises",()=>{const home=html("index.html"),catalog=html("products/index.html");assert.ok((catalog.match(/<article class="card"/g)||[]).length>=7);for(const name of ["OriginDuty","Digital Packager","Localization QA","Contract Guard","Merchant Issue Desk"])assert.match(catalog,new RegExp(name));assert.match(home,/products\//);assert.match(catalog,/Przedpremiera/);assert.match(catalog,/connect-to-forge-assessment/);assert.match(home,/integrations|solutions\/otomoto-vehicle-monitoring/);});
+test("central product catalog is complete and avoids unsupported sales promises",()=>{const home=html("index.html"),catalog=html("products/index.html");assert.ok((catalog.match(/<article class="ffg-product-card"/g)||[]).length>=7);for(const name of ["OriginDuty","Digital Packager","Localization QA","Contract Guard","Merchant Issue Desk"])assert.match(catalog,new RegExp(name));assert.match(home,/products\//);assert.match(catalog,/Przedpremiera/);assert.match(catalog,/connect-to-forge-assessment/);assert.match(home,/integrations|solutions\/otomoto-vehicle-monitoring/);});
 
 test("Polish localization product page has actual sample format, privacy and clear free access",()=>{
  const p=html("pl/lokalizacja.html");
@@ -333,4 +333,47 @@ test("domain binding uses the selected owned apex hostname",()=>{
  assert.equal(readFileSync(join(root,"CNAME"),"utf8").trim(),"forgeframelabs.app");
  const robots=readFileSync(join(root,"robots.txt"),"utf8");
  assert.match(robots,/Sitemap: https:\/\/forgeframelabs\.app\/sitemap\.xml/);
+});
+
+
+test("shared ForgeFrame shell is identical in structure on every top-level tab",()=>{
+ const all=["index.html","en/index.html","products/index.html","solutions/index.html","developers/index.html","about/index.html","en/products/index.html","en/solutions/index.html","en/developers/index.html","en/about/index.html","pl/kontakt.html","contact/index.html"];
+ for(const file of all){const content=html(file);
+   assert.match(content,/<header class="ffg-header">/,file+" missing global header");
+   assert.match(content,/<footer class="ffg-footer">/,file+" missing global footer");
+   assert.match(content,/class="ffg-brand-logo"/,file+" missing consistent logo");
+   assert.match(content,/class="ffg-language"/,file+" missing locale switch");
+   assert.match(content,/lang="pl"[^>]*>PL<\/a>/,file+" missing Polish switch");
+   assert.match(content,/lang="en"[^>]*>EN<\/a>/,file+" missing English switch");
+   assert.match(content,/forgeframe-global\.css/,file+" missing shared styles");
+   assert.equal((content.match(/<header class="ffg-header">/g)||[]).length,1);
+   assert.equal((content.match(/<footer class="ffg-footer">/g)||[]).length,1);
+   assert.match(content,/<a [^>]*href=[^>]*>[^<]*(?:Contact|Kontakt)<\/a>/);
+ }
+});
+test("portfolio cards present color icon, title, verified status and CTA without duplicating them",()=>{
+ for(const file of ["index.html","en/index.html","products/index.html","en/products/index.html"]){
+  const text=html(file);
+  assert.equal((text.match(/<article class="ffg-product-card"/g)||[]).length,7,file+" needs all seven offers");
+  assert.equal((text.match(/class="ffg-product-icon"/g)||[]).length,7);
+  assert.equal((text.match(/class="ffg-product-status"/g)||[]).length,7);
+  assert.equal((text.match(/class="ffg-product-cta"/g)||[]).length,7);
+  assert.match(text,/data-state="pilot"/);
+  assert.match(text,/data-state="prelaunch"/);
+ }
+ const css=html("assets/forgeframe-global.css");
+ assert.match(css,/grid-template-columns:repeat\(7,minmax\(0,1fr\)\)/);
+ assert.match(css,/\.ffg-footer-content/);
+ const js=html("assets/catalog-filter.js");
+ assert.match(js,/ffg-product-card/);
+ assert.match(js,/aria-pressed/);
+});
+test("English sections have individual, indexable routes",()=>{
+ for(const section of ["products","solutions","developers","about"]){
+  const page=html("en/"+section+"/index.html");
+  assert.match(page,/<html lang="en">/);
+  assert.match(page,new RegExp('https://forgeframelabs\\.app/en/'+section+'/'));
+  assert.match(page,/class="ffg-nav"/);
+  assert.ok(html("sitemap.xml").includes("https://forgeframelabs.app/en/"+section+"/"));
+ }
 });
