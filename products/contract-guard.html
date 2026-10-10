@@ -150,10 +150,10 @@ with:
           <p class="section-lead">We'll integrate the same open-source gate into your engineering workflow, define appropriate review policy, validate a breaking and non-breaking fixture, and hand over the setup with evidence artifacts.</p>
           <p class="plain">No sales call and no subscription required. We qualify the existing spec and CI before accepting a paid setup. The Action remains free for teams that prefer self-service.</p>
           <ol class="buyer-steps" aria-label="Managed setup buying process">
-            <li><strong>01 — Request a scope check</strong><span>Email the spec path, version, runner and expected delivery window. Do not send secrets or a private API file.</span></li>
+            <li><strong>01 — Request a scope check</strong><span>Use our local-only intake page to prepare an email with the spec path, version, runner and expected delivery window. Do not send credentials or API source files.</span></li>
             <li><strong>02 — Receive written acceptance</strong><span>We confirm eligibility, what is included, the legal seller and a delivery date before asking for payment.</span></li>
-            <li><strong>03 — Pay securely via Stripe</strong><span>After accepting the scope, use the hosted one-time payment page. Stripe confirms the payment; no card details go to ForgeFrame.</span></li>
-            <li><strong>04 — Install, verify, hand over</strong><span>We request least-privilege access, configure the CI workflow, demonstrate safe/breaking cases and hand over evidence and instructions.</span></li>
+            <li><strong>03 — Pay securely via Stripe</strong><span>After written acceptance, receive a unique one-order Stripe link by email. Only confirmed payments start an installation; we never collect card details.</span></li>
+            <li><strong>04 — Install, verify, hand over</strong><span>Grant least-privilege access, approve the CI Pull Request, review passing and blocking examples, and receive your evidence report and closure confirmation.</span></li>
           </ol>
         </div>
         <div class="price">
@@ -166,9 +166,9 @@ with:
             <li>Breaking and safe change verification</li>
             <li>JSON/Markdown evidence handover</li>
           </ul>
-          <a class="button primary" href="mailto:forgeframe.lab@gmail.com?subject=Contract%20Guard%20%E2%80%94%20%24149%20one-repository%20setup%20scope&amp;body=Hello%20ForgeFrame%20Labs%2C%0A%0APlease%20confirm%20whether%20our%20repository%20qualifies%20for%20the%20%24149%20Contract%20Guard%20setup.%0A%0ARepository%20URL%20(public%20only%3B%20optional)%3A%0AGitHub%20repository%20name%20(no%20private%20code)%3A%0AOpenAPI%20version%20and%20path%20(YAML%2FJSON)%3A%0AGitHub%20Actions%20runner%20%2F%20environment%3A%0AExternal%20%24refs%20or%20generated%20spec%3F%20(yes%2Fno)%3A%0ADesired%20delivery%20date%3A%0ACompany%20and%20country%3A%0A%0APlease%20confirm%20exact%20scope%2C%20delivery%20date%2C%20legal%20seller%20and%20Stripe%20payment%20instructions%20before%20we%20pay.%0A%0ANo%20secrets%20or%20private%20specification%20files%20attached.">Request a scope check — email ↗</a>
-          <p class="service-notice">Confirm repository scope and delivery schedule by email before paying. The service is limited to one qualifying repository; there is no recurring charge. Read the <a href="../terms.html">service terms, cancellation and refund information</a>.</p>
-          <details class="approved-checkout"><summary>Already approved by email? Access secure payment</summary><p>Only pay after ForgeFrame Labs has confirmed your exact scope, legal seller and delivery date in writing. The $149 charge is processed by Stripe. No automatic hosted account is created.</p><a class="button" href="https://buy.stripe.com/fZu8wR6FX4q962E81z73G00" rel="noopener noreferrer">Continue to Stripe LIVE — $149 ↗</a></details>
+          <a class="button primary" href="./contract-guard-intake.html">Request setup — qualify your repo ↗</a>
+          <p class="service-notice">Confirm repository scope and delivery schedule before paying. The service covers one qualifying repository. Read the <a href="../terms.html">service terms, cancellation and refund information</a>.</p>
+          <p class="service-notice"><strong>Payment process:</strong> we send a unique, one-order Stripe payment link only after confirming your technical scope, legal seller and delivery timeline. There is no public instant checkout or recurring subscription.</p>
         </div>
       </div>
     </section>
@@ -179,6 +179,7 @@ with:
       <div class="faq"><h3>Does the report certify audit compliance?</h3><p>No. The SHA-256 hashes help reviewers match evidence to the original specifications, but do not constitute a digital signature or formal certification.</p></div>
       <div class="faq"><h3>Why pay for setup when the Action is free?</h3><p>You pay for an implemented, verified workflow and handover in your repository — not for access to the open-source detector. The self-hosted tool remains free to use.</p></div>
       <div class="faq"><h3>What is not included in the $149 fixed scope?</h3><p>It does not include custom API development, multi-repository migration, runtime contract testing, a hosted dashboard or continuous monitoring. Additional work requires a separate proposal.</p></div>
+      <div class="faq"><h3>Can I pay before you confirm the scope?</h3><p>No. The public website does not contain an immediately usable checkout. After written agreement, we issue a unique payment link for your order. You will not be charged simply for requesting a scope assessment.</p></div>
       <div class="faq"><h3>What if my repository does not qualify, or I need to cancel?</h3><p>We verify eligibility and timing before payment. If setup cannot be delivered as agreed, contact support; the <a href="../terms.html">service terms</a> explain cancellation, refunds and statutory rights.</p></div>
     </section>
   </main>
