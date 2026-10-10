@@ -7,7 +7,7 @@ import {fileURLToPath} from "node:url";
 const root=resolve(dirname(fileURLToPath(import.meta.url)),"..");
 const pages=[
  "index.html","support.html","privacy.html","products/localization-qa.html",
- "tools/localization-qa.html","tools/localization-qa-guide.html","products/contract-guard.html","tools/contract-guard-report.html","integrations/otomoto-dealer-api.html","guides/otomoto-price-monitoring.html","en/index.html","pl/pomoc.html","pl/prywatnosc.html","pl/lokalizacja.html","guides/openapi-breaking-changes-github-actions.html"
+ "tools/localization-qa.html","tools/localization-qa-guide.html","products/contract-guard.html","products/contract-guard-intake.html","terms.html","tools/contract-guard-report.html","integrations/otomoto-dealer-api.html","guides/otomoto-price-monitoring.html","en/index.html","pl/pomoc.html","pl/prywatnosc.html","pl/lokalizacja.html","guides/openapi-breaking-changes-github-actions.html"
 ];
 function html(file) {return readFileSync(join(root,file),"utf8");}
 function localTargets(page) {
