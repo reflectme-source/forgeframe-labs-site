@@ -1,1 +1,92 @@
-<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Localization QA — instrukcja | ForgeFrame Labs</title><link rel="canonical" href="https://reflectme-source.github.io/forgeframe-labs-site/pl/lokalizacja.html"><style>body{margin:0;background:#0c1520;color:#eff6fc;font:16px/1.7 system-ui}main{max-width:900px;margin:auto;padding:36px 24px}a{color:#b9dfff}h1{font-size:clamp(36px,6vw,60px)}section{border-top:1px solid #34516a;padding:20px 0}</style></head><body><main><a href="../index.html">← ForgeFrame Labs</a><h1>Localization QA — instrukcja</h1><p>Bezpłatna kontrola plików CSV z tłumaczeniami, wykonywana lokalnie w przeglądarce.</p><section><h2>Jak rozpocząć?</h2><p>Otwórz Inspector, wybierz plik UTF-8 CSV do 2 MB lub przykład, ustaw język źródłowy (np. en), uruchom analizę i wyeksportuj raport.</p><a href="../tools/localization-qa.html">Uruchom Inspector ↗</a></section><section><h2>Wymagany format</h2><p>Pierwsza kolumna nosi nazwę key, następne oznaczają języki, np. en, pl, de. Obsługiwane są wartości w cudzysłowach i przecinki w komórkach.</p></section><section><h2>Co jest sprawdzane?</h2><p>Brakujące tłumaczenia, duplikaty kluczy, niezgodne placeholdery i znaczniki oraz błędne wiersze CSV. Narzędzie nie ocenia jakości językowej tłumaczenia.</p><a href="../tools/localization-qa-guide.html">Dokumentacja techniczna (EN) ↗</a></section><footer><a href="./pomoc.html">Pomoc</a> · <a href="./prywatnosc.html">Prywatność</a></footer></main><script src="../assets/direct-contact.js" defer></script></body></html>
+<!doctype html>
+<html lang="pl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101f2b">
+<meta name="description" content="Localization QA Inspector od ForgeFrame Labs: bezpłatnie sprawdź tłumaczenia CSV, placeholdery i zduplikowane klucze. Plik analizowany lokalnie, bez konta.">
+<link rel="canonical" href="https://reflectme-source.github.io/forgeframe-labs-site/pl/lokalizacja.html">
+<link rel="alternate" hreflang="en" href="https://reflectme-source.github.io/forgeframe-labs-site/products/localization-qa.html">
+<link rel="icon" href="../assets/forgeframe-avatar.png" type="image/png">
+<title>Localization QA Inspector — kontrola tłumaczeń CSV | ForgeFrame Labs</title>
+<style>
+:root{font:16px/1.62 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:#eaf4f7;background:#10212f;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0;min-width:320px}a{color:inherit;text-underline-offset:4px}
+a:focus-visible{outline:3px solid #79c4ee;outline-offset:4px}p{margin:0}
+.wrap{width:min(1120px,100%);padding-inline:28px;margin-inline:auto}
+.skip{position:absolute;top:-100px;left:12px;background:white;color:#132637;padding:9px 15px;z-index:10}.skip:focus{top:12px}
+nav{display:flex;justify-content:space-between;align-items:center;gap:24px;min-height:76px;border-bottom:1px solid #385164}
+.brand{font-size:14px;letter-spacing:-.02em;text-decoration:none;font-weight:850;display:flex;gap:12px;align-items:center}.brand img{width:34px;height:34px;border-radius:9px}.navlinks{display:flex;gap:19px;font-size:13px;color:#c6dbe6}
+.hero{padding:76px 0 84px}.hero-layout{display:grid;grid-template-columns:1.07fr .93fr;align-items:center;gap:58px}
+.eyebrow{text-transform:uppercase;font-size:11px;letter-spacing:.14em;font-weight:800;color:#9ecee4}
+h1{font-size:clamp(40px,5.2vw,66px);line-height:1.08;letter-spacing:-.06em;max-width:680px;margin:17px 0 23px}
+h1 em{font-style:normal;color:#b8e4f3}.lead{color:#c0d6e0;max-width:650px;line-height:1.8;font-size:16px}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:29px}.btn{min-height:47px;display:inline-flex;align-items:center;padding:11px 18px;text-decoration:none;font-weight:800;font-size:13px;border:1px solid #7696a8;border-radius:5px}
+.btn.primary{color:#132b3a;background:#dbf0fc;border-color:#dbf0fc}.btn:hover{background:#f3fcff;color:#162733}
+.micro{margin-top:17px;font-size:12px;color:#a7c6d4}.example{border:1px solid #47687a;background:#0c1b29;border-radius:12px;overflow:hidden;box-shadow:0 28px 65px #060f184f}
+.example-head{display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#accada;font-weight:800;padding:15px 18px;border-bottom:1px solid #3a5769}
+.example-head span:last-child{color:#a5e7d3}.example pre{padding:25px 20px 14px;color:#e0f5ff;white-space:pre;overflow-x:auto;font:12px/1.9 ui-monospace,Consolas,monospace;margin:0}
+.example-note{padding:11px 18px;color:#a9c7d6;font-size:12px;border-top:1px solid #355266}
+.light{background:#f4f7f5;color:#162b31}.section{padding:78px 0}
+.sec-title{font-size:clamp(31px,4vw,45px);letter-spacing:-.05em;line-height:1.17;max-width:790px;margin:13px 0 18px}.desc{font-size:15px;color:#51666c;max-width:720px;line-height:1.75}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:34px}.item{border-top:2px solid #385e66;padding-top:20px}
+.item small{font-weight:800;color:#5c7d82;font-size:11px;letter-spacing:.1em}.item h3{font-size:19px;letter-spacing:-.025em;margin:13px 0 8px}
+.item p{font-size:14px;color:#50656b;line-height:1.8}
+.band{background:#e8eeec;color:#17303a}.split{display:grid;grid-template-columns:1.12fr .88fr;gap:58px;align-items:start}
+.steps{counter-reset:step;list-style:none;padding:0;margin:30px 0 0;display:grid;gap:18px}.steps li{counter-increment:step;padding-left:45px;position:relative;color:#3f5962;font-size:14px}.steps li:before{content:counter(step,decimal-leading-zero);position:absolute;left:0;font:800 12px/1.8 system-ui;color:#2f5867}
+.offer{background:#fff;border:1px solid #ccdcdb;padding:31px;border-radius:10px}.offer strong{font-size:31px;letter-spacing:-.05em;color:#122b36}
+.offer p{font-size:13px;color:#526b72;margin:12px 0 22px;line-height:1.8}.offer a{display:inline-flex;min-height:47px;align-items:center;background:#163647;color:white;border-radius:5px;padding:11px 17px;font-size:13px;font-weight:800;text-decoration:none}
+.faq{padding:74px 0}.faq details{border-bottom:1px solid #b7cbcc;padding:18px 0}.faq summary{font-weight:750;cursor:pointer;font-size:16px}.faq details p{margin-top:13px;color:#50666c;font-size:14px;max-width:850px}
+footer{border-top:1px solid #426174;padding:28px 0;color:#bdd4e1;font-size:12px}.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:15px}
+@media(max-width:810px){.hero-layout,.split{grid-template-columns:1fr}.hero-layout{gap:34px}.hero{padding:53px 0 62px}.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.wrap{padding-inline:19px}.grid{grid-template-columns:1fr}.section{padding:56px 0}h1{font-size:clamp(37px,10vw,52px)}.navlinks{gap:12px;font-size:12px}.hero{padding-top:43px}.btn{width:100%;justify-content:center}.offer{padding:23px}.example pre{font-size:11px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head>
+<body><a class="skip" href="#main">Przejdź do treści</a>
+<header class="wrap"><nav aria-label="Nawigacja">
+<a class="brand" href="../index.html"><img src="../assets/forgeframe-avatar.png" width="34" height="34" alt="">ForgeFrame Labs</a>
+<div class="navlinks"><a href="../index.html#produkty">Produkty</a><a href="./pomoc.html">Pomoc</a><a href="../products/localization-qa.html" lang="en">EN</a></div>
+</nav></header>
+<main id="main">
+<section class="hero"><div class="wrap hero-layout">
+<div><span class="eyebrow">Localization QA Inspector / bezpłatny</span>
+<h1>Sprawdź tłumaczenia CSV <em>przed kolejnym buildem.</em></h1>
+<p class="lead">Wykryj brakujące wersje językowe, powtórzone identyfikatory i błędne znaczniki w tabeli lokalizacji. Plik zostaje na Twoim komputerze — nie potrzebujesz konta ani instalacji.</p>
+<div class="btns"><a class="btn primary" href="../tools/localization-qa.html">Uruchom bezpłatny Inspector ↗</a><a class="btn" href="#format">Zobacz wymagany format</a></div>
+<p class="micro">Bezpłatnie · CSV UTF-8 do 2 MB · analiza lokalna · raport CSV/JSON</p></div>
+<div class="example" aria-label="Przykładowy format tabeli tłumaczeń">
+<div class="example-head"><span>CSV / przykład wejścia</span><span>Dane przykładowe</span></div>
+<pre>key,en,pl,de
+welcome,"Welcome {name}","Witaj {name}","Hallo {name}"
+score,"Score: %d","Wynik: %d","Punkte: %d"
+menu.start,Start,Start,Start</pre>
+<div class="example-note">Przykład formatu, nie rzeczywiste dane klienta. Narzędzie sprawdza strukturę, nie jakość tłumaczenia.</div>
+</div></div></section>
+<section class="section light"><div class="wrap">
+<span class="eyebrow">Co rozwiązuje</span><h2 class="sec-title">Błędy, które najlepiej wychwycić przed wysłaniem pliku.</h2>
+<p class="desc">Dla zespołów gier i aplikacji pracujących na tabelach lokalizacji w CSV. Bez kolejnego panelu SaaS, tylko konkretny wynik inspekcji.</p>
+<div class="grid">
+<article class="item"><small>01 / KOMPLETNOŚĆ</small><h3>Brakujące tłumaczenia</h3><p>Puste wartości, brak identyfikatora oraz różne długości wierszy względem nagłówka.</p></article>
+<article class="item"><small>02 / SPÓJNOŚĆ</small><h3>Duplikaty kluczy</h3><p>Powtórzone identyfikatory w tabeli i inne problemy ze strukturą importu.</p></article>
+<article class="item"><small>03 / INTEGRACJA</small><h3>Placeholdery i tagi</h3><p>Różnice w {name}, kodach printf i znacznikach między językiem źródłowym a tłumaczeniem.</p></article>
+</div></div></section>
+<section class="section band" id="format"><div class="wrap split">
+<div><span class="eyebrow">Jak rozpocząć</span><h2 class="sec-title">Trzy kroki do raportu.</h2>
+<ol class="steps">
+<li>Przygotuj plik CSV UTF-8. Pierwsza kolumna to <code>key</code>, kolejne to kody języków, np. <code>en</code>, <code>pl</code>, <code>de</code>.</li>
+<li>Otwórz <a href="../tools/localization-qa.html">Inspector</a>, wskaż plik i wybierz język źródłowy. Analiza odbywa się w przeglądarce.</li>
+<li>Przejrzyj wyniki i pobierz raport jako CSV lub JSON, aby przekazać go zespołowi.</li>
+</ol>
+<p class="desc" style="margin-top:23px">Obsługiwane są cytowane wartości z przecinkami. Szczegóły reguł i kodów problemów znajdziesz w <a href="../tools/localization-qa-guide.html" lang="en">dokumentacji technicznej</a>.</p></div>
+<aside class="offer"><span class="eyebrow">Dostępność i cena</span><p><strong>0 zł</strong></p><p>Inspektor przeglądarkowy jest dostępny bezpłatnie. Nie wymaga karty, subskrypcji ani przesyłania plików na serwer.</p>
+<a href="../tools/localization-qa.html">Otwórz narzędzie ↗</a>
+<p style="margin-top:18px">Natywna wtyczka Unity Editor nie jest obecnie dostępna w Asset Store; nie przedstawiamy jej jako gotowego produktu płatnego.</p>
+</aside></div></section>
+<section class="faq light"><div class="wrap"><span class="eyebrow">Ważne przed użyciem</span><h2 class="sec-title">Odpowiedzi bez drobnego druku.</h2>
+<details><summary>Czy plik jest wysyłany na serwer?</summary><p>Nie. Inspektor analizuje wybrany CSV lokalnie w Twojej przeglądarce. Wygenerowany raport może zawierać fragmenty treści, więc sprawdź go przed udostępnieniem.</p></details>
+<details><summary>Czy narzędzie sprawdza poprawność językową?</summary><p>Nie. Wykrywa problemy strukturalne, nie ocenia stylu, terminologii ani jakości tłumaczeń. Złożona składnia ICU może wymagać ręcznego przeglądu.</p></details>
+<details><summary>Co z automatyzacją CI i Unity?</summary><p>Dostępny jest opis opcjonalnego sprawdzania przez Node.js; nie jest to jednak gotowa natywna wtyczka Unity Editor. Zacznij od przeglądarkowej inspekcji CSV.</p></details>
+<p style="margin-top:26px"><a href="./kontakt.html?product=localization-qa">Zgłoś problem z lokalizacją lub zapytaj o integrację ↗</a></p>
+</div></section>
+</main>
+<footer><div class="wrap foot"><span>© 2026 ForgeFrame Labs</span><span><a href="../index.html">Produkty</a> · <a href="./pomoc.html">Pomoc</a> · <a href="./prywatnosc.html">Prywatność</a></span></div></footer>
+<script src="../assets/direct-contact.js" defer></script>
+</body></html>
