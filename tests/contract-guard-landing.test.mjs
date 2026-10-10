@@ -11,7 +11,7 @@ const home=readFileSync(join(root,'index.html'),'utf8');
 test('landing is reachable from portfolio and sitemap',()=>{
   assert.match(home,/products\/contract-guard\.html/);
   assert.match(readFileSync(join(root,'sitemap.xml'),'utf8'),/products\/contract-guard\.html/);
-  assert.match(landing,/<link rel="canonical" href="https:\/\/reflectme-source\.github\.io\/forgeframe-labs-site\/products\/contract-guard\.html">/);
+  assert.match(landing,/<link rel="canonical" href="https:\/\/forgeframelabs\.app\/products\/contract-guard\.html">/);
 });
 test('landing has honest monetization path and does not claim payments exist',()=>{
   assert.match(landing,/Managed setup · \$149/i);
