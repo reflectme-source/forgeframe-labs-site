@@ -7,7 +7,7 @@ import {fileURLToPath} from "node:url";
 const root=resolve(dirname(fileURLToPath(import.meta.url)),"..");
 const pages=[
  "index.html","support.html","privacy.html","products/localization-qa.html",
- "tools/localization-qa.html","tools/localization-qa-guide.html","products/contract-guard.html","tools/contract-guard-report.html","integrations/otomoto-dealer-api.html"
+ "tools/localization-qa.html","tools/localization-qa-guide.html","products/contract-guard.html","tools/contract-guard-report.html","integrations/otomoto-dealer-api.html","guides/otomoto-price-monitoring.html"
 ];
 function html(file) {return readFileSync(join(root,file),"utf8");}
 function localTargets(page) {
@@ -139,7 +139,7 @@ test("brand-wide support and privacy are aligned with multi-platform products",(
 test("public sitemap lists real brand routes including Polish automotive landing",()=>{
  const sm=readFileSync(join(root,"sitemap.xml"),"utf8");
  const urls=[...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
- assert.equal(urls.length,10);
+ assert.equal(urls.length,11);
  assert.ok(urls.some(url=>url.endsWith("/integrations/otomoto-dealer-api.html")));
  assert.ok(urls.some(url=>url.endsWith("/products/contract-guard.html")));
  for(const u of urls){
@@ -148,4 +148,17 @@ test("public sitemap lists real brand routes including Polish automotive landing
    const relative=parsed.pathname.replace(/^\/forgeframe-labs-site\//,"")||"index.html";
    assert.ok(existsSync(join(root,relative)),u+" not found in repository");
  }
+});
+test("buyer guide directs qualified visitors to real Apify tasks and a scoped integration inquiry",()=>{
+ const page=html("guides/otomoto-price-monitoring.html");
+ assert.match(page,/lang="pl"/);
+ assert.match(page,/href="#main"/);
+ assert.equal((page.match(/<h1\b/g)||[]).length,1);
+ for(const slug of ["bmw-3-series-price-changes","audi-a4-market-price-watch","skoda-octavia-new-listing-monitor"]){
+  assert.ok(page.includes("/examples/"+slug),"Missing verified Apify example "+slug);
+ }
+ assert.match(page,/mailto:forgeframe\.lab@gmail\.com/);
+ assert.match(page,/Nie\. To niezależny Actor/);
+ assert.doesNotMatch(page,/<script\b[^>]*src=/);
+ assert.match(html("integrations/otomoto-dealer-api.html"),/guides\/otomoto-price-monitoring\.html/);
 });
