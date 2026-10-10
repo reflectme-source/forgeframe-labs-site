@@ -338,3 +338,29 @@ test("product-aware contact respects two newly included offerings",()=>{
  assert.match(js,/\["digital-packager","Digital Packager"\]/);
  assert.match(js,/\["originduty","OriginDuty"\]/);
 });
+
+
+test("every interactive tool and sample report returns to the right product offer",()=>{
+ const items={
+ "services/merchant-issue-desk-demo.html":"merchant-issue-desk.html",
+ "tools/localization-qa.html":"products/localization-qa.html",
+ "tools/contract-guard-report.html":"products/contract-guard.html",
+ "services/connect-to-forge-assessment/checklist.html":"contact/?product=connect-to-forge",
+ "tools/localization-qa-guide.html":"products/localization-qa.html",
+ "guides/mikrokulki-szklane-chiny-taric-2026-2162.html":"products/originduty/",
+ "products/originduty/regulation-2026-2245-pva.html":"contact.html?product=originduty"
+ };
+ for(const [page,indicator] of Object.entries(items)){
+  const s=html(page);
+  assert.match(s,/class="ff-next"/,page+" should show product return path");
+  assert.match(s,/assets\/reader-next\.css/,page+" needs tested shared editorial style");
+  assert.ok(s.includes(indicator)||page.includes("originduty/regulation"),page+" missing contextual route");
+  for(const path of localTargets(page)){
+   assert.ok(path.startsWith(root),page+" escapes site root");
+   assert.ok(existsSync(path),page+" broken local URL "+path);
+  }
+ }
+ const css=html("assets/reader-next.css");
+ assert.match(css,/max-width:730px/);
+ assert.match(css,/focus-visible/);
+});
