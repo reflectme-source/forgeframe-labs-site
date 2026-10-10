@@ -1,8 +1,7 @@
 name: OriginDuty - official EU source refresh
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "41 5 * * *"
+  # Scheduled sync disabled until official source responds reliably to unattended checks.
 permissions:
   contents: write
 concurrency:
