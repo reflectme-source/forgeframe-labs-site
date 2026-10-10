@@ -32,6 +32,7 @@ footer{border-top:1px solid #263b51;padding:26px 0;color:#92a6be;font-size:.88re
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Localization QA Inspector — Browser Demo","operatingSystem":"Web browser","applicationCategory":"DeveloperApplication","description":"Local-only CSV localization validation with placeholder checks, duplicate key detection and JSON reports.","url":"https://reflectme-source.github.io/forgeframe-labs-site/tools/localization-qa.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
+<link rel="stylesheet" href="../assets/product-details.css">
 </head>
 <body>
 <header><div class="nav"><a class="brand" href="../index.html">← ForgeFrame Labs</a><a href="../support.html">Support</a></div></header>
@@ -40,7 +41,9 @@ footer{border-top:1px solid #263b51;padding:26px 0;color:#92a6be;font-size:.88re
   <h1>Stop shipping broken translations.</h1>
   <p class="lead">Check the structure of your localization CSV before a release. Catch missing strings, placeholder mismatches and duplicated keys using a focused inspector built for game development workflows.</p>
   <div class="actions"><a class="cta primary" href="../tools/localization-qa.html">Open the free inspector</a><a class="cta" href="mailto:forgeframe.lab@gmail.com?subject=Localization%20QA%20Inspector%20Unity%20beta">Ask about Unity integration</a></div>
-  <div class="grid">
+  
+<section class="ff-detail" aria-label="Product facts"><div class="ff-detail__inner"><div class="ff-detail__head"><div><p class="ff-detail__eyebrow">LOCALIZATION QA / FREE TOOL</p><h2 class="ff-detail__title">Check your real CSV locally before handing it to production.</h2></div><span class="ff-detail__state">Free browser tool live</span></div><div class="ff-detail__grid"><div class="ff-detail__cell"><span class="ff-detail__label">For whom</span><p class="ff-detail__body">Unity and game teams shipping multi-language CSV tables who need a fast pre-release quality check.</p></div><div class="ff-detail__cell"><span class="ff-detail__label">What it detects</span><p class="ff-detail__body">Missing translations, duplicate keys, inconsistent placeholders and other structural issues; export available from the inspector.</p></div><div class="ff-detail__cell"><span class="ff-detail__label">Price and delivery</span><p class="ff-detail__body"><strong>Free, no account.</strong> File processing stays in your browser. A native paid Unity Editor package is not currently available.</p></div></div><div class="ff-detail__actions"><a class="ff-detail__action ff-detail__action--primary" href="../tools/localization-qa.html">Open the free inspector <span aria-hidden="true">↗</span></a><a class="ff-detail__action" href="../tools/localization-qa-guide.html">Read the input guide <span aria-hidden="true">↗</span></a></div><p class="ff-detail__fine">A format checker does not judge the meaning or accuracy of a translation. No file upload or external payment is required for the browser tool.</p></div></section>
+<div class="grid">
     <article><h3>Find broken placeholders</h3><p>Compare <code>{name}</code>, printf specifiers and markup tags across target languages.</p></article>
     <article><h3>Catch table issues</h3><p>Detect duplicate keys, missing translations and malformed CSV rows.</p></article>
     <article><h3>Protect releases in CI</h3><p>Run deterministic offline validation from a Node.js script that can fail your build on important findings.</p></article>
