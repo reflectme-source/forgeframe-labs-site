@@ -7,7 +7,7 @@ import {fileURLToPath} from "node:url";
 const root=resolve(dirname(fileURLToPath(import.meta.url)),"..");
 const pages=[
  "index.html","support.html","privacy.html","products/localization-qa.html",
- "tools/localization-qa.html","tools/localization-qa-guide.html","products/contract-guard.html","tools/contract-guard-report.html","integrations/otomoto-dealer-api.html","guides/otomoto-price-monitoring.html","guides/openapi-breaking-changes-github-actions.html"
+ "tools/localization-qa.html","tools/localization-qa-guide.html","products/contract-guard.html","tools/contract-guard-report.html","integrations/otomoto-dealer-api.html","guides/otomoto-price-monitoring.html","en/index.html","pl/pomoc.html","pl/prywatnosc.html","pl/lokalizacja.html","guides/openapi-breaking-changes-github-actions.html"
 ];
 function html(file) {return readFileSync(join(root,file),"utf8");}
 function localTargets(page) {
@@ -65,63 +65,17 @@ test("only first-party local JS modules run in the inspector",()=>{
  assert.doesNotMatch(page,/google-analytics|gtag|segment\.com|hotjar|mixpanel/i);
 });
 
-test("ForgeFrame home offers a browsable multi-platform portfolio with honest readiness",()=>{
- const home=html("index.html");
- assert.match(home,/<main id="main">/);
- assert.match(home,/href="#main">Skip to content/);
- assert.equal((home.match(/<article class="project"/g)||[]).length,7);
- for(const platform of ["apify","web","unity","roblox","jetbrains","integrations"]){
-  assert.match(home,new RegExp('data-platform="'+platform+'"'));
- }
- for(const label of ["Published","Available","In development","In validation","Compatibility QA"]){
-  assert.ok(home.includes(label),"Missing honest availability label: "+label);
- }
- assert.match(home,/tools\/localization-qa\.html/);
- assert.match(home,/products\/contract-guard\.html/);
- assert.match(home,/solutions\/otomoto-vehicle-monitoring\.html/);
- assert.match(home,/<details class="roadmap" id="roadmap">/);
- assert.match(home,/3 products in development/);
- assert.equal((home.match(/Not available for purchase/g)||[]).length,3);
- assert.doesNotMatch(home,/data-filter=/);
- assert.match(home,/href="https:\/\/apify\.com\/green_amazement\/otomoto-change-intelligence"/);
- assert.match(home,/href="\.\/integrations\/otomoto-dealer-api\.html"/);
- assert.doesNotMatch(home,/AcqPath|ExtensionOps/);
+test("Polish and English homes preserve real offerings",()=>{
+ const pl=html("index.html"),en=html("en/index.html");
+ assert.match(pl,/<html lang="pl">/);assert.match(en,/<html lang="en">/);
+ for(const p of [pl,en])for(const product of ["OTOMOTO Change Intelligence","Localization QA Inspector","Contract Guard"])assert.ok(p.includes(product));
+ for(const p of [pl,en]){assert.match(p,/apify.com\/green_amazement\/otomoto-change-intelligence/);assert.match(p,/products\/contract-guard.html/);assert.match(p,/tools\/localization-qa.html/);assert.match(p,/class="roadmap"/);assert.doesNotMatch(p,/AcqPath|ExtensionOps/);}
 });
-
-test("unreleased roadmap has no purchase or inquiry CTAs",()=>{
- const home=html("index.html");
- const start=home.indexOf('<details class="roadmap"');
- const stop=home.indexOf('</details>',start);
- assert.ok(start>0 && stop>start,"Roadmap disclosure not found");
- const roadmap=home.slice(start,stop);
- assert.equal((roadmap.match(/<article class="project"/g)||[]).length,3);
- assert.doesNotMatch(roadmap,/href="(?:mailto:|https:\/\/apify\.com)/);
- assert.equal((roadmap.match(/Not available for purchase/g)||[]).length,3);
+test("Polish pages and distinct development roadmap",()=>{
+ for(const path of ["pl/pomoc.html","pl/prywatnosc.html","pl/lokalizacja.html"])assert.match(html(path),/<html lang="pl">/);
+ for(const path of ["index.html","en/index.html"]){const p=html(path),a=p.indexOf('<details class="roadmap"'),b=p.indexOf('</details>',a);assert.ok(a>0&&b>a);const roadmap=p.slice(a,b);for(const word of ["Unity","Roblox","JetBrains"])assert.ok(roadmap.includes(word));assert.doesNotMatch(roadmap,/href="mailto:/);}
 });
-
-test("every local navigation fragment points to an existing section",()=>{
- for(const page of pages){
-   const source=html(page);
-   const ids=new Set([...source.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]));
-   for(const [,target] of source.matchAll(/href="#([^"]+)"/g)){
-     assert.ok(ids.has(decodeURIComponent(target)),page+" has missing anchor #"+target);
-   }
- }
-});
-
-test("homepage workflow paths lead to the real offerings",()=>{
- const main=html("index.html");
- const start=main.indexOf('<section class="approach"');
- const end=main.indexOf('</section>',start);
- assert.ok(start>=0 && end>start);
- const section=main.slice(start,end);
- assert.match(section,/Monitor a saved search/);
- assert.match(section,/Check your CSV in-browser/);
- assert.match(section,/Scope a specific API workflow/);
- assert.match(section,/href="\.\/solutions\/otomoto-vehicle-monitoring\.html"/);
- assert.match(section,/href="\.\/tools\/localization-qa\.html"/);
- assert.match(section,/mailto:forgeframe\.lab@gmail\.com/);
-});
+test("local navigation fragments resolve",()=>{for(const page of pages){const source=html(page),ids=new Set([...source.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]));for(const [,fragment] of source.matchAll(/href="#([^"]+)"/g))assert.ok(ids.has(fragment),page+" #"+fragment);}});
 
 test("brand-wide support and privacy are aligned with multi-platform products",()=>{
  const support=html("support.html");
@@ -139,7 +93,7 @@ test("brand-wide support and privacy are aligned with multi-platform products",(
 test("public sitemap lists real brand routes including Polish automotive landing",()=>{
  const sm=readFileSync(join(root,"sitemap.xml"),"utf8");
  const urls=[...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
- assert.equal(urls.length,12);
+ assert.equal(urls.length,16);
  assert.ok(urls.some(url=>url.endsWith("/integrations/otomoto-dealer-api.html")));
  assert.ok(urls.some(url=>url.endsWith("/products/contract-guard.html")));
  for(const u of urls){

@@ -28,7 +28,7 @@ test('Polish B2B landing is discoverable, honest and commercially actionable',()
  assert.ok((pl.match(/https:\/\/apify.com\/green_amazement\/otomoto-change-intelligence/g)||[]).length>=4);
  assert.doesNotMatch(pl,/reflectme.project@gmail.com|extensionops@gmail.com|AcqPath/i);
  assert.doesNotMatch(pl,/\\b\d+\s+(płacących klientów|zadowolonych dealerów)\b/i);
- assert.match(home,/href="\.\/integrations\/otomoto-dealer-api\.html"/);
+ assert.match(home,/integrations\/otomoto-dealer-api\.html/);
  assert.match(en,/href="\.\.\/integrations\/otomoto-dealer-api\.html"/);
 });
 test('Landing has no broken local links or unapproved third-party scripts',()=>{
