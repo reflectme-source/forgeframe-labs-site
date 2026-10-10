@@ -23,12 +23,13 @@ test('landing has honest monetization path and does not claim payments exist',()
 test('landing offers source-verified runnable software rather than a dead concept',()=>{
   assert.match(landing,/github\.com\/reflectme-source\/forgeframe-contract-guard/);
   assert.match(landing,/GitHub Action/);
+  assert.match(landing,/tools\/contract-guard-report\.html/);
   assert.match(landing,/SHA-256/);
   assert.match(landing,/breaking OpenAPI changes/i);
   assert.match(landing,/scope|limitations|not a runtime contract test/i);
 });
 test('responsive, accessible and no third-party JS tracking',()=>{
-  assert.match(landing,/<main>/);
+  assert.match(landing,/<main id="main">/);
   assert.match(landing,/<h1>/);
   assert.match(landing,/aria-label="Main navigation"/);
   assert.match(landing,/:focus-visible/);

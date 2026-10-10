@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c1520">
+  <meta name="description" content="Open your ForgeFrame Contract Guard release report locally in your browser. Search and filter API breaking changes, review exceptions and export findings without uploading data.">
+  <link rel="canonical" href="https://reflectme-source.github.io/forgeframe-labs-site/tools/contract-guard-report.html">
+  <link rel="icon" href="../assets/forgeframe-avatar.png" type="image/png">
+  <title>Local Release Evidence Viewer | ForgeFrame Contract Guard</title>
+  <style>
+    :root{color-scheme:dark;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:#0d1723;color:#eff7fd}
+    *{box-sizing:border-box}[hidden]{display:none!important}
+    html{scroll-behavior:smooth}body{margin:0;line-height:1.58}
+    a{color:#c0e3fa;text-underline-offset:4px}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #9edaff;outline-offset:3px}
+    .skip{position:absolute;top:-90px;left:16px;background:#f0f8ff;color:#0a1622;border-radius:8px;padding:12px 17px;font-weight:760;z-index:100}.skip:focus{top:12px}
+    .wrap{width:min(1140px,calc(100% - 48px));margin:auto}
+    header{border-bottom:1px solid #2c4559;background:#0d1723}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:76px}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:800;text-decoration:none;color:#f0f8ff;letter-spacing:-.02em}
+    .brand img{width:35px;height:35px;border-radius:9px}
+    .navlinks{display:flex;gap:21px;font-size:13px}
+    main{min-height:75vh}
+    .intro{padding:78px 0 50px;background:radial-gradient(ellipse at 70% 20%,#1b4a6680,transparent 55%)}
+    .eyebrow{text-transform:uppercase;letter-spacing:.17em;font-weight:790;color:#9bcdec;font-size:12px}
+    h1{font-size:clamp(39px,5.5vw,62px);line-height:1.1;letter-spacing:-.053em;margin:18px 0 17px;max-width:810px}
+    .lead{max-width:790px;color:#b6c9d9;font-size:17px;margin:0 0 23px}
+    .notice{font-size:13px;color:#b8cedd;border-left:3px solid #76badb;padding-left:16px;margin:25px 0}
+    .import{border:1px dashed #567d98;background:#14283a;border-radius:17px;padding:33px;margin:12px 0 48px}
+    .import.drag{border-color:#bef2fc;background:#1e415a}
+    .import h2{font-size:23px;letter-spacing:-.027em;margin:0 0 9px}
+    .import p{color:#a8c3d5;font-size:14px;margin:0 0 18px}
+    .file-controls{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+    input[type=file]{max-width:100%;color:#b9cad9;font:inherit;font-size:13px}
+    input::file-selector-button,button{border:1px solid #c8e4f4;background:#d9edfb;color:#0b2638;font-size:13px;font-weight:780;border-radius:9px;padding:12px 17px;min-height:45px;cursor:pointer}
+    input::file-selector-button{margin-right:12px}
+    button.secondary{background:#192c3e;border:1px solid #52718a;color:#ecf8ff}
+    button:disabled{opacity:.45;cursor:not-allowed}
+    .error{margin-top:15px;color:#ffbdbf;font-size:14px}
+    #result{padding-bottom:90px}
+    .result-header{display:flex;justify-content:space-between;align-items:start;gap:20px;flex-wrap:wrap;border-top:1px solid #2f4559;padding:34px 0 19px}
+    .result-header h2{font-size:29px;margin:5px 0;letter-spacing:-.03em}
+    .status{display:inline-flex;padding:8px 13px;border-radius:7px;background:#244632;color:#c7f2d1;font-size:13px;font-weight:800;letter-spacing:.07em}
+    .status[data-state=blocked]{background:#502c38;color:#ffccd0}
+    .metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:15px 0 32px}
+    .metric{background:#162a3b;border:1px solid #304d65;border-radius:12px;padding:20px}
+    .metric strong{display:block;font-size:29px;font-weight:820;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+    .metric span{font-size:12px;color:#aac0d0}
+    .evidence{border:1px solid #30495d;border-radius:14px;padding:24px;background:#101f2d}
+    .evidence h3{margin:0 0 18px;font-size:18px}
+    .hash-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 25px}
+    .hash-grid dt{font-size:12px;color:#9fbdd1;margin-bottom:5px}
+    .hash-grid dd{font:12px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere;margin:0;color:#d7e9f6}
+    .findings{margin-top:44px}
+    .findings h2{margin:0 0 19px;letter-spacing:-.03em;font-size:28px}
+    .controls{display:flex;align-items:end;flex-wrap:wrap;gap:13px;margin-bottom:20px}
+    .control{display:grid;gap:7px;font-size:12px;color:#afc6d6}
+    .control.search{flex:1;min-width:190px}
+    input[type=search],select{background:#132637;color:#f5faff;border:1px solid #406078;border-radius:8px;padding:12px 13px;font:inherit;font-size:14px;min-height:45px;max-width:100%}
+    .table-scroll{border:1px solid #30485b;border-radius:13px;overflow-x:auto}
+    table{border-collapse:collapse;width:100%;min-width:780px;font-size:13px}
+    th,td{text-align:left;border-bottom:1px solid #2b465b;padding:15px 12px;vertical-align:top}
+    th{color:#a8c5d9;font-size:11px;text-transform:uppercase;letter-spacing:.06em;background:#182b3d}
+    td{overflow-wrap:anywhere;color:#d2e2ed;max-width:460px}
+    tbody tr:last-child td{border:0}
+    .severity{font-weight:820}
+    .severity.err{color:#ffb7be}.severity.warn{color:#f9d28d}.severity.info{color:#b3dffd}
+    .path{font:12px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace}
+    .empty{border:1px dashed #3b5a70;color:#b2ccdc;padding:24px;border-radius:10px}
+    .bottom{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:15px;color:#a5becd;font-size:13px}
+    footer{border-top:1px solid #263e51;padding:30px 0;color:#a2b6c5;font-size:13px}
+    .footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px}
+    @media(max-width:780px){.intro{padding-top:55px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.hash-grid{grid-template-columns:1fr}.import{padding:22px}}
+    @media(max-width:480px){.wrap{width:min(100% - 32px,1140px)}.navlinks a:first-child{display:none}.metrics{gap:9px}.metric{padding:14px}h1{font-size:40px}.lead{font-size:15px}.import{padding:19px}}
+  </style>
+  <script type="module" src="./contract-guard-report.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header><nav class="wrap" aria-label="Primary">
+    <a class="brand" href="../index.html"><img src="../assets/forgeframe-avatar.png" alt="" width="35" height="35">ForgeFrame Labs</a>
+    <div class="navlinks"><a href="../index.html#portfolio">Products</a><a href="../products/contract-guard.html">Contract Guard</a></div>
+  </nav></header>
+  <main id="main">
+    <section class="intro wrap">
+      <div class="eyebrow">Contract Guard · Evidence tools</div>
+      <h1>Read your release evidence. <span style="color:#b4def9">Keep it private.</span></h1>
+      <p class="lead">Open a Contract Guard <code>report.json</code> directly in your browser. Search compatibility findings, inspect exceptions and export a filtered CSV. Your file stays on this device.</p>
+      <p class="notice">This is a local viewer, not an auditor or a proof-of-compliance service. Hash values are displayed for verification against your original files; the viewer does not authenticate signatures.</p>
+      <div class="import" id="dropzone">
+        <h2>Open an evidence report</h2>
+        <p>Choose a <code>report.json</code> file or drag it here. Maximum 3 MiB. No account and no upload.</p>
+        <div class="file-controls"><input id="report-file" type="file" accept=".json,application/json" aria-label="Select Contract Guard report.json"><button type="button" class="secondary" id="demo">View sample report</button></div>
+        <p class="error" id="validation-error" role="alert" hidden></p>
+      </div>
+    </section>
+    <section class="wrap" id="result" aria-live="polite" hidden>
+      <div class="result-header"><div><div class="eyebrow" id="report-source"></div><h2>Release decision</h2></div><span class="status" id="status" data-state="passed">PASS</span></div>
+      <div class="metrics" aria-label="Evidence metrics">
+        <div class="metric"><strong id="blocking">0</strong><span>Blocking changes</span></div>
+        <div class="metric"><strong id="total">0</strong><span>All findings</span></div>
+        <div class="metric"><strong id="exceptions">0</strong><span>Approved exceptions</span></div>
+        <div class="metric"><strong id="threshold">ERR</strong><span>Policy threshold</span></div>
+      </div>
+      <div class="evidence" aria-label="Report provenance">
+        <h3>Input provenance</h3>
+        <dl class="hash-grid">
+          <div><dt>Baseline file</dt><dd id="base-name"></dd></div>
+          <div><dt>Revision file</dt><dd id="head-name"></dd></div>
+          <div><dt>Baseline SHA-256</dt><dd id="base-hash"></dd></div>
+          <div><dt>Revision SHA-256</dt><dd id="head-hash"></dd></div>
+          <div><dt>Policy SHA-256</dt><dd id="policy-hash"></dd></div>
+          <div><dt>Generated at (UTC)</dt><dd id="generated"></dd></div>
+        </dl>
+      </div>
+      <div class="findings">
+        <h2>Change findings</h2>
+        <div class="controls">
+          <label class="control search" for="search">Search findings<input id="search" type="search" placeholder="Rule, endpoint or description"></label>
+          <label class="control" for="severity">Severity<select id="severity"><option value="all">All severities</option><option value="ERR">Error</option><option value="WARN">Warning</option><option value="INFO">Info</option></select></label>
+          <label class="control" for="visibility">Decision<select id="visibility"><option value="all">All findings</option><option value="active">Active only</option><option value="exceptions">Exceptions only</option></select></label>
+          <button type="button" id="export">Export filtered CSV</button>
+        </div>
+        <div class="table-scroll"><table><thead><tr><th scope="col">Severity</th><th scope="col">Rule</th><th scope="col">Endpoint</th><th scope="col">Description</th><th scope="col">Exception</th></tr></thead><tbody id="findings-body"></tbody></table></div>
+        <div class="bottom"><span>Showing <strong id="shown-count">0</strong> findings</span><span>All processing happens in this browser tab.</span></div>
+        <p class="empty" id="empty" hidden>No findings match these filters.</p>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap footer"><span>© 2026 ForgeFrame Labs</span><span><a href="../products/contract-guard.html">Contract Guard</a> · <a href="../privacy.html">Privacy</a> · <a href="mailto:forgeframe.lab@gmail.com">Support</a></span></div></footer>
+</body>
+</html>

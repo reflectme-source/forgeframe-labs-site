@@ -21,6 +21,8 @@
     a{color:#acdfff;text-underline-offset:4px}
     a:focus-visible{outline:3px solid #92daf7;outline-offset:4px;border-radius:4px}
     .wrap{width:min(1100px,calc(100% - 44px));margin:auto}
+    .skip{position:absolute;left:16px;top:-80px;z-index:50;background:white;color:#081522;padding:10px 16px;border-radius:8px;font-weight:750}
+    .skip:focus{top:12px}
     header{border-bottom:1px solid #2e4256;background:#0c1520}
     nav{display:flex;align-items:center;justify-content:space-between;min-height:78px;gap:20px}
     .brand{display:flex;align-items:center;gap:11px;font-weight:800;text-decoration:none;color:#f1f7fc;letter-spacing:-.02em}
@@ -64,16 +66,17 @@
     footer{border-top:1px solid #284257;padding:28px 0;color:#9db1c2;font-size:13px}
     .footer{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
     @media(max-width:850px){.hero-inner,.two{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.hero{padding:67px 0}.example{max-width:660px}}
-    @media(max-width:500px){.navlinks{gap:13px}.navlinks a{font-size:12px}pre{font-size:11px;padding:15px}h1{font-size:44px}.wrap{width:min(100% - 34px,1100px)}}
+    @media(max-width:500px){.navlinks a:first-child{display:none}.navlinks{gap:13px}.navlinks a{font-size:12px}pre{font-size:11px;padding:15px}h1{font-size:44px}.wrap{width:min(100% - 34px,1100px)}}
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ForgeFrame Contract Guard","applicationCategory":"DeveloperApplication","operatingSystem":"GitHub Actions, Node.js CLI","description":"Self-hosted OpenAPI breaking-change CI gate with hash-linked release evidence and expiration-bound exceptions.","url":"https://reflectme-source.github.io/forgeframe-labs-site/products/contract-guard.html","downloadUrl":"https://github.com/reflectme-source/forgeframe-contract-guard","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <header><nav class="wrap" aria-label="Main navigation">
     <a href="../index.html" class="brand"><img src="../assets/forgeframe-avatar.png" alt="" width="36" height="36">ForgeFrame Labs</a>
     <div class="navlinks"><a href="../index.html#portfolio">Products</a><a href="../support.html">Support</a></div>
   </nav></header>
-  <main>
+  <main id="main">
     <section class="hero"><div class="wrap hero-inner">
       <div>
         <div class="overline">Developer tools · API release engineering</div>
@@ -84,6 +87,7 @@
           <a class="button" href="#setup">Managed setup · $149</a>
         </div>
         <p class="minor">Runs in your CI · No source upload · Read-only GitHub access</p>
+        <p><a href="../tools/contract-guard-report.html">Explore the private evidence viewer →</a></p>
       </div>
       <div class="example" aria-label="Example of a breaking-change report generated from local test fixtures">
         <div class="example-head"><span>CONTRACT-GUARD / CI EVIDENCE</span><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
@@ -113,7 +117,7 @@
       <div class="grid">
         <article><h3>Compatibility gate</h3><p>Compare OpenAPI 3.x YAML or JSON. Block breaking changes with a failing CI step while allowing safe additions.</p></article>
         <article><h3>Expiring exceptions</h3><p>Grant a temporary exception only for an exact finding fingerprint, with a documented reason and expiry date.</p></article>
-        <article><h3>Local release evidence</h3><p>Export JSON findings and a human-readable summary with SHA-256 hashes of inputs and policy.</p></article>
+        <article><h3>Local release evidence</h3><p>Export JSON findings and a human-readable summary with SHA-256 hashes of inputs and policy. <a href="../tools/contract-guard-report.html">Inspect a report locally →</a></p></article>
       </div>
     </section>
     <section class="content" style="background:#101e2d;border-top:1px solid #284156;border-bottom:1px solid #284156" aria-labelledby="integrate">
