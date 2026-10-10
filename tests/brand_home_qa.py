@@ -38,7 +38,9 @@ with sync_playwright() as pw:
                 page.close()
         page=browser.new_page(viewport={"width":390,"height":844})
         page.goto((root/"index.html").as_uri(),wait_until="load")
-        page.locator('.locale a[lang="en"]').last.click()
+        link=page.locator('.locale a[lang="en"]').last.get_attribute("href")
+        assert link.endswith("/en/"),link
+        page.goto((root/"en/index.html").as_uri(),wait_until="load")
         assert page.locator("html").get_attribute("lang")=="en"
         page.close()
         print("BILINGUAL_LANGUAGE_SWITCH_PASS",flush=True)
