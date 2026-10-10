@@ -200,3 +200,28 @@ test("all primary customer paths provide direct browser-based Gmail contact and 
  assert.match(code,/mailto:/);
  assert.doesNotMatch(code,/fetch\(|XMLHttpRequest|localStorage|sessionStorage|FormSubmit|formsubmit/);
 });
+
+
+test("ForgeFrame bilingual contact forms have safe fields and working local assets",()=>{
+ for(const [file,lang,thanks] of [
+  ["pl/kontakt.html","pl","pl/dziekujemy.html"],
+  ["contact/index.html","en","contact/thanks.html"]]){
+  const page=html(file);
+  assert.match(page,new RegExp('<html lang="'+lang+'">'));
+  assert.match(page,/method="POST"/);
+  assert.match(page,/action="https:\/\/formsubmit\.co\/forgeframe\.lab@gmail\.com"/);
+  assert.match(page,/name="email" type="email"[^>]*required/);
+  assert.match(page,/name="message" minlength="20" maxlength="2000"/);
+  assert.match(page,/name="_honey"/);
+  assert.match(page,/name="privacy_notice_read"/);
+  assert.match(page,/name="product" required/);
+  assert.match(page,/name="_next"/);
+  assert.doesNotMatch(page,/reflectme\.project@gmail\.com|hello\.extensionops@gmail\.com/);
+  assert.match(html(thanks),/noindex,nofollow/);
+  for(const target of localTargets(file)) assert.ok(existsSync(target),file+" broken asset "+target);
+ }
+ assert.match(html("privacy.html"),/FormSubmit/);
+ assert.match(html("pl/prywatnosc.html"),/FormSubmit/);
+ assert.match(html("assets/contact-form.js"),/forgeframe\.lab@gmail\.com/);
+ assert.match(html("assets/contact-form.css"),/@media\(max-width:650px\)/);
+});
