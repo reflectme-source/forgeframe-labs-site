@@ -133,3 +133,18 @@ test("OpenAPI guide has a genuine developer journey to the public action and the
  assert.doesNotMatch(page,/<script\b[^>]*src=/);
  assert.match(html("products/contract-guard.html"),/guides\/openapi-breaking-changes-github-actions\.html/);
 });
+
+
+test("both language homes link to the genuine private Connect-to-Forge service",()=>{
+  const pl=html("index.html"),en=html("en/index.html");
+  const link="https://reflectme-source.github.io/forgeframe-labs-site/services/connect-to-forge-assessment/";
+  for(const home of [pl,en]){
+    assert.ok(home.includes('href="'+link+'"'),"Missing scoped Atlassian service link");
+  }
+  assert.match(pl,/Ocena migracji Connect/);
+  assert.match(en,/Connect → Forge assessment/);
+  const service=html("services/connect-to-forge-assessment/index.html");
+  assert.match(service,/31 January 2027/);
+  assert.match(service,/€490/);
+  assert.match(service,/indicative fixed-scope price/);
+});
