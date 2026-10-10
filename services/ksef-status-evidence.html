@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0d1928">
+<meta name="description" content="KSeF Status Evidence od ForgeFrame Labs — czytelna diagnostyka rozbieżności między statusem faktury w ERP i KSeF. Bez ponownego wysyłania dokumentów.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://reflectme-source.github.io/forgeframe-labs-site/services/ksef-status-evidence.html">
+<link rel="icon" href="../assets/forgeframe-avatar.png" type="image/png">
+<title>KSeF Status Evidence — diagnostyka rozbieżności ERP i KSeF | ForgeFrame Labs</title>
+<style>
+:root{font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#eaf3ff;background:#0c1929;--muted:#bfd1e2;--border:#314962;--accent:#c7e9fc}
+*{box-sizing:border-box}body{margin:0;min-width:320px}a{color:inherit;text-underline-offset:4px}a:focus-visible{outline:3px solid #74c7fd;outline-offset:4px;border-radius:5px}
+.wrap{width:min(1110px,100%);margin:auto;padding-inline:26px}.skip{position:absolute;top:-100px;left:15px;background:white;color:#13263b;padding:10px 16px;border-radius:8px;z-index:20}.skip:focus{top:10px}
+header{border-bottom:1px solid #2b4157;background:#0d1c2b}.nav{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:inline-flex;align-items:center;gap:11px;font-size:14px;font-weight:800;text-decoration:none}.brand img{width:34px;height:34px;border-radius:8px}.navlinks{display:flex;gap:25px;font-size:13px;font-weight:650;color:#c1d6e8}.navlinks a{text-decoration:none}
+.hero{padding:88px 0 85px;background:radial-gradient(ellipse at 85% 20%,#1c58705a,transparent 55%),#0c1929}.hero-layout{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:58px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.16em;font-weight:800;color:#97c8e7}
+h1{font-size:clamp(42px,5.5vw,65px);line-height:1.09;letter-spacing:-.06em;margin:20px 0}.hero h1 span{color:#c7eafd}.lead{font-size:17px;line-height:1.8;color:var(--muted);max-width:610px}.buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.button{display:inline-flex;align-items:center;justify-content:center;min-height:49px;padding:12px 20px;text-align:center;text-decoration:none;border-radius:10px;border:1px solid #7190aa;font-size:13px;font-weight:800}.primary{color:#10283a;background:#d3efff;border-color:#d3efff}.primary:hover{background:white}.secondary{background:#173047;color:#e8f5ff}.secondary:hover{background:#234057}
+.note{font-size:12px;color:#aac3d6;margin-top:18px}.preview{background:#12273a;border:1px solid #43617b;border-radius:17px;overflow:hidden;box-shadow:0 22px 70px #050b156b}.preview-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #3b5870;color:#c7deef;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.preview-head b{color:#a9ddc6;letter-spacing:0;background:#183f35;padding:4px 8px;border-radius:6px}.preview-body{padding:23px}.step{display:flex;gap:15px;padding:16px 0;border-bottom:1px solid #36546b}.step:last-child{border:0}.num{flex:none;width:31px;height:31px;background:#23465d;border:1px solid #5a8cad;color:#d5ecfb;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800}.step strong{display:block;font-size:14px;margin-bottom:3px}.step p{margin:0;color:#afcada;font-size:12px}.preview-foot{background:#182d40;border-top:1px solid #36536a;padding:15px 20px;color:#bdd4e4;font-size:11px}
+section.content{background:#f3f7fa;color:#13283b;padding:69px 0}.section-title{font-size:clamp(28px,4vw,43px);letter-spacing:-.045em;line-height:1.2;margin:0 0 13px}.intro{max-width:740px;color:#536a7b;margin-bottom:31px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.card{background:white;border:1px solid #d6e1ea;border-radius:14px;padding:25px}.card h3{font-size:17px;margin:0 0 10px;letter-spacing:-.025em}.card p{margin:0;font-size:13px;color:#4d6576;line-height:1.8}.card .label{font-size:11px;letter-spacing:.1em;font-weight:850;color:#397ba6;display:block;margin-bottom:17px}
+.contact{padding:62px 0 74px}.contact-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:35px;align-items:center}.contact p{color:#b8cfdf;max-width:665px}.contact h2{font-size:clamp(30px,4.5vw,45px);line-height:1.2;margin:0;letter-spacing:-.045em}.contact-actions{display:grid;gap:12px}.contact-actions small{color:#acc5d5;font-size:12px}
+footer{border-top:1px solid #314b61;padding:23px 0;background:#0a1624;color:#adc4d5;font-size:12px}.footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.footer a{color:#d7eaff}
+@media(max-width:850px){.hero-layout,.contact-grid{grid-template-columns:1fr}.preview{max-width:650px}.cards{grid-template-columns:1fr 1fr}.hero{padding-top:64px}}
+@media(max-width:600px){.wrap{padding-inline:20px}.navlinks{gap:12px}.navlinks a:first-child{display:none}.cards{grid-template-columns:1fr}.hero{padding-bottom:63px}.hero h1{font-size:clamp(39px,10vw,51px)}.buttons a{width:100%}.contact{padding:51px 0}.contact-actions a{width:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Przejdź do treści</a>
+<header><div class="wrap nav"><a href="../index.html" class="brand"><img src="../assets/forgeframe-avatar.png" width="34" height="34" alt="">ForgeFrame Labs</a><nav class="navlinks" aria-label="Nawigacja"><a href="#jak-dziala">Jak działa</a><a href="#zastosowania">Zastosowania</a><a href="#kontakt">Kontakt</a></nav></div></header>
+<main id="main">
+<section class="hero"><div class="wrap hero-layout"><div>
+<div class="eyebrow">Narzędzie diagnostyczne dla integratorów ERP</div>
+<h1>Faktura jest w KSeF.<br><span>A ERP pokazuje co innego?</span></h1>
+<p class="lead">Pomagamy uporządkować trudne rozbieżności statusów po wysłaniu faktury. Porównujemy dostępne potwierdzenia KSeF z eksportem ERP i wskazujemy dokumenty wymagające sprawdzenia — bez ponownego wysyłania faktur i bez zmian w bazie.</p>
+<div class="buttons"><a class="button primary" href="mailto:forgeframe.lab@gmail.com?subject=KSeF%20Status%20Evidence%20%E2%80%94%20zapytanie%20o%20diagnostyk%C4%99">Zapytaj o diagnostykę ↗</a><a class="button secondary" href="#jak-dziala">Zobacz, jak działa</a></div>
+<p class="note">Dla serwisów InsERT, integratorów Comarch i zespołów ERP. Zakres ustalamy indywidualnie. Bez przekazywania faktur i tokenów przez formularz kontaktowy.</p>
+</div><aside class="preview" aria-label="Przykładowy przebieg diagnostyki"><div class="preview-head"><span>Przykładowy przebieg</span><b>Prezentacja</b></div><div class="preview-body">
+<div class="step"><div class="num">01</div><div><strong>ERP zgłasza „do wysłania”</strong><p>Serwisant zgłasza niezgodny stan dokumentu po wysyłce.</p></div></div>
+<div class="step"><div class="num">02</div><div><strong>W KSeF jest potwierdzenie</strong><p>Uzgadniamy referencję sesji, dokumentu, hash i zapisany status.</p></div></div>
+<div class="step"><div class="num">03</div><div><strong>Przypadek trafia do weryfikacji</strong><p>Powstaje lista rozbieżności i wskazówek dla serwisanta.</p></div></div>
+</div><div class="preview-foot">Widok poglądowy, nie rzeczywiste dane klienta ani wynik z systemu KSeF.</div></aside></div></section>
+<section class="content" id="jak-dziala"><div class="wrap"><h2 class="section-title">Jedno konkretne zadanie: ustalić, co się stało.</h2><p class="intro">KSeF Status Evidence jest narzędziem wspomagającym diagnostykę. Nie zastępuje oprogramowania ERP, serwisu producenta ani oficjalnego potwierdzenia podatkowego.</p>
+<div class="cards" id="zastosowania"><div class="card"><span class="label">01 / STATUSY</span><h3>Sprzeczne stany po wysłaniu</h3><p>W KSeF zapisano przyjęcie, a w systemie ERP dokument nadal ma stan sugerujący niepowodzenie.</p></div>
+<div class="card"><span class="label">02 / DUPLIKATY</span><h3>Wyjątki wymagające wyjaśnienia</h3><p>Analiza powiązań z oryginalnym dokumentem, także dla przypadków oznaczonych kodem 440.</p></div>
+<div class="card"><span class="label">03 / SERWIS</span><h3>Czytelna lista dalszych działań</h3><p>Zestawienie dla specjalisty, które pomaga podjąć decyzję bez zgadywania i niepotrzebnej ponownej wysyłki.</p></div></div></div></section>
+<section class="contact" id="kontakt"><div class="wrap contact-grid"><div><div class="eyebrow">Kontakt</div><h2>Masz podobne zgłoszenia w serwisie ERP?</h2><p>Opisz system, wersję i rodzaj rozbieżności — bez danych faktur, kontrahentów, haseł i tokenów. Sprawdzimy, czy taki przypadek mieści się w zakresie diagnostyki i zaproponujemy kolejny krok.</p></div><div class="contact-actions"><a class="button primary" href="mailto:forgeframe.lab@gmail.com?subject=KSeF%20Status%20Evidence%20%E2%80%94%20opis%20przypadku">Skontaktuj się z ForgeFrame Labs ↗</a><small>forgeframe.lab@gmail.com</small><small>Obecna wersja została przetestowana offline na danych syntetycznych. Integracja z konkretnym ERP wymaga weryfikacji.</small></div></div></section>
+</main><footer><div class="wrap footer"><span>© ForgeFrame Labs · KSeF Status Evidence</span><span><a href="../privacy.html">Prywatność</a> · <a href="../support.html">Pomoc i kontakt</a> · <a href="../index.html">Strona główna</a></span></div></footer>
+</body></html>
