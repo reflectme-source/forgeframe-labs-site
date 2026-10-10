@@ -8,6 +8,7 @@ const products=new Map([
 ["connect-to-forge","Connect to Forge assessment"],
 ["otomoto","OTOMOTO Change Intelligence"],
 ["localization-qa","Localization QA Inspector"],
+["digital-packager","ForgeFrame Digital Packager"],
 ["api-integration","API integration"],
 ["roblox","Roblox Creator tools"],
 ["unity","Unity assets"],
