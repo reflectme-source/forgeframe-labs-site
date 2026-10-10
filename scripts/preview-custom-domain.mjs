@@ -11,7 +11,7 @@ const oldOrigin="https://reflectme-source.github.io/forgeframe-labs-site";
 const oldBasePath="/forgeframe-labs-site/";
 const exclude=new Set([".git",".github","node_modules","tests","scripts",".venv","__pycache__"]);
 const textExtensions=new Set([".html",".css",".js",".mjs",".json",".xml",".txt",".svg",".webmanifest"]);
-const safeName=/^(?=.{4,253}$)(?!-)[a-z0-9]+(?:-[a-z0-9]+)*(?:\.[a-z0-9]+(?:-[a-z0-9]+)*)+\.[a-z]{2,}$/;
+const safeName=/^(?=.{4,253}$)(?!-)[a-z0-9]+(?:-[a-z0-9]+)*\.[a-z]{2,63}$/;
 function domainArg(candidate){
  if(typeof candidate!=="string"||!safeName.test(candidate)||candidate.includes("github.io")
     ||candidate.endsWith(".localhost")||candidate.split(".").length!==2)throw new Error("Use a registrable, lowercase two-label apex hostname, e.g. forgeframelabs.app");
