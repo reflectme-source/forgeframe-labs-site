@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1727">
+<title>Roblox Localization CSV Import Errors: Duplicate Keys, Source + Context and Limits | ForgeFrame Labs</title>
+<meta name="description" content="Troubleshoot Roblox localization CSV upload errors: duplicate keys, repeated Source+Context pairs, missing Source, 2 MB file cap, 10,000-row table and 1,000 modified entries.">
+<link rel="canonical" href="https://reflectme-source.github.io/forgeframe-labs-site/guides/roblox-localization-csv-import-errors.html"><link rel="icon" type="image/png" href="../assets/forgeframe-avatar.png">
+<meta property="og:type" content="article"><meta property="og:title" content="Roblox Localization CSV Import Errors: A Practical Checklist"><meta property="og:url" content="https://reflectme-source.github.io/forgeframe-labs-site/guides/roblox-localization-csv-import-errors.html">
+<style>
+:root{color-scheme:dark;background:#0b1727;color:#eaf4ff;font:16px/1.75 system-ui,-apple-system,Segoe UI,Arial,sans-serif}*{box-sizing:border-box}body{margin:0}a{color:#acd9f7}a:focus-visible{outline:3px solid #a3dafa;outline-offset:4px}header{border-bottom:1px solid #2f4c64}.wrap{max-width:1040px;padding:0 24px;margin:auto}header .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;min-height:78px}.brand{color:#edf8ff;font-weight:800;text-decoration:none;display:inline-flex;gap:13px;align-items:center}.brand img{width:35px;height:35px;border-radius:8px}nav{display:flex;gap:16px;font-size:.9rem}main{padding:65px 0 95px}.eyebrow{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:#a4d7fb;font-weight:800}h1{font-size:clamp(2.3rem,5.5vw,4rem);line-height:1.12;letter-spacing:-.05em;max-width:850px;margin:16px 0 25px}h2{font-size:2rem;line-height:1.22;letter-spacing:-.035em;margin:44px 0 15px}h3{margin:24px 0 8px}p,li{color:#bfd0de;max-width:820px}.lead{font-size:1.18rem}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:36px 0}.card{background:#122a42;border:1px solid #395a75;border-radius:15px;padding:22px}.card strong{font-size:1.15rem;color:#eff8ff}.card p{margin:10px 0 0}pre{overflow-x:auto;background:#102337;border:1px solid #35516a;border-radius:12px;padding:18px;color:#d4effe}code{font-family:ui-monospace,Consolas,monospace;font-size:.91em}.steps li{padding:6px 0}.note{border-left:4px solid #7bbef2;background:#132d45;padding:14px 19px;border-radius:7px;margin:21px 0}.cta{background:linear-gradient(105deg,#113955,#183149);border:1px solid #537a99;border-radius:17px;padding:30px;margin-top:48px}.cta h2{margin:0 0 10px}.btn{display:inline-block;background:#d0ebff;color:#102b40;text-decoration:none;border-radius:9px;font-weight:800;padding:11px 20px;margin-top:14px}table{width:100%;border-collapse:collapse;margin:20px 0}td,th{text-align:left;padding:12px;border-bottom:1px solid #355572}th{color:#a5cdeb}footer{border-top:1px solid #263f53;padding:25px 0;font-size:.86rem;color:#9db8cf}@media(max-width:700px){.grid{grid-template-columns:1fr}main{padding:40px 0}header .wrap{flex-wrap:wrap;padding-top:12px;padding-bottom:12px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Roblox Localization CSV Import Errors: Duplicate Keys, Source + Context and Limits","author":{"@type":"Organization","name":"ForgeFrame Labs"},"mainEntityOfPage":"https://reflectme-source.github.io/forgeframe-labs-site/guides/roblox-localization-csv-import-errors.html","inLanguage":"en","datePublished":"2026-10-10","about":{"@type":"SoftwareApplication","name":"Roblox Studio"}}</script>
+</head>
+<body><header><div class="wrap"><a class="brand" href="../"><img src="../assets/forgeframe-avatar.png" alt="" width="35" height="35">ForgeFrame Labs</a><nav aria-label="Navigation"><a href="../products/roblox-localization-upload-guard.html">Product</a><a href="../en/">Home</a></nav></div></header>
+<main class="wrap">
+<span class="eyebrow">Guide / Roblox Studio Localization</span><h1>Roblox Localization CSV Errors: Fix Structural Issues Before Import</h1>
+<p class="lead">When you export, edit and re-upload a Roblox localization CSV, a small data error can block an otherwise routine update. This guide covers four common structural mistakes, two easy-to-confuse limits and what the official upload process actually changes.</p>
+<p>Last reviewed 10 October 2026 against <a href="https://create.roblox.com/docs/production/localization/add-translations">Roblox's official translation-upload documentation</a> and <a href="https://create.roblox.com/docs/production/localization/manual-translations">cloud localization table reference</a>. Official documentation remains the authority if requirements change.</p>
+<div class="grid">
+<div class="card"><strong>Duplicate Key</strong><p>When two entries share a non-empty Key, Roblox cannot reliably identify a unique entry. Assign distinct key names or review whether the duplicate was intended.</p></div>
+<div class="card"><strong>Same Source + Context</strong><p>Roblox permits repeated Source text only when the Context differs. Two matching pairs create an ambiguous entry.</p></div>
+<div class="card"><strong>Blank Source</strong><p>Every cloud localization entry needs original user-facing Source text. Key and Context are optional, but Source is not.</p></div>
+<div class="card"><strong>Incorrect CSV structure</strong><p>Quoted commas, escaped quotation marks and embedded line breaks must follow CSV rules. Do not split a quoted value by hand.</p></div>
+</div>
+<h2>1. Check required headers and identity rules</h2>
+<p>Start from a fresh CSV export rather than inventing a new column layout. Roblox's cloud localization table uses <code>Key</code>, <code>Context</code>, <code>Example</code> and <code>Source</code>, plus supported language columns. The header fields identify the meaning of each cell.</p>
+<pre><code>Key,Context,Example,Source,pl-pl
+menu.play,MainMenu,Start button,Play,Graj
+menu.quit,MainMenu,Exit button,Quit,Wyjdź</code></pre>
+<p>Keys are optional for entries that do not use key-based lookup. The same Source can appear twice if Context differs. Avoid changing column spelling or deleting required header columns while editing an export.</p>
+<h2>2. Recognize a duplicate without guessing the cloud state</h2>
+<p>This illustrative export contains two rows with the same non-empty Key. Your CSV preflight should identify the duplicate before you attempt upload:</p>
+<pre><code>Key,Context,Example,Source,pl-pl
+menu.play,MainMenu,Play button,Play,Graj
+menu.play,SettingsMenu,Play action,Start,Rozpocznij</code></pre>
+<p>If both entries need separate identifiers, assign each a unique Key. Re-check the references in any scripts using those keys before importing a renamed entry.</p>
+<div class="note">Important: A structural scanner can flag an error in the local file, but it cannot prove what currently exists in the Roblox cloud table. Validate the target game's actual table and use the official import preview.</div>
+<h2>3. Know the difference between 1,000 rows and 1,000 changed entries</h2>
+<table><thead><tr><th>Official limit</th><th>What it means</th></tr></thead><tbody>
+<tr><td>2 MB CSV</td><td>Maximum uploaded CSV file size.</td></tr>
+<tr><td>10,000 entries</td><td>Maximum entries in a cloud localization table.</td></tr>
+<tr><td>1,000 added or modified</td><td>Maximum new or changed entries per single CSV upload, not necessarily the total lines in your export.</td></tr>
+</tbody></table>
+<p>A local checker seeing 1,200 rows cannot accurately infer that 1,200 entries have changed, because it does not see the cloud table. Treat a large file warning as a prompt to verify your update scope, not an automatic proof of rejection.</p>
+<h2>4. Do not assume deleting a CSV row deletes the cloud entry</h2>
+<p>According to the official upload guide, removing a Source row from a modified CSV does <strong>not</strong> delete that existing entry from the cloud localization table. Roblox documents separate replacement or deletion workflows. Also, clearing an existing translation can delete and lock the manual translation, so make a backup of your cloud export first.</p>
+<p>For a normal update, prefer downloading the current cloud CSV, editing the desired translations, uploading through Creator Hub or Studio's Localization Tools and reviewing the confirmation prompt.</p>
+<h2>5. Run a safe preflight in this order</h2>
+<ol class="steps">
+<li>Export the current cloud table and keep an untouched backup.</li>
+<li>Confirm the presence of original field names and the CSV encoding.</li>
+<li>Check for duplicate Keys, duplicate Source+Context pairs, blank Source text and broken rows.</li>
+<li>Confirm the 2 MB file cap and assess whether your update actually modifies more than 1,000 entries.</li>
+<li>Correct the local CSV, rescan and import only through Roblox's official tools.</li>
+<li>Test localized user interfaces in the actual game; passing structure checks is not translation QA.</li>
+</ol>
+<div class="cta"><span class="eyebrow">Optional workflow tool</span><h2>Check multiple structural issues in one Roblox Studio scan</h2><p>ForgeFrame Localization Upload Guard reports duplicate identities, missing Source text and malformed CSV with row-level guidance. The independent plugin runs inside Studio and does not upload your file to any third party.</p>
+<p>Version 0.1.1 was tested in the real Windows 11 Roblox Studio UI using valid and invalid sample CSVs. Windows 11 verification does not imply every OS was tested. It does not repair Roblox server errors or guarantee import acceptance.</p>
+<a class="btn" href="https://reflectmeproject.itch.io/localization-upload-guard-for-roblox-studio">Get Localization Upload Guard · $5.99 on itch.io →</a></div>
+</main><footer><div class="wrap">© 2026 ForgeFrame Labs · Independent of Roblox Corporation · <a href="../pl/kontakt.html">Contact and support</a></div></footer>
+</body></html>
