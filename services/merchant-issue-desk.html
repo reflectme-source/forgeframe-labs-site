@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0d1a2a">
+<meta name="description" content="Merchant Issue Desk od ForgeFrame Labs. Łączymy eksport problemów Google Merchant Center z katalogiem produktów i przygotowujemy ręcznie zweryfikowaną kolejkę poprawek dla agencji i sklepów.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://reflectme-source.github.io/forgeframe-labs-site/services/merchant-issue-desk.html">
+<link rel="icon" href="../assets/forgeframe-avatar.png" type="image/png">
+<title>Merchant Issue Desk — kolejka napraw Google Merchant Center | ForgeFrame Labs</title>
+<style>
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#f1f7ff;background:#0b1726;--ink:#0b1726;--panel:#13283b;--line:#2e4860;--muted:#b6cadc;--light:#f2f6f8;--dark:#142537;--blue:#d1eaff}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:96px}body{margin:0;min-width:320px;line-height:1.6}a{color:inherit;text-underline-offset:4px}button,a{touch-action:manipulation}a:focus-visible,summary:focus-visible{outline:3px solid #80c9ff;outline-offset:4px;border-radius:4px}
+.wrap{max-width:1172px;margin-inline:auto;padding-inline:30px}
+.skip{position:absolute;left:12px;top:-100px;background:white;color:#112536;padding:9px 14px;z-index:100}.skip:focus{top:12px}
+header{border-bottom:1px solid var(--line);background:#0c1929}nav{min-height:74px;display:flex;gap:20px;align-items:center;justify-content:space-between}
+.brand{display:inline-flex;gap:11px;align-items:center;text-decoration:none;font-size:14px;font-weight:770;letter-spacing:-.02em}.brand img{width:34px;height:34px;border-radius:8px}
+.nav-links{display:flex;gap:22px;align-items:center;font-size:12px;color:#c7d9e7}.nav-links a{text-decoration:none}.nav-links a:hover{color:white}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;text-transform:uppercase;letter-spacing:.13em;font-size:11px;font-weight:800;color:#a8d9f8}
+.eyebrow:before{content:"";display:inline-block;width:25px;height:1px;background:#7cbfe7}
+.hero{padding:93px 0 86px;background:radial-gradient(ellipse 760px 490px at 87% 14%,#234d6b80,transparent 76%),linear-gradient(165deg,#0d1b2b,#102537 65%,#101e2d)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(350px,.98fr);gap:58px;align-items:center}
+h1{font-size:clamp(42px,5.6vw,67px);line-height:1.07;letter-spacing:-.061em;margin:22px 0 22px;font-weight:800;max-width:720px}
+h1 span{color:#c1e7fe}.lead{font-size:17px;line-height:1.77;color:var(--muted);max-width:570px}
+.actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:31px}
+.cta{min-height:49px;display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border:1px solid #6686a1;border-radius:10px;text-decoration:none;font-weight:790;font-size:13px}
+.cta.primary{background:#d0eafd;color:#10283d;border-color:#d0eafd}.cta.primary:hover{background:#ecf8ff}.cta.secondary{background:#1b354c;color:white}.cta.secondary:hover{background:#28445c}
+.honesty{font-size:12px;color:#adc8db;margin:15px 0 0}
+.preview{background:#102134;border:1px solid #45617a;border-radius:18px;box-shadow:0 28px 76px #01091475;overflow:hidden}
+.preview-head{padding:16px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #38526a;font-size:11px;color:#c7dced;letter-spacing:.08em;text-transform:uppercase;font-weight:740}
+.preview-head strong{color:#bce7c7;font-size:10px;background:#183c34;padding:5px 8px;border-radius:6px}
+.preview-kpis{padding:25px 20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.preview-kpis div{padding:15px 13px;background:#182d43;border:1px solid #36536b;border-radius:9px}
+.preview-kpis b{display:block;font-size:27px;line-height:1.1;font-variant-numeric:tabular-nums}.preview-kpis span{display:block;font-size:11px;color:#b4c9d9;margin-top:9px}
+.preview-table{padding:0 18px 17px;overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:440px}th,td{padding:13px 10px;border-bottom:1px solid #345066;text-align:left;font-size:11px}th{color:#b2cde0;text-transform:uppercase;letter-spacing:.05em}td{color:#e7f1f8}
+.p1{color:#ffd2c8;font-weight:850}.p2{color:#f6e6ac;font-weight:850}.risk{color:#aacee9;font-weight:750}
+.preview-footer{font-size:11px;border-top:1px solid #36536b;padding:15px 20px;color:#bed3e4}
+.ticker{border-top:1px solid #2c4660;border-bottom:1px solid #2c4660;background:#142436}
+.ticker .wrap{display:flex;gap:32px;flex-wrap:wrap;padding-top:18px;padding-bottom:18px}
+.ticker span{font-size:12px;color:#b9d2e4}.ticker strong{color:white}
+section{padding:82px 0}.light{background:var(--light);color:var(--dark)}
+.sectionhead{max-width:760px;margin-bottom:32px}
+h2{font-size:clamp(30px,4.4vw,49px);letter-spacing:-.052em;line-height:1.15;margin:13px 0 14px}
+.sectionhead p{font-size:15px;color:#586c7c}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{border:1px solid #d5e0e8;border-radius:14px;padding:25px 24px;background:white;min-height:240px}
+.card .num{display:block;color:#2f7099;font-size:11px;font-weight:830;margin-bottom:30px;letter-spacing:.1em}
+.card h3{font-size:19px;letter-spacing:-.03em;margin:0 0 10px}.card p{color:#536779;font-size:13px;line-height:1.75;margin:0}
+.flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.step{padding-top:24px;border-top:2px solid #608cae}.step strong{display:block;color:#9acfee;font-size:11px;letter-spacing:.1em;margin-bottom:10px}
+.step h3{font-size:18px;margin:0 0 8px}.step p{color:#b5c9da;font-size:13px;margin:0}
+.offer{background:#edf4f8;color:#12283b}
+.offerbox{background:white;border:1px solid #c8dbe9;border-radius:18px;padding:38px;display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.price{font-size:50px;font-weight:820;letter-spacing:-.065em;line-height:1.15;margin:10px 0}.price small{font-size:15px;letter-spacing:0;color:#5e7080}
+.offer p,.offer li{color:#506779;font-size:14px;line-height:1.8}
+.offer ul{padding-left:20px;margin-top:8px}
+.conditions{border-top:1px solid #d9e4ed;padding-top:19px;margin-top:20px;font-size:12px}
+details{background:#162b3e;border:1px solid #35536d;border-radius:10px;margin-bottom:10px}
+summary{padding:18px 19px;cursor:pointer;font-weight:760;font-size:14px}
+details p{padding:0 19px 16px;color:#c5d6e3;margin:0;font-size:13px}
+.close{padding:60px 0 76px;background:#142a3f;border-top:1px solid #3b5872}
+.close .wrap{display:flex;justify-content:space-between;gap:28px;align-items:center}
+.close h2{margin:0 0 12px}.close p{color:#c3d7e8;margin:0;max-width:730px}
+footer{background:#0b1726;padding:29px 0;border-top:1px solid #38516a}
+.footer{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:#acbfd0;font-size:12px}
+.footer a:hover{color:white}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:35px}.preview{max-width:700px}.grid3,.flow{grid-template-columns:1fr 1fr}.offerbox{grid-template-columns:1fr}}
+@media(max-width:620px){.wrap{padding-inline:20px}.hero{padding:59px 0 65px}h1{font-size:clamp(39px,10vw,50px)}.nav-links{gap:12px}.nav-links a:first-child{display:none}.preview-kpis{padding:15px;gap:6px}.preview-kpis div{padding:13px 9px}.preview-kpis b{font-size:23px}.grid3,.flow{grid-template-columns:1fr}.card{min-height:0}.offerbox{padding:23px}.close .wrap{display:block}.close .cta{margin-top:23px}.ticker .wrap{gap:14px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Przejdź do treści</a>
+<header><div class="wrap"><nav aria-label="Nawigacja główna">
+<a class="brand" href="../index.html"><img src="../assets/forgeframe-avatar.png" alt="" width="34" height="34">ForgeFrame Labs</a>
+<div class="nav-links"><a href="#co-otrzymasz">Rezultat</a><a href="#proces">Jak działa</a><a href="#zakres">Zakres i cena</a><a href="../support.html">Kontakt</a></div>
+</nav></div></header>
+<main id="main">
+<section class="hero"><div class="wrap hero-grid">
+<div>
+<span class="eyebrow">Workflow dla agencji e-commerce</span>
+<h1>Z listy problemów do <span>listy napraw dla konkretnego SKU.</span></h1>
+<p class="lead">Eksport „Wymaga uwagi” z Google Merchant Center sam nie naprawi katalogu. Łączymy go z eksportem produktów sklepu i oddajemy czytelną kolejkę działań — z wykryciem brakujących identyfikatorów, powtórzeń i problemów wymagających przeglądu konta.</p>
+<div class="actions">
+<a class="cta primary" href="mailto:forgeframe.lab@gmail.com?subject=Merchant%20Issue%20Desk%20-%20zakres%20platnej%20analizy">Zapytaj o płatny raport <span aria-hidden="true">↗</span></a>
+<a class="cta secondary" href="#przyklad">Zobacz wynik na danych przykładowych</a>
+</div>
+<p class="honesty">Bez loginu do Google, bez połączenia API. Zakres i warunki potwierdzamy pisemnie przed zamówieniem.</p>
+</div>
+<div class="preview" id="przyklad" aria-label="Przykładowy raport z danych syntetycznych">
+<div class="preview-head"><span>Merchant Issue Desk / przykład CSV</span><strong>DANE SYNTETYCZNE</strong></div>
+<div class="preview-kpis">
+<div><b>05</b><span>produktów w katalogu</span></div>
+<div><b>06</b><span>unikalnych zgłoszeń</span></div>
+<div><b>01</b><span>identyfikator bez pary</span></div>
+</div>
+<div class="preview-table"><table>
+<thead><tr><th>Priorytet</th><th>ID</th><th>Problem</th><th>Wynik</th></tr></thead>
+<tbody><tr><td class="p1">P1</td><td>PL-001</td><td>Brak GTIN</td><td>Dopasowano</td></tr>
+<tr><td class="p1">P1</td><td>PL-003</td><td>Rozbieżna cena</td><td>Dopasowano</td></tr>
+<tr><td class="p1">P1</td><td>PL-404</td><td>Identyfikator</td><td class="risk">Brak w katalogu</td></tr>
+<tr><td class="p2">P2</td><td>PL-004</td><td>Jakość zdjęcia</td><td>Do weryfikacji</td></tr></tbody></table></div>
+<div class="preview-footer">Przykład demonstracyjny — nie przedstawia prawdziwych klientów ani zatwierdzeń Google.</div>
+</div></div></section>
+<div class="ticker"><div class="wrap"><span><strong>Dwa pliki CSV</strong> od uprawnionego operatora</span><span><strong>Jeden pakiet</strong> HTML + CSV + JSON</span><span><strong>Zero</strong> nieautoryzowanych zmian w koncie</span></div></div>
+<section class="light" id="co-otrzymasz"><div class="wrap"><div class="sectionhead">
+<span class="eyebrow">Dostawa zamiast kolejnego dashboardu</span>
+<h2>Co trafia do osoby, która naprawdę poprawia feed?</h2>
+<p>Nie zastępujemy wbudowanych diagnostyk Google. Usuwamy etap ręcznego łączenia ich eksportu z rekordami w katalogu.</p></div>
+<div class="grid3">
+<div class="card"><span class="num">01 / ŹRÓDŁO</span><h3>Przypisanie do SKU</h3><p>Dokładne ID produktu, tytuł i adres strony. Bez zgadywania po podobieństwie nazw ani niejawnej zmiany wariantów.</p></div>
+<div class="card"><span class="num">02 / PRIORYTET</span><h3>Kolejka napraw</h3><p>Odrzucenia, ostrzeżenia i nieznane statusy pozostają rozdzielone. Ryzyko i źródłowy problem są widoczne obok działania.</p></div>
+<div class="card"><span class="num">03 / WYJĄTKI</span><h3>Problemy bez dopasowania</h3><p>Brak ID, duplikaty, problemy kontowe i nieznane kody nie znikają po cichu. Operator widzi osobną listę do ręcznej decyzji.</p></div>
+</div></div></section>
+<section id="proces"><div class="wrap"><div class="sectionhead">
+<span class="eyebrow">Przetwarzanie lokalne</span><h2>Trzy kroki. Żadnych cudzych haseł.</h2>
+<p>Za zgodą właściciela sklepu, na minimalnych danych niezbędnych do audytu.</p></div>
+<div class="flow">
+<div class="step"><strong>KROK 01</strong><h3>Eksporty</h3><p>Klient lub agencja przygotowuje katalog CSV oraz eksport listy problemów Merchant Center dla wybranego źródła i rynku.</p></div>
+<div class="step"><strong>KROK 02</strong><h3>Uzgodnienie</h3><p>Silnik porównuje identyfikatory, segreguje wyjątki i generuje raport. Kontrolujemy zgodność nagłówków i próbkę wyników.</p></div>
+<div class="step"><strong>KROK 03</strong><h3>Przekazanie</h3><p>Oddajemy uporządkowany pakiet napraw. Sklep sam wdraża zmiany i śledzi ponowną ocenę produktów przez Google.</p></div>
+</div></div></section>
+<section class="offer" id="zakres"><div class="wrap"><div class="sectionhead">
+<span class="eyebrow">Prosta oferta wstępna</span><h2>Jeden katalog. Jeden przegląd. Jeden rezultat.</h2>
+</div><div class="offerbox">
+<div><span class="eyebrow">Zakres do potwierdzenia</span><div class="price">od 690 zł <small>/ pakiet</small></div>
+<p>Orientacyjna cena jednorazowego raportu; ostateczne warunki, rozliczenie i termin ustalamy przed przyjęciem zamówienia.</p>
+<a class="cta primary" href="mailto:forgeframe.lab@gmail.com?subject=Merchant%20Issue%20Desk%20-%20zapytanie%20o%20pakiet">Poproś o zakres na e-mail</a>
+</div>
+<div>
+<strong>W ramach pakietu proponujemy:</strong>
+<ul><li>Jeden eksport katalogu do 10 tys. produktów i jeden zbiór problemów do 2 tys. rekordów.</li>
+<li>Raport HTML, lista SKU/problemów CSV i JSON z podsumowaniem.</li>
+<li>Weryfikacja dopasowania i osobna lista wyjątków.</li>
+<li>Jedna korekta błędów naszego mapowania w ustalonym zakresie.</li></ul>
+<div class="conditions">Nie obejmuje: logowania do konta, wprowadzania zmian, odwołań od blokady Merchant Center, wsparcia prawnego, gwarancji emisji reklam ani weryfikacji stron produktu na żywo.</div>
+</div></div></div></section>
+<section id="pytania"><div class="wrap"><div class="sectionhead">
+<span class="eyebrow">Granice usługi</span><h2>Pytania, które warto wyjaśnić przed zakupem</h2></div>
+<details><summary>Czy narzędzie potwierdza, że Google zaakceptuje produkty?</summary><p>Nie. Nie gwarantujemy zatwierdzenia produktów ani odblokowania konta. Wykonujemy analizę dostarczonych eksportów, a nie oficjalną certyfikację Google. Problemy strony, polityk, płatności i zawieszeń mogą wymagać odrębnej pracy.</p></details>
+<details><summary>Czy muszę przekazać login lub dostęp do Merchant Center?</summary><p>Nie. Klient pobiera tylko niezbędne eksporty. Przed pracą na rzeczywistych danych potwierdzamy ich zakres, upoważnienie i bezpieczny sposób przekazania.</p></details>
+<details><summary>A jeśli format mojego CSV różni się od przykładu?</summary><p>Przed rozpoczęciem sprawdzamy nagłówki i mapowanie identyfikatorów. Nie gwarantujemy obsługi dowolnego eksportu; niezgodne schematy wymagają osobnego ustalenia zakresu.</p></details>
+<details><summary>Czy zastępuje Channable, Merchant Center albo agencję PPC?</summary><p>Nie. To dodatkowy etap organizowania prac naprawczych, szczególnie dla zespołów obsługujących więcej niż jeden sklep.</p></details>
+</div></section>
+<section class="close"><div class="wrap">
+<div><span class="eyebrow">ForgeFrame Labs / Merchant Issue Desk</span><h2>Masz dwa eksporty i nie masz jednej listy napraw?</h2><p>Opisz liczbę produktów, rynek i format plików. Odpowiemy pisemnie z możliwym zakresem płatnej analizy. Bez rozmowy telefonicznej i bez przesyłania haseł.</p></div>
+<a class="cta primary" href="mailto:forgeframe.lab@gmail.com?subject=Merchant%20Issue%20Desk%20-%20zapytanie">Napisz do ForgeFrame</a>
+</div></section>
+</main>
+<footer><div class="wrap footer">
+<span>© 2026 ForgeFrame Labs. Niezależna usługa; brak powiązania organizacyjnego z Google.</span>
+<div><a href="../index.html">Strona główna</a> · <a href="../privacy.html">Prywatność</a> · <a href="../support.html">Wsparcie</a></div>
+</div></footer>
+</body></html>
