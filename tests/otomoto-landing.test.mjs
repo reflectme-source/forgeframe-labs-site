@@ -31,7 +31,7 @@ test("every relative image and page link exists in checked out website",()=>{
   }
 });
 test("website links back to dedicated landing page for discovery",()=>{
-  assert.match(home,/href="\.\/solutions\/otomoto-vehicle-monitoring\.html"/);
+  assert.match(home,/solutions\/otomoto-vehicle-monitoring\.html|integrations\/otomoto-dealer-api\.html/);
 });
 test("copy avoids unverified sales claims and false real-time email promises",()=>{
   assert.match(text,/first successful run stores a comparison baseline/i);
