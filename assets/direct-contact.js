@@ -12,9 +12,14 @@
     "ForgeFrame Labs";
   const subject="ForgeFrame Labs - "+product+" - "+(pl?"zapytanie":"inquiry");
   const inbox="forgeframe.lab@gmail.com";
-  const contactBase=pl?"/forgeframe-labs-site/pl/kontakt.html":"/forgeframe-labs-site/contact/";
+  // Derive the site root from this first-party script URL.
+  // Works with GitHub's /forgeframe-labs-site/ project path and a future apex domain /.
+  const scriptUrl=document.currentScript?.src || document.querySelector('script[src*="assets/direct-contact.js"]')?.src;
+  if(!scriptUrl)return;
+  const siteRoot=new URL("../",scriptUrl);
+  const contactBase=new URL(pl?"pl/kontakt.html":"contact/",siteRoot).pathname;
   const sku=path.includes("merchant-issue-desk")?"merchant-issue-desk":path.includes("contract-guard")||path.includes("openapi-breaking-changes")?"contract-guard":path.includes("connect-to-forge")?"connect-to-forge":path.includes("otomoto")?"otomoto":path.includes("localization")||path.includes("lokalizacja")?"localization-qa":"general";
-  const gmail=contactBase+"?product="+encodeURIComponent(sku);
+  const formURL=contactBase+"?product="+encodeURIComponent(sku);
   const mailto="mailto:"+inbox+"?subject="+encodeURIComponent(subject);
   const section=document.createElement("section");
   section.setAttribute("data-forgeframe-direct-contact","");
@@ -28,12 +33,12 @@
   heading.textContent=pl?"Masz konkretne zapytanie?":"Have a specific request?";
   const message=document.createElement("p");
   message.style.cssText="font-size:13px;color:#c5d9e8;margin:0";
-  message.textContent=pl?"Napisz bezpośrednio do ForgeFrame. Bez formularza i bez telefonu.":"Contact ForgeFrame directly. No form or phone call required.";
+  message.textContent=pl?"Wyślij zapytanie przez formularz. Bez telefonu.":"Send an inquiry through the form. No phone call required.";
   intro.append(heading,message);
   const actions=document.createElement("div");
   actions.style.cssText="display:flex;align-items:center;gap:10px;flex-wrap:wrap";
   const gmailLink=document.createElement("a");
-  gmailLink.href=gmail;
+  gmailLink.href=formURL;
   gmailLink.textContent=pl?"Wyślij zapytanie ↗":"Send an inquiry ↗";
   gmailLink.style.cssText="display:inline-flex;align-items:center;min-height:46px;padding:10px 17px;background:#d4edff;border-radius:9px;color:#10283c;font-weight:800;text-decoration:none";
   const appLink=document.createElement("a");
