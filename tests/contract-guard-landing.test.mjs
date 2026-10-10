@@ -23,7 +23,7 @@ test('website shows verified product, price and limitations without inventing fe
   assert.match(p,/oasdiff/);
   assert.match(p,/examples\/breaking\/report\.json/);
   assert.match(p,/examples\/safe\/report\.json/);
-  assert.match(p,/forgeframe-contract-guard@47857973aeba8bf5bb6b034544bddaa2be6c8ad5/);
+  assert.match(p,/forgeframe-contract-guard@b7a7edc4368eabb123763cf40929a9cba9ff7b83/);
   assert.match(p,/upload-evidence: 'false'/);
   assert.match(p,/ff-detail__title/);
   assert.doesNotMatch(p,/guaranteed compliance|customer testimonials|instant checkout available|https:\/\/buy\.stripe\.com/gi);
