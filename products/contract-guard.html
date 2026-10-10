@@ -129,13 +129,12 @@
           <p class="section-lead">Add the Action to your workflow and point it at your baseline and revised spec files. Use your own GitHub runner; no ForgeFrame account is required.</p>
           <a href="https://github.com/reflectme-source/forgeframe-contract-guard#github-actions" rel="noopener noreferrer">Installation instructions and complete workflow →</a>
         </div>
-        <div class="code"><pre>uses: reflectme-source/
-  forgeframe-contract-guard@v0.1.1
+        <div class="code"><pre>uses: reflectme-source/forgeframe-contract-guard@47857973aeba8bf5bb6b034544bddaa2be6c8ad5 # v0.1.3
 with:
   base: baseline.yaml
   head: openapi.yaml
   policy: guard.policy.json
-  upload-evidence: 'true'</pre></div>
+  upload-evidence: 'false'</pre></div>
       </div>
     </section>
     <section class="content wrap" id="setup" aria-labelledby="managed">
