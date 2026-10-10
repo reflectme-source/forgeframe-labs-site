@@ -7,7 +7,7 @@ import {fileURLToPath} from "node:url";
 const root=resolve(dirname(fileURLToPath(import.meta.url)),"..");
 const pages=[
  "index.html","support.html","privacy.html","products/localization-qa.html",
- "tools/localization-qa.html","tools/localization-qa-guide.html"
+ "tools/localization-qa.html","tools/localization-qa-guide.html","integrations/otomoto-dealer-api.html"
 ];
 function html(file) {return readFileSync(join(root,file),"utf8");}
 function localTargets(page) {
@@ -93,4 +93,17 @@ test("brand-wide support and privacy are aligned with multi-platform products",(
  assert.match(privacy,/GitHub Pages/);
  assert.match(privacy,/Apify and other marketplaces/);
  assert.doesNotMatch(privacy,/Unity developer publishing brand/);
+});
+
+test("public sitemap lists real brand routes including Polish automotive landing",()=>{
+ const sm=readFileSync(join(root,"sitemap.xml"),"utf8");
+ const urls=[...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
+ assert.equal(urls.length,8);
+ assert.ok(urls.some(url=>url.endsWith("/integrations/otomoto-dealer-api.html")));
+ for(const u of urls){
+   const parsed=new URL(u);
+   assert.equal(parsed.hostname,"reflectme-source.github.io");
+   const relative=parsed.pathname.replace(/^\/forgeframe-labs-site\//,"")||"index.html";
+   assert.ok(existsSync(join(root,relative)),u+" not found in repository");
+ }
 });
