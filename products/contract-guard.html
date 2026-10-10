@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0c1520">
+  <meta name="description" content="Block breaking OpenAPI changes with a local GitHub Action. Generate release evidence, file hashes and expiry-bound exceptions. Free self-hosted tool; managed setup by ForgeFrame Labs.">
+  <link rel="canonical" href="https://reflectme-source.github.io/forgeframe-labs-site/products/contract-guard.html">
+  <link rel="icon" href="../assets/forgeframe-avatar.png" type="image/png">
+  <meta property="og:type" content="product">
+  <meta property="og:title" content="Contract Guard — Catch breaking API changes before release">
+  <meta property="og:description" content="A self-hosted, evidence-first OpenAPI CI gate. Free GitHub Action or a fixed-scope managed setup.">
+  <meta property="og:url" content="https://reflectme-source.github.io/forgeframe-labs-site/products/contract-guard.html">
+  <meta property="og:image" content="https://reflectme-source.github.io/forgeframe-labs-site/assets/forgeframe-banner.png">
+  <title>Contract Guard — OpenAPI Breaking-Change CI | ForgeFrame Labs</title>
+  <style>
+    :root{color-scheme:dark;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:#0c1520;color:#f2f7fc;font-synthesis:none}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;line-height:1.62}
+    a{color:#acdfff;text-underline-offset:4px}
+    a:focus-visible{outline:3px solid #92daf7;outline-offset:4px;border-radius:4px}
+    .wrap{width:min(1100px,calc(100% - 44px));margin:auto}
+    header{border-bottom:1px solid #2e4256;background:#0c1520}
+    nav{display:flex;align-items:center;justify-content:space-between;min-height:78px;gap:20px}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:800;text-decoration:none;color:#f1f7fc;letter-spacing:-.02em}
+    .brand img{width:36px;height:36px;border-radius:10px}
+    .navlinks{display:flex;gap:24px;align-items:center}.navlinks a{font-size:14px;text-decoration:none;color:#bacddd}
+    .hero{position:relative;padding:102px 0 93px;overflow:hidden;border-bottom:1px solid #304254}
+    .hero:before{content:"";position:absolute;inset:-140px -20% auto;pointer-events:none;height:620px;background:radial-gradient(ellipse at 70% 40%,#1c4d72a9,transparent 60%)}
+    .hero-inner{position:relative;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(320px,.85fr);gap:54px;align-items:center}
+    .overline{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:750;color:#9cccf0}
+    h1{font-size:clamp(46px,5.8vw,74px);letter-spacing:-.066em;line-height:1.09;margin:16px 0 23px;max-width:730px}
+    h1 span{color:#b9dfff}
+    .lead{font-size:18px;color:#afc4d8;max-width:630px;margin:0 0 31px}
+    .buttons{display:flex;align-items:center;flex-wrap:wrap;gap:13px}
+    .button{display:inline-flex;min-height:48px;align-items:center;justify-content:center;padding:11px 19px;text-decoration:none;border:1px solid #607f97;border-radius:10px;color:#eaf6ff;font-size:14px;font-weight:750;background:#1b3045}
+    .button.primary{background:#d5ebfa;border-color:#d5ebfa;color:#102338}
+    .button:hover{filter:brightness(1.1)}
+    .minor{margin:19px 0 0;font-size:13px;color:#9db2c5}
+    .example{border:1px solid #3b6079;border-radius:16px;overflow:hidden;background:#0d1c2b;box-shadow:0 32px 85px #0005}
+    .example-head{padding:14px 19px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #27435b;color:#c3d8ea;font-size:12px;font-weight:750;letter-spacing:.04em}
+    .dots{display:flex;gap:6px}.dots i{width:8px;height:8px;border-radius:50%;background:#5c7e96}
+    pre{margin:0;padding:24px;overflow-x:auto;font-size:13px;line-height:1.85;color:#cde1ef;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+    .error{color:#ffb7b9}.pass{color:#a8efc6}.muted{color:#90acc0}
+    .stripe{border-bottom:1px solid #203749;background:#101e2c;padding:23px 0}
+    .stripe-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+    .stripe p{margin:0;color:#bed1df;font-size:13px}.stripe strong{color:#eef7fc}
+    section.content{padding:85px 0}h2{font-size:clamp(31px,3.6vw,43px);line-height:1.16;letter-spacing:-.045em;margin:10px 0 16px}
+    .eyebrow{color:#a4d6f4;text-transform:uppercase;letter-spacing:.13em;font-weight:750;font-size:12px}
+    .section-lead{color:#b3c5d7;max-width:680px;margin:0 0 28px}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin:33px 0}
+    .grid article{background:#13263a;border:1px solid #2d465c;border-radius:15px;padding:25px}
+    .grid h3{margin:0 0 11px;font-size:18px}.grid p{margin:0;color:#b2c5d7;font-size:14px}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+    .code{background:#0b1825;border:1px solid #2b455b;border-radius:14px;overflow-x:auto}
+    .code pre{padding:20px;font-size:12px}
+    .price{border:1px solid #406a85;background:linear-gradient(160deg,#18334b,#112334);padding:33px;border-radius:18px}
+    .price h3{font-size:24px;margin:10px 0}.amount{font-size:48px;font-weight:800;letter-spacing:-.06em;line-height:1.2}
+    .price p,.price li{color:#c1d2de}.price ul{padding-left:20px}
+    .price .button{margin-top:12px}
+    .plain{padding:20px 0 0;color:#acc0d0}
+    .faq{border-top:1px solid #2d4457;padding:24px 0}.faq h3{margin:0 0 8px;font-size:17px}.faq p{margin:0;color:#aabed1}
+    footer{border-top:1px solid #284257;padding:28px 0;color:#9db1c2;font-size:13px}
+    .footer{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+    @media(max-width:850px){.hero-inner,.two{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.hero{padding:67px 0}.example{max-width:660px}}
+    @media(max-width:500px){.navlinks{gap:13px}.navlinks a{font-size:12px}pre{font-size:11px;padding:15px}h1{font-size:44px}.wrap{width:min(100% - 34px,1100px)}}
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ForgeFrame Contract Guard","applicationCategory":"DeveloperApplication","operatingSystem":"GitHub Actions, Node.js CLI","description":"Self-hosted OpenAPI breaking-change CI gate with hash-linked release evidence and expiration-bound exceptions.","url":"https://reflectme-source.github.io/forgeframe-labs-site/products/contract-guard.html","downloadUrl":"https://github.com/reflectme-source/forgeframe-contract-guard","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+</head>
+<body>
+  <header><nav class="wrap" aria-label="Main navigation">
+    <a href="../index.html" class="brand"><img src="../assets/forgeframe-avatar.png" alt="" width="36" height="36">ForgeFrame Labs</a>
+    <div class="navlinks"><a href="../index.html#portfolio">Products</a><a href="../support.html">Support</a></div>
+  </nav></header>
+  <main>
+    <section class="hero"><div class="wrap hero-inner">
+      <div>
+        <div class="overline">Developer tools · API release engineering</div>
+        <h1>Know what your API <span>breaks</span> before your customers do.</h1>
+        <p class="lead">Catch breaking OpenAPI changes on pull requests. Require explicit, expiry-bound exceptions. Leave behind a clear release record your team can inspect.</p>
+        <div class="buttons">
+          <a class="button primary" href="https://github.com/reflectme-source/forgeframe-contract-guard" rel="noopener noreferrer">Get the free GitHub Action →</a>
+          <a class="button" href="#setup">Managed setup · $149</a>
+        </div>
+        <p class="minor">Runs in your CI · No source upload · Read-only GitHub access</p>
+      </div>
+      <div class="example" aria-label="Example of a breaking-change report generated from local test fixtures">
+        <div class="example-head"><span>CONTRACT-GUARD / CI EVIDENCE</span><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+        <pre><span class="muted">$ node cli.mjs --base old.yaml --head new.yaml</span>
+<span class="error">● BLOCKED — 2 breaking changes</span>
+
+<span class="error">ERR</span> GET /payments
+    request parameter "page"
+    became required
+
+<span class="error">ERR</span> GET /payments
+    response status enum gained
+    the value "chargeback"
+
+<span class="muted">EVIDENCE</span>
+  SHA-256 base + revision + policy
+  report.json / summary.md
+
+<span class="muted">exit code: 1</span></pre>
+      </div>
+    </div></section>
+    <div class="stripe"><div class="wrap stripe-inner"><p><strong>Built on oasdiff.</strong> Open-source comparison engine, not a proprietary replacement.</p><p><strong>Paid work is optional.</strong> You can use the Action without a subscription.</p></div></div>
+    <section class="content wrap" aria-labelledby="features">
+      <div class="eyebrow">How it works</div>
+      <h2 id="features">Clear decisions. Reviewable evidence.</h2>
+      <p class="section-lead">The release gate answers three operational questions: did the contract break, was an exception explicitly approved, and which exact inputs produced the decision?</p>
+      <div class="grid">
+        <article><h3>Compatibility gate</h3><p>Compare OpenAPI 3.x YAML or JSON. Block breaking changes with a failing CI step while allowing safe additions.</p></article>
+        <article><h3>Expiring exceptions</h3><p>Grant a temporary exception only for an exact finding fingerprint, with a documented reason and expiry date.</p></article>
+        <article><h3>Local release evidence</h3><p>Export JSON findings and a human-readable summary with SHA-256 hashes of inputs and policy.</p></article>
+      </div>
+    </section>
+    <section class="content" style="background:#101e2d;border-top:1px solid #284156;border-bottom:1px solid #284156" aria-labelledby="integrate">
+      <div class="wrap two">
+        <div>
+          <div class="eyebrow">Self-serve integration</div>
+          <h2 id="integrate">Start with one pull request.</h2>
+          <p class="section-lead">Add the Action to your workflow and point it at your baseline and revised spec files. Use your own GitHub runner; no ForgeFrame account is required.</p>
+          <a href="https://github.com/reflectme-source/forgeframe-contract-guard#github-actions" rel="noopener noreferrer">Installation instructions and complete workflow →</a>
+        </div>
+        <div class="code"><pre>uses: reflectme-source/
+  forgeframe-contract-guard@v0.1.0
+with:
+  base: baseline.yaml
+  head: openapi.yaml
+  policy: guard.policy.json
+  upload-evidence: 'true'</pre></div>
+      </div>
+    </section>
+    <section class="content wrap" id="setup" aria-labelledby="managed">
+      <div class="two">
+        <div>
+          <div class="eyebrow">Fixed scope · Async delivery</div>
+          <h2 id="managed">Prefer to have it configured for you?</h2>
+          <p class="section-lead">We'll integrate the same open-source gate into your engineering workflow, define appropriate review policy, validate a breaking and non-breaking fixture, and hand over the setup with evidence artifacts.</p>
+          <p class="plain">No calls required. We confirm repository access requirements and supported spec format by email before accepting an order.</p>
+        </div>
+        <div class="price">
+          <div class="eyebrow">Contract Guard Setup</div>
+          <div class="amount">$149</div>
+          <p>One-time fee per organization, up to two repositories.</p>
+          <ul>
+            <li>Baseline and pull-request CI configuration</li>
+            <li>Policy and time-bound exception workflow</li>
+            <li>Breaking and safe change verification</li>
+            <li>JSON/Markdown evidence handover</li>
+          </ul>
+          <a class="button primary" href="mailto:forgeframe.lab@gmail.com?subject=Contract%20Guard%20Setup%20%24149&amp;body=Hello%20ForgeFrame%2C%0A%0AWe%20would%20like%20Contract%20Guard%20Setup.%0ARepository%20host%3A%0ANumber%20of%20repositories%3A%0AOpenAPI%20version%20and%20spec%20format%3A%0A%0A">Request managed setup →</a>
+          <p style="font-size:12px;margin:13px 0 0">Payment details are confirmed after the technical scope is accepted. This is not an instant automated checkout.</p>
+        </div>
+      </div>
+    </section>
+    <section class="content wrap" aria-labelledby="faq">
+      <div class="eyebrow">Questions</div><h2 id="faq">Before you install</h2>
+      <div class="faq"><h3>Does this upload our API specification?</h3><p>No. The comparison happens on your own machine or CI runner. Installing the Action downloads a checksum-verified engine binary from GitHub Releases. You choose whether the resulting evidence is stored in GitHub Actions artifacts.</p></div>
+      <div class="faq"><h3>Is this a runtime contract test?</h3><p>No. It checks changes in OpenAPI specifications. It cannot detect undocumented runtime behavior, deployment drift or actual consumer impact without additional tests.</p></div>
+      <div class="faq"><h3>Does the report certify audit compliance?</h3><p>No. The SHA-256 hashes help reviewers match evidence to the original specifications, but do not constitute a digital signature or formal certification.</p></div>
+      <div class="faq"><h3>Why pay for setup when the Action is free?</h3><p>You pay only for a correctly configured CI workflow, scoped exception policy, verification and handover. The self-hosted tool remains free to use.</p></div>
+    </section>
+  </main>
+  <footer><div class="wrap footer"><span>© 2026 ForgeFrame Labs</span><span><a href="../privacy.html">Privacy</a> · <a href="../support.html">Support</a> · <a href="mailto:forgeframe.lab@gmail.com">Contact</a></span></div></footer>
+</body>
+</html>

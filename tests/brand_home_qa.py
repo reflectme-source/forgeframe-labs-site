@@ -20,9 +20,9 @@ with sync_playwright() as p:
             page.goto(page_path.as_uri(),wait_until="load",timeout=12000)
             assert page.locator("h1").count() == 1
             assert page.locator('a.skip[href="#main"]').count() == 1
-            assert page.locator("article.project").count() == 6
-            assert page.locator("article.project:visible").count() == 3
-            assert page.locator('.state.live').count() == 2
+            assert page.locator("article.project").count() == 7
+            assert page.locator("article.project:visible").count() == 4
+            assert page.locator('.state.live').count() == 3
             assert page.locator('.hero .action.primary').get_attribute('href') == 'https://apify.com/green_amazement/otomoto-change-intelligence'
             assert page.locator('.hero .action.secondary').get_attribute('href') == './tools/localization-qa.html'
             assert page.locator('.hero-local-route a[lang="pl"]').get_attribute('href') == './integrations/otomoto-dealer-api.html'
@@ -31,6 +31,7 @@ with sync_playwright() as p:
             assert page.locator('.state.preview').count() == 3
             assert page.locator('a[href="./solutions/otomoto-vehicle-monitoring.html"]').count() >= 2
             assert page.locator('a[href="./products/localization-qa.html"]').count() >= 1
+            assert page.locator('a[href="./products/contract-guard.html"]').count() >= 1
             assert page.locator('a[href="./tools/localization-qa.html"]').count() >= 1
             assert page.locator('a[href^="mailto:forgeframe.lab@gmail.com"]').count() >= 4
             assert "AcqPath" not in page.content()
@@ -41,13 +42,13 @@ with sync_playwright() as p:
             assert page.locator('.roadmap a[href^="mailto:"]').count() == 0
             page.locator('details.roadmap > summary').click()
             assert page.locator('details.roadmap').get_attribute('open') is not None
-            assert page.locator('article.project:visible').count() == 6
+            assert page.locator('article.project:visible').count() == 7
             for key in ('unity','roblox','jetbrains'):
                 assert page.locator('article.project[data-platform="'+key+'"]:visible').count() == 1
             if width == 390:
                 page.screenshot(path=str(root / 'roadmap-qa-mobile.png'),full_page=True)
             page.locator('details.roadmap > summary').click()
-            assert page.locator('article.project:visible').count() == 3
+            assert page.locator('article.project:visible').count() == 4
             if width <= 760:
                 assert page.locator(".mobile-nav summary").is_visible()
                 page.locator(".mobile-nav summary").click()

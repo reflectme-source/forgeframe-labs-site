@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0c1520">
-  <meta name="description" content="Monitor public OTOMOTO listing and price changes on Apify, or check localization CSV files with a free browser inspector. Explore available ForgeFrame Labs tools and scoped integrations.">
+  <meta name="description" content="Explore ForgeFrame Labs tools for API release compatibility, market monitoring and localization quality. Self-hosted developer tooling and scoped managed setup.">
   <link rel="canonical" href="https://reflectme-source.github.io/forgeframe-labs-site/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="ForgeFrame Labs — Vehicle market monitoring and localization QA">
-  <meta property="og:description" content="Two ready-to-use tools: monitor public vehicle market changes on Apify or catch localization CSV issues in your browser.">
+  <meta property="og:title" content="ForgeFrame Labs - Developer tooling and market automation">
+  <meta property="og:description" content="API contract compatibility, vehicle monitoring and localization QA tools built for specific operational workflows.">
   <meta property="og:url" content="https://reflectme-source.github.io/forgeframe-labs-site/">
   <meta property="og:image" content="https://reflectme-source.github.io/forgeframe-labs-site/assets/forgeframe-banner.png">
   <link rel="icon" href="./assets/forgeframe-avatar.png" type="image/png">
-  <title>ForgeFrame Labs | Market monitoring and localization tools</title>
+  <title>ForgeFrame Labs | Practical developer and automation tools</title>
   <style>
     :root{
       color-scheme:dark;
@@ -184,6 +184,7 @@
     .footer-links{display:flex;flex-wrap:wrap;gap:20px}
     .footer-links a{font-size:12px;text-decoration:none;color:#b9cfdf;min-height:33px;display:inline-flex;align-items:center}
     .footer-links a:hover{text-decoration:underline;color:white}
+    #project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     @media(max-width:1050px){
       .hero-grid{grid-template-columns:1fr 1fr;gap:30px}
       .index-panel{min-width:0}
@@ -232,6 +233,7 @@
       .proof-points span{white-space:normal}
       .portfolio{padding:55px 0 65px}
       .project-grid{grid-template-columns:1fr}
+      #project-grid{grid-template-columns:1fr}
       .project{min-height:unset;padding:23px}
       .roadmap>summary{padding:17px 18px;flex-wrap:wrap;gap:4px 14px}
       .roadmap-title{width:calc(100% - 32px);font-size:16px}
@@ -301,8 +303,11 @@
           <a class="index-row" href="./products/localization-qa.html">
             <span class="index-no">02</span><span><span class="index-name">Localization QA Inspector</span><span class="index-sub">Web · Unity-friendly CSV validation</span></span><span class="index-arrow" aria-hidden="true">↗</span>
           </a>
+          <a class="index-row" href="./products/contract-guard.html">
+            <span class="index-no">03</span><span><span class="index-name">Contract Guard</span><span class="index-sub">GitHub Actions · OpenAPI release evidence</span></span><span class="index-arrow" aria-hidden="true">↗</span>
+          </a>
           <a class="index-row" href="mailto:forgeframe.lab@gmail.com?subject=ForgeFrame%20API%20integration%20inquiry">
-            <span class="index-no">03</span><span><span class="index-name">Custom API integrations</span><span class="index-sub">B2B · Scoped by requirements</span></span><span class="index-arrow" aria-hidden="true">↗</span>
+            <span class="index-no">04</span><span><span class="index-name">Custom API integrations</span><span class="index-sub">B2B · Scoped by requirements</span></span><span class="index-arrow" aria-hidden="true">↗</span>
           </a>
           <p class="index-foot">Additional tools are in development — see the roadmap below.</p>
         </div>
@@ -312,7 +317,7 @@
   <div class="proofbar" aria-label="Product availability summary">
     <div class="wrap proof-inner">
       <p><strong>Built for a specific job,</strong> not software for software's sake.</p>
-      <div class="proof-points"><span>Published on Apify</span><span>Free browser inspector</span><span>Written-scope B2B integrations</span></div>
+      <div class="proof-points"><span>Published on Apify</span><span>Free browser inspector</span><span>OpenAPI release gate</span><span>Written-scope B2B integrations</span></div>
     </div>
   </div>
   <section class="portfolio" id="portfolio" aria-labelledby="portfolio-title">
@@ -321,9 +326,9 @@
         <div>
           <span class="section-eyebrow">01 / ForgeFrame portfolio</span>
           <h2 id="portfolio-title">Available now. Ready for real work.</h2>
-          <p>Use the published automotive monitor, run the free localization inspector, or request a carefully scoped integration. Projects not yet released are listed separately below.</p>
+          <p>Use the published market monitor, free localization inspector, or self-hosted OpenAPI release gate. Scoped implementation support is available separately.</p>
         </div>
-        <span class="section-count">2 AVAILABLE TOOLS<br>+ SCOPED INTEGRATIONS</span>
+        <span class="section-count">3 AVAILABLE TOOLS<br>+ SCOPED INTEGRATIONS</span>
       </div>
       <div class="project-grid" id="project-grid">
         <article class="project" data-platform="apify">
@@ -339,6 +344,13 @@
           <h3>Localization QA Inspector</h3>
           <p>Check Unity-friendly CSV strings for missing translations, duplicate keys and broken placeholders. Files stay local in the browser; export results to your workflow.</p>
           <div class="project-foot"><span>Free browser tool</span><a href="./tools/localization-qa.html">Open inspector ↗</a></div>
+        </article>
+        <article class="project" data-platform="developer">
+          <div class="project-top"><span class="project-symbol" aria-hidden="true">≠</span><span class="state live">Available</span></div>
+          <span class="project-platform">GitHub Actions / OpenAPI</span>
+          <h3>Contract Guard</h3>
+          <p>Catch breaking API specification changes, require time-limited exceptions, and export reviewable release evidence. Self-hosted GitHub Action; optional managed setup.</p>
+          <div class="project-foot"><span>Free Action · Setup $149</span><div class="project-links"><a class="details-link" href="./products/contract-guard.html">Details</a><a href="https://github.com/reflectme-source/forgeframe-contract-guard" rel="noopener noreferrer">View source ↗</a></div></div>
         </article>
         <article class="project" data-platform="integrations">
           <div class="project-top"><span class="project-symbol" aria-hidden="true">↔</span><span class="state service">By inquiry</span></div>

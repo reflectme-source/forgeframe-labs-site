@@ -7,7 +7,7 @@ import {fileURLToPath} from "node:url";
 const root=resolve(dirname(fileURLToPath(import.meta.url)),"..");
 const pages=[
  "index.html","support.html","privacy.html","products/localization-qa.html",
- "tools/localization-qa.html","tools/localization-qa-guide.html","integrations/otomoto-dealer-api.html"
+ "tools/localization-qa.html","tools/localization-qa-guide.html","products/contract-guard.html","integrations/otomoto-dealer-api.html"
 ];
 function html(file) {return readFileSync(join(root,file),"utf8");}
 function localTargets(page) {
@@ -69,7 +69,7 @@ test("ForgeFrame home offers a browsable multi-platform portfolio with honest re
  const home=html("index.html");
  assert.match(home,/<main id="main">/);
  assert.match(home,/href="#main">Skip to content/);
- assert.equal((home.match(/<article class="project"/g)||[]).length,6);
+ assert.equal((home.match(/<article class="project"/g)||[]).length,7);
  for(const platform of ["apify","web","unity","roblox","jetbrains","integrations"]){
   assert.match(home,new RegExp('data-platform="'+platform+'"'));
  }
@@ -77,6 +77,7 @@ test("ForgeFrame home offers a browsable multi-platform portfolio with honest re
   assert.ok(home.includes(label),"Missing honest availability label: "+label);
  }
  assert.match(home,/tools\/localization-qa\.html/);
+ assert.match(home,/products\/contract-guard\.html/);
  assert.match(home,/solutions\/otomoto-vehicle-monitoring\.html/);
  assert.match(home,/<details class="roadmap" id="roadmap">/);
  assert.match(home,/3 products in development/);
@@ -138,8 +139,9 @@ test("brand-wide support and privacy are aligned with multi-platform products",(
 test("public sitemap lists real brand routes including Polish automotive landing",()=>{
  const sm=readFileSync(join(root,"sitemap.xml"),"utf8");
  const urls=[...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
- assert.equal(urls.length,8);
+ assert.equal(urls.length,9);
  assert.ok(urls.some(url=>url.endsWith("/integrations/otomoto-dealer-api.html")));
+ assert.ok(urls.some(url=>url.endsWith("/products/contract-guard.html")));
  for(const u of urls){
    const parsed=new URL(u);
    assert.equal(parsed.hostname,"reflectme-source.github.io");
