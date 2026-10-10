@@ -1,0 +1,31 @@
+/* Local companion for the Connect → Forge checklist article; no global overrides. */
+body.ff-connect.ff-connect-guide{background:#061827;color:#edf7ff}
+body.ff-connect-guide .header{background:linear-gradient(115deg,#081c2d,#123a59);border-bottom:1px solid #335a78}
+body.ff-connect-guide .header .hero{padding-top:54px;padding-bottom:62px}
+body.ff-connect-guide .header h1{color:#f4faff}
+body.ff-connect-guide .header p,body.ff-connect-guide .header time{color:#c5d9e8}
+body.ff-connect-guide .content{background:linear-gradient(155deg,#102d46,#0b2339);border-color:#335977;color:#eaf5fd}
+body.ff-connect-guide .content h2,body.ff-connect-guide .content h3{color:#f2f9ff}
+body.ff-connect-guide .content p,body.ff-connect-guide .content li{color:#c1d5e5}
+body.ff-connect-guide .content .intro{color:#d5e9f6}
+body.ff-connect-guide .toc{background:#123a56;border:1px solid #376783;color:#e6f6ff}
+body.ff-connect-guide .toc a{color:#a6ddff}
+body.ff-connect-guide .note{background:#342919;border-color:#866944;border-left:4px solid #e1ab62;color:#f3dcc1}
+body.ff-connect-guide .note p{color:#f3dcc1}
+body.ff-connect-guide ul.checklist li{border-color:#31526e}
+body.ff-connect-guide ul.checklist li:before{color:#8ac7f2}
+body.ff-connect-guide .content a:not(.cta){color:#9ed6ff}
+body.ff-connect-guide .source{color:#b8cede}
+body.ff-connect-guide .callout{background:linear-gradient(110deg,#16436a,#0b2d4b);border:1px solid #46759b}
+body.ff-connect-guide .callout p{color:#d1e3ef}
+body.ff-connect-guide .cta{background:#73c3f8;color:#092137}
+body.ff-connect-guide .cta:hover{background:#a7deff}
+body.ff-connect-guide .ff-next{background:#0a263d;color:#f0f9ff;border-top:1px solid #305b7a}
+body.ff-connect-guide .ff-next h2{color:#f0f9ff}
+body.ff-connect-guide .ff-next__label{color:#92cfff}
+body.ff-connect-guide .ff-next p{color:#bed6e6}
+body.ff-connect-guide .ff-next__actions a{color:#d7e8f6;border:1px solid #527d9b}
+body.ff-connect-guide .ff-next__actions a:first-child{background:#276a9c;color:#fff}
+body.ff-connect-guide .ff-next__actions a:hover{background:#3d8abc;color:#fff}
+body.ff-connect-guide .ff-connect-disclaimer{font-size:12px}
+@media print{body.ff-connect-guide{background:white;color:#17283d}body.ff-connect-guide .ffg-header,body.ff-connect-guide .ffg-footer,body.ff-connect-guide .ff-connect-disclaimer{display:none!important}body.ff-connect-guide .content{background:white;color:#17283d;border:0}body.ff-connect-guide .content p,body.ff-connect-guide .content li,body.ff-connect-guide .content h2{color:#17283d}}
