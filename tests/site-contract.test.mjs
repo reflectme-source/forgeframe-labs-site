@@ -148,3 +148,13 @@ test("both language homes link to the genuine private Connect-to-Forge service",
   assert.match(service,/€490/);
   assert.match(service,/indicative fixed-scope price/);
 });
+
+
+test("Contract Guard sales page uses a copyable immutable-pinned v0.1.3 action",()=>{
+  const p=html("products/contract-guard.html");
+  const expected="uses: reflectme-source/forgeframe-contract-guard@47857973aeba8bf5bb6b034544bddaa2be6c8ad5";
+  assert.ok(p.includes(expected),"The action example must pin the verified v0.1.3 commit");
+  assert.doesNotMatch(p,/uses: reflectme-source\/\s*\n\s*forgeframe-contract-guard/);
+  assert.match(p,/upload-evidence: 'false'/);
+  assert.match(p,/# v0\.1\.3/);
+});
