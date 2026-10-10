@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Private Atlassian Connect to Forge migration checklist (2026): find legacy Jira/Confluence apps, protect custom field identity, preserve data, verify permissions and stage safe cutover before 31 January 2027.">
+<link rel="canonical" href="https://reflectme-source.github.io/forgeframe-labs-site/services/connect-to-forge-assessment/checklist.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Private Connect to Forge Migration Checklist | ForgeFrame Labs">
+<meta property="og:description" content="A source-backed checklist for private Jira/Confluence Connect app migration with data and permission continuity checks.">
+<meta property="og:url" content="https://reflectme-source.github.io/forgeframe-labs-site/services/connect-to-forge-assessment/checklist.html">
+<meta name="color-scheme" content="light">
+<title>Private Connect to Forge migration checklist for Jira & Confluence | ForgeFrame Labs</title>
+<style>
+:root{--navy:#10273f;--ink:#152a44;--muted:#536982;--stroke:#dbe4ed;--canvas:#f6f8fb;--accent:#f3b66b}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:30px}
+body{margin:0;background:var(--canvas);color:var(--ink);font:16px/1.75 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:#16599a;text-underline-offset:3px}a:focus-visible{outline:3px solid #bd6a19;outline-offset:4px}
+.skip{position:absolute;top:-100px;left:20px;background:#fff;padding:10px 15px}.skip:focus{top:12px}
+.header{background:var(--navy);color:white}
+.container{width:min(960px,calc(100% - 40px));margin-inline:auto}
+.nav{display:flex;align-items:center;gap:22px;padding:21px 0}
+.nav .brand{font-weight:800;letter-spacing:.06em;font-size:13px;text-decoration:none;color:#fff}
+.nav a.back{margin-left:auto;color:#ddeeff;font-size:14px;text-decoration:none}
+.hero{padding:53px 0 68px}
+.eyebrow{text-transform:uppercase;letter-spacing:.15em;font-size:12px;color:#b9d2e9;font-weight:790}
+h1{font-size:clamp(35px,5vw,57px);letter-spacing:-.048em;line-height:1.1;margin:14px 0 22px;max-width:850px}
+.hero p{color:#ccdaeb;max-width:700px;font-size:18px;line-height:1.65}
+.hero time{font-size:13px;color:#acc4dd}
+main{padding:55px 0 100px}
+.content{background:white;border:1px solid var(--stroke);border-radius:18px;padding:42px 48px}
+.toc{background:#edf4fb;border:1px solid #ccdaeb;border-radius:12px;padding:21px 25px}
+.toc strong{display:block;margin-bottom:10px}.toc ol{margin:0;padding-left:23px}
+h2{font-size:clamp(24px,3.2vw,32px);line-height:1.2;letter-spacing:-.028em;margin:42px 0 13px}
+h3{font-size:19px;letter-spacing:-.015em;margin:27px 0 8px}
+p{margin:0 0 17px}li{margin-bottom:8px}
+.intro{font-size:18px;color:#3e546b}
+.note{padding:18px 21px;background:#fff8ec;border:1px solid #efd7b6;border-left:4px solid #a46a1e;border-radius:9px;margin:22px 0}
+ul.checklist{padding:0;list-style:none;margin:16px 0}
+ul.checklist li{position:relative;padding:12px 15px 12px 42px;border-bottom:1px solid var(--stroke);margin:0}
+ul.checklist li:before{content:"□";position:absolute;left:12px;top:9px;color:#395f84;font-size:22px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#132840;color:#eff7ff;padding:19px 20px;border-radius:12px;font:14px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;overflow:auto}
+code{font:0.92em ui-monospace,SFMono-Regular,Consolas,monospace}
+.source{font-size:14px;color:var(--muted)}
+.callout{padding:28px 30px;margin:42px 0 12px;background:var(--navy);color:#fff;border-radius:15px}
+.callout h2{color:white;margin:4px 0 13px}
+.callout p{color:#cbdced}
+.cta{display:inline-block;background:var(--accent);padding:12px 19px;min-height:44px;border-radius:8px;color:#102339;font-weight:750;text-decoration:none}
+.footer{padding:30px 0;border-top:1px solid var(--stroke);font-size:13px;color:var(--muted)}
+@media(max-width:680px){.container{width:min(960px,calc(100% - 28px))}.content{padding:24px 20px}.nav{gap:12px}.hero{padding:38px 0 46px}.callout{padding:23px 20px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{body{background:white}.content{border:0;padding:0}.header{color:#17283d;background:white}.hero p,.hero time{color:#546478}.toc,.callout{break-inside:avoid}.callout{border:1px solid #bbb}.callout h2,.callout p{color:#17283d}}
+</style>
+</head>
+<body>
+<a class="skip" href="#content">Skip to checklist</a>
+<header class="header">
+ <div class="container">
+  <nav class="nav" aria-label="Guide navigation">
+   <a href="../../" class="brand">FORGEFRAME LABS</a>
+   <a class="back" href="./">← Migration assessment service</a>
+  </nav>
+  <div class="hero">
+   <div class="eyebrow">Engineering field guide / Jira & Confluence Cloud</div>
+   <h1>Private Connect → Forge migration checklist</h1>
+   <p>What to verify before you move a custom Jira or Confluence Connect app to Forge: app identity, custom fields, permissions, data and release continuity.</p>
+   <time datetime="2026-10-10">Updated 10 October 2026 · Source-backed reference</time>
+  </div>
+ </div>
+</header>
+<main class="container" id="content">
+<article class="content">
+ <p class="intro">Atlassian says Connect end of support begins on <strong>31 January 2027</strong>. That does not mean every private app stops working on that date. It means support narrows, compatibility can deteriorate and teams maintaining private Connect apps must plan their own transition. <a href="https://developer.atlassian.com/platform/adopting-forge-from-connect/connect-end-of-support-private-apps/">Read Atlassian's private-app guidance</a>.</p>
+ <div class="note"><strong>Scope matters:</strong> this guide concerns customer-owned <em>private Connect apps for Jira or Confluence Cloud</em>. It is not a tutorial for migrating a Jira Data Center installation to Cloud, and admins who use commercial Marketplace apps should first contact their existing vendor. ForgeFrame Labs is independent and not an Atlassian Solution Partner.</div>
+ <nav class="toc" aria-label="Checklist sections">
+ <strong>Jump to a verification step</strong>
+ <ol>
+  <li><a href="#inventory">Discover and classify the apps</a></li>
+  <li><a href="#identity">Preserve installation identity</a></li>
+  <li><a href="#data">Protect custom fields, content and historical data</a></li>
+  <li><a href="#auth">Review permissions and backend boundaries</a></li>
+  <li><a href="#release">Stage, test and cut over safely</a></li>
+  <li><a href="#budget">Decide whether to migrate or retire</a></li>
+ </ol>
+ </nav>
+ <h2 id="inventory">1. Discover and classify the apps</h2>
+ <p>Start at the Atlassian Connected apps administration interface. Atlassian is displaying warnings for private Connect applications, including apps with no declared Forge migration intent. Your inventory should identify every app's maintainer, target products, users, business owner and critical workflows. The descriptor alone is not a complete inventory.</p>
+ <ul class="checklist">
+  <li>Confirm whether each app is <strong>private/custom</strong> or a Marketplace product maintained by a vendor.</li>
+  <li>List Connect descriptor module types and instances, associated REST endpoints, webhooks and scheduled jobs.</li>
+  <li>Determine whether the original maintainer and source code are still available.</li>
+  <li>Record any external database, secrets manager, queue, support integration or billing dependency.</li>
+  <li>Identify a business owner who can validate the current behavior before it changes.</li>
+ </ul>
+ <p class="source">Source: <a href="https://developer.atlassian.com/platform/adopting-forge-from-connect/what-admins-see/">Atlassian — what administrators see</a>.</p>
+ <h2 id="identity">2. Preserve installation identity</h2>
+ <p>For Forge apps that adopt an existing Connect identity, do not discard the original Connect app key just because its modules are gone. Atlassian's official <code>adoption-status</code> tool checks the manifest and calls out missing identity linkage. It is free, and should be part of your own release pipeline.</p>
+ <pre>npx @atlassian/connect-to-forge@latest adoption-status --strict</pre>
+ <p>Use this command inside the authorized development environment containing the app's <code>manifest.yml</code>. It reports whether Connect modules/scopes remain and can fail CI when important adoption checks fail. It does <strong>not</strong> migrate application logic, stored data, webhooks or permissions for you.</p>
+ <ul class="checklist">
+  <li>Review original app key and current Forge manifest key relationship before any upgrade.</li>
+  <li>Identify what is already native Forge and what is still running as a Connect module or backend.</li>
+  <li>Run the official status check with the exact manifest and preserve results as release evidence.</li>
+  <li>Check version, install and update behavior on a non-production cloud tenant.</li>
+ </ul>
+ <p class="source">Source: <a href="https://developer.atlassian.com/platform/adopting-forge-from-connect/adoption-status-tool/">Atlassian — Checking Forge adoption status</a>.</p>
+ <h2 id="data">3. Protect custom fields, content and historical data</h2>
+ <p>Some small apps keep all of their business logic in a simple issue panel. Others own custom field types, Confluence macro parameters, entity properties, or externally persisted configuration. The second category is a different migration project, even if its manifest looks short.</p>
+ <ul class="checklist">
+  <li>Capture each custom field's original key, value type, usage in JQL/workflow rules and historical values.</li>
+  <li>For Jira Connect <code>jiraIssueFields</code>, study Atlassian's documented replacement in Forge <code>jira:customField</code> using the same key and <code>migratedFromConnect: true</code> before deployment.</li>
+  <li>For Confluence custom content or macros, inspect whether the original content type and parameter schema require compatibility transformations.</li>
+  <li>List stored entity properties, external database records, tenant IDs and lifecycle events; document who owns their backup and restore.</li>
+  <li>Record whether a business workflow depends on a precise identifier or query syntax that may change.</li>
+ </ul>
+ <div class="note">A green manifest or successful installation is <strong>not proof</strong> that historic custom field data, issue filters, macro parameters and external records remain readable. Define explicit before-and-after data checks.</div>
+ <p class="source">Sources: <a href="https://developer.atlassian.com/platform/adopting-forge-from-connect/migrate-jira-issue-fields/">Jira issue field migration</a>, <a href="https://developer.atlassian.com/platform/adopting-forge-from-connect/migrate-custom-content/">Confluence custom content migration</a>.</p>
+ <h2 id="auth">4. Review permissions and backend boundaries</h2>
+ <p>Connect JWT authentication, user impersonation and app-level scopes do not automatically carry over as equivalent Forge permissions. Assess least privilege per API call and UI surface, including data access where site admins or end users lack rights.</p>
+ <ul class="checklist">
+  <li>List legacy Connect scopes and map each operation to required Forge scopes and execution identities.</li>
+  <li>Test unauthorized and cross-tenant access, not only happy-path operations in an admin account.</li>
+  <li>Check whether a backend moves fully to Forge functions, must use Forge Remote, or remains deliberately external.</li>
+  <li>Verify any OAuth consent/version changes and customer administrative approvals.</li>
+  <li>Check install/uninstall lifecycle assumptions: Atlassian changed Connect <code>uninstalled</code> hook behavior during Forge-only upgrades in 2026.</li>
+ </ul>
+ <h2 id="release">5. Stage, test and cut over safely</h2>
+ <p>Staged release acceptance should focus on the business workflow users rely on, rather than merely passing a build. Running the official migration-status tool and rendering a page is not enough.</p>
+ <ul class="checklist">
+  <li>Use a permitted cloud development or staging site and keep the existing production app untouched until approval.</li>
+  <li>Record feature-parity tests for key modules, custom fields, webhooks, permission-denied states, failure retries and configuration.</li>
+  <li>Compare before-and-after sample data with customer-approved redacted fixtures and explicit acceptance thresholds.</li>
+  <li>Document rollback feasibility and its limits; irreversible data-shape changes require a separately approved path.</li>
+  <li>Validate Forge platform usage budgets and any potential overage obligations before enabling billed capabilities.</li>
+  <li>Secure a written production go/no-go decision from the authorized customer owner.</li>
+ </ul>
+ <h2 id="budget">6. Decide whether to migrate, replace or retire</h2>
+ <p>If the original developer is gone, source code is inaccessible, or a custom workflow has only a handful of users, a like-for-like port may not be the best investment. A valid assessment should offer three explicit outcomes: a bounded Forge implementation, a supported alternative that replaces the feature, or a supervised retirement with a documented data export plan.</p>
+ <ul class="checklist">
+  <li>Identify the real owner and business value of each remaining custom function.</li>
+  <li>Estimate complexity based on modules, stored data, deployment boundary and tenant-specific workflows.</li>
+  <li>Compare migration effort with buying a currently supported application or removing the function safely.</li>
+  <li>Reject any fixed-price promise that silently includes extensive customer field migrations or production cutover.</li>
+ </ul>
+ <div class="callout">
+  <div class="eyebrow">Independent written assessment</div>
+  <h2>Need a second pair of eyes on a private Connect app?</h2>
+  <p>ForgeFrame Labs offers a bounded architecture desk review: one private app, up to 10 module instances, one backend, and a written risk and implementation plan. The indicative assessment price is €490, subject to written scope, lawful contracting and availability. No customer code or credentials are needed for the initial inquiry.</p>
+  <a class="cta" href="./">Review the assessment service →</a>
+ </div>
+ <h2>Official primary references</h2>
+ <ol>
+  <li><a href="https://developer.atlassian.com/platform/adopting-forge-from-connect/connect-end-of-support-private-apps/">Connect End of Support and private/custom apps</a> — scope, date and administrator guidance</li>
+  <li><a href="https://developer.atlassian.com/platform/adopting-forge-from-connect/adoption-status-tool/">Adoption status CLI</a> — manifest checks, strict CI mode and Connect identity preservation</li>
+  <li><a href="https://developer.atlassian.com/platform/adopting-forge-from-connect/migrate-jira-issue-fields/">Jira issue fields</a> — preserving keys and data during field migration</li>
+  <li><a href="https://developer.atlassian.com/platform/adopting-forge-from-connect/migrate-custom-content/">Confluence custom content</a> — backwards-compatibility behavior</li>
+  <li><a href="https://developer.atlassian.com/platform/adopting-forge-from-connect/changelog/">Atlassian migration changelog</a> — track current behavior changes</li>
+ </ol>
+ <p class="source">This page is an independent, non-legal engineering checklist updated in October 2026. Atlassian may revise its migration guidance. No specific app is certified or declared ready to migrate based on these steps alone.</p>
+</article>
+</main>
+<footer class="footer"><div class="container">
+ ForgeFrame Labs · <a href="./">Migration assessment service</a> · <a href="../../privacy.html">Privacy</a> · <a href="../../support.html">Support</a> · <a href="mailto:forgeframe.lab@gmail.com?subject=Connect%20Migration%20Scope">Written inquiries</a>.
+ <p>Independent service. Not affiliated with or endorsed by Atlassian.</p>
+</div></footer>
+</body></html>
