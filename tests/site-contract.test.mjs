@@ -72,14 +72,54 @@ test("ForgeFrame home offers a browsable multi-platform portfolio with honest re
  assert.equal((home.match(/<article class="project"/g)||[]).length,6);
  for(const platform of ["apify","web","unity","roblox","jetbrains","integrations"]){
   assert.match(home,new RegExp('data-platform="'+platform+'"'));
-  assert.match(home,new RegExp('data-filter="'+platform+'"'));
  }
  for(const label of ["Published","Available","In development","In validation","Compatibility QA"]){
   assert.ok(home.includes(label),"Missing honest availability label: "+label);
  }
  assert.match(home,/tools\/localization-qa\.html/);
  assert.match(home,/solutions\/otomoto-vehicle-monitoring\.html/);
+ assert.match(home,/<details class="roadmap" id="roadmap">/);
+ assert.match(home,/3 products in development/);
+ assert.equal((home.match(/Not available for purchase/g)||[]).length,3);
+ assert.doesNotMatch(home,/data-filter=/);
+ assert.match(home,/href="https:\/\/apify\.com\/green_amazement\/otomoto-change-intelligence"/);
+ assert.match(home,/href="\.\/integrations\/otomoto-dealer-api\.html"/);
  assert.doesNotMatch(home,/AcqPath|ExtensionOps/);
+});
+
+test("unreleased roadmap has no purchase or inquiry CTAs",()=>{
+ const home=html("index.html");
+ const start=home.indexOf('<details class="roadmap"');
+ const stop=home.indexOf('</details>',start);
+ assert.ok(start>0 && stop>start,"Roadmap disclosure not found");
+ const roadmap=home.slice(start,stop);
+ assert.equal((roadmap.match(/<article class="project"/g)||[]).length,3);
+ assert.doesNotMatch(roadmap,/href="(?:mailto:|https:\/\/apify\.com)/);
+ assert.equal((roadmap.match(/Not available for purchase/g)||[]).length,3);
+});
+
+test("every local navigation fragment points to an existing section",()=>{
+ for(const page of pages){
+   const source=html(page);
+   const ids=new Set([...source.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]));
+   for(const [,target] of source.matchAll(/href="#([^"]+)"/g)){
+     assert.ok(ids.has(decodeURIComponent(target)),page+" has missing anchor #"+target);
+   }
+ }
+});
+
+test("homepage workflow paths lead to the real offerings",()=>{
+ const main=html("index.html");
+ const start=main.indexOf('<section class="approach"');
+ const end=main.indexOf('</section>',start);
+ assert.ok(start>=0 && end>start);
+ const section=main.slice(start,end);
+ assert.match(section,/Monitor a saved search/);
+ assert.match(section,/Check your CSV in-browser/);
+ assert.match(section,/Scope a specific API workflow/);
+ assert.match(section,/href="\.\/solutions\/otomoto-vehicle-monitoring\.html"/);
+ assert.match(section,/href="\.\/tools\/localization-qa\.html"/);
+ assert.match(section,/mailto:forgeframe\.lab@gmail\.com/);
 });
 
 test("brand-wide support and privacy are aligned with multi-platform products",()=>{
