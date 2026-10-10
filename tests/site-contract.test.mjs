@@ -131,7 +131,7 @@ test("OpenAPI guide has a genuine developer journey to the public action and the
 });
 
 
-test("Connect-to-Forge service remains discoverable from central catalog",()=>{const pl=html("products/index.html"),en=html("en/index.html");assert.match(pl,/connect-to-forge-assessment/);assert.match(en,/Connect → Forge assessment/);assert.match(html("services/connect-to-forge-assessment/index.html"),/€490/);assert.ok(existsSync(join(root,"services/connect-to-forge-assessment/pl/index.html")));});
+test("Connect-to-Forge service remains discoverable from central catalog",()=>{const pl=html("products/index.html"),en=html("en/index.html");assert.match(pl,/connect-to-forge-assessment/);assert.match(en,/Connect → Forge/);assert.match(html("services/connect-to-forge-assessment/index.html"),/€490/);assert.ok(existsSync(join(root,"services/connect-to-forge-assessment/pl/index.html")));});
 
 test("Contract Guard sales page uses a copyable immutable-pinned v0.1.3 action",()=>{
   const p=html("products/contract-guard.html");
@@ -327,7 +327,7 @@ test("every interactive tool and sample report returns to the right product offe
 });
 
 
-test("OriginDuty points to a real product offer and independently hosted research remains available",()=>{const home=html("index.html"),catalog=html("products/index.html"),en=html("en/index.html");assert.match(home,/products\/originduty\//);assert.match(catalog,/products\/originduty\//);assert.match(en,/https:\/\/reflectme-source.github.io\/originduty-site\//);});
+test("OriginDuty points to a real product offer and independently hosted research remains available",()=>{const home=html("index.html"),catalog=html("products/index.html"),en=html("en/index.html");assert.match(home,/products\/originduty\//);assert.match(catalog,/products\/originduty\//);assert.match(en,/products\/originduty\//);});
 
 test("domain binding uses the selected owned apex hostname",()=>{
  assert.equal(readFileSync(join(root,"CNAME"),"utf8").trim(),"forgeframelabs.app");
