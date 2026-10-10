@@ -93,7 +93,7 @@ test("brand-wide support and privacy are aligned with multi-platform products",(
 test("public sitemap lists real brand routes including Polish automotive landing",()=>{
  const sm=readFileSync(join(root,"sitemap.xml"),"utf8");
  const urls=[...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
- assert.equal(urls.length,18);
+ assert.equal(urls.length,19);
  assert.equal(new Set(urls).size,urls.length,"Sitemap must not contain duplicate pages");
  assert.ok(urls.some(url=>url.endsWith("/services/connect-to-forge-assessment/")));
  assert.ok(urls.some(url=>url.endsWith("/services/connect-to-forge-assessment/checklist.html")));
@@ -157,4 +157,13 @@ test("Contract Guard sales page uses a copyable immutable-pinned v0.1.3 action",
   assert.doesNotMatch(p,/uses: reflectme-source\/\s*\n\s*forgeframe-contract-guard/);
   assert.match(p,/upload-evidence: 'false'/);
   assert.match(p,/# v0\.1\.3/);
+});
+
+test("Merchant Issue Desk landing remains publicly discoverable and clearly scoped",()=>{
+  const homepage=html("index.html"),page=html("services/merchant-issue-desk.html");
+  assert.match(homepage,/href="https:\/\/reflectme-source\.github\.io\/forgeframe-labs-site\/services\/merchant-issue-desk\.html"/);
+  assert.match(page,/Merchant Issue Desk/);
+  assert.match(page,/690 zł/);
+  assert.match(page,/Nie gwarantujemy zatwierdzenia produktów/);
+  assert.match(page,/forgeframe\.lab@gmail\.com/);
 });
