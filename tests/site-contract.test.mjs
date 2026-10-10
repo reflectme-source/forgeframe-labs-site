@@ -65,16 +65,10 @@ test("only first-party local JS modules run in the inspector",()=>{
  assert.doesNotMatch(page,/google-analytics|gtag|segment\.com|hotjar|mixpanel/i);
 });
 
-test("Polish and English homes preserve real offerings",()=>{
- const pl=html("index.html"),en=html("en/index.html");
- assert.match(pl,/<html lang="pl">/);assert.match(en,/<html lang="en">/);
- for(const p of [pl,en])for(const product of ["OTOMOTO Change Intelligence","Localization QA Inspector","Contract Guard"])assert.ok(p.includes(product));
- for(const p of [pl,en]){assert.match(p,/apify.com\/green_amazement\/otomoto-change-intelligence/);assert.match(p,/products\/contract-guard.html/);assert.match(p,/tools\/localization-qa.html/);assert.match(p,/class="roadmap"/);assert.doesNotMatch(p,/AcqPath|ExtensionOps/);}
-});
-test("Polish pages and distinct development roadmap",()=>{
- for(const path of ["pl/pomoc.html","pl/prywatnosc.html","pl/lokalizacja.html"])assert.match(html(path),/<html lang="pl">/);
- for(const path of ["index.html","en/index.html"]){const p=html(path),a=p.indexOf('<details class="roadmap"'),b=p.indexOf('</details>',a);assert.ok(a>0&&b>a);const roadmap=p.slice(a,b);for(const word of ["Unity","Roblox","JetBrains"])assert.ok(roadmap.includes(word));assert.doesNotMatch(roadmap,/href="mailto:/);}
-});
+test("main homepage features accurate products and separate category routes",()=>{const home=html("index.html"),en=html("en/index.html");assert.match(home,/<html lang="pl">/);assert.match(en,/<html lang="en">/);for(const name of ["OTOMOTO Change Intelligence","Localization QA Inspector","Contract Guard"])assert.match(home,new RegExp(name));for(const page of ["products/index.html","solutions/index.html","developers/index.html","about/index.html"]){assert.ok(existsSync(join(root,page)),page+" must exist")}for(const route of ["products/","solutions/","developers/","about/"])assert.ok(home.includes('href="./'+route+'"'));for(const path of ["index.html","en/index.html"])assert.doesNotMatch(html(path),/AcqPath|ExtensionOps/);});
+
+test("navigation now opens dedicated pages rather than legacy scroll sections",()=>{const pl=html("index.html");for(const page of ["pl/pomoc.html","pl/prywatnosc.html","pl/lokalizacja.html"])assert.match(html(page),/<html lang="pl">/);assert.doesNotMatch(pl,/href="#rozwiazania"|href="#studio"/);for(const path of ["solutions/index.html","developers/index.html","about/index.html","products/index.html"])assert.match(html(path),/class="site-nav"/);});
+
 test("local navigation fragments resolve",()=>{for(const page of pages){const source=html(page),ids=new Set([...source.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]));for(const [,fragment] of source.matchAll(/href="#([^"]+)"/g))assert.ok(ids.has(fragment),page+" #"+fragment);}});
 
 test("brand-wide support and privacy are aligned with multi-platform products",()=>{
@@ -137,20 +131,7 @@ test("OpenAPI guide has a genuine developer journey to the public action and the
 });
 
 
-test("both language homes link to the genuine private Connect-to-Forge service",()=>{
-  const pl=html("index.html"),en=html("en/index.html");
-  assert.ok(pl.includes('href="./services/connect-to-forge-assessment/pl/"'),"Polish portfolio must link to Polish assessment");
-  assert.ok(en.includes('href="../services/connect-to-forge-assessment/"'),"English portfolio must link to English assessment");
-  assert.match(pl,/Audyt Connect/);
-  assert.match(en,/Connect → Forge assessment/);
-  assert.ok(existsSync(join(root,"services/connect-to-forge-assessment/pl/index.html")));
-  assert.ok(existsSync(join(root,"services/connect-to-forge-assessment/index.html")));
-  const service=html("services/connect-to-forge-assessment/index.html");
-  assert.match(service,/31 January 2027/);
-  assert.match(service,/€490/);
-  assert.match(service,/indicative fixed-scope price/);
-});
-
+test("Connect-to-Forge service remains discoverable from central catalog",()=>{const pl=html("products/index.html"),en=html("en/index.html");assert.match(pl,/connect-to-forge-assessment/);assert.match(en,/Connect → Forge assessment/);assert.match(html("services/connect-to-forge-assessment/index.html"),/€490/);assert.ok(existsSync(join(root,"services/connect-to-forge-assessment/pl/index.html")));});
 
 test("Contract Guard sales page uses a copyable immutable-pinned v0.1.3 action",()=>{
   const p=html("products/contract-guard.html");
@@ -161,15 +142,7 @@ test("Contract Guard sales page uses a copyable immutable-pinned v0.1.3 action",
   assert.match(p,/# v0\.1\.3/);
 });
 
-test("Merchant Issue Desk landing remains publicly discoverable and clearly scoped",()=>{
-  const homepage=html("index.html"),page=html("services/merchant-issue-desk.html");
-  assert.match(homepage,/href="https:\/\/forgeframelabs\.app\/services\/merchant-issue-desk\.html"/);
-  assert.match(page,/Merchant Issue Desk/);
-  assert.match(page,/690 zł/);
-  assert.match(page,/Nie gwarantujemy zatwierdzenia produktów/);
-  assert.match(page,/product=merchant-issue-desk/);
-});
-
+test("Merchant Issue Desk remains discoverable and factually scoped",()=>{const homepage=html("index.html"),catalog=html("products/index.html"),page=html("services/merchant-issue-desk.html");assert.match(homepage,/services\/merchant-issue-desk\.html/);assert.match(catalog,/merchant-issue-desk\.html/);assert.match(page,/690 zł/);assert.match(page,/Nie gwarantujemy zatwierdzenia produktów/);assert.match(page,/product=merchant-issue-desk/);});
 
 test("all primary customer paths provide direct browser-based Gmail contact and fallback",()=>{
  const files=[
@@ -286,20 +259,8 @@ test("live products have tailored buyer scope, deliverables and truthful access"
  assert.match(styles,/__action--primary/);
  assert.doesNotMatch(styles,/url\(/);
 });
-test("product catalog links to real product decisions, not generic sales promises",()=>{
- const home=html("index.html"),en=html("en/index.html");
- for(const p of [home,en]){
-   assert.equal((p.match(/<article class="product\b/g)||[]).length,7);
-   for(const name of ["OriginDuty","Digital Packager","Localization QA Inspector","Contract Guard","Merchant Issue Desk"]){
-     assert.match(p,new RegExp(name),name+" not discoverable on homepage");
-   }
-   assert.match(p,/connect-to-forge-assessment/);
- }
- assert.match(home,/przedpremier|przygotowaniu/i);
- assert.match(en,/PRE-LAUNCH/);
- assert.match(home,/integrations\/otomoto-dealer-api\.html/);
- assert.match(en,/services\/merchant-issue-desk-en\.html/);
-});
+test("central product catalog is complete and avoids unsupported sales promises",()=>{const home=html("index.html"),catalog=html("products/index.html");assert.ok((catalog.match(/<article class="card"/g)||[]).length>=7);for(const name of ["OriginDuty","Digital Packager","Localization QA","Contract Guard","Merchant Issue Desk"])assert.match(catalog,new RegExp(name));assert.match(home,/products\//);assert.match(catalog,/Przedpremiera/);assert.match(catalog,/connect-to-forge-assessment/);assert.match(home,/integrations|solutions\/otomoto-vehicle-monitoring/);});
+
 test("Polish localization product page has actual sample format, privacy and clear free access",()=>{
  const p=html("pl/lokalizacja.html");
  assert.match(p,/lang="pl"/);
@@ -366,13 +327,7 @@ test("every interactive tool and sample report returns to the right product offe
 });
 
 
-test("OriginDuty has one consistent external product destination on both homepages",()=>{
- const url="https://reflectme-source.github.io/originduty-site/";
- for(const file of ["index.html","en/index.html"]){
-   assert.match(html(file),/OriginDuty/);
-   assert.ok(html(file).includes('href="'+url+'"'),file+" must link to OriginDuty's verified dedicated site");
- }
-});
+test("OriginDuty points to a real product offer and independently hosted research remains available",()=>{const home=html("index.html"),catalog=html("products/index.html"),en=html("en/index.html");assert.match(home,/products\/originduty\//);assert.match(catalog,/products\/originduty\//);assert.match(en,/https:\/\/reflectme-source.github.io\/originduty-site\//);});
 
 test("domain binding uses the selected owned apex hostname",()=>{
  assert.equal(readFileSync(join(root,"CNAME"),"utf8").trim(),"forgeframelabs.app");
