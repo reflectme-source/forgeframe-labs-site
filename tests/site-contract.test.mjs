@@ -159,3 +159,12 @@ test("Contract Guard sales page uses a copyable immutable-pinned v0.1.3 action",
   assert.match(p,/upload-evidence: 'false'/);
   assert.match(p,/# v0\.1\.3/);
 });
+
+test("Merchant Issue Desk landing remains publicly discoverable and clearly scoped",()=>{
+  const homepage=html("index.html"),page=html("services/merchant-issue-desk.html");
+  assert.match(homepage,/href="https:\/\/reflectme-source\.github\.io\/forgeframe-labs-site\/services\/merchant-issue-desk\.html"/);
+  assert.match(page,/Merchant Issue Desk/);
+  assert.match(page,/690 zł/);
+  assert.match(page,/Nie gwarantujemy zatwierdzenia produktów/);
+  assert.match(page,/forgeframe\.lab@gmail\.com/);
+});
