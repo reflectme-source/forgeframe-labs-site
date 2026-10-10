@@ -103,8 +103,8 @@ test("public sitemap lists real brand routes including Polish automotive landing
  assert.ok(urls.some(url=>url.endsWith("/products/contract-guard.html")));
  for(const u of urls){
    const parsed=new URL(u);
-   assert.equal(parsed.hostname,"reflectme-source.github.io");
-   const relative=parsed.pathname.replace(/^\/forgeframe-labs-site\//,"")||"index.html";
+   assert.equal(parsed.hostname,"forgeframelabs.app");
+   const relative=parsed.pathname.replace(/^\//,"")||"index.html";
    assert.ok(existsSync(join(root,relative)),u+" not found in repository");
  }
 });
@@ -163,7 +163,7 @@ test("Contract Guard sales page uses a copyable immutable-pinned v0.1.3 action",
 
 test("Merchant Issue Desk landing remains publicly discoverable and clearly scoped",()=>{
   const homepage=html("index.html"),page=html("services/merchant-issue-desk.html");
-  assert.match(homepage,/href="https:\/\/reflectme-source\.github\.io\/forgeframe-labs-site\/services\/merchant-issue-desk\.html"/);
+  assert.match(homepage,/href="https:\/\/forgeframelabs\.app\/services\/merchant-issue-desk\.html"/);
   assert.match(page,/Merchant Issue Desk/);
   assert.match(page,/690 zł/);
   assert.match(page,/Nie gwarantujemy zatwierdzenia produktów/);
@@ -372,4 +372,10 @@ test("OriginDuty has one consistent external product destination on both homepag
    assert.match(html(file),/OriginDuty/);
    assert.ok(html(file).includes('href="'+url+'"'),file+" must link to OriginDuty's verified dedicated site");
  }
+});
+
+test("domain binding uses the selected owned apex hostname",()=>{
+ assert.equal(readFileSync(join(root,"CNAME"),"utf8").trim(),"forgeframelabs.app");
+ const robots=readFileSync(join(root,"robots.txt"),"utf8");
+ assert.match(robots,/Sitemap: https:\/\/forgeframelabs\.app\/sitemap\.xml/);
 });
