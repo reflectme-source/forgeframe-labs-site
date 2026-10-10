@@ -1,0 +1,33 @@
+{
+  "generatedAt": "2026-10-10T16:51:55.895Z",
+  "status": "ok",
+  "source": "https://eur-lex.europa.eu/oj/browse-oj.html?COLL_OJ=OJ-L&type=days",
+  "window": "OJ-L, najnowsze siedem dni, akty z frazami trade-defence w tytule; nie jest to pełna baza TARIC",
+  "method": "CN/TARIC codes extracted from official legal text. Matches are preliminary and may need human review.",
+  "pagesFetched": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "acts": [
+    {
+      "celex": "32026R2245",
+      "title": "Commission Implementing Regulation (EU) 2026/2245 of 8 October 2026 making imports of certain polyvinyl alcohols originating in the People’s Republic of China subject to registration with a view to allowing the levy of anti-dumping duties on the imports subject to registration",
+      "kind": "anti-dumping",
+      "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32026R2245",
+      "codes": [
+        "39053000",
+        "3905300091"
+      ],
+      "countries": [
+        "CN"
+      ],
+      "review_state": "candidate"
+    }
+  ]
+}

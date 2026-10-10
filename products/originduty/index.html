@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pl">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta name="theme-color" content="#101f2d">
+ <meta name="description" content="OriginDuty - źródłowo udokumentowane wykrywanie zmian środków ochrony handlu UE, dopasowanych do kodów CN/TARIC i kraju pochodzenia.">
+ <title>OriginDuty | Zmiany antydumpingowe bez zaskoczeń</title>
+ <link rel="stylesheet" href="./originduty.css">
+ <script src="./originduty.js" defer></script>
+</head>
+<body>
+ <header class="topbar">
+  <a href="./" class="brand" aria-label="OriginDuty">
+   <span class="brand-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+   <span>Origin<span class="brand-light">Duty</span></span>
+  </a>
+  <nav aria-label="Menu główne">
+   <a href="#product">Produkt</a><a href="#method">Metodologia</a><a href="#pricing">Plany</a>
+   <a class="text-link" href="https://reflectme-source.github.io/forgeframe-labs-site/">ForgeFrame Labs ↗</a>
+  </nav>
+ </header>
+ <main>
+  <section class="hero wrap">
+   <div class="hero-copy">
+    <p class="eyebrow"><span class="signal"></span> Źródła pierwotne Unii Europejskiej</p>
+    <h1>Cło zmienia się w przepisie.<br><em>Ryzyko zaczyna się w zakupach.</em></h1>
+    <p class="intro">OriginDuty identyfikuje akty prawne UE potencjalnie wpływające na Twój import. Monitorujemy kody CN/TARIC i kraje pochodzenia - z odniesieniem do dokumentu, a nie do zgadywanej stawki.</p>
+    <div class="hero-actions">
+     <a class="button primary" href="#checker">Sprawdź kod CN/TARIC <span aria-hidden="true">↗</span></a>
+     <a class="button secondary" href="#sample">Zobacz przykład alertu</a>
+    </div>
+    <p class="fine-print">Wersja badawcza. Automatyczne alerty dla klientów nie są jeszcze dostępne. Wynik wyszukiwania nie jest wiążącą informacją taryfową.</p>
+   </div>
+   <div class="hero-visual" aria-label="Przykład przebiegu weryfikacji regulacji">
+    <div class="visual-kicker">CHANGE INTELLIGENCE <span>EU / TRADE DEFENCE</span></div>
+    <div class="visual-head"><span>Review required</span><b>01</b></div>
+    <h2>Iron or steel fasteners</h2><p>CN/TARIC · China · Producer-specific measures</p>
+    <div class="evidence-grid">
+     <div><span>OFFICIAL ACT</span><strong>2026/2089</strong></div>
+     <div><span>SOURCE</span><strong>EUR-Lex</strong></div>
+     <div><span>STATUS</span><strong>Historical example</strong></div>
+     <div><span>ACTION</span><strong>Verify applicability</strong></div>
+    </div>
+    <a class="source" href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32026R2089" target="_blank" rel="noopener noreferrer">Otwórz rozporządzenie ↗</a>
+    <p class="mini">Przykład historyczny, nie aktualny alert dla Twojej firmy.</p>
+   </div>
+  </section>
+  <section class="trust-strip">
+   <div class="wrap trust-grid"><span><b>Oficjalne akty</b> i źródła EUR-Lex</span><span><b>CN/TARIC</b> oraz kraj pochodzenia</span><span><b>Niepewność jawna</b> zamiast fałszywych gwarancji</span></div>
+  </section>
+  <section class="current-case wrap">
+   <div><span class="case-label">NAJNOWSZE WYKRYCIE · 09.10.2026</span>
+    <strong>2026/2245 - import wybranych alkoholi poliwinylowych z Chin</strong>
+    <p>CN ex 3905 30 00 · TARIC 3905 30 00 91 · producent: Sinopec Group. Nowe obowiązki rejestracji importu, które mogą mieć znaczenie dla ewentualnego retrospektywnego naliczenia ceł, jeśli spełnione zostaną warunki prawne. To nie jest automatycznie nowa stawka celna.</p>
+   </div>
+   <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32026R2245" target="_blank" rel="noopener noreferrer">Źródło EUR-Lex ↗</a>
+  </section>
+  <section class="section wrap" id="checker">
+   <div class="section-lead">
+    <p class="eyebrow">01 / PUBLIC SOURCE CHECK</p>
+    <h2>Sprawdź publikacje dotyczące kodu CN/TARIC.</h2>
+    <p>Wpisz zweryfikowany kod taryfowy i kraj pochodzenia. Przeszukamy dostępny zestaw dokumentów kandydackich. Brak wyniku nie oznacza braku obowiązków celnych.</p>
+   </div>
+   <form class="checker" id="lookup-form">
+    <label>Kod CN lub TARIC <small>8 lub 10 cyfr</small>
+     <input name="code" id="code" inputmode="numeric" maxlength="14" placeholder="np. 7318 15 41" required autocomplete="off">
+    </label>
+    <label>Kraj pochodzenia
+     <select name="country" id="country" required>
+      <option value="CN">Chiny (CN)</option><option value="IN">Indie (IN)</option>
+      <option value="TR">Turcja (TR)</option><option value="KR">Korea Południowa (KR)</option>
+      <option value="VN">Wietnam (VN)</option><option value="ID">Indonezja (ID)</option>
+      <option value="US">USA (US)</option><option value="MX">Meksyk (MX)</option>
+      <option value="SA">Arabia Saudyjska (SA)</option>
+     </select>
+    </label>
+    <button class="button primary" type="submit">Sprawdź publikacje</button>
+   </form>
+   <div id="lookup-result" class="results" aria-live="polite" role="status"><span id="source-state">Ładowanie stanu źródła…</span></div>
+  </section>
+  <section class="section band" id="product">
+   <div class="wrap">
+    <div class="section-lead">
+     <p class="eyebrow">02 / WHAT MATTERS</p><h2>Alert ma mówić, co sprawdzić. Nie tylko, że coś się zmieniło.</h2>
+    </div>
+    <div class="features">
+     <article><span class="feature-number">01</span><h3>Dopasowanie do towaru</h3><p>Analiza kodów CN/TARIC i potencjalnej ekspozycji kraju pochodzenia. Każdy wynik oznaczamy jako sygnał wymagający oceny.</p></article>
+     <article><span class="feature-number">02</span><h3>Źródło w jednym kliknięciu</h3><p>CELEX, tekst aktu i zakres zmiany. Bez nieudokumentowanych wyliczeń stawek czy automatycznej klasyfikacji towaru.</p></article>
+     <article><span class="feature-number">03</span><h3>Ryzyka specyficzne dla producenta</h3><p>Ważna różnica: stawka może zależeć od dodatkowego kodu producenta. OriginDuty sygnalizuje potrzebę tej weryfikacji.</p></article>
+    </div>
+   </div>
+  </section>
+  <section class="section wrap" id="sample">
+   <div class="sample-layout">
+    <div class="section-lead">
+     <p class="eyebrow">03 / EVIDENCE-FIRST</p>
+     <h2>Pokażmy konkretny dokument.</h2>
+     <p>Rozporządzenie wykonawcze Komisji (UE) 2026/2089 dotyczy środków antydumpingowych wobec niektórych elementów złącznych z żelaza lub stali pochodzących z Chin.</p>
+     <p>Właściwa ocena wymaga potwierdzenia kodu taryfowego, pochodzenia, producenta i dodatkowych kodów. Samo podobieństwo nazwy produktu nie wystarcza.</p>
+     <a class="inline-cta" href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32026R2089" target="_blank" rel="noopener noreferrer">Otwórz oficjalny tekst EUR-Lex ↗</a>
+    </div>
+    <div class="sample-card">
+     <div class="sample-tag">HISTORYCZNY PRZYKŁAD</div>
+     <p class="sample-date">Rozporządzenie UE / 2026/2089</p>
+     <h3>Potential exposure detected</h3>
+     <div class="sample-row"><span>Typ środka</span><b>Antydumping</b></div>
+     <div class="sample-row"><span>Opis towaru</span><b>Elementy złączne ze stali / żelaza</b></div>
+     <div class="sample-row"><span>Pochodzenie</span><b>Chiny</b></div>
+     <div class="sample-row"><span>Wymagana weryfikacja</span><b>Zakres + producent + TARIC</b></div>
+     <div class="sample-warning">Nie przypisujemy automatycznie stawki. Bez weryfikacji producenta mógłby to być fałszywy wynik.</div>
+    </div>
+   </div>
+  </section>
+  <section class="section band" id="method">
+   <div class="wrap narrow">
+    <p class="eyebrow">04 / METHODOLOGY</p>
+    <h2>Metodologia i ograniczenia</h2>
+    <p>OriginDuty wyszukuje akty prawne w Dzienniku Urzędowym UE. Identyfikuje potencjalnie istotne regulacje antydumpingowe, wyrównawcze i ochronne. Dopasowanie kodu lub kraju jest <strong>kandydatem</strong>, nie automatycznym potwierdzeniem stawki ani obowiązku.</p>
+    <p>Komisja Europejska aktualizuje dane TARIC codziennie. Nasz publiczny przegląd dokumentów nie jest kopią całej bazy TARIC ani substytutem weryfikacji taryfy według daty odprawy.</p>
+    <p>Brak wyniku, awaria źródła lub niepełne dane są wyświetlane jako niepewność. Nie deklarujemy pełnego pokrycia przepisów, dopóki monitoring nie przejdzie testów.</p>
+    <a class="inline-cta" href="https://taxation-customs.ec.europa.eu/online-services/online-services-and-databases-customs/eu-customs-tariff-taric_en" target="_blank" rel="noopener noreferrer">Oficjalna baza TARIC ↗</a>
+   </div>
+  </section>
+  <section class="section wrap" id="pricing">
+   <div class="section-lead"><p class="eyebrow">05 / COMMERCIAL PILOT</p><h2>Monitorowane portfolio bez kolejnego systemu ERP.</h2>
+    <p>Docelowe pakiety są testowane w rozmowach handlowych. Płatne subskrypcje uruchomimy dopiero po walidacji kompletności monitoringu i kanału dostarczania alertów.</p></div>
+   <div class="plans">
+    <article class="plan"><span>IMPORTER</span><h3>Oferta pilotażowa</h3><p>Jedna firma, własna lista kodów CN/TARIC, raportowanie zmian istotnych dla importu.</p><a class="button secondary" id="contact-importer" href="mailto:forgeframe.lab@gmail.com?subject=OriginDuty%20-%20Importer">Zapytaj o pilotaż ↗</a></article>
+    <article class="plan highlighted"><span>AGENCJA CELNA</span><h3>Wycena B2B</h3><p>Wiele portfolio klientów, przegląd wykrytych zdarzeń i historia podstaw prawnych.</p><a class="button primary" id="contact-agency" href="mailto:forgeframe.lab@gmail.com?subject=OriginDuty%20-%20Agencja%20celna">Zgłoś zainteresowanie ↗</a></article>
+   </div>
+   <p class="fine-print">Monitoring w fazie walidacji. Pakiety i ceny będą ustalone na podstawie potwierdzonego zakresu usługi. Płatne alerty nie są jeszcze aktywne.</p>
+  </section>
+  <section class="closing">
+   <div class="wrap closing-inner"><div><p class="eyebrow">FORGEFRAME LABS</p><h2>Wybierz kody, które mają znaczenie dla Twojej marży.</h2><p>Wyślij kod CN/TARIC, kraj pochodzenia i typ importowanego towaru. Wrócimy mailowo z informacją o zakresie możliwego monitoringu.</p></div>
+    <a href="mailto:forgeframe.lab@gmail.com?subject=OriginDuty%20-%20monitoring%20importu&body=Kody%20CN%2FTARIC%3A%0AKraj%20pochodzenia%3A%0ATyp%20towaru%3A%0AFirma%3A" class="button light">Kontakt: ForgeFrame Labs ↗</a></div>
+  </section>
+ </main>
+ <footer><div class="wrap footer-inner"><span>OriginDuty · ForgeFrame Labs · 2026</span><span><a href="https://reflectme-source.github.io/forgeframe-labs-site/privacy.html">Prywatność</a> · <a href="https://reflectme-source.github.io/forgeframe-labs-site/terms.html">Warunki</a> · <a href="mailto:forgeframe.lab@gmail.com">Kontakt</a></span></div></footer>
+</body></html>
