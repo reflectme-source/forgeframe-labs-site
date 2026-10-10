@@ -31,7 +31,9 @@ test("every relative image and page link exists in checked out website",()=>{
   }
 });
 test("website links back to dedicated landing page for discovery",()=>{
-  assert.match(home,/href="\.\/solutions\/otomoto-vehicle-monitoring\.html"/);
+  assert.match(home,/href="https:\/\/reflectme-source\.github\.io\/forgeframe-labs-site\/integrations\/otomoto-dealer-api\.html"/);
+  const en=readFileSync(join(root,"en/index.html"),"utf8");
+  assert.match(en,/href="https:\/\/reflectme-source\.github\.io\/forgeframe-labs-site\/solutions\/otomoto-vehicle-monitoring\.html"/);
 });
 test("copy avoids unverified sales claims and false real-time email promises",()=>{
   assert.match(text,/first successful run stores a comparison baseline/i);
