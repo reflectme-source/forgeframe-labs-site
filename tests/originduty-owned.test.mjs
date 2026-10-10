@@ -45,8 +45,8 @@ test('all public pages reuse exact central shell classes, locale, and brand',()=
 });
 test('customer promises remain truthful, marketing and public evidence distinct',()=>{
  const pl=contents(paths[0]),en=contents(paths[1]);
- assert.match(pl,/Nie oferujemy jeszcze płatnych alertów/);
- assert.match(en,/Paid alerts and full TARIC monitoring are not yet available/);
+ assert.match(pl,/Analiza przepisów UE oparta na oficjalnych dokumentach/);
+ assert.match(en,/Evidence-linked EU trade-defence intelligence/);
  assert.match(pl,/349 zł/);assert.match(pl,/899 zł/);
  assert.match(en,/349 PLN/);assert.match(en,/899 PLN/);
  assert.match(pl,/pl\/kontakt\.html\?product=originduty/);
