@@ -93,7 +93,8 @@ test("brand-wide support and privacy are aligned with multi-platform products",(
 test("public sitemap lists real brand routes including Polish automotive landing",()=>{
  const sm=readFileSync(join(root,"sitemap.xml"),"utf8");
  const urls=[...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
- assert.equal(urls.length,19);
+ assert.ok(urls.length>=20,'The Contract Guard intake route must be included');
+ assert.ok(urls.some(url=>url.endsWith('/products/contract-guard-intake.html')));
  assert.equal(new Set(urls).size,urls.length,"Sitemap must not contain duplicate pages");
  assert.ok(urls.some(url=>url.endsWith("/services/connect-to-forge-assessment/")));
  assert.ok(urls.some(url=>url.endsWith("/services/connect-to-forge-assessment/checklist.html")));
@@ -127,9 +128,9 @@ test("OpenAPI guide has a genuine developer journey to the public action and the
  assert.equal((page.match(/<h1\b/g)||[]).length,1);
  assert.match(page,/href="#main"/);
  assert.match(page,/github.com\/reflectme-source\/forgeframe-contract-guard/);
- assert.match(page,/mailto:forgeframe\.lab@gmail\.com/);
+ assert.match(page,/href="\.\.\/products\/contract-guard-intake\.html"/);
  assert.match(page,/\$149/);
- assert.match(page,/scope, legal seller and delivery by email before you use the secure Stripe payment link/);
+ assert.match(page,/scope, legal seller and delivery in writing before issuing a unique one-order Stripe payment link/);
  assert.match(page,/not a paid SaaS/);
  assert.doesNotMatch(page,/<script\b[^>]*src=/);
  assert.match(html("products/contract-guard.html"),/guides\/openapi-breaking-changes-github-actions\.html/);

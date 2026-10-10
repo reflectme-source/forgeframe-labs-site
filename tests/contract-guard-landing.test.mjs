@@ -16,8 +16,8 @@ test('landing is reachable from portfolio and sitemap',()=>{
 test('landing has honest monetization path and does not claim payments exist',()=>{
   assert.match(landing,/Managed setup · \$149/i);
   assert.match(landing,/one GitHub repository with an existing OpenAPI 3\.x contract/i);
-  assert.match(landing,/mailto:forgeframe\.lab@gmail\.com/);
-  assert.match(landing,/confirm repository scope and delivery schedule by email before paying/i);
+  assert.match(landing,/contract-guard-intake\.html/);
+  assert.match(landing,/Confirm repository scope and delivery schedule before paying/i);
   assert.match(landing,/contract-guard-intake\.html/);
   assert.match(landing,/unique one-order Stripe link/i);
   assert.doesNotMatch(landing,/https:\/\/buy\.stripe\.com\//i);
