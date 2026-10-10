@@ -12,7 +12,12 @@
     "ForgeFrame Labs";
   const subject="ForgeFrame Labs - "+product+" - "+(pl?"zapytanie":"inquiry");
   const inbox="forgeframe.lab@gmail.com";
-  const contactBase=pl?"/forgeframe-labs-site/pl/kontakt.html":"/forgeframe-labs-site/contact/";
+  // Derive the site root from this first-party script URL.
+  // Works with GitHub's /forgeframe-labs-site/ project path and a future apex domain /.
+  const scriptUrl=document.currentScript?.src || document.querySelector('script[src*="assets/direct-contact.js"]')?.src;
+  if(!scriptUrl)return;
+  const siteRoot=new URL("../",scriptUrl);
+  const contactBase=new URL(pl?"pl/kontakt.html":"contact/",siteRoot).pathname;
   const sku=path.includes("merchant-issue-desk")?"merchant-issue-desk":path.includes("contract-guard")||path.includes("openapi-breaking-changes")?"contract-guard":path.includes("connect-to-forge")?"connect-to-forge":path.includes("otomoto")?"otomoto":path.includes("localization")||path.includes("lokalizacja")?"localization-qa":"general";
   const gmail=contactBase+"?product="+encodeURIComponent(sku);
   const mailto="mailto:"+inbox+"?subject="+encodeURIComponent(subject);
