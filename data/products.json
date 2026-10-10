@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "brand": "ForgeFrame Labs",
+  "canonicalOrigin": "https://forgeframelabs.app",
+  "stripe": {
+    "account": "ForgeFrame Labs",
+    "mode": "centralized",
+    "checkoutActivation": "per-product after fulfillment and webhook verification",
+    "credentials": "server-only",
+    "priceSourceOfTruth": "Stripe Price IDs, never client-supplied amounts"
+  },
+  "products": [
+    {
+      "slug": "originduty",
+      "name": "OriginDuty",
+      "category": "Regulatory intelligence",
+      "statusLabel": "Pilot badawczy",
+      "summary": "Monitoring i analiza zmian regulacyjnych w handlu międzynarodowym.",
+      "path": "/products/originduty/",
+      "availability": "pilot",
+      "salesMode": "contact",
+      "pricingPolicy": "Display only prices verified on product page; product owner maintains current offer.",
+      "owner": "product-specific operator",
+      "checkoutReady": false
+    },
+    {
+      "slug": "contract-guard",
+      "name": "Contract Guard",
+      "category": "Developer tools",
+      "statusLabel": "Dostępny",
+      "summary": "GitHub Action do kontroli zmian kontraktów API; konfiguracja jako osobna usługa.",
+      "path": "/products/contract-guard.html",
+      "availability": "available",
+      "salesMode": "external_or_contact",
+      "pricingPolicy": "Display only prices verified on product page; product owner maintains current offer.",
+      "owner": "product-specific operator",
+      "checkoutReady": false
+    },
+    {
+      "slug": "digital-packager",
+      "name": "Digital Packager",
+      "category": "Digital products",
+      "statusLabel": "Przedpremiera",
+      "summary": "Narzędzie do przygotowywania paczek produktów cyfrowych.",
+      "path": "/products/digital-packager.html",
+      "availability": "prelaunch",
+      "salesMode": "contact",
+      "pricingPolicy": "Display only prices verified on product page; product owner maintains current offer.",
+      "owner": "product-specific operator",
+      "checkoutReady": false
+    },
+    {
+      "slug": "merchant-issue-desk",
+      "name": "Merchant Issue Desk",
+      "category": "Business solutions",
+      "statusLabel": "Usługa",
+      "summary": "Analiza i porządkowanie zgłoszeń sprzedawców oraz problemów operacyjnych.",
+      "path": "/services/merchant-issue-desk.html",
+      "availability": "service",
+      "salesMode": "contact",
+      "pricingPolicy": "Display only prices verified on product page; product owner maintains current offer.",
+      "owner": "product-specific operator",
+      "checkoutReady": false
+    },
+    {
+      "slug": "connect-to-forge",
+      "name": "Connect → Forge",
+      "category": "Business solutions",
+      "statusLabel": "Usługa",
+      "summary": "Ocena techniczna migracji i integracji rozwiązania.",
+      "path": "/services/connect-to-forge-assessment/",
+      "availability": "service",
+      "salesMode": "contact",
+      "pricingPolicy": "Display only prices verified on product page; product owner maintains current offer.",
+      "owner": "product-specific operator",
+      "checkoutReady": false
+    },
+    {
+      "slug": "localization-qa",
+      "name": "Localization QA",
+      "category": "Developer tools",
+      "statusLabel": "Dostępny",
+      "summary": "Inspektor CSV do weryfikacji jakości plików lokalizacyjnych.",
+      "path": "/products/localization-qa.html",
+      "availability": "available",
+      "salesMode": "free",
+      "pricingPolicy": "Display only prices verified on product page; product owner maintains current offer.",
+      "owner": "product-specific operator",
+      "checkoutReady": false
+    },
+    {
+      "slug": "otomoto-change-intelligence",
+      "name": "OTOMOTO Change Intelligence",
+      "category": "Automation",
+      "statusLabel": "Integracja Apify",
+      "summary": "Monitorowanie zmian ogłoszeń pojazdów.",
+      "path": "/solutions/otomoto-vehicle-monitoring.html",
+      "availability": "available",
+      "salesMode": "external",
+      "pricingPolicy": "Display only prices verified on product page; product owner maintains current offer.",
+      "owner": "product-specific operator",
+      "checkoutReady": false
+    }
+  ]
+}

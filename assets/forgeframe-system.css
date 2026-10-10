@@ -1,0 +1,31 @@
+/* ForgeFrame Labs shared product design foundation v1. Scoped to .ff-site. */
+:root{--ff-navy:#0b1420;--ff-surface:#112538;--ff-ink:#142638;--ff-muted:#50677c;--ff-accent:#d1ecff;--ff-border:#dce5ec;--ff-bg:#f4f7f9;--ff-radius:14px}
+.ff-site{margin:0;background:var(--ff-bg);color:var(--ff-ink);font:16px/1.65 Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+.ff-site *{box-sizing:border-box}.ff-site a{color:inherit}.ff-site a:focus-visible{outline:3px solid #1477be;outline-offset:3px}
+.ff-container{width:min(1160px,calc(100% - 40px));margin-inline:auto}
+.ff-header{background:var(--ff-navy);color:#f3f8fc;border-bottom:1px solid #30465b}
+.ff-header-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:76px}
+.ff-brand{font-size:19px;font-weight:800;letter-spacing:-.045em;text-decoration:none}
+.ff-nav{display:flex;flex-wrap:wrap;gap:24px;font-size:14px}
+.ff-nav a{text-decoration:none;color:#d8e5f0}.ff-nav a:hover{text-decoration:underline}
+.ff-hero{background:linear-gradient(140deg,#0b1420,#17394f);color:white;padding:84px 0}
+.ff-eyebrow{font-size:12px;color:#9ecfe9;text-transform:uppercase;letter-spacing:.15em;font-weight:800}
+.ff-hero h1{max-width:780px;font-size:clamp(40px,5.4vw,70px);line-height:1.1;letter-spacing:-.055em;margin:16px 0 20px}
+.ff-hero p{max-width:740px;font-size:18px;color:#c8d9e6}
+.ff-main{padding:64px 0 100px}.ff-section-title{font-size:clamp(29px,3vw,43px);line-height:1.2;letter-spacing:-.04em;margin:0 0 12px}
+.ff-intro{color:var(--ff-muted);max-width:700px;margin-bottom:32px}
+.ff-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.ff-card{background:white;border:1px solid var(--ff-border);border-radius:var(--ff-radius);padding:25px;display:flex;flex-direction:column;min-height:260px}
+.ff-card h2{font-size:23px;line-height:1.25;letter-spacing:-.035em;margin:12px 0}
+.ff-card p{font-size:14px;color:var(--ff-muted);flex:1}
+.ff-kicker{font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#287091}
+.ff-badge{font-size:12px;color:#34566a;background:#e6f1f6;border-radius:100px;padding:4px 10px;display:inline-block}
+.ff-card-footer{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid var(--ff-border);padding-top:16px}
+.ff-link{font-size:14px;color:#08618d!important;font-weight:750;text-decoration:none}.ff-link:hover{text-decoration:underline}
+.ff-footer{background:var(--ff-navy);color:#bfd1df;padding:35px 0;font-size:13px}
+.ff-footer-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.ff-footer a{margin-right:20px}
+.ff-skip{position:absolute;left:10px;top:-100px;background:white;padding:12px;z-index:10}.ff-skip:focus{top:10px}
+@media(max-width:900px){.ff-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.ff-header-inner{flex-wrap:wrap;padding:16px 0}.ff-grid{grid-template-columns:1fr}.ff-hero{padding:58px 0}.ff-container{width:min(100% - 32px,1160px)}}
+@media(prefers-reduced-motion:reduce){.ff-site *, .ff-site *::before,.ff-site *::after{scroll-behavior:auto!important;transition:none!important}}
