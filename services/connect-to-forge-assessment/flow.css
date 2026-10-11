@@ -26,3 +26,13 @@ fieldset{padding:0;margin:25px 0;border:0;min-width:0}legend{font-weight:800;fon
 .result:focus{outline:3px solid var(--gold);outline-offset:5px}
 .ff-alternative{display:inline-flex;align-items:center;margin:16px 0 0 0;min-height:44px;font-weight:720;text-underline-offset:4px;color:#b4e6ff}
 .ff-alternative:hover{text-decoration-thickness:2px}
+
+/* Product-only polish: explicit primary fallback, readable mobile price */
+.result .ff-action{margin-top:6px;min-width:210px}
+@media(max-width:460px){
+ .side .price{line-height:1.2}
+ .side .price small{display:block;margin-top:7px;font-size:14px;line-height:1.5}
+ .result .ff-action{width:100%}
+}
+
+[executed on device: DESKTOP-1RCPMJA (8efc16cc-9068-4f0a-93a0-6fcdca545272)]
