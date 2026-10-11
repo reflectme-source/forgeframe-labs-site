@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Samoobsługowe sprawdzenie zakresu audytu prywatnej aplikacji Jira lub Confluence Connect. Bez rozmów i wysyłania haseł.">
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#061724">
+<title>Sprawdź zakres audytu Connect → Forge | ForgeFrame Labs</title>
+<link rel="icon" href="https://forgeframelabs.app/assets/forgeframe-avatar.png" type="image/png">
+<link rel="stylesheet" href="https://forgeframelabs.app/assets/forgeframe-global.css">
+<link rel="stylesheet" href="../../flow.css">
+<script type="module" src="../../flow.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Przejdź do formularza</a>
+<header class="ffg-header"><div class="ffg-inner"><a class="ffg-brand" href="https://forgeframelabs.app/"><img class="ffg-brand-logo" src="https://forgeframelabs.app/assets/forgeframe-avatar.png" alt="" width="38" height="38">ForgeFrame <span class="ffg-brand-blue">Labs</span></a><nav class="ffg-nav" aria-label="Site navigation"><a href="https://forgeframelabs.app/services/connect-to-forge-assessment/pl/">Oferta</a><a href="https://forgeframelabs.app/contact/">Kontakt z ForgeFrame Labs</a><span class="ffg-language"><a class="ffg-locale" href="https://forgeframelabs.app/services/connect-to-forge-assessment/start/" lang="en">English</a></span></nav></div></header>
+<main id="main" class="container">
+<section class="head" aria-labelledby="page-title">
+<span class="tag">FORGEFRAME LABS / AUDYT SAMOOBSŁUGOWY</span>
+<h1 id="page-title">Sprawdź zakres audytu w jednym kroku.</h1><p>Sprawdź, czy Twoja prywatna aplikacja Connect kwalifikuje się do naszego audytu technicznego. Formularz działa w przeglądarce i nie przesyła danych aplikacji.</p>
+<div class="bar"><span>Bez rozmów</span><span>Bez haseł</span><span>Raport pisemny</span></div>
+</section>
+<div class="layout">
+<section class="panel" aria-labelledby="scope-title">
+<h2 id="scope-title">Twoja aplikacja</h2><p>Odpowiedz na sześć krótkich pytań. Nie prosimy o adres tenanta, nazwę aplikacji ani jej kod.</p>
+<form id="scope-form">
+<fieldset><legend>Produkt Atlassian</legend><label class="field"><select class="control" name="platform" aria-label="Produkt Atlassian" required><option value="">Wybierz produkt</option><option value="jira">Jira Cloud</option><option value="confluence">Confluence Cloud</option></select></label></fieldset>
+<div class="two">
+<div class="field"><label for="modules">Instancje modułów Connect</label><input class="control" id="modules" name="moduleCount" type="number" min="1" max="500" step="1" inputmode="numeric" placeholder="1–10" required></div>
+<div class="field"><label for="backends">Zewnętrzne usługi backendowe</label><input class="control" id="backends" name="backendCount" type="number" min="0" max="100" step="1" inputmode="numeric" placeholder="0–1" required></div>
+</div>
+<p class="small">Policz deklaracje modułów, również powtarzające się instancje.</p>
+<fieldset><legend>Czy to prywatna/własna aplikacja Connect?</legend><div class="options"><label class="option"><input type="radio" name="privateApp" value="yes" required>Tak</label><label class="option"><input type="radio" name="privateApp" value="no" required>Nie</label></div></fieldset>
+<fieldset><legend>Czy masz uprawnienie do zamówienia audytu?</legend><div class="options"><label class="option"><input type="radio" name="ownsApp" value="yes" required>Tak</label><label class="option"><input type="radio" name="ownsApp" value="no" required>Nie</label></div></fieldset>
+<fieldset><legend>Czy potrzebujesz rzeczywistej konwersji danych?</legend><div class="options"><label class="option"><input type="radio" name="dataMigration" value="yes" required>Tak</label><label class="option"><input type="radio" name="dataMigration" value="no" required>Nie</label></div></fieldset>
+<fieldset><legend>Czy mamy wdrażać zmiany produkcyjne?</legend><div class="options"><label class="option"><input type="radio" name="productionDeployment" value="yes" required>Tak</label><label class="option"><input type="radio" name="productionDeployment" value="no" required>Nie</label></div></fieldset>
+<p class="fine">Nie zbieramy tutaj danych osobowych, kodu, sekretów ani danych płatniczych.</p>
+<button class="ff-button submit" type="submit">Sprawdź zakres</button>
+</form>
+<section id="scope-result" class="result" aria-live="polite" aria-atomic="true" hidden></section>
+</section>
+<aside class="panel side" aria-label="Standardowy audyt architektury">
+<p class="tag">Standardowy audyt architektury</p><p class="price">€490 <small>orientacyjnie / jednorazowo</small></p>
+<div class="rule"></div><h3>Co otrzymujesz</h3>
+<ul><li>Jedna prywatna aplikacja Connect</li><li>Do 10 instancji modułów</li><li>Maksymalnie jeden backend</li><li>Mapa ryzyk, plan testów i wycofania zmian</li><li>Jedna korekta faktograficzna</li></ul>
+<div class="rule"></div><h3>Poza zakresem</h3><p>Przepisywanie kodu, wdrożenie produkcyjne, migracja danych, porady prawne i stałe wsparcie.</p>
+<div class="rule"></div><h3>Status płatności</h3><p class="small">Checkout nie jest jeszcze aktywny. Sprawdzenie zakresu nie tworzy zamówienia ani nie obciąża karty.</p>
+</aside>
+</div>
+<p class="foot">Usługa niezależna od Atlassian. Koniec wsparcia Connect zaczyna się 31 stycznia 2027 r. <a href="https://forgeframelabs.app/services/connect-to-forge-assessment/pl/">Wróć do opisu usługi</a></p>
+</main>
+</body></html>
+
+[executed on device: DESKTOP-1RCPMJA (8efc16cc-9068-4f0a-93a0-6fcdca545272)]
