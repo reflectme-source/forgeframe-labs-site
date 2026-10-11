@@ -47,4 +47,8 @@ body:has(.mr-page)>.ff-skip{position:absolute;left:12px;top:-100px;z-index:200;b
 body:has(.mr-page)>.ff-skip:focus{top:12px}
 @media(max-width:900px){.mr-container{width:calc(100% - 48px)}.mr-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.mr-note-grid{grid-template-columns:1fr}.mr-end{align-items:start;flex-direction:column}}
 @media(max-width:560px){.mr-container{width:calc(100% - 32px)}.mr-hero{padding-top:39px}.mr-metrics{gap:10px;margin-bottom:48px}.mr-metrics article{padding:15px}.mr-metrics strong{font-size:36px}.mr-banner{flex-direction:column;align-items:start}.mr-section-head{align-items:start;flex-direction:column}.mr-notes{padding:44px 0}}
-.mr-page .ff-next.mr-end{display:flex;align-items:center;justify-content:space-between;gap:30px;border-top:1px solid #2c4a5d;padding:65px 0 80px;background:transparent;color:inherit}.mr-page .ff-next.mr-end h2{color:#f2f8fd}.mr-page .ff-next.mr-end p{color:#a9c1d2}.mr-page .ff-next.mr-end .mr-btn{color:#d4eafb}.mr-page .ff-next.mr-end .mr-btn.primary{color:#fff}@media(max-width:900px){.mr-page .ff-next.mr-end{flex-direction:column;align-items:start}}
+
+/* Final CTA: scoped to the report, independent from the light editorial CTA component. */
+.mr-page .mr-end{background:transparent;color:#eef6fd;display:flex;align-items:center;justify-content:space-between;gap:30px;border-top:1px solid #2c4a5d;padding:65px 0 80px}
+.mr-page .mr-end .mr-btn.primary{background:#138cf7;color:#fff}
+@media(max-width:900px){.mr-page .mr-end{flex-direction:column;align-items:flex-start}}

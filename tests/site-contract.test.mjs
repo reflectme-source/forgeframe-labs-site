@@ -322,8 +322,14 @@ test("every interactive tool and sample report returns to the right product offe
  };
  for(const [page,indicator] of Object.entries(items)){
   const s=html(page);
-  assert.match(s,/class="ff-next"/,page+" should show product return path");
-  assert.match(s,/assets\/reader-next\.css/,page+" needs tested shared editorial style");
+  if(page==="services/merchant-issue-desk-demo.html"){
+   assert.match(s,/class="mr-end"/,page+" must have the dedicated dark CTA");
+   assert.match(s,/assets\/merchant-report\.css/,page+" must load report styles");
+   assert.doesNotMatch(s,/assets\/reader-next\.css/,page+" must not load conflicting light styles");
+  }else{
+   assert.match(s,/class="ff-next"/,page+" should show product return path");
+   assert.match(s,/assets\/reader-next\.css/,page+" needs tested shared editorial style");
+  }
   assert.ok(s.includes(indicator)||page.includes("originduty/regulation"),page+" missing contextual route");
   for(const path of localTargets(page)){
    assert.ok(path.startsWith(root),page+" escapes site root");
