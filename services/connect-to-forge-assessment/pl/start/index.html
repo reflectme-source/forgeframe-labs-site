@@ -27,8 +27,8 @@
 <form id="scope-form" inert>
 <fieldset><legend>Produkt Atlassian</legend><label class="field"><select class="control" name="platform" aria-label="Produkt Atlassian" required><option value="">Wybierz produkt</option><option value="jira">Jira Cloud</option><option value="confluence">Confluence Cloud</option></select></label></fieldset>
 <div class="two">
-<div class="field"><label for="modules">Instancje modułów Connect</label><input class="control" id="modules" name="moduleCount" type="number" min="1" max="500" step="1" inputmode="numeric" placeholder="1–10" required></div>
-<div class="field"><label for="backends">Zewnętrzne usługi backendowe</label><input class="control" id="backends" name="backendCount" type="number" min="0" max="100" step="1" inputmode="numeric" placeholder="0–1" required></div>
+<div class="field"><label for="modules">Instancje modułów Connect</label><input class="control" id="modules" name="moduleCount" type="number" min="1" step="1" inputmode="numeric" placeholder="1–10" required></div>
+<div class="field"><label for="backends">Zewnętrzne usługi backendowe</label><input class="control" id="backends" name="backendCount" type="number" min="0" step="1" inputmode="numeric" placeholder="0–1" required></div>
 </div>
 <p class="small">Policz deklaracje modułów, również powtarzające się instancje.</p>
 <fieldset><legend>Czy to prywatna/własna aplikacja Connect?</legend><div class="options"><label class="option"><input type="radio" name="privateApp" value="yes" required>Tak</label><label class="option"><input type="radio" name="privateApp" value="no" required>Nie</label></div></fieldset>
@@ -38,7 +38,7 @@
 <p class="fine">Nie zbieramy tutaj danych osobowych, kodu, sekretów ani danych płatniczych.</p>
 <button class="ff-button submit" type="submit">Sprawdź zakres</button>
 </form>
-<section id="scope-result" class="result" aria-live="polite" aria-atomic="true" hidden></section>
+<section id="scope-result" class="result" aria-live="polite" aria-atomic="true" tabindex="-1" hidden></section>
 </section>
 <aside class="panel side" aria-label="Standardowy audyt architektury">
 <p class="tag">Standardowy audyt architektury</p><p class="price">€490 <small>orientacyjnie / jednorazowo</small></p>

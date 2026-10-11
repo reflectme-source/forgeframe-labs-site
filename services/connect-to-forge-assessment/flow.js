@@ -23,6 +23,8 @@ const copy={
   custom:"We can assess larger applications separately. No call or credential sharing is needed for an initial enquiry.",
   closed:"Online purchase is being prepared and is not available yet. This page does not collect payments.",
   contact:"Request a custom written assessment",pay:"Secure checkout — pending release",
+  request:"Request a written quote",authorityTitle:"Buyer authorization required",
+  authorityText:"Ask the owner or an authorized representative to commission the assessment. We cannot accept an order without their authority.",
   required:"Complete all required details before checking scope.",
   error:"Unable to check the scope."
  },
@@ -33,6 +35,8 @@ const copy={
   custom:"Większe aplikacje wyceniamy oddzielnie. Na początek nie jest potrzebna rozmowa ani przesyłanie haseł.",
   closed:"Zakup internetowy jest przygotowywany i nie jest jeszcze aktywny. Ta strona nie pobiera opłat.",
   contact:"Poproś o indywidualną ofertę pisemną",pay:"Bezpieczny Checkout — przed uruchomieniem",
+  request:"Poproś o pisemną wycenę",authorityTitle:"Wymagane uprawnienie do zamówienia",
+  authorityText:"Poproś właściciela aplikacji lub uprawnionego przedstawiciela o zlecenie audytu. Nie możemy przyjąć zamówienia bez takich uprawnień.",
   required:"Uzupełnij wszystkie wymagane dane.",error:"Nie udało się sprawdzić zakresu."
  }
 };
@@ -59,13 +63,16 @@ const reasonsText={
 export function wirePreflight(root=document){
  const form=root.querySelector("#scope-form"),output=root.querySelector("#scope-result");
  if(!form||!output)return;
- form.inert=false; // Without JS the form is noninteractive and cannot submit data.
  const lang=root.documentElement?.lang==="pl"?"pl":"en", t=copy[lang];
+ const quoteUrl=lang==="pl"?"https://forgeframelabs.app/pl/kontakt.html?product=connect-to-forge":"https://forgeframelabs.app/contact/?product=connect-to-forge";
  form.addEventListener("submit",event=>{
   event.preventDefault();output.hidden=false;output.replaceChildren();
+  output.dataset.status="pending";
   const data=new FormData(form);
   if(!["jira","confluence"].includes(data.get("platform"))||data.get("moduleCount")===""||data.get("backendCount")===""){
-   const p=root.createElement("p");p.textContent=t.required;output.append(p);return;
+   output.dataset.status="error";
+   const p=root.createElement("p");p.setAttribute?.("role","alert");
+   p.textContent=t.required;output.append(p);output.focus?.({preventScroll:true});return;
   }
   const result=classifyScope({
    platform:data.get("platform"),ownsApp:data.get("ownsApp")==="yes",
@@ -75,20 +82,34 @@ export function wirePreflight(root=document){
    productionDeployment:data.get("productionDeployment")==="yes",
    tenantProductionAccess:false
   });
-  const heading=root.createElement("h2");heading.textContent=result.eligible?t.ok:t.no;output.append(heading);
-  const info=root.createElement("p");info.textContent=result.eligible?t.price:t.custom;output.append(info);
+  const noAuthority=result.reasons.includes("authority");
+  output.dataset.status=noAuthority?"blocked":result.eligible?"eligible":"custom";
+  const heading=root.createElement("h2");
+  heading.textContent=noAuthority?t.authorityTitle:result.eligible?t.ok:t.no;
+  output.append(heading);
+  const info=root.createElement("p");
+  info.textContent=noAuthority?t.authorityText:result.eligible?t.price:t.custom;
+  output.append(info);
   if(result.eligible){
-   const notice=root.createElement("p");notice.className="ff-notice";notice.textContent=t.closed;output.append(notice);
+   const notice=root.createElement("p");notice.className="ff-notice";notice.textContent=t.closed;
+   output.append(notice);
    const btn=root.createElement("button");btn.disabled=true;btn.type="button";
    btn.className="ff-button";btn.textContent=t.pay;output.append(btn);
-  }else{
+   const alternative=root.createElement("a");alternative.className="ff-alternative";
+   alternative.href=quoteUrl;alternative.textContent=t.request;output.append(alternative);
+  }else if(!noAuthority){
    const ul=root.createElement("ul");
-   for(const reason of result.reasons){const li=root.createElement("li");li.textContent=reasonsText[lang][reason];ul.append(li)}
+   for(const reason of result.reasons){
+    const li=root.createElement("li");li.textContent=reasonsText[lang][reason];ul.append(li);
+   }
    output.append(ul);
-   const a=root.createElement("a");a.href="https://forgeframelabs.app/contact/?product=connect-to-forge";
+   const a=root.createElement("a");a.href=quoteUrl;
    a.className="ff-button";a.textContent=t.contact;output.append(a);
   }
+  output.focus?.({preventScroll:true});
   output.scrollIntoView?.({block:"nearest",behavior:"auto"});
  });
+ // Only enable form submission once the local-only handler exists.
+ form.inert=false;
 }
 if(typeof document!=="undefined")wirePreflight(document);
