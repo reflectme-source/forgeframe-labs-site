@@ -133,3 +133,30 @@
 .lq-feature:nth-child(2) .lq-feature-icon::before{background:#174e40;border-color:#368d70}
 .lq-feature:nth-child(3) .lq-feature-icon{background:linear-gradient(155deg,#4a326b,#241735);border-color:#8861b3}
 .lq-feature:nth-child(3) .lq-feature-icon::before{background:#4b3268;border-color:#8861b3}
+
+
+/* Alignment fix: rear tile is out of layout; the SVG is centered in the front tile. */
+.lq-feature .lq-feature-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  isolation:isolate;
+  padding:0;
+}
+.lq-feature .lq-feature-icon::before{
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  transform:translate(-7px,-7px);
+  pointer-events:none;
+}
+.lq-feature .lq-feature-icon svg{
+  display:block;
+  position:relative;
+  flex:none;
+  width:36px;
+  height:36px;
+  margin:0;
+  transform:none;
+}
