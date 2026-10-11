@@ -118,3 +118,9 @@ body:has(.dp-v2){background:#080e15!important;color:#eef6fc!important}
 .dp-v2 .dp-step-icon::before{
  pointer-events:none;
 }
+
+/* Final single-tile icons: no decorative rear layer or volumetric shadow. */
+.dp-v2 .dp-step-icon{display:grid;place-items:center;width:51px;height:51px;padding:0;border-radius:10px;box-shadow:none;isolation:auto}
+.dp-v2 .dp-step-icon::before,.dp-v2 .card:nth-child(2) .dp-step-icon::before,.dp-v2 .card:nth-child(3) .dp-step-icon::before{content:none!important;display:none!important}
+.dp-v2 .dp-step-icon svg{display:block;position:static;width:29px;height:29px;margin:0;transform:none}
+.dp-v2 .card:nth-child(2) .dp-step-icon,.dp-v2 .card:nth-child(3) .dp-step-icon{box-shadow:none}

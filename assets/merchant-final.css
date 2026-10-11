@@ -146,3 +146,9 @@ body:has(.mid-final)>.ff-skip:focus{top:12px}
 .mid-feature .mid-feature-icon::before{
  pointer-events:none;
 }
+
+/* Final single-tile icons: no decorative rear layer or volumetric shadow. */
+.mid-feature .mid-feature-icon{display:grid;place-items:center;width:51px;height:51px;padding:0;border-radius:10px;box-shadow:none;isolation:auto}
+.mid-feature .mid-feature-icon::before,.mid-feature:nth-child(2) .mid-feature-icon::before,.mid-feature:nth-child(3) .mid-feature-icon::before{content:none!important;display:none!important}
+.mid-feature .mid-feature-icon svg{display:block;position:static;width:29px;height:29px;margin:0;transform:none}
+.mid-feature:nth-child(2) .mid-feature-icon,.mid-feature:nth-child(3) .mid-feature-icon{box-shadow:none}
