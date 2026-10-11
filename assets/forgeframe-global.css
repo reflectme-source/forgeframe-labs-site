@@ -83,3 +83,48 @@ html{scrollbar-gutter:stable}
 .ffg-header{min-height:0!important}
 .ffg-footer-content{gap:16px!important}
 }
+
+/* ForgeFrame editorial system: final-cascade design tokens, shared on all top-level routes. */
+:root{color-scheme:dark;--ffg-bg:#080b10;--ffg-panel:#11161d;--ffg-line:#29313b;--ffg-text:#f4f5f7;--ffg-sub:#a9b3bf;--ffg-link:#a4d6f5;--ffg-brand:#8ac7ef}
+body{background:#080b10!important;color:#f4f5f7}
+.shell{width:min(1180px,calc(100% - 48px))}
+.ffg-inner,.ffg-footer-content{width:min(1180px,calc(100% - 48px))}
+.ffg-header{background:rgba(8,11,16,.96)!important;border-color:#252b34!important}
+.ffg-nav a{font-weight:550!important;color:#aab4c0!important}
+.ffg-nav a:hover,.ffg-nav a[aria-current=page]:not(.ffg-locale){color:#f5f7f9!important}
+.ffg-nav a[aria-current=page]:not(.ffg-locale):after{background:#c1dff4}
+.ffg-nav .ffg-locale{border-color:#313b47!important}
+.ffg-nav .ffg-locale[aria-current=page]{background:#263b4a!important;border-color:#53748a!important}
+.ffg-footer{background:#090c11!important;border-color:#29313b!important}
+.ffg-product-card{background:#11161d!important;border:1px solid #2c343f!important;box-shadow:none!important}
+.ffg-product-card:hover{border-color:#688da8!important}
+.ffg-product-description{color:#aeb8c4!important}
+.ffg-product-status{font-weight:600}
+.ffg-product-cta{color:#b5ddf5!important}
+.hero{background:#080b10!important;padding:clamp(92px,10vw,156px) 0!important}
+.hero:before{opacity:.15!important}
+.hero-inner{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(28px,6vw,100px)}
+.hero h1{font-size:clamp(52px,6.2vw,94px)!important;line-height:1.03!important;letter-spacing:-.075em!important;font-weight:750;max-width:920px}
+.hero p{font-size:clamp(16px,1.5vw,19px)!important;line-height:1.75!important;color:#aab5c1!important}
+.hero .eyebrow{color:#a7d2ef!important;letter-spacing:.12em}
+.hero-panel{background:#11171f!important;border:1px solid #35404c!important;border-radius:14px!important;box-shadow:0 30px 90px #0006!important;transform:none!important}
+.hero-panel .mini-tiles{display:none!important}
+.button{border-radius:8px!important;font-weight:650!important;min-height:44px;align-items:center;justify-content:center}
+.button.primary{background:#f0f4f7!important;border-color:#f0f4f7!important;color:#0a1016!important}
+.button:not(.primary){background:#151b23!important;border-color:#39434f!important;color:#e8eef4!important}
+.section{padding-block:clamp(65px,8vw,115px)!important}
+.section-head{font-size:clamp(36px,4.2vw,62px)!important;line-height:1.09!important;letter-spacing:-.065em!important}
+.intro,.muted{color:#aab5c1!important}
+.ff-banner{background:#080b10!important;border-bottom:1px solid #252d36;padding:clamp(75px,8vw,125px) 0!important}
+.ff-banner h1{font-size:clamp(44px,5.4vw,76px)!important;line-height:1.06!important;letter-spacing:-.07em!important}
+.ff-banner p{color:#aeb8c3!important;line-height:1.7}
+.ff-feature,.card{background:#11161d!important;border:1px solid #2b3440!important;border-radius:12px!important;box-shadow:none!important}
+.ff-feature:hover,.card:hover{border-color:#6486a0!important}
+.ff-icon,.card .product-icon{background:#1a2632!important;border-color:#364d60!important;color:#a5d5f4!important}
+.ff-filter button,.ff-filter input{background:#111820!important;border:1px solid #394450!important;color:#d8e0e9!important}
+.ff-filter button[aria-pressed=true]{background:#273c4c!important;border-color:#729ab6!important;color:#fff!important}
+.ff-contact-panel,.cta{background:#11161d!important;border-color:#303a46!important;box-shadow:none!important}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #a4d8f6!important;outline-offset:3px}
+@media(max-width:1000px){.hero-inner{grid-template-columns:1fr}.hero-panel{display:none}}
+@media(max-width:760px){.shell,.ffg-inner,.ffg-footer-content{width:calc(100% - 32px)}.hero{padding:80px 0!important}.hero h1{font-size:clamp(43px,10vw,65px)!important}.section{padding-block:64px!important}.ff-banner{padding:76px 0!important}.ffg-nav{gap:18px!important}}
+@media(prefers-reduced-motion:reduce){.ffg-product-card:hover,.card:hover{transform:none!important}}
