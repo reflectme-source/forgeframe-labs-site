@@ -9,7 +9,9 @@
   });
   if(!response.ok)return;
   const status=await response.json();
+  const locale=document.documentElement.lang==='en'?'en':'pl';
   if(status.available!==true||!status.terms_version||!status.terms_url)return;
+  if(!Array.isArray(status.supported_locales)||!status.supported_locales.includes(locale))return;
   for(const a of buyLinks)a.hidden=false;
   for(const a of document.querySelectorAll('[data-od-contact-fallback]'))a.hidden=true;
   for(const note of document.querySelectorAll('[data-od-buy-note]')){

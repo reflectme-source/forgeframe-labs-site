@@ -132,3 +132,13 @@
 /* Product-only safety gate: never flash an unverified purchase CTA. */
 [data-od-buy][hidden]{display:none!important}
 [data-od-contact-fallback][hidden]{display:none!important}
+
+/* OriginDuty-only WCAG 2.2 AA contrast adjustments; no global ForgeFrame tokens altered. */
+body .ff-detail .ff-detail__action--primary{background:#15516e!important;color:#fff!important;border-color:#15516e!important}
+.od-section--light .od-kicker,.od-section--white .od-kicker{color:#07547e}
+.od-section--light .od-section-head p,.od-section--white .od-section-head p{color:#355967}
+.od-section--light .od-section-head h2 span,.od-section--white .od-section-head h2 span{color:#086b9b}
+.od-section--light .od-card small,.od-section--white .od-card small{color:#07547e}
+.od-footnotes a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+
+.od-faq h2 span{color:#086b9b}
