@@ -77,3 +77,22 @@
 @media(max-width:650px){.ffshot-hero h1{font-size:clamp(39px,10vw,53px)}.ffshot-card{min-height:210px}.ffshot-card p{margin:16px 0}.ffshot-cards{gap:12px}}
 
 @media(max-width:650px){html[lang=pl] .ffshot-hero h1{font-size:32px!important;line-height:1.1!important}}
+
+/* Motion language: deliberate, restrained, not perpetual. */
+.ffshot-card{position:relative;isolation:isolate;cursor:pointer;transition:transform 220ms cubic-bezier(.2,.8,.2,1),border-color 220ms ease,box-shadow 220ms ease}
+.ffshot-card .ffshot-card-link::after{content:"";position:absolute;inset:0;z-index:1;border-radius:inherit}
+.ffshot-card:focus-within{outline:2px solid #9ad6ff;outline-offset:3px}
+.ffshot-card .ffshot-card-link:focus-visible{outline:0}
+.ffshot-card-bottom a{transition:transform 180ms ease,color 180ms ease}
+.ffshot-btn{transition:background-color 180ms ease,border-color 180ms ease,transform 180ms ease}
+.ffshot-btn:hover{transform:translateY(-1px)}
+.ffshot-window{transition:border-color 260ms ease,box-shadow 260ms ease}
+.ffshot-window:hover{border-color:#48627a;box-shadow:0 22px 70px #0009}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+.ffshot-card:hover{transform:translateY(-4px);border-color:#4b7090;box-shadow:0 18px 38px #0006}
+.ffshot-card:hover .ffshot-card-bottom a{transform:translate(3px,-3px);color:#c8ebff}
+}
+@media(prefers-reduced-motion:reduce){
+.ffshot-card,.ffshot-card-bottom a,.ffshot-btn,.ffshot-window{transition:none!important;animation:none!important}
+.ffshot-card:hover,.ffshot-btn:hover{transform:none!important}
+}
