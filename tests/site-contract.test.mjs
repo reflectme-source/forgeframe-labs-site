@@ -158,7 +158,10 @@ test("all primary customer paths provide direct browser-based Gmail contact and 
  ];
  for(const file of files){
   const body=html(file);
-  assert.match(body,/assets\/direct-contact\.js/,file+" missing contact strip");
+  if(file==="services/connect-to-forge-assessment/index.html"||file==="services/connect-to-forge-assessment/pl/index.html") {
+   assert.match(body,/class="cx-bottom"/,file+" missing dedicated contact CTA");
+   assert.match(body,/product=connect-to-forge/,file+" missing form link");
+  } else assert.match(body,/assets\/direct-contact\.js/,file+" missing contact strip");
  }
  for(const f of ["index.html","en/index.html","services/merchant-issue-desk.html",
   "services/connect-to-forge-assessment/index.html","services/connect-to-forge-assessment/pl/index.html"]){
@@ -249,6 +252,14 @@ test("live products have tailored buyer scope, deliverables and truthful access"
      for(const dest of localTargets(file))assert.ok(existsSync(dest),file+" broken local asset or CTA: "+dest);
      subjects.add("Merchant Issue Desk / verified scope");
      continue;
+   }
+   if(file.startsWith("services/connect-to-forge-assessment/")){
+    assert.match(p,/class="cx-offer"/,file+" needs a written assessment offer");
+    assert.match(p,/€490/);
+    assert.match(p,/connect-reference\.css/);
+    for(const dest of localTargets(file))assert.ok(existsSync(dest),file+" broken local link "+dest);
+    subjects.add(file+" / scoped migration assessment");
+    continue;
    }
    assert.match(p,/class="ff-detail"/,file+" needs a factual commercial quick-reference");
    assert.match(p,/assets\/product-details\.css/,file+" missing editorial shared styles");

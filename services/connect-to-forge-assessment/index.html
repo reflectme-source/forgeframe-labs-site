@@ -123,105 +123,11 @@ h2{font-size:clamp(28px,3.1vw,40px);line-height:1.18;letter-spacing:-.035em;marg
 <link rel="icon" href="../../assets/forgeframe-avatar.png" type="image/png">
 <link rel="stylesheet" href="../../assets/forgeframe-global.css">
 <link rel="stylesheet" href="./connect-theme.css">
-</head>
+<link rel="stylesheet" href="../../assets/connect-reference.css"></head>
 <body class="ff-connect">
 <a class="skip" href="#main">Skip to content</a>
 <header class="ffg-header"><div class="ffg-inner"><a class="ffg-brand" href="../../en/"><img class="ffg-brand-logo" src="../../assets/forgeframe-avatar.png" alt="" width="38" height="38">ForgeFrame <span class="ffg-brand-blue">Labs</span></a><nav class="ffg-nav" aria-label="Main navigation"><a href="../../en/">Home</a><a href="../../en/products/" aria-current="page">Products</a><a href="../../en/developers/">Developers</a><a href="../../en/about/">About</a><a href="../../contact/">Contact</a><span class="ffg-language" aria-label="Language"><a class="ffg-locale" lang="pl" href="../../services/connect-to-forge-assessment/pl/">PL</a><a class="ffg-locale" aria-current="page" lang="en" href="../../services/connect-to-forge-assessment/">EN</a></span></nav></div></header>
-<header class="hero" id="top">
-  <div class="wrap">
-    <div>
-      <div class="eyebrow">Atlassian Cloud · private app continuity</div>
-      <h1>Know what breaks before your Connect app moves to Forge.</h1>
-      <p class="lead">A written-first, fixed-scope technical assessment for teams with a private Jira or Confluence Connect app. Map the custom modules, auth boundaries and data migration risks before the January 2027 transition.</p>
-      <div class="actions">
-        <a class="primary" href="../../contact/?product=connect-to-forge">Request a written scope</a>
-        <a class="subtle" href="start/">Check standard scope yourself ↗</a>
-        <a class="subtle" href="sample.html" aria-label="Open a synthetic example of the migration assessment report">View a sample report ↗</a>
-      </div>
-      <p class="fine">No calls required for initial scoping. No credentials or production access requested by email. <a href="pl/" lang="pl" hreflang="pl">Polski ↗</a></p>
-    </div>
-    <div class="migration-map" role="group" aria-label="Illustration of migration assessment phases, not a deployed automated system">
-      <div class="map-label">Assessment workflow</div>
-      <div class="map-node current"><strong>Existing private Connect app</strong><small>Custom panels · webhooks · fields · permissions</small></div>
-      <div class="map-arrow" aria-hidden="true">↓</div>
-      <div class="map-node review"><strong>Evidence-backed technical review</strong><small>Module coverage · data continuity · rollback risk</small></div>
-      <div class="map-arrow" aria-hidden="true">↓</div>
-      <div class="map-node"><strong>Forge migration plan</strong><small>Customer-owned environment · supervised cutover</small></div>
-    </div>
-  </div>
-</header>
-<main id="main">
-<section class="ff-detail" aria-label="Product facts"><div class="ff-detail__inner"><div class="ff-detail__head"><div><p class="ff-detail__eyebrow">CONNECT TO FORGE / PAID ASSESSMENT</p><h2 class="ff-detail__title">Know the migration scope before committing to a cutover.</h2></div><span class="ff-detail__state">Written quote only</span></div><div class="ff-detail__grid"><div class="ff-detail__cell"><span class="ff-detail__label">Best fit</span><p class="ff-detail__body">Atlassian teams responsible for private or business-critical Connect apps with real dependencies.</p></div><div class="ff-detail__cell"><span class="ff-detail__label">Deliverable</span><p class="ff-detail__body">An agreed assessment of modules, data and permission risks plus an actionable migration and acceptance plan.</p></div><div class="ff-detail__cell"><span class="ff-detail__label">Price and next step</span><p class="ff-detail__body"><strong>€490 indicative for the bounded desk assessment.</strong> Final scope and quote are agreed in writing; no app secrets or access credentials are needed for the initial inquiry.</p></div></div><div class="ff-detail__actions"><a class="ff-detail__action ff-detail__action--primary" href="../../contact/?product=connect-to-forge">Request written assessment <span aria-hidden="true">↗</span></a><a class="ff-detail__action" href="#scope">Review assessment steps <span aria-hidden="true">↗</span></a></div><p class="ff-detail__fine">Assessment is a scoped service, not automatic Connect-to-Forge conversion, a guaranteed cutover or an authorized implementation without contract and access review.</p></div></section>
-
-  <section class="section" id="service">
-    <div class="wrap">
-      <header>
-        <div class="kicker">The service</div>
-        <h2>Assess the expensive failure modes, not just the manifest syntax.</h2>
-        <p>Atlassian offers free Connect-to-Forge tooling. We focus on the application-specific work those tools cannot complete for you: preserved behavior, permission boundaries and existing customer data.</p>
-      </header>
-      <div class="cards">
-        <article class="card"><span class="card-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="8" height="7" rx="1.5"/><rect x="13" y="4" width="8" height="7" rx="1.5"/><path d="M7 11v5h10v-5M12 16v4m-4 0h8"/></svg></span><span class="number">01 / DEPENDENCY MAP</span><h3>What must be rebuilt?</h3><p>Inventory UI surfaces, webhook handlers, custom fields and scheduled jobs. Separate genuine Forge module equivalents from assumptions that need testing.</p></article>
-        <article class="card"><span class="card-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="m8.5 12 2.4 2.5 4.8-5.2"/></svg></span><span class="number">02 / DATA & ACCESS</span><h3>What must not be lost?</h3><p>Identify stored configuration, install lifecycle, tenant secrets, entity properties and permission assumptions before any destructive cutover.</p></article>
-        <article class="card"><span class="card-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h7M4 12h10M4 18h7"/><path d="m16 6 4 4-4 4m4-4h-7"/></svg></span><span class="number">03 / RELEASE PLAN</span><h3>How do you prove parity?</h3><p>Written acceptance criteria, staging-test matrix, owner approval points, safe rollback approach and an implementation estimate.</p></article>
-      </div>
-    </div>
-  </section>
-  <section class="section band" id="scope">
-    <div class="wrap split">
-      <div>
-        <div class="kicker">A bounded first engagement</div>
-        <h2>Start with written scoping. Commission the migration only if it makes sense.</h2>
-        <p>The initial assessment is deliberately smaller than a migration sprint. We review the architecture and issue a concrete technical plan; we do not promise that every Connect extension has a direct Forge replacement. Start with our <a href="checklist.html">private Connect → Forge migration checklist</a> to see the risks worth checking.</p>
-        <ul class="bullets">
-          <li>One private Jira or Confluence Connect application, up to 10 extension-module instances for a standard desk assessment</li>
-          <li>Sanitized descriptor and owner-approved architectural context</li>
-          <li>Module, authorization and migration risk review, with explicit unknowns and one written revision</li>
-          <li>Written deliverable, implementation scope and test acceptance gates</li>
-          <li>Optional contracted implementation after scoping — not automatic</li>
-        </ul>
-      </div>
-      <aside class="scope" aria-labelledby="offer-title">
-        <h3 id="offer-title">Written migration assessment</h3>
-        <div class="price"><strong>€490</strong><small>indicative fixed-scope price</small></div>
-        <p>Indicative for a bounded desk review of up to 10 module instances and one backend. Complex custom fields, multiple tenants, missing records or additional repositories require a separate written quote. Seller identity, terms and schedule are agreed before payment. This is not a checkout.</p>
-        <div class="line"></div>
-        <h3>Not included</h3>
-        <p>Production deployment, customer data migration, platform subscriptions, tax/legal advice, broad Jira administration or unsupported Forge features.</p>
-        <div class="line"></div>
-        <a class="primary" href="../../contact/?product=connect-to-forge">Ask for a written quote</a>
-        <p class="legal">No customer data or access requested for the initial enquiry. Pricing is unvalidated and subject to a written statement of work.</p>
-      </aside>
-    </div>
-  </section>
-  <section class="section" id="process">
-    <div class="wrap">
-      <header><div class="kicker">How engagement works</div><h2>No credentials up front. No surprise cutover.</h2></header>
-      <div class="steps">
-        <article><h3>1. Explain your app</h3><p>Send the Atlassian product, private app purpose, approximate module types and deadline. Do not include source code, secrets or customer records in email.</p></article>
-        <article><h3>2. Agree secure scope</h3><p>Confirm ownership, written terms and a permitted method to exchange only the materials necessary for the assessment.</p></article>
-        <article><h3>3. Receive decisions</h3><p>Review the migration options, blockers, testing requirements and a separate quotation for any implementation work.</p></article>
-      </div>
-    </div>
-  </section>
-  <section class="section band" id="questions">
-    <div class="wrap">
-      <header><div class="kicker">Questions</div><h2>Designed for private, business-critical extensions.</h2></header>
-      <div class="faq">
-        <article><h3>Does this replace Atlassian's free migration CLI?</h3><p>No. We use the official tools where applicable and provide architectural analysis, risk ownership and client-specific acceptance criteria.</p></article>
-        <article><h3>Does the assessment migrate our application?</h3><p>No. Any build, staged installation or production cutover is contracted separately, after verifying technical feasibility and access.</p></article>
-        <article><h3>Will our application data leave Atlassian?</h3><p>No data needs to be sent for the first enquiry. Later assessment materials are transferred only through an agreed secure channel, with explicit confidentiality and retention terms.</p></article>
-        <article><h3>What's the Connect deadline?</h3><p>Atlassian has stated that Connect end of support begins on <strong>31 January 2027</strong>. Private apps may face compatibility and security risks afterward; this is not a prediction of an immediate outage.</p></article>
-      </div>
-    </div>
-  </section>
-  <section class="contact" id="contact">
-    <div class="wrap">
-      <div><div class="eyebrow">Private app · written-first</div><h2>Show us the workflow, not your credentials.</h2><p>A short written description is enough to determine whether a scoped assessment is sensible.</p></div>
-      <a class="primary" href="../../contact/?product=connect-to-forge">Email the requirements</a>
-    </div>
-  </section>
-</main>
-<div class="ff-connect-disclaimer"><div class="wrap">Independent service, not affiliated with Atlassian. The quoted price is indicative; no live checkout or completed client migrations are claimed. <a href="https://www.atlassian.com/blog/developer/getting-ready-for-connect-end-of-support" target="_blank" rel="noopener noreferrer">Atlassian's official guidance ↗</a>.</div></div><footer class="ffg-footer"><div class="ffg-footer-content"><div><div class="ffg-footer-brand"><img src="../../assets/forgeframe-avatar.png" alt="" width="29" height="29">ForgeFrame <span>Labs</span></div><div class="ffg-footer-tagline">Technology · People · Real Impact</div></div><nav class="ffg-footer-links" aria-label="Footer navigation"><a href="../../en/">Home</a><a href="../../en/products/">Products</a><a href="../../en/developers/">Developers</a><a href="../../en/about/">About</a><a href="../../contact/">Contact</a></nav><div class="ffg-footer-meta">© 2026 ForgeFrame Labs<br><a href="../../privacy.html">Privacy</a><a href="../../terms.html">Terms</a></div></div></footer>
-<script src="../../assets/direct-contact.js" defer></script><script src="../../assets/forgeframe-shell.js" defer></script></body>
+<main id="main" class="cx-page"><section class="cx-hero"><div class="cx-container cx-hero-grid"><div><div class="cx-eyebrow">CONNECT → FORGE ASSESSMENT</div><h1>Assess the expensive<br>failure modes, not just<br>the manifest syntax.</h1><p>Atlassian provides free Connect-to-Forge tooling. We focus on application-specific risks these tools cannot assess — preserved behavior, permission boundaries and existing customer data.</p></div><div class="cx-art" aria-label="Illustrative Connect-to-Forge migration review"><div class="cx-flow"><div class="cx-flow-box cx-connect"><span class="cx-flow-glyph">✣</span>Connect</div><span class="cx-arrow">····›</span><div class="cx-flow-box cx-forge"><span class="cx-flow-glyph">▲</span>Forge</div></div><div class="cx-chips"><div class="cx-chip"><span class="cx-chip-icon">✓</span>Preserved behavior</div><div class="cx-chip"><span class="cx-chip-icon">♙</span>Permission boundaries</div><div class="cx-chip"><span class="cx-chip-icon">▣</span>Existing data</div></div></div></div><div class="cx-container cx-feature-grid"><article class="cx-feature"><div class="cx-feature-top"><span class="cx-icon cx-tone-0"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><circle cx="24" cy="12" r="5"/><circle cx="12" cy="32" r="5"/><circle cx="36" cy="32" r="5"/><path d="M24 17v8H12v2m12-2h12v2"/></svg></span><span>01 / DEPENDENCY MAP</span></div><h3>What must be rebuilt?</h3><p>Inventory UI surfaces, webhook handlers, custom fields and scheduled jobs. Identify Forge replacements and assumptions that require testing.</p></article><article class="cx-feature"><div class="cx-feature-top"><span class="cx-icon cx-tone-1"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M24 5l15 7v11c0 10-7 17-15 20C16 40 9 33 9 23V12z"/><path d="m16 24 6 6 11-13"/></svg></span><span>02 / DATA & ACCESS</span></div><h3>What must not be lost?</h3><p>Identify stored configuration, installation lifecycle, tenant secrets, entity properties and permission assumptions before any cutover.</p></article><article class="cx-feature"><div class="cx-feature-top"><span class="cx-icon cx-tone-2"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 14h25l-7-7m7 7-7 7M40 33H15l7-7m-7 7 7 7"/></svg></span><span>03 / RELEASE PLAN</span></div><h3>How do you prove parity?</h3><p>Written acceptance criteria, a staging test matrix, owner approvals, safe rollback approach and an implementation estimate.</p></article></div></section><section class="cx-assessment" id="scope"><div class="cx-container cx-assessment-grid"><div class="cx-assessment-copy"><div class="cx-eyebrow">A BOUNDED FIRST ENGAGEMENT</div><h2>Start with written scoping.<br>Commission the migration<br>only if it makes sense.</h2><p>The initial assessment is deliberately smaller than a migration sprint. We review the architecture and prepare a concrete technical plan so you can decide with confidence.</p><ul class="cx-list"><li><span aria-hidden="true">✓</span>One private Jira or Confluence Connect app (up to 10 modules)</li><li><span aria-hidden="true">✓</span>Sanitized descriptor and architectural context</li><li><span aria-hidden="true">✓</span>Module, authorization and migration risk review</li><li><span aria-hidden="true">✓</span>Written deliverable with scope, risks and next steps</li></ul><a class="cx-text-link" href="checklist.html">View the migration checklist →</a></div><div class="cx-offer"><h3>Written migration assessment</h3><div class="cx-price">€490 <span>indicative fixed-scope price</span></div><div class="cx-rule"></div><h4>What’s included</h4><ul class="cx-offer-list"><li><span aria-hidden="true">✓</span>Review of up to 10 module instances</li><li><span aria-hidden="true">✓</span>Analysis of data, permissions and integrations</li><li><span aria-hidden="true">✓</span>Written assessment with risks and recommendations</li><li><span aria-hidden="true">✓</span>An implementation estimate</li></ul><div class="cx-rule"></div><h4>Not included</h4><ul class="cx-offer-list cx-excluded"><li><span aria-hidden="true">⊗</span>Production deployment or data migration</li><li><span aria-hidden="true">⊗</span>Ongoing development or app rebuild</li><li><span aria-hidden="true">⊗</span>Atlassian support or third-party platform charges</li></ul><a class="cx-button" href="../../contact/?product=connect-to-forge">Request written quote →</a></div></div></section><section class="cx-bottom"><div class="cx-container cx-bottom-grid"><div><div class="cx-eyebrow">PRIVATE APP · WRITTEN-FIRST</div><h2>Show us the workflow, not your credentials.</h2><p>A short written description is enough to determine whether a scoped assessment is sensible.</p></div><a class="cx-button" href="../../contact/?product=connect-to-forge"><span aria-hidden="true">✉</span> Email the requirements →</a></div></section><div class="cx-legal"><span>ⓘ &nbsp;Independent service, not affiliated with Atlassian. Indicative pricing only. <a href="https://www.atlassian.com/blog/developer/getting-ready-for-connect-end-of-support" target="_blank" rel="noopener noreferrer">Atlassian’s official guidance ↗</a></span></div></main>
+<footer class="ffg-footer"><div class="ffg-footer-content"><div><div class="ffg-footer-brand"><img src="../../assets/forgeframe-avatar.png" alt="" width="29" height="29">ForgeFrame <span>Labs</span></div><div class="ffg-footer-tagline">Technology · People · Real Impact</div></div><nav class="ffg-footer-links" aria-label="Footer navigation"><a href="../../en/">Home</a><a href="../../en/products/">Products</a><a href="../../en/developers/">Developers</a><a href="../../en/about/">About</a><a href="../../contact/">Contact</a></nav><div class="ffg-footer-meta">© 2026 ForgeFrame Labs<br><a href="../../privacy.html">Privacy</a><a href="../../terms.html">Terms</a></div></div></footer>
+<script src="../../assets/forgeframe-shell.js" defer></script></body>
 </html>
