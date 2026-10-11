@@ -3,11 +3,11 @@ import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
 test("OriginDuty has two active plan selection links without bypassing paid entitlement gating",()=>{
- for(const p of ["products/originduty/index.html","products/originduty/en/index.html"]){
+ for(const [p,locale] of [["products/originduty/index.html","pl"],["products/originduty/en/index.html","en"]]){
   const s=read(p);
   assert.equal((s.match(/class="od-button od-button--primary od-plan-start"/g)||[]).length,2);
-  assert.match(s,/data-od-contact-fallback href="https:\/\/originduty-app\.forgeframelabs\.app\/signup\?plan=importer"/);
-  assert.match(s,/data-od-contact-fallback href="https:\/\/originduty-app\.forgeframelabs\.app\/signup\?plan=agency"/);
+  assert.ok(s.includes("data-od-contact-fallback href=\"https://originduty-app.forgeframelabs.app/signup?plan=importer&lang="+locale+"\""));
+  assert.ok(s.includes("data-od-contact-fallback href=\"https://originduty-app.forgeframelabs.app/signup?plan=agency&lang="+locale+"\""));
   assert.equal((s.match(/data-od-buy hidden/g)||[]).length,2);
   assert.match(s,/origin-evidence\.js|origin-status\.js/);
  }
