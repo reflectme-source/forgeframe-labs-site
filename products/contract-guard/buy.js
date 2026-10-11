@@ -19,7 +19,7 @@ const words={
  unsupported:pl?'To repozytorium nie spełnia warunków zakupu automatycznego. Możesz skorzystać z darmowej Action lub opisać niestandardową konfigurację w formularzu pomocy. Nie pobrano płatności.':'This repository is not supported by automatic checkout. You can use the free Action or request help for a custom environment. No payment has been taken.',
  ready:pl?'Repozytorium zostało sprawdzone. Wybierz, w jaki sposób kupujesz.':'Repository verified. Choose how you are buying.',
  closed:pl?'Płatność firmowa jest chwilowo wyłączona do zakończenia kontroli podatków i transakcji. Żadna płatność nie została pobrana.':'Business checkout is temporarily disabled while tax and transaction checks are completed. No payment has been taken.',
- personalUnavailable:pl?'Zakup prywatny dla tego kraju nie jest jeszcze włączony. Sprawdzenie repozytorium jest darmowe; nie pobieramy płatności.':'Personal checkout is not enabled for this billing country yet. Repository checks are free; no payment will be taken.',
+ personalUnavailable:pl?'Przygotowujemy płatności prywatne. Repozytorium możesz sprawdzić bezpłatnie z dowolnego kraju; zakup odblokujemy po zakończeniu certyfikacji podatków i Checkout.':'Personal checkout is being finalized. You can verify your repository from any country for free; payment will open after tax and checkout certification.',
  issue:pl?'Nie udało się teraz połączyć z usługą. Spróbuj ponownie — żadna płatność nie została pobrana.':'We could not reach the service. Retry; no payment has been taken.',
  processing:pl?'Przygotowuję bezpieczny Stripe Checkout…':'Preparing secure Stripe Checkout…',
  selectBuyer:pl?'Wybierz, czy kupujesz prywatnie, czy w imieniu firmy.':'Choose whether you are buying as an individual or a business.',
