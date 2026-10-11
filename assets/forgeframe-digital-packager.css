@@ -1,0 +1,60 @@
+/* Digital Packager — authentic static product + browser checker, ForgeFrame shared design */
+body:has(.dp-v2){background:#080e15!important;color:#eef6fc!important}
+.dp-v2{background:#080e15!important;color:#eef5fc!important;font-family:Inter,ui-sans-serif,system-ui,sans-serif}
+.dp-v2 .wrap{width:min(1240px,calc(100% - 80px))!important;max-width:1240px!important}
+.dp-v2 .hero{padding:80px 0 85px!important;border-bottom:1px solid #2a4053!important;background:radial-gradient(ellipse 57% 90% at 78% 39%,#18375279,transparent 77%),#080e15!important}
+.dp-v2 .hero .layout{display:grid!important;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)!important;gap:clamp(45px,5vw,80px)!important;align-items:center!important}
+.dp-v2 .eyebrow{color:#9bbbd0!important;font-size:11px!important;letter-spacing:.15em!important;font-weight:760!important}
+.dp-v2 h1{font:780 clamp(44px,4.8vw,73px)/1.055 Inter,system-ui,sans-serif!important;letter-spacing:-.066em!important;color:#f3f7fc!important;margin:22px 0 24px!important}
+.dp-v2 h1 span{color:#c0d0ed!important}
+.dp-v2 .lead{color:#b1c4d3!important;font-size:16px!important;line-height:1.74!important}
+.dp-v2 .actions{display:flex!important;flex-wrap:wrap!important;gap:13px!important}
+.dp-v2 .button{display:inline-flex!important;align-items:center!important;justify-content:center!important;border-radius:8px!important;min-height:45px!important;padding:11px 17px!important;font:700 12px Inter,system-ui,sans-serif!important;text-decoration:none!important;background:#12283b!important;border:1px solid #3e5770!important;color:#d9e9f7!important}
+.dp-v2 .button.primary{background:#168bf6!important;border-color:#399af6!important;color:#fff!important}
+.dp-v2 .fine{font-size:11px!important;color:#94aec1!important}
+.dp-v2 .demo{border:1px solid #3c5870!important;border-radius:13px!important;background:#0b1722!important;box-shadow:0 29px 74px #0007,0 0 55px #1784b31a!important;overflow:hidden!important}
+.dp-v2 .demo .title{background:#14263a!important;color:#e6f2fc!important;border-bottom:1px solid #324a60!important;padding:19px!important}
+.dp-v2 .demo .title small{color:#8fe4c1!important}
+.dp-v2 .demo .body{padding:22px!important;gap:15px!important}
+.dp-v2 .demo .body>div:not(.arrow){background:#111f2d!important;border:1px solid #314a5f!important;border-radius:9px!important;padding:14px!important;min-width:0!important}
+.dp-v2 .demo .tag{color:#8bbdde!important;font-size:10px!important}
+.dp-v2 .demo .file{background:#192c3d!important;border:1px solid #34526b!important;border-radius:6px!important;color:#d8e8f5!important;overflow-wrap:anywhere}
+.dp-v2 .demo .file.out{background:#153b32!important;border-color:#317d67!important;color:#b5f2d9!important}
+.dp-v2 .demo .arrow{color:#91c9f3!important}
+.dp-v2 .demo .foot{background:#101e2b!important;color:#9baebe!important;border-color:#30495c!important}
+.dp-v2 .ff-detail{background:#0f1a27!important;border-block:1px solid #30495e!important;color:#edf6fc!important;padding:72px 0!important}
+.dp-v2 .ff-detail__title{font-size:clamp(30px,3.3vw,47px)!important;color:#f2f8fd!important;letter-spacing:-.055em!important;line-height:1.15!important}
+.dp-v2 .ff-detail__state{background:#15374d!important;color:#c0e5fc!important;border-color:#42718c!important}
+.dp-v2 .ff-detail__grid,.dp-v2 .ff-detail__cell{border-color:#334c61!important}
+.dp-v2 .ff-detail__label{color:#91c5e4!important}
+.dp-v2 .ff-detail__body,.dp-v2 .ff-detail__fine{color:#b7c9d7!important}
+.dp-v2 .ff-detail__body strong{color:#e8f5ff!important}
+.dp-v2 .ff-detail__action{background:#12283a!important;border:1px solid #3b5871!important;color:#d9effc!important;border-radius:8px!important}
+.dp-v2 .ff-detail__action--primary{background:#1689ed!important;color:white!important}
+.dp-v2 .strip{border-block:1px solid #2d475c!important;background:#0d1b28!important;color:#bdd5e5!important}
+.dp-v2 .strip strong{color:#f1f8fd!important}
+.dp-v2 .section{padding-block:80px!important;background:#090f17!important;color:#eaf4fc!important}
+.dp-v2 .section.soft{background:#0d1824!important}
+.dp-v2 .section h2{font:760 clamp(31px,3.4vw,49px)/1.11 Inter,system-ui,sans-serif!important;letter-spacing:-.058em!important;color:#f0f6fc!important}
+.dp-v2 .section .desc,.dp-v2 .section p,.dp-v2 .section li{color:#b3c5d5!important;line-height:1.72!important}
+.dp-v2 .card{background:#112130!important;border:1px solid #36526a!important;border-radius:10px!important;color:#edf5fb!important}
+.dp-v2 .card h3{color:#eef6fc!important}
+.dp-v2 .num{color:#95cbed!important}
+.dp-v2 .checker{background:#10202f!important;border:1px solid #375770!important;border-radius:11px!important;color:#e8f3fb!important}
+.dp-v2 .check-head{border-color:#36536a!important;background:#152d3f!important;color:#d6eafa!important}
+.dp-v2 .drop{background:#0b1926!important;border:1px dashed #42769c!important;border-radius:9px!important;color:#b6dcf6!important}
+.dp-v2 .drop small{color:#a5bed0!important}
+.dp-v2 .select-folder{color:#9bd3f7!important}
+.dp-v2 .result{color:#b6cad9!important;background:#0c1926!important;border:1px solid #324f63!important;border-radius:7px!important}
+.dp-v2 .result.ok{color:#ade9c9!important;border-color:#35765e!important}
+.dp-v2 .result.warn{color:#ffe0ac!important;border-color:#866c47!important}
+.dp-v2 .pricebox{background:#132333!important;border:1px solid #477490!important;color:#edf6fd!important;border-radius:11px!important}
+.dp-v2 .amount{color:#f5fbff!important}
+.dp-v2 .amount small{color:#b6d2e5!important}
+.dp-v2 .faq details{background:#112130!important;border:1px solid #345268!important;color:#eaf5fc!important;border-radius:9px!important}
+.dp-v2 .faq details p{color:#b6c8d7!important}
+.dp-v2 .faq summary{color:#f0f7fd!important}
+.dp-v2 a:focus-visible,.dp-v2 button:focus-visible,.dp-v2 label:focus-visible{outline:2px solid #9cdafc!important;outline-offset:3px!important}
+@media(max-width:1050px){.dp-v2 .wrap{width:calc(100% - 48px)!important}.dp-v2 .hero .layout{grid-template-columns:1fr!important}}
+@media(max-width:650px){.dp-v2 .wrap{width:calc(100% - 32px)!important}.dp-v2 .hero{padding:55px 0!important}.dp-v2 h1{font-size:clamp(39px,10vw,54px)!important}.dp-v2 .lead{font-size:15px!important}.dp-v2 .section{padding-block:55px!important}}
+@media(prefers-reduced-motion:reduce){.dp-v2 *{transition:none!important;animation:none!important}}
