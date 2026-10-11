@@ -93,9 +93,7 @@ export function wirePreflight(root=document){
   if(result.eligible){
    const notice=root.createElement("p");notice.className="ff-notice";notice.textContent=t.closed;
    output.append(notice);
-   const btn=root.createElement("button");btn.disabled=true;btn.type="button";
-   btn.className="ff-button";btn.textContent=t.pay;output.append(btn);
-   const alternative=root.createElement("a");alternative.className="ff-alternative";
+   const alternative=root.createElement("a");alternative.className="ff-button ff-action";
    alternative.href=quoteUrl;alternative.textContent=t.request;output.append(alternative);
   }else if(!noAuthority){
    const ul=root.createElement("ul");
