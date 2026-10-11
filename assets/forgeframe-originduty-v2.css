@@ -82,3 +82,9 @@ body:has(.od-v2){background:#080e15!important;color:#ecf4fc!important}
 .od-v2 .od-faq-list details[open] summary:after{content:"−"}
 .od-v2 .od-faq-list details p{padding:0 22px 21px!important;margin:0!important;font-size:13px!important;line-height:1.75!important;color:#b2c7d6!important}
 @media(max-width:1000px){.od-v2 .od-faq{grid-template-columns:1fr!important}.od-v2 .od-steps{grid-template-columns:1fr!important}.od-v2 .od-step{min-height:0!important}}
+
+/* Purchase-first layout: disabled purchase is explicit until trusted backend enables it */
+.od-v2 .od-pack .od-buy-disabled{background:#1b3850!important;border:1px solid #42627b!important;color:#b9d1e2!important;cursor:not-allowed!important;opacity:.76}
+.od-v2 .od-pack .od-buy-disabled:hover{transform:none!important}
+.od-v2 .od-pack .od-buy-helper{display:block!important;text-align:center!important;font-size:12px!important;font-weight:600!important;color:#91cef5!important;text-decoration:underline!important;text-underline-offset:4px!important;margin:13px 0 0!important}
+.od-v2 .od-pack .od-buy-helper:hover{color:#d6f0ff!important}

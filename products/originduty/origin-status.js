@@ -6,7 +6,7 @@
  if(!box)return;
  const en=document.documentElement.lang==='en';
  try{
-  const res=await fetch('https://public-pilot-production.up.railway.app/api/source-status',{mode:'cors',cache:'no-store',signal:AbortSignal.timeout(12000)});
+  const res=await fetch((location.hostname==='127.0.0.1'||location.hostname==='localhost')?'/__origin_source_status':'https://public-pilot-production.up.railway.app/api/source-status',{mode:'cors',cache:'no-store',signal:AbortSignal.timeout(12000)});
   if(!res.ok)throw new Error('Source unavailable');
   const data=await res.json();
   const age=Date.now()-Date.parse(data.generated_at);

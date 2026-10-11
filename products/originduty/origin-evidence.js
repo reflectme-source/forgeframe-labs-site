@@ -1,5 +1,9 @@
 'use strict';
-const URL_SOURCE='https://public-pilot-production.up.railway.app/regulations.json';
+// Production fetches the live upstream directly; local preview uses same-origin
+// proxy because the upstream intentionally does not permit localhost CORS.
+const URL_SOURCE=(location.hostname==='127.0.0.1'||location.hostname==='localhost')
+ ?'/__origin_live_feed'
+ :'https://public-pilot-production.up.railway.app/regulations.json';
 const root=document.querySelector('[data-od-evidence]');
 if(root){
 const en=root.getAttribute('data-lang')==='en';
