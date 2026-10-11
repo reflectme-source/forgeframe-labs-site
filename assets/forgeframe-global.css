@@ -50,3 +50,24 @@ html{scrollbar-gutter:stable}
 @media(max-width:760px){.ffg-portfolio--home,.ffg-portfolio--catalog{grid-template-columns:repeat(2,minmax(0,1fr))}.ffg-footer-content{grid-template-columns:1fr}.ffg-footer-links{justify-content:flex-start}.ffg-footer-meta{grid-column:auto}.ffg-inner,.ffg-footer-content{width:calc(100% - 32px)}}
 @media(max-width:470px){.ffg-portfolio--home,.ffg-portfolio--catalog{grid-template-columns:1fr}.ffg-nav{gap:6px 12px}.ffg-product-title{font-size:17px!important}.ffg-footer-links{gap:12px}}
 @media(prefers-reduced-motion:reduce){.ffg-product-card{transition:none}}
+
+/* 2026 editorial direction: restrained Resend-inspired shared shell */
+.ffg-header{background:rgba(8,11,16,.96)!important;border-bottom:1px solid #252c34!important}
+.ffg-nav a{color:#aeb7c2!important;font-weight:500;transition:color .18s ease}
+.ffg-nav a:hover,.ffg-nav a[aria-current=page]{color:#f5f7fa!important}
+.ffg-language{border-left-color:#303943!important}
+.ffg-locale{border-radius:6px!important}
+.ffg-locale[aria-current=page],.ffg-locale.active{background:#273c4b!important;color:#f7fafc!important}
+.ffg-portfolio--home,.ffg-portfolio--catalog{gap:14px!important}
+.ffg-product-card{background:#11161d!important;border-color:#2a323d!important;border-radius:12px!important;box-shadow:none!important;transition:border-color .18s ease,transform .18s ease}
+.ffg-product-card:hover{border-color:#6489a4!important;transform:translateY(-2px)}
+.ffg-product-icon{box-shadow:none!important}
+.ffg-product-title{color:#f3f5f7!important;letter-spacing:-.035em}
+.ffg-product-category{letter-spacing:.08em!important}
+.ffg-product-description{color:#aab5c1!important;line-height:1.55!important}
+.ffg-footer{background:#0a0e13!important;border-top:1px solid #27303a!important}
+.ffg-footer-links a{color:#b1bbc7!important}
+.ffg-footer-links a:hover{color:#fff!important}
+.ffg-header a:focus-visible,.ffg-footer a:focus-visible{outline:2px solid #9dd8ff!important;outline-offset:4px}
+@media(max-width:470px){.ffg-product-card{padding:18px!important}.ffg-nav{row-gap:10px!important}}
+@media(prefers-reduced-motion:reduce){.ffg-product-card,.ffg-nav a{transition:none!important}.ffg-product-card:hover{transform:none}}
