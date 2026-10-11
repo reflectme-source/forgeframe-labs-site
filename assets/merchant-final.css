@@ -124,3 +124,25 @@ body:has(.mid-final)>.ff-skip:focus{top:12px}
   padding:9px 13px;background:#102d40;border-bottom:1px solid #25516b;
  }
 }
+
+/* Icon optical centering — approved front-tile alignment */
+.mid-feature .mid-feature-icon{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:0;
+ position:relative;
+ isolation:isolate;
+}
+.mid-feature .mid-feature-icon svg{
+ display:block;
+ flex:none;
+ position:relative;
+ left:0;
+ top:0;
+ margin:0;
+ transform:none;
+}
+.mid-feature .mid-feature-icon::before{
+ pointer-events:none;
+}
