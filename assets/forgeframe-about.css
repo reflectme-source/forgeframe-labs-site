@@ -45,3 +45,36 @@
 @media(max-width:1100px){.ffabout-wrap{width:calc(100% - 48px)}.ffabout-hero-grid{grid-template-columns:1fr}.ffabout-hero-copy{padding:72px 0 0}.ffabout-globe{height:460px;max-width:650px;margin:auto}.ffabout-mission-grid{grid-template-columns:1fr}.ffabout-mission{border-right:0;padding-right:0}.ffabout-roots-grid{grid-template-columns:1fr 1fr}.ffabout-city{margin:0}.ffabout-map{display:none}}
 @media(max-width:650px){.ffabout-wrap{width:calc(100% - 32px)}.ffabout-hero h1{font-size:clamp(40px,10vw,55px)}.ffabout-hero-copy p{font-size:15px}.ffabout-globe{height:335px}.ffabout-sphere{width:310px;max-width:85%}.ffabout-globe-label{left:47%;top:34%;padding:8px}.ffabout-globe-caption{bottom:3px}.ffabout-section{padding:64px 0}.ffabout-values{grid-template-columns:1fr}.ffabout-roots-grid{grid-template-columns:1fr}.ffabout-city{height:230px}.ffabout-roots-copy{padding:40px 0}.ffabout-city-skyline{height:135px}}
 @media(prefers-reduced-motion:reduce){.ffabout-button{transition:none!important}.ffabout-button:hover{transform:none!important}}
+
+/* Detailed Earth visualization: geographic Natural Earth country outlines */
+.ffabout-globe{height:550px!important;overflow:visible}
+.ffabout-sphere{width:min(520px,91%)!important;background:transparent!important;box-shadow:0 0 0 1px #416a91aa,0 0 100px #2175b533!important;transform:none!important;overflow:hidden}
+.ffabout-sphere:after{background:linear-gradient(105deg,#b5e0ff13,transparent 55%,#0007 90%)!important}
+.ffabout-earth-map{width:100%;height:100%;display:block;object-fit:contain}
+.ffabout-globe-stars{position:absolute;inset:8% 0;background-image:radial-gradient(#8bbff8 1px,transparent 1px);background-size:37px 37px;opacity:.16;mask-image:radial-gradient(ellipse,#000 30%,transparent 73%)}
+.ffabout-orbit{width:112%!important;height:43%!important;border-color:#4395e7aa!important;transform:rotate(-24deg)!important}
+.ffabout-orbit.orbit-b{width:105%!important;height:45%!important;transform:rotate(56deg)!important;border-color:#3b80bf77!important}
+.ffabout-globe-label{left:57%!important;top:37%!important;padding:13px 17px!important;border-color:#4a6e91!important;background:#0b192be8!important}
+.ffabout-globe-caption{bottom:14px!important}
+.ffabout-roots{padding:78px 0 0!important;background:radial-gradient(ellipse 60% 95% at 83% 58%,#12315077,transparent 75%),#090f17!important}
+.ffabout-roots-new{display:grid;grid-template-columns:1fr;gap:35px}
+.ffabout-roots-top{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:70px;align-items:center}
+.ffabout-roots-copy{padding:0!important}
+.ffabout-roots h2{font-size:clamp(38px,4.1vw,62px)!important;line-height:1.08!important;letter-spacing:-.066em!important;margin:17px 0 18px!important}
+.ffabout-roots h2 span{color:#bed0ef}
+.ffabout-roots p{max-width:670px!important}
+.ffabout-roots-link{margin-top:19px!important}
+.ffabout-roots-fact{border-left:1px solid #36506a;padding:22px 0 22px 28px;display:flex;flex-direction:column;gap:8px}
+.ffabout-fact-kicker{font-size:10px;letter-spacing:.12em;color:#92b0cb;text-transform:uppercase}
+.ffabout-roots-fact strong{font-size:clamp(64px,7vw,100px);font-weight:780;line-height:1;letter-spacing:-.07em;color:#eaf4ff}
+.ffabout-roots-fact>span:last-child{color:#bed0e3;font-size:14px;line-height:1.4}
+.ffabout-roots-visual{position:relative;height:275px;border-top:1px solid #283b4e;overflow:hidden;background:radial-gradient(ellipse 70% 140% at 58% 95%,#1a426b44,transparent 78%)}
+.ffabout-roots-visual img{position:absolute;width:370px;height:370px;left:57%;top:-45px;opacity:.52;filter:saturate(.65);transform:rotate(-5deg)}
+.ffabout-world-orbit{position:absolute;width:540px;height:140px;border:1px solid #3a7db955;border-radius:50%;left:43%;top:82px;transform:rotate(-15deg)}
+.ffabout-world-message{position:absolute;bottom:44px;left:0;display:flex;align-items:center;gap:15px}
+.ffabout-world-message strong{font-size:12px;letter-spacing:.19em;color:#c6ddf1}
+.ffabout-world-message strong span{color:#75c4ff}
+@media(max-width:1100px){.ffabout-roots-top{grid-template-columns:1fr 180px;gap:25px}.ffabout-globe{height:460px!important}.ffabout-sphere{width:min(460px,90%)!important}}
+@media(max-width:650px){.ffabout-globe{height:340px!important}.ffabout-sphere{width:min(310px,88%)!important}.ffabout-globe-label{left:47%!important;top:34%!important;padding:9px!important}.ffabout-roots{padding-top:62px!important}.ffabout-roots-top{grid-template-columns:1fr;gap:22px}.ffabout-roots-fact{padding:14px 0 14px 20px}.ffabout-roots-fact strong{font-size:68px}.ffabout-roots-visual{height:210px}.ffabout-roots-visual img{width:280px;height:280px;left:38%;top:-24px}.ffabout-world-orbit{left:16%;width:340px}.ffabout-world-message{bottom:25px}.ffabout-world-message strong{font-size:10px}}
+@media(prefers-reduced-motion:no-preference){.ffabout-orbit{animation:ffabout-orbit-pulse 16s ease-in-out infinite alternate}@keyframes ffabout-orbit-pulse{from{opacity:.46}to{opacity:.9}}}
+@media(prefers-reduced-motion:reduce){.ffabout-orbit{animation:none!important}}
