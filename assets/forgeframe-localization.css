@@ -160,3 +160,10 @@
   margin:0;
   transform:none;
 }
+
+/* Single flat icon tile: remove all layered 2.5D decorations. */
+.lq-feature .lq-feature-icon,.lq-feature:nth-child(2) .lq-feature-icon,.lq-feature:nth-child(3) .lq-feature-icon{display:grid;place-items:center;width:51px;height:51px;padding:0;box-shadow:none;background:#143c61;border:1px solid #3275a7;border-radius:10px}
+.lq-feature:nth-child(2) .lq-feature-icon{background:#124a3d;border-color:#2c8c70}
+.lq-feature:nth-child(3) .lq-feature-icon{background:#33275c;border-color:#6b59a7}
+.lq-feature .lq-feature-icon::before{content:none!important;display:none!important}
+.lq-feature .lq-feature-icon svg{width:29px;height:29px;position:static;transform:none;margin:0}
