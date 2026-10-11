@@ -358,7 +358,7 @@ test("featured editorial homepages and full catalogs retain seven discoverable o
   assert.equal((content.match(/class="ffr-feature"/g)||[]).length,2,file+" needs two featured products");
   assert.equal((content.match(/class="ffr-list-row"/g)||[]).length,5,file+" needs five additional products");
   for(const name of ["OriginDuty","Contract Guard","Digital Packager","Merchant Issue Desk","Connect → Forge","Localization QA Inspector","OTOMOTO Change Intelligence"]) assert.ok(content.includes(name),file+" missing "+name);
-  assert.match(content,/forgeframe-rebrand\\.css/);
+  assert.ok(content.includes("forgeframe-rebrand.css"));
  }
  for(const file of ["products/index.html","en/products/index.html"]){
   const content=html(file);
