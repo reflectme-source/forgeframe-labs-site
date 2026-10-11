@@ -29,3 +29,77 @@
 .od-evidence-v2 a:focus-visible,.od-evidence-v2 button:focus-visible,.od-evidence-v2 input:focus-visible,.od-evidence-v2 select:focus-visible{outline:2px solid #a2ddff!important;outline-offset:3px}
 @media(max-width:900px){.od-evidence-v2 .od-evidence-layout{grid-template-columns:1fr!important}.od-evidence-v2 .od-filter-box{position:static}.od-evidence-v2 .od-metrics{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
 @media(max-width:650px){.od-evidence-v2 .od-shell{width:calc(100% - 32px)!important}.od-evidence-v2 .od-evidence-hero{padding:50px 0!important}.od-evidence-v2 .od-evidence-hero h1{font-size:clamp(37px,9vw,50px)!important}.od-evidence-v2 .od-metrics{grid-template-columns:1fr!important}.od-evidence-v2 .od-metric{min-height:0!important}.od-evidence-v2 .od-section{padding:48px 0!important}}
+
+/* ForgeFrame release: public evidence status empty results and filter ergonomics */
+.od-evidence-v2 .od-document{
+ background:#112537!important;border:1px solid #35576e!important;
+ color:#edf7ff!important;border-radius:11px!important;
+ padding:23px!important;
+}
+.od-evidence-v2 .od-document .od-document-top{color:#a6cde4!important;line-height:1.5}
+.od-evidence-v2 .od-document .od-tag{background:#16435c!important;color:#c6ebff!important;border:1px solid #306a8d;border-radius:6px!important}
+.od-evidence-v2 .od-document h3{color:#f1f8ff!important;line-height:1.4!important}
+.od-evidence-v2 .od-document p{color:#b6cede!important;line-height:1.75!important}
+.od-evidence-v2 .od-document-bottom{border-color:#2f5269!important}
+.od-evidence-v2 .od-document-bottom a{display:inline-flex;align-items:center;min-height:38px;color:#8fd5ff!important;text-decoration:underline!important;text-underline-offset:4px}
+.od-evidence-v2 .od-code-list{display:flex;flex-wrap:wrap;gap:7px;max-width:100%}
+.od-evidence-v2 .od-code-list code{font-size:12px;color:#c3e9ff!important;background:#132e43!important;border:1px solid #35617e;border-radius:5px;padding:5px 8px}
+.od-evidence-v2 .od-empty{
+ display:flex;justify-content:center;align-items:center;text-align:center;
+ min-height:164px;padding:35px 28px!important;line-height:1.75!important;
+ background:#101f2d!important;border:1px dashed #41627b!important;
+ color:#b6d0e3!important;border-radius:11px!important;
+}
+.od-evidence-v2 #od-stat-feed{font-size:clamp(26px,3vw,44px)!important;overflow-wrap:anywhere;letter-spacing:-.035em!important}
+.od-evidence-v2 #od-updated{color:#aacbdd!important;line-height:1.6}
+.od-evidence-v2 .od-filter-box{scroll-margin-top:100px}
+.od-evidence-v2 .od-filter-box input,.od-evidence-v2 .od-filter-box select{font-size:16px!important}
+.od-evidence-v2 #od-clear{min-height:43px;display:inline-flex;align-items:center;justify-content:center;width:100%;font-size:13px!important;cursor:pointer}
+.od-evidence-v2 #od-clear:hover{background:#1a3b53!important}
+.od-evidence-v2 #od-refresh:disabled{opacity:.55;cursor:wait}
+@media(max-width:650px){
+ .od-evidence-v2 .od-document{padding:18px!important}
+ .od-evidence-v2 .od-evidence-layout{gap:24px!important}
+ .od-evidence-v2 .od-empty{min-height:135px}
+}
+
+
+/* Compact read-first metrics on phones; preserve status visibility and hierarchy. */
+.od-evidence-v2 .od-evidence-bottom{
+  color:#a9c5d8!important;
+  font-size:12px!important;
+  line-height:1.75!important;
+}
+.od-evidence-v2 .od-evidence-bottom a{color:#95d5ff!important;text-underline-offset:4px}
+@media(max-width:650px){
+  .od-evidence-v2 .od-metrics{grid-template-columns:1fr!important;gap:9px!important}
+  .od-evidence-v2 .od-metric{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    grid-template-rows:auto auto!important;
+    align-items:center!important;
+    column-gap:14px!important;
+    row-gap:5px!important;
+    min-height:80px!important;
+    padding:15px 17px!important;
+  }
+  .od-evidence-v2 .od-metric>span{
+    grid-column:1!important;grid-row:1!important;
+    font-size:12px!important;
+  }
+  .od-evidence-v2 .od-metric>small{
+    grid-column:1!important;grid-row:2!important;
+    font-size:11px!important;
+    overflow-wrap:anywhere;
+  }
+  .od-evidence-v2 .od-metric>strong{
+    grid-column:2!important;grid-row:1 / span 2!important;
+    justify-self:end!important;
+    align-self:center!important;
+    margin:0!important;
+    font-size:clamp(20px,7vw,28px)!important;
+    max-width:125px;
+    line-height:1.2!important;
+    text-align:right;
+  }
+}

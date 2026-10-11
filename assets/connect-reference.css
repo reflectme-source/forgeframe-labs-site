@@ -93,3 +93,11 @@ body.ff-connect .ffg-header,body.ff-connect .ffg-footer{font-family:Inter,system
  .cx-chip-icon{width:24px;height:24px;flex:0 0 24px}
  .cx-chip-icon svg{width:16px;height:16px}
 }
+
+/* ForgeFrame release: scoped secondary Connect checklist CTA */
+.cx-bottom .cx-button--secondary{
+  color:#d2ebfb!important;background:#12334b!important;
+  border:1px solid #36739a!important;min-height:46px;
+}
+.cx-bottom .cx-button--secondary:hover{background:#194664!important}
+@media(max-width:750px){.cx-bottom .cx-button--secondary{width:100%;white-space:normal;text-align:center}}
