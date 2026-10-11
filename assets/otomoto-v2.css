@@ -63,3 +63,10 @@ body:has(.ot-v2)>.ffg-footer .ffg-footer-content{width:min(1510px,calc(100% - 64
 @media(max-width:960px){.ot-v2 .hero-inner{grid-template-columns:1fr!important}.ot-v2 .wrap{padding:0 24px!important}}
 @media(max-width:600px){.ot-v2 .wrap{padding:0 16px!important}.ot-v2 .hero{padding:52px 0!important}.ot-v2 h1{font-size:clamp(39px,10vw,55px)!important}.ot-v2 section:not(.hero):not(.ff-detail){padding:52px 0!important}.ot-v2 .ff-detail{padding:50px 0!important}.ot-v2 .cta{padding:24px!important}}
 @media(prefers-reduced-motion:reduce){.ot-v2 *{animation:none!important;transition:none!important}}
+
+/* FAQ aligned to the shared content container; no full-viewport left shift. */
+.ot-v2 section.faq{width:100%!important;max-width:none!important;margin:0!important;padding-inline:0!important}
+.ot-v2 section.faq>.wrap{width:min(1240px,100%)!important;max-width:1240px!important;margin-inline:auto!important;padding-inline:32px!important}
+.ot-v2 section.faq .faq-list,.ot-v2 section.faq details{max-width:100%!important}
+@media(max-width:960px){.ot-v2 section.faq>.wrap{padding-inline:24px!important}}
+@media(max-width:600px){.ot-v2 section.faq>.wrap{padding-inline:16px!important}}

@@ -112,7 +112,8 @@ test("buyer guide directs qualified visitors to real Apify tasks and a scoped in
  }
  assert.match(page,/product=otomoto/);
  assert.match(page,/Nie\. To niezależny Actor/);
- assert.doesNotMatch(page,/<script\b[^>]*src=/);
+ assert.match(page,/assets\/forgeframe-shell\.js/);
+ assert.doesNotMatch(page,/<script\b[^>]*src="https?:\/\//);
  assert.match(html("integrations/otomoto-dealer-api.html"),/guides\/otomoto-price-monitoring\.html/);
 });
 
