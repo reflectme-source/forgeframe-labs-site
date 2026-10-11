@@ -70,7 +70,14 @@ function populateCountries(items){
 async function load(){
  if(loading)return;loading=true;qs('od-refresh').disabled=true;qs('od-updated').textContent=msg.wait;
  try{
-  const r=await fetch(URL_SOURCE,{mode:'cors',cache:'no-store',signal:AbortSignal.timeout(12000)});
+  let r;
+  for(let attempt=0;attempt<3;attempt++){
+   try{
+    r=await fetch(URL_SOURCE,{mode:'cors',cache:'no-store',signal:AbortSignal.timeout(12000)});
+    if(r.ok)break;
+   }catch(error){if(attempt===2)throw error;}
+  }
+  if(!r)throw Error('No response');
   if(!r.ok)throw Error('HTTP '+r.status);
   const data=await r.json();
   if(!data||!Array.isArray(data.acts)||typeof data.generatedAt!=='string'||data.acts.length>10000)throw Error('Bad data');

@@ -5,6 +5,9 @@ import subprocess,os
 os.chdir(Path(__file__).resolve().parent)
 ROUTES={"/__origin_live_feed":"regulations.json","/__origin_source_status":"api/source-status"}
 class Preview(SimpleHTTPRequestHandler):
+ def end_headers(self):
+  self.send_header('Cache-Control','no-store')
+  super().end_headers()
  def do_GET(self):
   route=self.path.split("?")[0]
   if route not in ROUTES:return super().do_GET()

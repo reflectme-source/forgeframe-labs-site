@@ -88,3 +88,7 @@ body:has(.od-v2){background:#080e15!important;color:#ecf4fc!important}
 .od-v2 .od-pack .od-buy-disabled:hover{transform:none!important}
 .od-v2 .od-pack .od-buy-helper{display:block!important;text-align:center!important;font-size:12px!important;font-weight:600!important;color:#91cef5!important;text-decoration:underline!important;text-underline-offset:4px!important;margin:13px 0 0!important}
 .od-v2 .od-pack .od-buy-helper:hover{color:#d6f0ff!important}
+
+/* Active plan selection; payment is still gated by backend readiness */
+.od-v2 .od-pack .od-plan-start{background:#1688ec!important;border:1px solid #3aa3fa!important;color:#fff!important;cursor:pointer!important;opacity:1!important}
+.od-v2 .od-pack .od-plan-start:hover{background:#0875d2!important;transform:translateY(-1px)!important}

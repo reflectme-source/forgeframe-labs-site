@@ -37,3 +37,9 @@ Visual approval -> implementation -> PL/EN -> unit/E2E -> real purchase and enti
 - Legacy Contract Guard terms URLs redirect to global terms; never reuse the old Contract Guard-only terms as platform-wide rules.
 - Product-specific purchase disclosures must remain visible before checkout, and paid entitlement must follow server-side payment verification.
 - Every redesign requires source-verified features, statuses and pricing, an approved visualization, PL/EN parity, accessibility and real journey tests.
+
+## Interactive controls (mandatory)
+- Every visible primary or secondary CTA must be an enabled, keyboard-accessible control with a meaningful, tested destination or action. Never render decorative or disabled buttons as the only route forward.
+- Payment collection and paid entitlement must remain gated by verified backend readiness, trusted payment events and authorization. An active plan-selection link is not proof of an active checkout.
+- If checkout is not ready, provide an active, accurately labeled plan-selection or contact route and make its limitations clear. Never claim payment is available when readiness is false.
+- On public live-data pages, do not label stale, cached or unavailable feeds as LIVE. Retry transient failures, expose freshness and preserve honest error states.
