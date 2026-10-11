@@ -6,8 +6,11 @@ test("OriginDuty has two active plan selection links without bypassing paid enti
  for(const [p,locale] of [["products/originduty/index.html","pl"],["products/originduty/en/index.html","en"]]){
   const s=read(p);
   assert.equal((s.match(/class="od-button od-button--primary od-plan-start"/g)||[]).length,2);
-  assert.ok(s.includes("data-od-contact-fallback href=\"https://originduty-app.forgeframelabs.app/signup?plan=importer&lang="+locale+"\""));
-  assert.ok(s.includes("data-od-contact-fallback href=\"https://originduty-app.forgeframelabs.app/signup?plan=agency&lang="+locale+"\""));
+  const contactPrefix=locale==="pl"?"../../pl/kontakt.html":"../../../contact/";
+  assert.ok(s.includes('data-od-contact-fallback href="'+contactPrefix+'?product=originduty&amp;plan=importer"'));
+  assert.ok(s.includes('data-od-contact-fallback href="'+contactPrefix+'?product=originduty&amp;plan=agency"'));
+  assert.ok(s.includes("https://originduty-app.forgeframelabs.app/signup?plan=importer&lang="+locale));
+  assert.ok(s.includes("https://originduty-app.forgeframelabs.app/signup?plan=agency&lang="+locale));
   assert.equal((s.match(/data-od-buy hidden/g)||[]).length,2);
   assert.match(s,/origin-evidence\.js|origin-status\.js/);
  }
