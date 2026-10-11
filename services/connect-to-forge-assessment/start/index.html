@@ -23,7 +23,7 @@
 <div class="layout">
 <section class="panel" aria-labelledby="scope-title">
 <h2 id="scope-title">Your app</h2><p>Answer six short questions. Only the scope is evaluated; no tenant URLs, app names or source code are requested.</p>
-<form id="scope-form">
+<form id="scope-form" inert>
 <fieldset><legend>Atlassian product</legend><label class="field"><select class="control" name="platform" aria-label="Atlassian product" required><option value="">Select a product</option><option value="jira">Jira Cloud</option><option value="confluence">Confluence Cloud</option></select></label></fieldset>
 <div class="two">
 <div class="field"><label for="modules">Connect module instances</label><input class="control" id="modules" name="moduleCount" type="number" min="1" max="500" step="1" inputmode="numeric" placeholder="1–10" required></div>
