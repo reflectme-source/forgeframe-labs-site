@@ -259,7 +259,7 @@ test("live products have tailored buyer scope, deliverables and truthful access"
  assert.match(styles,/__action--primary/);
  assert.doesNotMatch(styles,/url\(/);
 });
-test("central product catalog is complete and avoids unsupported sales promises",()=>{const home=html("index.html"),catalog=html("products/index.html");assert.ok((catalog.match(/<article class="ffg-product-card"/g)||[]).length>=7);for(const name of ["OriginDuty","Digital Packager","Localization QA","Contract Guard","Merchant Issue Desk"])assert.match(catalog,new RegExp(name));assert.match(home,/products\//);assert.match(catalog,/Przedpremiera/);assert.match(catalog,/connect-to-forge-assessment/);assert.match(catalog,/otomoto|OTOMOTO/);});
+test("central product catalog is complete and avoids unsupported sales promises",()=>{const home=html("index.html"),catalog=html("products/index.html");assert.ok((catalog.match(/<article class="ffcatalog-card"/g)||[]).length>=7);for(const name of ["OriginDuty","Digital Packager","Localization QA","Contract Guard","Merchant Issue Desk"])assert.match(catalog,new RegExp(name));assert.match(home,/products\//);assert.match(catalog,/Przedpremiera/);assert.match(catalog,/connect-to-forge-assessment/);assert.match(catalog,/otomoto|OTOMOTO/);});
 
 test("Polish localization product page has actual sample format, privacy and clear free access",()=>{
  const p=html("pl/lokalizacja.html");
@@ -363,13 +363,13 @@ test("reference-aligned homepages and catalogs retain verified product routes",(
  }
  for(const file of ["products/index.html","en/products/index.html"]){
   const content=html(file);
-  assert.equal((content.match(/<article class="ffg-product-card"/g)||[]).length,7);
-  assert.equal((content.match(/class="ffg-product-icon"/g)||[]).length,7);
-  assert.equal((content.match(/class="ffg-product-status"/g)||[]).length,7);
-  assert.equal((content.match(/class="ffg-product-cta"/g)||[]).length,7);
+  assert.equal((content.match(/<article class="ffcatalog-card"/g)||[]).length,7);
+  assert.equal((content.match(/class="ffcatalog-icon ffcatalog-icon-/g)||[]).length,7);
+  assert.equal((content.match(/class="ffcatalog-status"/g)||[]).length,7);
+  assert.equal((content.match(/class="ffcatalog-card-link"/g)||[]).length,7);
  }
  const css=html("assets/forgeframe-global.css");assert.ok(css.includes(".ffg-footer-content"));
- const js=html("assets/catalog-filter.js");assert.match(js,/ffg-product-card/);assert.match(js,/aria-pressed/);
+ const js=html("assets/catalog-filter.js");assert.match(js,/ffcatalog-card/);assert.match(js,/aria-pressed/);
 });
 test("English sections have individual, indexable routes",()=>{
  for(const section of ["products","solutions","developers","about"]){
