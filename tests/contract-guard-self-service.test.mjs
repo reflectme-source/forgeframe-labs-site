@@ -39,7 +39,7 @@ test('self-service UX never stores sensitive keys or claims that a redirect mean
  assert.doesNotThrow(()=>new Script(js));assert.doesNotThrow(()=>new Script(tracking));
  assert.match(js,/\/v1\/contract-guard\/eligibility/);
  assert.match(js,/\/v1\/contract-guard\/checkout/);
- assert.match(js,/checkout_available/);
+ assert.match(js,/buyer_types/);
  assert.match(js,/payBtn.disabled/);
  assert.match(js,/sessionStorage.setItem/);
  assert.doesNotMatch(js+tracking,/fetch\(\s*['"]http:|localhost|sk_live_|rk_live_|whsec_/);
@@ -74,7 +74,25 @@ test('order tracking has real recovery fields, no dead-end evidence links and no
 test('Checkout locale is passed through as a constrained UI-language flag',()=>{
  const buyer=read('products/contract-guard/buy.js');
  assert.match(buyer,/locale:lang/);
- assert.match(buyer,/businessPurchaseAccepted:\$\('business-purchase'\)\.checked/);
- assert.match(buyer,/try \{result=await fetch/);
+ assert.match(buyer,/businessPurchaseAccepted:type==='business'&&\$\('business-purchase'\)\.checked/);
+ assert.match(buyer,/try\{result=await fetch/);
  assert.match(buyer,/throw new Error\(words\.issue\)/);
+});
+
+test('buyer can choose individual or business with the correct conditional fields in PL and EN',()=>{
+ for(const file of ['products/contract-guard/kup.html','products/contract-guard/order.html']){
+  const h=read(file);
+  for(const id of ['buyer-type-individual','buyer-type-business','buyer-name','buyer-email','buyer-company','buyer-country','business-purchase','consumer-purchase','consumer-terms','withdrawal-notice'])assert.match(h,new RegExp('id="'+id+'"'),file+' '+id);
+  assert.match(h,/id="buyer-details" hidden/);
+  assert.match(h,/id="consumer-terms-wrap" hidden/);
+  assert.match(h,/id="business-purchase" required disabled/);
+  assert.match(h,/id="consumer-purchase" required disabled/);
+ }
+ const js=read('products/contract-guard/buy.js');
+ assert.match(js,/buyerType:type/);
+ assert.match(js,/consumerPurchaseAccepted:type==='individual'/);
+ assert.match(js,/businessPurchaseAccepted:type==='business'/);
+ assert.match(js,/availabilityByType\[type\]/);
+ assert.match(read('products/contract-guard/service-terms.html'),/id="consumer-terms"/);
+ assert.match(read('products/contract-guard/warunki.html'),/id="warunki-konsumenckie"/);
 });
