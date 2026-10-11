@@ -351,19 +351,26 @@ test("shared ForgeFrame shell is identical in structure on every top-level tab",
    assert.match(content,/<a [^>]*href=[^>]*>[^<]*(?:Contact|Kontakt)<\/a>/);
  }
 });
-test("portfolio cards present color icon, title, verified status and CTA without duplicating them",()=>{
- for(const file of ["index.html","en/index.html","products/index.html","en/products/index.html"]){
-  const text=html(file);
-  assert.equal((text.match(/<article class="ffg-product-card"/g)||[]).length,7,file+" needs all seven offers");
-  assert.equal((text.match(/class="ffg-product-icon"/g)||[]).length,7);
-  assert.equal((text.match(/class="ffg-product-status"/g)||[]).length,7);
-  assert.equal((text.match(/class="ffg-product-cta"/g)||[]).length,7);
-  assert.match(text,/data-state="pilot"/);
-  assert.match(text,/data-state="prelaunch"/);
+test("featured editorial homepages and full catalogs retain seven discoverable offers",()=>{
+ for(const file of ["index.html","en/index.html"]){
+  const content=html(file);
+  assert.match(content,/class="ffr"/,file+" missing editorial redesign");
+  assert.equal((content.match(/class="ffr-feature"/g)||[]).length,2,file+" needs two featured products");
+  assert.equal((content.match(/class="ffr-list-row"/g)||[]).length,5,file+" needs five additional products");
+  for(const name of ["OriginDuty","Contract Guard","Digital Packager","Merchant Issue Desk","Connect → Forge","Localization QA Inspector","OTOMOTO Change Intelligence"]) assert.ok(content.includes(name),file+" missing "+name);
+  assert.match(content,/forgeframe-rebrand\\.css/);
+ }
+ for(const file of ["products/index.html","en/products/index.html"]){
+  const content=html(file);
+  assert.equal((content.match(/<article class="ffg-product-card"/g)||[]).length,7,file+" needs seven catalog offers");
+  assert.equal((content.match(/class="ffg-product-icon"/g)||[]).length,7);
+  assert.equal((content.match(/class="ffg-product-status"/g)||[]).length,7);
+  assert.equal((content.match(/class="ffg-product-cta"/g)||[]).length,7);
+  assert.match(content,/data-state="pilot"/);
+  assert.match(content,/data-state="prelaunch"/);
  }
  const css=html("assets/forgeframe-global.css");
- assert.match(css,/grid-template-columns:repeat\(7,minmax\(0,1fr\)\)/);
- assert.match(css,/\.ffg-footer-content/);
+ assert.match(css,/\\.ffg-footer-content/);
  const js=html("assets/catalog-filter.js");
  assert.match(js,/ffg-product-card/);
  assert.match(js,/aria-pressed/);
