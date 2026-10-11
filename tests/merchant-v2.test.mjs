@@ -10,7 +10,7 @@ test('Merchant Issue Desk PL and EN share ForgeFrame shell and keep real report 
   assert.match(s,/class="ffg-footer"/);
   assert.match(s,/merchant-final.css/);
   assert.match(s,/forgeframe-shell.js/);
-  assert.match(s,/merchant-issue-desk-demo.html/);
+  assert.match(s,/merchant-issue-desk-demo(?:-en)?\.html/);
   assert.match(s,/690/);
   assert.match(s,/direct-contact.js/);
  }

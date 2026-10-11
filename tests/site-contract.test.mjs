@@ -284,7 +284,7 @@ test("English Merchant Issue Desk page is complete and language-specific",()=>{
  const p=html("services/merchant-issue-desk-en.html");
  assert.match(p,/<html lang="en">/);
  assert.match(p,/from 690 PLN/);
- assert.match(p,/merchant-issue-desk-demo\.html/);
+ assert.match(p,/merchant-issue-desk-demo-en\.html/);
  assert.match(p,/contact\/\?product=merchant-issue-desk/);
  assert.match(p,/Synthetic data/);
  assert.match(p,/No live checkout/);

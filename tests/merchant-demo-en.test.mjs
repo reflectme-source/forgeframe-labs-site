@@ -1,0 +1,20 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
+test('English sample report is localized and linked bidirectionally',()=>{
+ const en=read('services/merchant-issue-desk-demo-en.html');
+ const pl=read('services/merchant-issue-desk-demo.html');
+ const product=read('services/merchant-issue-desk-en.html');
+ assert.match(en,/<html lang="en">/);
+ assert.match(en,/Issue work queue/);
+ assert.match(en,/What needs human review/);
+ assert.match(en,/From findings to action/);
+ assert.match(en,/class="ffg-header"/);
+ assert.match(en,/class="ffg-footer"/);
+ assert.match(en,/merchant-issue-desk-en.html#scope/);
+ assert.match(en,/merchant-issue-desk-demo.html/);
+ assert.match(pl,/merchant-issue-desk-demo-en.html/);
+ assert.match(product,/merchant-issue-desk-demo-en.html/);
+ assert.equal((en.match(/<tr>/g)||[]).length,7);
+});
