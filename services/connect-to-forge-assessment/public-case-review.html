@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Source-based Connect to Forge readiness review of the public Apache-2.0 Jira Checklist sample: module mapping, issue data, JWT and UI security.">
+<link rel="canonical" href="https://forgeframelabs.app/services/connect-to-forge-assessment/public-case-review.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://forgeframelabs.app/services/connect-to-forge-assessment/public-case-review.html">
+<meta property="og:title" content="Jira Checklist: Connect to Forge Source Review | ForgeFrame Labs">
+<meta property="og:description" content="Six concrete migration risks found in a public Jira Connect example. Source review, not a claimed client project.">
+<title>Jira Checklist: Connect to Forge code review | ForgeFrame Labs</title>
+<link rel="icon" href="../../assets/forgeframe-avatar.png" type="image/png">
+<link rel="stylesheet" href="../../assets/forgeframe-global.css">
+<style>
+
+:root{--ffcase-bg:#061827;--ffcase-panel:#0c263b;--ffcase-border:#2c526e;--ffcase-text:#edf7ff;--ffcase-muted:#b6cada;--ffcase-link:#8cd3ff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:6.5rem}
+body.ff-case-review{margin:0;background:var(--ffcase-bg);color:var(--ffcase-text);font:16px/1.68 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+body.ff-case-review a{color:var(--ffcase-link);text-underline-offset:3px}
+body.ff-case-review a:focus-visible{outline:3px solid #ffce89;outline-offset:4px}
+.ff-case-review .wrap{width:min(1080px,calc(100% - 48px));margin-inline:auto}
+.ff-case-review .skip{position:absolute;top:-110px;left:14px;background:#fff;color:#082038;padding:12px 16px;border-radius:8px;z-index:120}
+.ff-case-review .skip:focus{top:12px}
+.ff-case-review .review-hero{padding:70px 0 72px;background:linear-gradient(120deg,#071a2b,#0c314f 70%,#124366);border-bottom:1px solid #345f7c}
+.ff-case-review .eyebrow{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:#a4d8fb;font-weight:800}
+.ff-case-review h1{font-size:clamp(35px,5vw,60px);line-height:1.09;letter-spacing:-.048em;max-width:925px;margin:18px 0 24px}
+.ff-case-review .review-hero .lead{font-size:clamp(16px,1.6vw,19px);max-width:830px;color:#d0e3f0;margin:0}
+.ff-case-review .back{display:inline-flex;margin-top:22px;color:#afdfff;font-weight:700}
+.ff-case-review .content{padding:50px 0 85px}
+.ff-case-review .disclaimer{padding:22px 25px;border-radius:14px;background:#17394d;border:1px solid #6796ae;color:#e7f5fa;margin-bottom:30px}
+.ff-case-review .disclaimer strong{display:block;margin-bottom:6px}
+.ff-case-review .metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:42px}
+.ff-case-review .metric{background:linear-gradient(145deg,#11334d,#09263d);border:1px solid var(--ffcase-border);border-radius:14px;padding:20px 22px}
+.ff-case-review .metric span{display:block;color:var(--ffcase-muted);font-size:13px}
+.ff-case-review .metric strong{display:block;margin-top:3px;color:#f6fbff;font-size:26px}
+.ff-case-review h2{font-size:clamp(26px,3.3vw,36px);line-height:1.18;letter-spacing:-.034em;margin:45px 0 18px}
+.ff-case-review h3{font-size:20px;line-height:1.32;margin:0 0 12px;color:#f6fbff}
+.ff-case-review p{margin:11px 0 18px}
+.ff-case-review ul,.ff-case-review ol{padding-left:23px}
+.ff-case-review li{padding:4px 0}
+.ff-case-review .findings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.ff-case-review .finding{background:linear-gradient(145deg,#12344f,#0a253d);border:1px solid #335c79;border-radius:14px;padding:25px}
+.ff-case-review .number{display:block;font-size:12px;color:#94d7ff;text-transform:uppercase;letter-spacing:.1em;font-weight:850;margin-bottom:13px}
+.ff-case-review .finding p{font-size:15px;color:#bfd4e5;margin:0}
+.ff-case-review .mono{font:14px/1.75 ui-monospace,SFMono-Regular,Consolas,monospace;background:#0d2b42;border:1px solid #365a75;border-radius:10px;padding:17px 19px;overflow-wrap:anywhere}
+.ff-case-review .small{font-size:14px;color:var(--ffcase-muted)}
+.ff-case-review .cta{background:linear-gradient(130deg,#103755,#143f62);border:1px solid #366b8f;color:#fff;border-radius:16px;padding:34px 38px;margin:47px 0 0}
+.ff-case-review .cta h2{color:#fff;margin:0 0 13px}
+.ff-case-review .cta p{color:#d4e5f2}
+.ff-case-review .cta a{display:inline-flex;justify-content:center;align-items:center;min-height:48px;background:#87cefb;color:#09243a;font-weight:800;padding:10px 22px;border-radius:9px;text-decoration:none}
+.ff-case-review .cta a:hover{background:#b2e2ff}
+@media(max-width:760px){.ff-case-review .findings,.ff-case-review .metrics{grid-template-columns:1fr}.ff-case-review .review-hero{padding:48px 0 54px}.ff-case-review .content{padding:35px 0 60px}.ff-case-review .wrap{width:calc(100% - 32px)}.ff-case-review .cta{padding:24px}.ff-case-review .finding{padding:22px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head>
+<body class="ff-case-review">
+<a class="skip" href="#main">Skip to analysis</a>
+<header class="ffg-header"><div class="ffg-inner"><a class="ffg-brand" href="../../en/"><img class="ffg-brand-logo" src="../../assets/forgeframe-avatar.png" alt="" width="38" height="38">ForgeFrame <span class="ffg-brand-blue">Labs</span></a><nav class="ffg-nav" aria-label="Main navigation"><a href="../../en/">Home</a><a href="../../en/products/" aria-current="page">Products</a><a href="../../en/solutions/">Solutions</a><a href="../../en/developers/">Developers</a><a href="../../en/about/">About</a><a href="../../contact/">Contact</a><span class="ffg-language" aria-label="Language"><a class="ffg-locale" lang="pl" href="../../services/connect-to-forge-assessment/pl/">PL</a><a class="ffg-locale" aria-current="page" lang="en" href="../../services/connect-to-forge-assessment/">EN</a></span></nav></div></header>
+<section class="review-hero" aria-labelledby="review-title"><div class="wrap"><p class="eyebrow">Public code review · independent technical commentary</p>
+<h1 id="review-title">One Jira checklist app. Six migration decisions hidden behind a small Connect descriptor.</h1>
+<p class="lead">A source-based, non-production analysis of an Apache-2.0 Jira Connect sample. This illustrates how we assess custom-app continuity before pricing a migration. It is not a completed customer project or a certified Forge port.</p>
+<a class="back" href="./">← Back to Connect → Forge assessment</a></div></section>
+<main id="main" class="wrap content">
+<div class="disclaimer"><strong>Independent public-source review — not a case study of a paid client</strong>
+We read the public repository's Connect descriptor, Express route, and browser code. We did not use a Jira tenant, run the app, access customer data, or execute a Connect-to-Forge migration. The repository README says the plugin is not actively maintained; our review does not establish production suitability.</div>
+<div class="metrics" aria-label="Reviewed source characteristics">
+<div class="metric"><span>Connect extension surface</span><strong>1 panel</strong></div>
+<div class="metric"><span>Legacy authentication</span><strong>JWT</strong></div>
+<div class="metric"><span>Declared scopes</span><strong>READ / WRITE</strong></div></div>
+
+<h2>The starting point</h2>
+<p><a href="https://github.com/samid737/jira-checklist-plugin">samid737/jira-checklist-plugin</a> is a small publicly readable Jira checklist plugin using atlassian-connect-express. Its <a href="https://github.com/samid737/jira-checklist-plugin/blob/master/atlassian-connect.json">Connect descriptor</a> defines a web panel at <code>atl.jira.view.issue.left.context</code>, JWT auth and installation lifecycle. Its documented feature is an editable checklist attached to Jira issues.</p>
+<p class="small">Source licence: <a href="https://github.com/samid737/jira-checklist-plugin/blob/master/LICENSE.txt">Apache 2.0 licence file</a>. Repository ownership and endorsement remain with the original author. No source code is redistributed on this page.</p>
+
+<h2>Six specific decisions before a Forge rewrite</h2>
+<div class="findings">
+<article class="finding"><div class="number">01 · UI module mapping</div><h3>Does the panel still appear when users expect it?</h3><p>The Connect panel location maps to Forge <code>jira:issuePanel</code> according to Atlassian's equivalence table. The Forge panel has different show-button and visibility semantics, so module name parity alone is not user-experience parity. Test with an issue viewer and editor.</p></article>
+<article class="finding"><div class="number">02 · Data continuity</div><h3>Keep the checklist's storage key and JSON shape.</h3><p>The browser code accesses Jira issue entity property <code>todos</code> through the Jira REST API. Migration tests must compare values per issue before and after the Forge installation; assuming empty UI means no stored checklist would risk data loss.</p></article>
+<article class="finding"><div class="number">03 · JWT and tenant isolation</div><h3>Recheck every permission boundary.</h3><p>The original Express <code>/todolist</code> route uses Connect authentication and the descriptor requests READ and WRITE. A Forge resolver needs separately reviewed scopes, app-versus-user access and negative tests for unauthorized issue reads/edits. Do not copy JWT assumptions into Forge.</p></article>
+<article class="finding"><div class="number">04 · HTML rendering security</div><h3>Never carry untrusted markup directly into the UI.</h3><p>The old browser script inserts checklist text as HTML rather than text. That is an injection risk worth removing in a rewrite. Render escaped text and validate storage input instead of preserving an unsafe presentation behavior.</p></article>
+<article class="finding"><div class="number">05 · Error and empty states</div><h3>Don't make API failure look like deleted data.</h3><p>On a failed issue-property request, the sample UI clears the checklist view. A Forge version should explicitly distinguish first-use empty state, transient error and missing permission, and must not persist a blank list after a fetch failure.</p></article>
+<article class="finding"><div class="number">06 · Real environment/rollback</div><h3>Validate the installed app, not a template.</h3><p>The descriptor uses a development placeholder for its backend URL and has an install event. A proper cutover requires an owner-controlled Forge app ID, staged installation, migration data checks, documented tenant scope, rollback conditions and explicit deployment approval.</p></article>
+</div>
+
+<h2>Example acceptance conditions, not completed tests</h2>
+<div class="mono">DATA: For N permitted issues with a prior 'todos' entity property, post-migration values match the agreed key and JSON structure.<br>
+AUTH: An authorized editor can update a checklist; an unauthorized user cannot read or modify a restricted issue.<br>
+UX: Previously visible checklist functionality remains discoverable in the new issue view; API errors never appear as an empty checklist.<br>
+ROLLBACK: Owner identifies a recoverable pre-cutover state, required backups and a go/no-go decision before activating production.</div>
+
+<h2>Where the technical review ends</h2>
+<p>This review can propose a bounded migration plan; it cannot prove that the target app will work until the client's environment, actual source behaviour and applicable Forge modules are tested. Customer-owned deployments and business data require separate authorization and a written scope.</p>
+
+<h2>Independent source references</h2>
+<ul>
+<li><a href="https://github.com/samid737/jira-checklist-plugin/blob/master/public/js/addon.js">Public browser code with issue-property data flow and rendering</a></li>
+<li><a href="https://github.com/samid737/jira-checklist-plugin/blob/master/routes/index.js">Express route authentication</a></li>
+<li><a href="https://developer.atlassian.com/platform/adopting-forge-from-connect/connect-forge-equivalences/connect-forge-capabilities-available/">Official Connect and Forge module equivalence table</a></li>
+<li><a href="https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-issue-panel/">Forge Jira issue panel documentation</a></li>
+<li><a href="https://developer.atlassian.com/cloud/jira/platform/storing-data-with-entity-properties/">Jira entity properties documentation</a></li>
+</ul>
+
+<div class="cta"><h2>Have an internal Connect app with a similar problem?</h2>
+<p>A written migration assessment starts at an indicative €490 for one private Jira/Confluence application with up to ten module instances and one backend. No deployment or source transfer is required for your first enquiry. Send the approximate module count, business workflow and deadline; no credentials or private customer records.</p>
+<a href="../../contact/?product=connect-to-forge">Request a written assessment</a></div>
+</main>
+<footer class="ffg-footer"><div class="ffg-footer-content"><div><div class="ffg-footer-brand"><img src="../../assets/forgeframe-avatar.png" alt="" width="29" height="29">ForgeFrame <span>Labs</span></div><div class="ffg-footer-tagline">Technology · People · Real Impact</div></div><nav class="ffg-footer-links" aria-label="Footer navigation"><a href="../../en/">Home</a><a href="../../en/products/">Products</a><a href="../../en/solutions/">Solutions</a><a href="../../en/developers/">Developers</a><a href="../../en/about/">About</a><a href="../../contact/">Contact</a></nav><div class="ffg-footer-meta">© 2026 ForgeFrame Labs<br><a href="../../privacy.html">Privacy</a><a href="../../terms.html">Terms</a></div></div></footer>
+</body></html>
