@@ -370,7 +370,7 @@ test("featured editorial homepages and full catalogs retain seven discoverable o
   assert.match(content,/data-state="prelaunch"/);
  }
  const css=html("assets/forgeframe-global.css");
- assert.match(css,/\\.ffg-footer-content/);
+ assert.ok(css.includes(".ffg-footer-content"));
  const js=html("assets/catalog-filter.js");
  assert.match(js,/ffg-product-card/);
  assert.match(js,/aria-pressed/);
