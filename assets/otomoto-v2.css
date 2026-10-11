@@ -70,3 +70,13 @@ body:has(.ot-v2)>.ffg-footer .ffg-footer-content{width:min(1510px,calc(100% - 64
 .ot-v2 section.faq .faq-list,.ot-v2 section.faq details{max-width:100%!important}
 @media(max-width:960px){.ot-v2 section.faq>.wrap{padding-inline:24px!important}}
 @media(max-width:600px){.ot-v2 section.faq>.wrap{padding-inline:16px!important}}
+
+/* Event-specific visual semantics; illustrative events, not live measurements. */
+.ot-v2 .mock-line{grid-template-columns:auto 26px minmax(0,1fr)!important;align-items:start;column-gap:10px!important;padding:13px!important;margin-bottom:8px}
+.ot-v2 .mock-line:last-child{margin-bottom:0}
+.ot-v2 .ot-event-icon{display:grid;place-items:center;width:26px;height:26px;flex:none;border-radius:7px;background:#403121;color:#ffd49a}
+.ot-v2 .ot-event-icon svg{width:17px;height:17px}
+.ot-v2 .ot-event-new{background:#163d32;color:#a4ebcf}
+.ot-v2 .ot-event-left{background:#34283b;color:#d9c0f0}
+.ot-v2 .mock-line>div{min-width:0}
+@media(max-width:600px){.ot-v2 .mock-line{grid-template-columns:auto minmax(0,1fr)!important}.ot-v2 .ot-event-icon{display:none}}
