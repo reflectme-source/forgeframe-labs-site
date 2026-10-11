@@ -17,7 +17,9 @@ const words={
 let assessment=null,opened=false;
 const stringify=v=>String(v??'');
 async function post(path,body) {
-  const result=await fetch(api+path,{method:'POST',mode:'cors',headers:{'content-type':'application/json'},body:JSON.stringify(body),cache:'no-store'});
+  let result;
+  try {result=await fetch(api+path,{method:'POST',mode:'cors',headers:{'content-type':'application/json'},body:JSON.stringify(body),cache:'no-store'});}
+  catch {throw new Error(words.issue);}
   const data=await result.json().catch(()=>({}));
   if(!result.ok)throw new Error(data.reason||data.error||words.issue);
   return data;
@@ -48,7 +50,7 @@ check.addEventListener('submit',async ev=>{
     $('verified-spec').textContent=stringify(data.scope.specPath);
     $('verified-version').textContent=stringify(data.scope.openapiVersion);
     purchase.hidden=false;$('purchase-form-wrap').hidden=false;msg(words.ready,'ok');
-    opened=opened&&Boolean(data.checkout_available);
+    opened=Boolean(data.checkout_available);
     updatePay();
     purchase.scrollIntoView({behavior:'smooth',block:'start'});
   }catch(e){msg(e.message||words.issue,'error');}
@@ -61,7 +63,7 @@ purchase.addEventListener('submit',async ev=>{
   try{
     const data=await post('/v1/contract-guard/checkout',{
       assessment_token:assessment,email:$('buyer-email').value.trim(),company:$('buyer-company').value.trim(),
-      country:$('buyer-country').value.trim().toUpperCase(),termsAccepted:$('terms').checked,
+      country:$('buyer-country').value.trim().toUpperCase(),locale:lang,termsAccepted:$('terms').checked,
       privacyAccepted:$('privacy').checked,serviceScopeAccepted:$('scope-agree').checked
     });
     const next=new URL(data.checkout_url);
