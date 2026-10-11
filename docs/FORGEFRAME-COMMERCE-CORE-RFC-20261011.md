@@ -110,3 +110,23 @@ TODAY target: approve this blueprint, establish shared repo and isolated infra, 
 FUTURE: a new business adds one adapter + manifest and passes tests. External marketplaces remain externally billed. Only the platform core evolves for shared cross-cutting capabilities, under central controlled releases.
 
 References: docs/PRODUCT-CONTRIBUTION-CONTRACT.md, docs/STRIPE-INTEGRATION-CONTRACT.md, docs/LEGAL-COMPLIANCE-AUDIT-20261011.md, data/products.json, current CG private ops main, Railway runtime and Stripe LIVE catalog.
+
+## 16. CTO implementation decision — continuation 2026-10-11
+
+Status of this addendum: ARCHITECTURE DECIDED / FIRST IMPLEMENTATION PREPARED / RELEASE BLOCKED. This does not certify deployment, SSO, fulfillment or LIVE payments.
+
+The supplied handoff report, start prompt, technical snapshot and ForgeFrame references were read before implementation. The difference check found this PR unchanged at head 902d40162f1c101471f482f57e8dae0e4b22a732 and ops PR #25 unchanged at e8356bdf465c379a991b0f11b36496eeedc7fd8c. PR #79 has advanced separately; its global UI changes were left alone. Existing Railway services and staged patches were not modified.
+
+The identity decision is a central maintained OIDC IdP, separate from commerce, with Keycloak as the target implementation. The portal is a same-origin BFF; each product keeps its own backend, data and local session. SSO uses the common IdP session, without domain-wide shared cookies. Identity is issuer+sub, never an email-based account merge. Organization roles and independent product entitlements remain in the core ledger. Product access and adapter commands have distinct JWT audiences, types and short lifetimes.
+
+A guest may pay before registration. A server-verified paid order stays unassigned until a single-use claim is accepted by an identity with the verified purchase email and the appropriate organization/billing role. Claim recovery rotates the proof and delivers it only to that verified address. Business purchases require a business organization; personal purchases use the purchaser's personal workspace.
+
+A private repository reflectme-source/forgeframe-commerce-core and an isolated Railway sandbox project were created. The GitHub repository currently contains only its initial README. The Railway project has no services or deployments. The existing GitHub installation exposes only the site and CG operations repositories, so the prepared source cannot yet be committed through that connection. Extending access must be limited to the new repository and confirmed by the owner; do not change visibility or grant all repositories.
+
+The prepared implementation contains an API/BFF, PostgreSQL ledger/RLS migrations, OIDC/session/CSRF paths, registry/immutable order snapshots, hosted Checkout and raw signed webhook ingress, outbox/reconciliation worker, claim/recovery/invitation boundaries, per-product JWT/adapter contracts, a PL/EN customer portal, Docker/Railway configuration and CI/browser test definitions. Local verification: 26 passed, zero skipped/failed, using PostgreSQL WASM (PGlite) and synthetic/mocked Stripe fixtures; runtime dependency audit returned zero vulnerabilities. Native PostgreSQL CI and browser tests have NOT RUN successfully. These results are not Stripe sandbox certification.
+
+The two historical paid CG TEST Checkout sessions were independently re-read from Stripe and remain complete/paid. Both TEST and LIVE have an active PL Tax registration. The LIVE catalog still has four inactive Products and four inactive Prices, with zero Checkout sessions observed. Nothing was activated in LIVE.
+
+Mandatory blockers before release: actual core OIDC/SMTP and global logout; native database CI and responsive browser QA; first product preflight/adapter with real fulfillment evidence; complete subscription renewal/refund/dispute lifecycle including later invoice charges; legal/tax/country/KSeF decisions; external alerts and off-site recovery. Free/external offers and nonempty product scope schema are blocked from the current paid Checkout path. No product is enabled solely by a global flag.
+
+Do not transfer the old CG certificate to this new code. Next execution point: add only the new private repository to the existing GitHub connection, publish the prepared source on an isolated branch, run CI, then deploy/certify the real sandbox. Production and unrelated products remain untouched.
