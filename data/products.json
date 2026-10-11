@@ -1,5 +1,13 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
+  "commerceDefaults": {
+    "customerJourney": ["product", "buyer_type", "billing_details", "stripe_checkout", "verified_order", "fulfillment"],
+    "buyerTypes": ["individual", "business"],
+    "checkoutRelease": "backend_only",
+    "taxCalculation": "server_side",
+    "paymentEvidence": "signed_webhook_and_reconciliation",
+    "newProducts": "add catalog entry and independent fulfillment module; do not copy payment infrastructure"
+  },
   "brand": "ForgeFrame Labs",
   "canonicalOrigin": "https://forgeframelabs.app",
   "stripe": {
