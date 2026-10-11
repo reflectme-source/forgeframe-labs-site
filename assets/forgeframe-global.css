@@ -128,3 +128,17 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #a4d8
 @media(max-width:1000px){.hero-inner{grid-template-columns:1fr}.hero-panel{display:none}}
 @media(max-width:760px){.shell,.ffg-inner,.ffg-footer-content{width:calc(100% - 32px)}.hero{padding:80px 0!important}.hero h1{font-size:clamp(43px,10vw,65px)!important}.section{padding-block:64px!important}.ff-banner{padding:76px 0!important}.ffg-nav{gap:18px!important}}
 @media(prefers-reduced-motion:reduce){.ffg-product-card:hover,.card:hover{transform:none!important}}
+
+/* Shared mobile navigation — progressive enhancement, keyboard accessible */
+.ffg-menu-toggle{display:none;align-items:center;gap:9px;color:#e7eef6;background:#141c25;border:1px solid #354454;border-radius:8px;padding:9px 12px;min-height:44px;font:650 13px Inter,system-ui,sans-serif;cursor:pointer}
+.ffg-menu-toggle svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+.ffg-menu-toggle:focus-visible{outline:2px solid #9bd7ff;outline-offset:3px}
+@media(max-width:760px){
+.ffg-header[data-ffg-ready] .ffg-inner{display:flex!important;flex-wrap:wrap!important;align-items:center!important;justify-content:space-between!important;gap:8px!important;padding:11px 0!important;min-height:68px!important}
+.ffg-header[data-ffg-ready] .ffg-menu-toggle{display:inline-flex!important}
+.ffg-header[data-ffg-ready] .ffg-nav{display:none!important;flex-basis:100%!important;width:100%!important;overflow:visible!important;flex-wrap:wrap!important;flex-direction:column!important;align-items:stretch!important;gap:2px!important;padding:12px 0 4px!important;border-top:1px solid #293746}
+.ffg-header[data-ffg-ready].ffg-menu-open .ffg-nav{display:flex!important}
+.ffg-header[data-ffg-ready] .ffg-nav>a{display:block!important;width:100%;min-height:42px;padding:12px!important}
+.ffg-header[data-ffg-ready] .ffg-language{position:static!important;width:100%;display:flex!important;background:transparent!important;border-left:0!important;border-top:1px solid #283746;margin-top:8px;padding:10px 0 0!important}
+.ffg-header[data-ffg-ready] .ffg-language a{display:inline-flex!important;justify-content:center;min-width:48px}
+}
