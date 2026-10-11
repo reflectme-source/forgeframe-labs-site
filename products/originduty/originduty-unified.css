@@ -128,3 +128,7 @@
 @media(max-width:760px){.od-shell{width:calc(100% - 36px)}.od-hero{padding:52px 0 64px}.od-hero-grid,.od-steps,.od-cards,.od-samples,.od-packs,.od-faq,.od-evidence-layout{grid-template-columns:1fr}.od-event{max-width:600px}.od-bar .od-shell{grid-template-columns:1fr 1fr}.od-section{padding:67px 0}.od-step h3{margin-top:12px}.od-evidence-hero{padding:45px 0}.od-filter-box{position:static}.od-cta-box{display:block}.od-cta-box .od-button{margin-top:20px}.od-metrics{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:440px){.od-hero h1{font-size:38px}.od-actions{flex-direction:column;align-items:stretch}.od-actions .od-button{white-space:normal}.od-event{padding:20px}.od-event-head{flex-wrap:wrap}.od-bar .od-shell{grid-template-columns:1fr;gap:8px}.od-metrics{grid-template-columns:1fr}.od-cta-box{padding:23px}.od-event-list strong{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.od *{scroll-behavior:auto!important;transition:none!important}}
+
+/* Product-only safety gate: never flash an unverified purchase CTA. */
+[data-od-buy][hidden]{display:none!important}
+[data-od-contact-fallback][hidden]{display:none!important}
