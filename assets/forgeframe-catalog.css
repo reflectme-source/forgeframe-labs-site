@@ -67,3 +67,30 @@
 .ffcatalog-art-products{position:absolute;right:0;top:54px;display:flex;flex-direction:column;gap:9px;transform:rotateY(-8deg)}
 .ffcatalog-art-products span{border:1px solid #34475a;border-radius:8px;padding:10px 12px;background:#111c29dd;color:#b8c9da;font-size:11px;white-space:nowrap;box-shadow:0 8px 20px #0005}
 @media(max-width:1000px){.ffcatalog-hero-layout{grid-template-columns:1fr}.ffcatalog-art{display:none}}
+
+/* Approved screenshot hero: exact EN copy, two-line heading and layered 3D composition */
+.ffcatalog-hero{background:radial-gradient(ellipse 58% 88% at 63% 43%,#12253a5c,transparent 75%),#080e15!important;padding:54px 0 48px!important;position:relative;overflow:hidden}
+.ffcatalog-hero-layout{grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr)!important;gap:25px!important;min-height:305px}
+.ffcatalog-hero-copy{position:relative;z-index:2}
+.ffcatalog-eyebrow{color:#a9bcd0!important;font-size:10px!important;letter-spacing:.19em!important}
+.ffcatalog-hero h1{font-size:clamp(42px,4.15vw,68px)!important;line-height:1.075!important;letter-spacing:-.067em!important;font-weight:800!important;max-width:830px!important;margin:20px 0 24px!important}
+.ffcatalog-hero h1 span{color:#c4d3f4}
+.ffcatalog-hero p{font-size:clamp(15px,1.25vw,18px)!important;color:#c0ccdc!important;max-width:770px!important;line-height:1.6!important}
+.ffcatalog-art{height:310px!important;display:block!important;position:relative;perspective:950px;transform:translateX(4px)}
+.ffcatalog-art-grid{position:absolute;inset:-80px -65px -45px -70px;opacity:.33;background-image:linear-gradient(#34506b28 1px,transparent 1px),linear-gradient(90deg,#34506b28 1px,transparent 1px);background-size:53px 53px;mask-image:radial-gradient(ellipse,#000,transparent 78%)}
+.ffcatalog-art-layer,.ffcatalog-art-front{height:220px!important;width:235px!important;top:39px!important;border-radius:20px!important;backface-visibility:hidden;box-shadow:0 26px 55px #0008!important}
+.ffcatalog-art-layer{left:25%!important;background:linear-gradient(130deg,#37689cbb,#0b1a2d)!important}
+.ffcatalog-art-layer.layer-back{transform:translate(115px,-24px) rotateY(-25deg) rotateZ(9deg)!important;opacity:.46!important}
+.ffcatalog-art-layer.layer-mid{transform:translate(63px,-13px) rotateY(-23deg) rotateZ(7deg)!important;opacity:.8!important}
+.ffcatalog-art-front{left:8%!important;transform:rotateY(-19deg) rotateZ(5deg)!important;background:linear-gradient(140deg,#182b40,#090e15 74%)!important;border-color:#59708c!important;padding:26px!important;gap:12px!important;justify-content:center!important}
+.ffcatalog-art-front strong{font-size:23px!important;line-height:1.1!important;color:#fff!important;letter-spacing:-.05em}
+.ffcatalog-art-front small{font-size:12px!important;color:#a7bdd3!important}
+.ffcatalog-art-mark{width:33px!important;height:33px!important;background:none!important;display:block!important}
+.ffcatalog-art-mark svg{width:32px;height:32px}
+.ffcatalog-art-products{top:70px!important;right:-15px!important;transform:rotateY(-10deg) rotateZ(4deg)!important;gap:11px!important}
+.ffcatalog-art-products span{display:flex;align-items:center;gap:10px;padding:10px 13px!important;min-width:190px;border-color:#263b50!important;background:linear-gradient(90deg,#1a2c40e8,#0c1827e6)!important;box-shadow:0 10px 25px #0007!important;color:#b8c6d6!important}
+.ffcatalog-product-dot{width:24px;height:24px;display:grid;place-items:center;border-radius:6px;font-style:normal;font-weight:800;color:#d9eaff;background:#244e86}
+.ffcatalog-product-dot.green{background:#0b7556;color:#c1ffe5}.ffcatalog-product-dot.violet{background:#3656a8;color:#d9e6ff}
+.ffcatalog-art-orbit{position:absolute;width:9px;height:9px;right:35%;top:62%;border-radius:50%;background:#9eb5d6;box-shadow:0 0 15px #b0d7ff44}
+@media(max-width:1100px){.ffcatalog-hero-layout{grid-template-columns:1fr!important}.ffcatalog-art{display:none!important}.ffcatalog-hero h1{font-size:clamp(42px,7vw,64px)!important}.ffcatalog-desktop-break{display:none}}
+@media(max-width:650px){.ffcatalog-hero{padding:54px 0 40px!important}.ffcatalog-hero h1{font-size:clamp(37px,9vw,49px)!important;line-height:1.09!important}.ffcatalog-hero p{font-size:15px!important}}
