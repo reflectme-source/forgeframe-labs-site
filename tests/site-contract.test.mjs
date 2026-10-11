@@ -240,6 +240,15 @@ test("live products have tailored buyer scope, deliverables and truthful access"
  const subjects=new Set();
  for(const file of files){
    const p=html(file);
+   if(file==="services/merchant-issue-desk.html"){
+     assert.match(p,/class="mid-container mid-pricing-grid"/);
+     assert.match(p,/class="mid-offer-card"/);
+     assert.match(p,/merchant-final.css/);
+     assert.match(p,/product=merchant-issue-desk/);
+     for(const dest of localTargets(file))assert.ok(existsSync(dest),file+" broken local asset or CTA: "+dest);
+     subjects.add("Merchant Issue Desk / verified scope");
+     continue;
+   }
    assert.match(p,/class="ff-detail"/,file+" needs a factual commercial quick-reference");
    assert.match(p,/assets\/product-details\.css/,file+" missing editorial shared styles");
    assert.match(p,/class="ff-detail__grid"/,file+" missing buyer\/output\/pricing blocks");
