@@ -6,7 +6,7 @@ import {fileURLToPath} from 'node:url';
 import {Script} from 'node:vm';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const read=file=>readFileSync(join(root,file),'utf8');
-const files=['order.html','kup.html','order-status.html','status.html','service-terms.html','warunki.html'].map(s=>'products/contract-guard/'+s);
+const files=['order.html','kup.html','order-status.html','status.html'].map(s=>'products/contract-guard/'+s);
 test('Bilingual self-service pages use standard ForgeFrame shell, real scopes and responsible seller',()=>{
  for(const file of files){
   const html=read(file);
@@ -93,6 +93,8 @@ test('buyer can choose individual or business with the correct conditional field
  assert.match(js,/consumerPurchaseAccepted:type==='individual'/);
  assert.match(js,/businessPurchaseAccepted:type==='business'/);
  assert.match(js,/availabilityByType\[type\]/);
- assert.match(read('products/contract-guard/service-terms.html'),/id="consumer-terms"/);
- assert.match(read('products/contract-guard/warunki.html'),/id="warunki-konsumenckie"/);
+ assert.match(read('terms.html'),/id="consumer-terms"/);
+ assert.match(read('pl/regulamin.html'),/id="warunki-konsumenckie"/);
 });
+
+test('deprecated Contract Guard legal URLs redirect to global terms',()=>{for(const [p,target] of [['products/contract-guard/service-terms.html','../../terms.html'],['products/contract-guard/warunki.html','../../pl/regulamin.html']]){const s=read(p);assert.match(s,/http-equiv="refresh"/);assert.ok(s.includes(target));assert.match(s,/noindex,follow/);}});

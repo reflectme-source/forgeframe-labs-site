@@ -13,7 +13,7 @@
 4. Scope, supported platforms, limitations and verified availability.
 5. Pricing/offer only when confirmed by owning product.
 6. Appropriate CTA: direct self-service purchase when live, or accurate access/contact flow.
-7. Product-specific terms and FAQ; Contract Guard setup terms are not universal SaaS terms.
+7. Link to the two global ForgeFrame legal documents (Terms and Privacy), each available in PL/EN. Keep product-specific scope, delivery, price, tax, withdrawal and entitlement disclosures in the product offer and checkout; do not create a separate legal terms page.
 8. Shared footer and support/privacy.
 
 ## Ownership and change control
@@ -30,3 +30,10 @@ Each product chat owns its product facts, price, backend and payment integration
 
 ## Release gate
 Visual approval -> implementation -> PL/EN -> unit/E2E -> real purchase and entitlement verification when applicable -> PR review -> production. Do not call an unverified payment path production-ready.
+
+## Legal links (global)
+- PL terms: /pl/regulamin.html; EN terms: /terms.html.
+- PL privacy: /pl/prywatnosc.html; EN privacy: /privacy.html.
+- Legacy Contract Guard terms URLs redirect to global terms; never reuse the old Contract Guard-only terms as platform-wide rules.
+- Product-specific purchase disclosures must remain visible before checkout, and paid entitlement must follow server-side payment verification.
+- Every redesign requires source-verified features, statuses and pricing, an approved visualization, PL/EN parity, accessibility and real journey tests.
