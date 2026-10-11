@@ -69,3 +69,12 @@ body:has(.mid-final){background:#080f17!important;color:#eff6fd!important}
 @media(max-width:1000px){.mid-container{width:calc(100% - 48px)}.mid-hero-grid,.mid-demo-grid{grid-template-columns:1fr}.mid-pricing-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.mid-pricing-copy{grid-column:1/-1}.mid-process-grid{grid-template-columns:1fr}}
 @media(max-width:670px){.mid-container{width:calc(100% - 32px)}.mid-final-hero{padding:50px 0}.mid-hero-copy h1{font-size:clamp(39px,10vw,52px)}.mid-features,.mid-stages,.mid-pricing-grid,.mid-faq-grid{grid-template-columns:1fr}.mid-process-grid{gap:24px}.mid-features-section,.mid-process-section,.mid-pricing-section,.mid-faq-section,.mid-demo-section{padding:46px 0}.mid-offer-price{white-space:normal}}
 @media(prefers-reduced-motion:reduce){.mid-primary,.mid-outline{transition:none}.mid-primary:hover,.mid-outline:hover{transform:none}}
+
+/* Explicit isolation from the old generic site CSS: shell remains identical across pages. */
+body:has(.mid-final)>.ffg-header{margin:0!important;padding:0!important;min-height:76px!important;height:auto!important;box-shadow:none!important}
+body:has(.mid-final)>.ffg-header .ffg-inner{min-height:76px!important}
+body:has(.mid-final)>.ffg-footer{margin:0!important;padding:28px 0!important;min-height:108px!important}
+body:has(.mid-final)>.ffg-footer .ffg-footer-content{width:min(1510px,calc(100% - 64px))!important;min-height:0!important}
+body:has(.mid-final)>.ffg-footer .ffg-footer-links{min-height:0!important}
+body:has(.mid-final)>.ff-skip{position:absolute;left:12px;top:-100px;z-index:1000;background:#fff;color:#091a2b;padding:10px 14px}
+body:has(.mid-final)>.ff-skip:focus{top:12px}
