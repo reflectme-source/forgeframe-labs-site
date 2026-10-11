@@ -59,6 +59,7 @@ const reasonsText={
 export function wirePreflight(root=document){
  const form=root.querySelector("#scope-form"),output=root.querySelector("#scope-result");
  if(!form||!output)return;
+ form.inert=false; // Without JS the form is noninteractive and cannot submit data.
  const lang=root.documentElement?.lang==="pl"?"pl":"en", t=copy[lang];
  form.addEventListener("submit",event=>{
   event.preventDefault();output.hidden=false;output.replaceChildren();
