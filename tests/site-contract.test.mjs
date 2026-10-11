@@ -183,11 +183,11 @@ test("ForgeFrame bilingual contact forms have safe fields and working local asse
   assert.match(page,new RegExp('<html lang="'+lang+'">'));
   assert.match(page,/method="POST"/);
   assert.match(page,/action="https:\/\/formsubmit\.co\/forgeframe\.lab@gmail\.com"/);
-  assert.match(page,/name="email" type="email"[^>]*required/);
-  assert.match(page,/name="message" minlength="10" maxlength="2000"/);
+  assert.match(page,/<input(?=[^>]*name="email")(?=[^>]*type="email")(?=[^>]*required)[^>]*>/);
+  assert.match(page,/<textarea(?=[^>]*name="message")(?=[^>]*minlength="10")(?=[^>]*maxlength="2000")[^>]*>/);
   assert.match(page,/name="_honey"/);
   assert.match(page,/name="privacy_notice_read"/);
-  assert.match(page,/name="product" required/);
+  assert.match(page,/<select(?=[^>]*name="product")(?=[^>]*required)[^>]*>/);
   assert.match(page,/name="_next"/);
   assert.doesNotMatch(page,/reflectme\.project@gmail\.com|hello\.extensionops@gmail\.com/);
   assert.match(html(thanks),/noindex,nofollow/);

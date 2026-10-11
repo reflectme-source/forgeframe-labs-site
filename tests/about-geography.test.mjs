@@ -13,9 +13,9 @@ test("Poland highlighted on real geographic globe and bottom section redesigned"
  for(const file of ["about/index.html","en/about/index.html"]){
   const s=read(file);
   assert.match(s,/forgeframe-earth-europe\.svg/);
-  assert.match(s,/class="ffabout-wrap ffabout-roots-new"/);
-  assert.match(s,/class="ffabout-roots-fact"/);
-  assert.match(s,/<strong>20<\/strong>/);
-  assert.doesNotMatch(s,/ffabout-city-skyline|ffabout-map-grid/);
+  assert.match(s,/class="ffabout-wrap ffabout-network-grid"/);
+  assert.match(s,/class="ffabout-reach"/);
+  assert.match(s,/20 (?:different )?countries|20 różnych krajów/);
+  assert.doesNotMatch(s,/ffabout-city-skyline|ffabout-map-grid|ffabout-roots-visual/);
  }
 });

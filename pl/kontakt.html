@@ -6,54 +6,43 @@
 <link rel="icon" href="../assets/forgeframe-avatar.png" type="image/png">
 <link rel="stylesheet" href="../assets/contact-form.css"><link rel="stylesheet" href="../assets/forgeframe-nav.css"><link rel="stylesheet" href="../assets/forgeframe-approved.css">
 <title>Kontakt i wycena | ForgeFrame Labs</title>
-<link rel="stylesheet" href="../assets/forgeframe-global.css"></head>
+<link rel="stylesheet" href="../assets/forgeframe-global.css"><link rel="stylesheet" href="../assets/forgeframe-contact.css"></head>
 <body>
 <a class="skip" href="#contact-form">Przejdź do formularza</a>
 <header class="ffg-header"><div class="ffg-inner"><a class="ffg-brand" href="../"><img class="ffg-brand-logo" src="../assets/forgeframe-avatar.png" alt="" width="38" height="38">ForgeFrame <span class="ffg-brand-blue">Labs</span></a><nav class="ffg-nav" aria-label="Nawigacja główna"><a href="../">Strona główna</a><a href="../products/">Produkty</a><a href="../developers/">Dla deweloperów</a><a href="../about/">O nas</a><a href="./kontakt.html" aria-current="page">Kontakt</a><span class="ffg-language" aria-label="Język"><a class="ffg-locale" aria-current="page" lang="pl" href="./kontakt.html">PL</a><a class="ffg-locale" lang="en" href="../contact/">EN</a></span></nav></div></header>
-<main id="main">
-<section class="hero"><div class="wrap"><span class="eyebrow">ForgeFrame Labs / kontakt</span><h1>Opisz zadanie. Odpowiemy z konkretnym zakresem.</h1><p>Bez dzwonienia, bez przesyłania dostępów do kont i bez kolejnej prezentacji. Wybierz produkt, opisz rezultat i wyślij zapytanie bezpośrednio ze strony.</p></div></section>
-<div class="wrap layout">
-<div class="panel"><h2 id="contact-form">Wyślij zapytanie</h2>
-<form data-forgeframe-contact action="https://formsubmit.co/forgeframe.lab@gmail.com" method="POST" accept-charset="UTF-8">
-<input type="hidden" name="_subject" value="ForgeFrame Labs | Website contact inquiry">
-<input type="hidden" name="_next" value="https://forgeframelabs.app/pl/dziekujemy.html">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="source_page" value="">
-<div class="trap" aria-hidden="true"><label for="trap">Pozostaw puste</label><input name="_honey" id="trap" type="text" tabindex="-1" autocomplete="off"></div>
-<div class="two"><div><label for="full-name">Imię lub firma (opcjonalnie)</label><input id="full-name" name="name" maxlength="90" autocomplete="name" placeholder="Firma lub imię"></div>
-<div><label for="reply-email">E-mail do odpowiedzi <span class="required">*</span></label><input id="reply-email" name="email" type="email" maxlength="180" required autocomplete="email" placeholder="adres@firma.pl"></div></div>
-<div class="two"><div><label for="product">Produkt lub usługa</label><select id="product" name="product" required><option value="general">Ogólne / General</option>
+<main id="main" class="ffcontact"><section class="ffcontact-hero"><div class="ffcontact-wrap ffcontact-layout"><div class="ffcontact-intro"><div class="ffcontact-eyebrow">KONTAKT Z FORGEFRAME LABS</div><h1>Porozmawiajmy o<br><span>konkretnym rozwiązaniu.</span></h1><p>Pytanie o produkt, ocena integracji albo konkretny proces do usprawnienia? Opisz, czego potrzebujesz. Nie wymagamy rozmowy sprzedażowej.</p><div class="ffcontact-email-card"><div class="ffcontact-email-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div><div><span class="ffcontact-label">Napisz bezpośrednio</span><p>Wolisz własną skrzynkę? Wyślij wiadomość.</p><a href="mailto:forgeframe.lab@gmail.com">forgeframe.lab@gmail.com ↗</a><div class="ffcontact-copy"><button type="button" data-copy-email>Kopiuj adres</button><span data-copy-status role="status" aria-live="polite"></span></div></div></div><div class="ffcontact-guidance"><span class="ffcontact-eyebrow">Co dalej?</span><div class="ffcontact-step"><span>01</span><div><strong>Wyślij zapytanie</strong><small>Skorzystaj z formularza albo poczty.</small></div></div><div class="ffcontact-step"><span>02</span><div><strong>Analizujemy zakres</strong><small>Sprawdzamy produkt, wymagania i kolejne kroki.</small></div></div><div class="ffcontact-step"><span>03</span><div><strong>Odpowiadamy e-mailem</strong><small>Bez obowiązkowych rozmów i prezentacji.</small></div></div></div></div><div class="ffcontact-form-shell"><div class="ffcontact-form-heading"><span class="ffcontact-form-symbol" aria-hidden="true">↗</span><div><h2 id="contact-form">Opisz swój projekt.</h2><p>Kilka szczegółów pozwoli nam zrozumieć zakres.</p></div></div><form accept-charset="UTF-8" action="https://formsubmit.co/forgeframe.lab@gmail.com" data-forgeframe-contact="" method="POST">
+<input name="_subject" type="hidden" value="ForgeFrame Labs | Website contact inquiry"/>
+<input name="_next" type="hidden" value="https://forgeframelabs.app/pl/dziekujemy.html"/>
+<input name="_template" type="hidden" value="table"/>
+<input name="source_page" type="hidden" value=""/>
+<div aria-hidden="true" class="trap"><label for="trap">Pozostaw puste</label><input autocomplete="off" id="trap" name="_honey" tabindex="-1" type="text"/></div>
+<div class="two"><div><label for="full-name">Imię lub firma (opcjonalnie)</label><input autocomplete="name" id="full-name" maxlength="90" name="name" placeholder="Firma lub imię"/></div>
+<div><label for="reply-email">E-mail do odpowiedzi <span class="required">*</span></label><input autocomplete="email" id="reply-email" maxlength="180" name="email" placeholder="adres@firma.pl" required="" type="email"/></div></div>
+<div class="two"><div><label for="product">Produkt lub usługa</label><select id="product" name="product" required=""><option value="general">Zapytanie ogólne</option>
 <option value="merchant-issue-desk">Merchant Issue Desk</option>
 <option value="contract-guard">Contract Guard</option>
 <option value="connect-to-forge">Connect to Forge</option>
 <option value="otomoto">OTOMOTO Change Intelligence</option>
 <option value="localization-qa">Localization QA Inspector</option>
 <option value="digital-packager">Digital Packager (przedsprzedaż)</option>
-<option value="api-integration">API integration</option>
-<option value="roblox">Roblox Creator tools</option>
-<option value="unity">Unity assets</option>
-<option value="jetbrains">JetBrains MV3 Inspector</option>
-<option value="shopify">Shopify workflows</option>
-<option value="digital-packager">Digital Packager</option><option value="originduty">OriginDuty</option><option value="other">Inny produkt / Other</option></select></div>
-<div><label for="intent">Temat zapytania</label><select id="intent" name="request_type" required><option value="quote">Płatna wycena / zakres</option>
+
+
+
+
+
+<option value="originduty">OriginDuty</option><option value="other">Inny produkt</option></select></div>
+<div><label for="intent">Temat zapytania</label><select id="intent" name="request_type" required=""><option value="quote">Płatna wycena / zakres</option>
 <option value="support">Wsparcie produktu</option>
 <option value="integration">Integracja API</option>
 <option value="partnership">Współpraca</option>
 <option value="privacy">Pytanie ogólne</option></select></div></div>
 <div><label for="request-message">Co trzeba wykonać? <span class="required">*</span></label>
-<textarea id="request-message" name="message" minlength="10" maxlength="2000" rows="7" required placeholder="Opisz obecny problem, oczekiwany wynik i używane narzędzie. Nie wysyłaj haseł ani danych klientów."></textarea></div>
-<div><label for="business-url">Strona firmy (opcjonalnie)</label><input id="business-url" name="website" type="url" maxlength="250" inputmode="url" placeholder="https://firma.pl"></div>
-<div class="privacy-check"><input type="checkbox" required id="acknowledge" name="privacy_notice_read" value="yes"><label for="acknowledge">Rozumiem, że dane z formularza zostaną przesłane przez zewnętrzną usługę FormSubmit w celu odpowiedzi na zapytanie. Zapoznałem(-am) się z <a href="../pl/prywatnosc.html">informacją o prywatności</a>. <span class="required">*</span></label></div>
+<textarea id="request-message" maxlength="2000" minlength="10" name="message" placeholder="Opisz obecny problem, oczekiwany wynik i używane narzędzie. Nie wysyłaj haseł ani danych klientów." required="" rows="7"></textarea></div>
+<div><label for="business-url">Strona firmy (opcjonalnie)</label><input id="business-url" inputmode="url" maxlength="250" name="website" placeholder="https://firma.pl" type="url"/></div>
+<div class="privacy-check"><input id="acknowledge" name="privacy_notice_read" required="" type="checkbox" value="yes"/><label for="acknowledge">Rozumiem, że dane z formularza zostaną przesłane przez zewnętrzną usługę FormSubmit w celu odpowiedzi na zapytanie. Zapoznałem(-am) się z <a href="../pl/prywatnosc.html">informacją o prywatności</a>. <span class="required">*</span></label></div>
 <button class="submit" type="submit">Wyślij zapytanie <span aria-hidden="true">→</span></button>
 <p class="disclaimer">Po wysłaniu możesz zobaczyć weryfikację antyspamową. Potwierdzenie pojawi się dopiero po przyjęciu zgłoszenia przez usługę.</p><p class="disclaimer">Nie używamy formularza do zakupu ani nie pobieramy płatności przy wysyłaniu zapytania.</p>
-</form></div>
-<aside class="info" aria-label="Inne sposoby kontaktu">
-<div class="small-card"><h2>Wolisz e-mail?</h2><p>Otwórz Gmail w przeglądarce lub zwykłą aplikację pocztową. Możesz też skopiować adres i napisać ze swojej skrzynki.</p><div class="email">forgeframe.lab@gmail.com</div>
-<div class="copy-row"><button type="button" class="copy" data-copy-email>Kopiuj adres</button><span class="copy-status" role="status" aria-live="polite" data-copy-status></span></div>
-<p><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=forgeframe.lab%40gmail.com" target="_blank" rel="noopener noreferrer">Napisz w Gmail ↗</a></p>
-<p><a href="mailto:forgeframe.lab@gmail.com?subject=ForgeFrame%20Labs%20-%20contact">Otwórz aplikację pocztową ↗</a></p></div>
-<div class="small-card"><h2>Co warto podać?</h2><ul class="list"><li>Nazwa produktu lub platformy</li><li>Oczekiwany rezultat i liczba elementów/SKU</li><li>Termin, jeśli ma znaczenie</li><li>Bez haseł, kodów 2FA i prywatnych plików</li></ul></div>
-</aside></div></main>
+</form></div></div></section><section class="ffcontact-footnote"><div class="ffcontact-wrap"><span class="ffcontact-footnote-icon" aria-hidden="true">◇</span><p>Nie wysyłaj haseł, kluczy API ani poufnych plików klientów. Wiadomości z formularza obsługuje zewnętrzny dostawca FormSubmit.</p></div></section></main>
 <footer class="ffg-footer"><div class="ffg-footer-content"><div><div class="ffg-footer-brand"><img src="../assets/forgeframe-avatar.png" alt="" width="29" height="29">ForgeFrame <span>Labs</span></div><div class="ffg-footer-tagline">Technology · People · Real Impact</div></div><nav class="ffg-footer-links" aria-label="Nawigacja stopki"><a href="../">Strona główna</a><a href="../products/">Produkty</a><a href="../developers/">Dla deweloperów</a><a href="../about/">O nas</a><a href="../pl/kontakt.html">Kontakt</a></nav><div class="ffg-footer-meta">© 2026 ForgeFrame Labs<br><a href="../pl/prywatnosc.html">Prywatność</a><a href="../terms.html">Warunki</a></div></div></footer>
 <script src="../assets/contact-form.js" defer></script>
 <script src="../assets/forgeframe-shell.js" defer></script></body></html>

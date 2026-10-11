@@ -10,7 +10,7 @@ test("About PL and EN share Poland-centered visual narrative and original site s
   const s=read(p);
   assert.match(s,/class="ffabout"/);
   assert.match(s,/class="ffabout-globe"/);
-  assert.match(s,/class="ffabout-roots"/);
+  assert.match(s,/class="ffabout-roots ffabout-network-section"/);
   assert.equal((s.match(/class="ffabout-value"/g)||[]).length,4);
   assert.match(s,/forgeframe-about\.css/);
   assert.match(s,/class="ffg-header"/);
