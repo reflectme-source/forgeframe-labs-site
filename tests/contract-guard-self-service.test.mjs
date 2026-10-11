@@ -27,7 +27,7 @@ test('Bilingual self-service pages use standard ForgeFrame shell, real scopes an
  }
  for(const file of files.slice(0,2)){
   const h=read(file);
-  for(const id of ['eligibility-form','purchase-form','repository','spec-path','buyer-email','buyer-company','buyer-country','terms','privacy','scope-agree','check-btn','pay-btn'])assert.match(h,new RegExp('id="'+id+'"'),id);
+  for(const id of ['eligibility-form','purchase-form','repository','spec-path','buyer-email','buyer-company','buyer-country','business-purchase','terms','privacy','scope-agree','check-btn','pay-btn'])assert.match(h,new RegExp('id="'+id+'"'),id);
   assert.match(h,/payment|płatno|Checkout/i);
   assert.match(h,/one|jedno/i);
   assert.match(h,/id="purchase-form" hidden/);
@@ -74,6 +74,7 @@ test('order tracking has real recovery fields, no dead-end evidence links and no
 test('Checkout locale is passed through as a constrained UI-language flag',()=>{
  const buyer=read('products/contract-guard/buy.js');
  assert.match(buyer,/locale:lang/);
+ assert.match(buyer,/businessPurchaseAccepted:\$\('business-purchase'\)\.checked/);
  assert.match(buyer,/try \{result=await fetch/);
  assert.match(buyer,/throw new Error\(words\.issue\)/);
 });
