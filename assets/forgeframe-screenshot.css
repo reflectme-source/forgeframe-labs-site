@@ -96,3 +96,6 @@
 .ffshot-card,.ffshot-card-bottom a,.ffshot-btn,.ffshot-window{transition:none!important;animation:none!important}
 .ffshot-card:hover,.ffshot-btn:hover{transform:none!important}
 }
+
+/* Unified ForgeFrame display typography */
+.ffshot-hero h1{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif!important;font-weight:780!important;letter-spacing:-.065em!important;line-height:1.055!important;text-wrap:balance;}
