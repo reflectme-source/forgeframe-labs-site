@@ -53,3 +53,27 @@ test('product landing pages connect to self-service and keep optional support',(
  assert.match(read('products/contract-guard.html'),/contract-guard-intake\.html/);
  assert.match(read('products/contract-guard/index.html'),/intake\.html/);
 });
+
+test('order tracking has real recovery fields, no dead-end evidence links and no secrets in URLs',()=>{
+ for(const file of ['products/contract-guard/status.html','products/contract-guard/order-status.html']){
+  const h=read(file);
+  assert.match(h,/id="restore-form"/);
+  assert.match(h,/id="restore-order"/);
+  assert.match(h,/id="restore-token"/);
+  assert.match(h,/id="copy-order"/);
+  assert.doesNotMatch(h,/id="(?:pr-link|safe-link|breaking-link)" href="#"/);
+  assert.match(h,/noindex,nofollow/);
+ }
+ const script=read('products/contract-guard/status.js');
+ assert.match(script,/navigator\.clipboard\.writeText/);
+ assert.match(script,/sessionStorage\.setItem/);
+ assert.match(script,/restore-form/);
+ assert.match(script,/body\.paid/);
+ assert.doesNotMatch(script,/location\.search|URLSearchParams/);
+});
+test('Checkout locale is passed through as a constrained UI-language flag',()=>{
+ const buyer=read('products/contract-guard/buy.js');
+ assert.match(buyer,/locale:lang/);
+ assert.match(buyer,/try \{result=await fetch/);
+ assert.match(buyer,/throw new Error\(words\.issue\)/);
+});
