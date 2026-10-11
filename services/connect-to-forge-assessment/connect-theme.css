@@ -47,3 +47,24 @@ body.ff-connect .ff-connect-disclaimer .wrap{max-width:1100px}
 body.ff-connect .ffg-footer-meta{color:#9bb4c8}
 @media(max-width:700px){body.ff-connect .cards{grid-template-columns:1fr}body.ff-connect .card{padding:23px}body.ff-connect .contact .primary{width:auto}}
 @media(prefers-reduced-motion:reduce){body.ff-connect .primary{transition:none}}
+/* ForgeFrame 2026 product parity: refined typography, precise cards and unified CTAs. */
+body.ff-connect header.hero{background:radial-gradient(ellipse 65% 95% at 78% 40%,#1745686b,transparent 78%),#08121c!important;border-bottom:1px solid #29465c!important}
+body.ff-connect header.hero h1{font-size:clamp(44px,4.7vw,70px)!important;line-height:1.07!important;letter-spacing:-.065em!important;font-weight:790!important;color:#f2f8fe!important}
+body.ff-connect header.hero .lead{font-size:16px!important;line-height:1.76!important;color:#b7cbdc!important}
+body.ff-connect .section h2{font-size:clamp(30px,3.5vw,49px)!important;letter-spacing:-.056em!important;line-height:1.13!important;color:#f1f8fd!important}
+body.ff-connect .card,body.ff-connect .scope,body.ff-connect .faq article{background:linear-gradient(145deg,#122639,#0b1926)!important;border:1px solid #31536b!important;border-radius:10px!important;box-shadow:none!important}
+body.ff-connect .card{padding:26px!important}
+body.ff-connect .card h3{font-size:18px!important;letter-spacing:-.03em!important}
+body.ff-connect .card p,body.ff-connect .scope p,body.ff-connect .faq p{font-size:13px!important;line-height:1.72!important;color:#b6cbdc!important}
+body.ff-connect .primary{background:#138df5!important;border:1px solid #339cf9!important;color:#fff!important;box-shadow:none!important;border-radius:8px!important}
+body.ff-connect .primary:hover{background:#309cf9!important}
+body.ff-connect .ff-detail{background:#0c1a27!important;border-block:1px solid #2d4c63!important}
+body.ff-connect .ff-detail__title{font-size:clamp(29px,3.3vw,46px)!important;letter-spacing:-.053em!important;color:#f1f8fe!important}
+body.ff-connect .ff-detail__state{background:#14384b!important;border-color:#376781!important;color:#b4e4ff!important}
+body.ff-connect .ff-detail__grid,body.ff-connect .ff-detail__cell{border-color:#35546a!important}
+body.ff-connect .ff-detail__label{color:#9ecbe8!important}
+body.ff-connect .ff-detail__body,body.ff-connect .ff-detail__fine{color:#b6cbd9!important}
+body.ff-connect .ff-detail__action{border:1px solid #365d77!important;border-radius:8px!important;color:#dceffa!important;background:#122a3c!important}
+body.ff-connect .ff-detail__action--primary{background:#138df5!important;color:#fff!important}
+body.ff-connect .faq article{padding:21px!important}
+@media(max-width:600px){body.ff-connect header.hero h1{font-size:clamp(38px,10vw,52px)!important}body.ff-connect .card{padding:20px!important}}
