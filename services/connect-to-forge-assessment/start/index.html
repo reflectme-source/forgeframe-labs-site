@@ -27,8 +27,8 @@
 <form id="scope-form" inert>
 <fieldset><legend>Atlassian product</legend><label class="field"><select class="control" name="platform" aria-label="Atlassian product" required><option value="">Select a product</option><option value="jira">Jira Cloud</option><option value="confluence">Confluence Cloud</option></select></label></fieldset>
 <div class="two">
-<div class="field"><label for="modules">Connect module instances</label><input class="control" id="modules" name="moduleCount" type="number" min="1" max="500" step="1" inputmode="numeric" placeholder="1–10" required></div>
-<div class="field"><label for="backends">External backend services</label><input class="control" id="backends" name="backendCount" type="number" min="0" max="100" step="1" inputmode="numeric" placeholder="0–1" required></div>
+<div class="field"><label for="modules">Connect module instances</label><input class="control" id="modules" name="moduleCount" type="number" min="1" step="1" inputmode="numeric" placeholder="1–10" required></div>
+<div class="field"><label for="backends">External backend services</label><input class="control" id="backends" name="backendCount" type="number" min="0" step="1" inputmode="numeric" placeholder="0–1" required></div>
 </div>
 <p class="small">Count actual module declarations, including repeated module instances.</p>
 <fieldset><legend>Is it a private/custom Connect app?</legend><div class="options"><label class="option"><input type="radio" name="privateApp" value="yes" required>Yes</label><label class="option"><input type="radio" name="privateApp" value="no" required>No</label></div></fieldset>
@@ -38,7 +38,7 @@
 <p class="fine">No personal data, source files, secrets or payment details are collected here.</p>
 <button class="ff-button submit" type="submit">Check my scope</button>
 </form>
-<section id="scope-result" class="result" aria-live="polite" aria-atomic="true" hidden></section>
+<section id="scope-result" class="result" aria-live="polite" aria-atomic="true" tabindex="-1" hidden></section>
 </section>
 <aside class="panel side" aria-label="Standard desk assessment">
 <p class="tag">Standard desk assessment</p><p class="price">€490 <small>indicative / one-time</small></p>
