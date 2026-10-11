@@ -58,3 +58,41 @@ body:has(.dp-v2){background:#080e15!important;color:#eef6fc!important}
 @media(max-width:1050px){.dp-v2 .wrap{width:calc(100% - 48px)!important}.dp-v2 .hero .layout{grid-template-columns:1fr!important}}
 @media(max-width:650px){.dp-v2 .wrap{width:calc(100% - 32px)!important}.dp-v2 .hero{padding:55px 0!important}.dp-v2 h1{font-size:clamp(39px,10vw,54px)!important}.dp-v2 .lead{font-size:15px!important}.dp-v2 .section{padding-block:55px!important}}
 @media(prefers-reduced-motion:reduce){.dp-v2 *{transition:none!important;animation:none!important}}
+
+
+/* Product-specific 2.5D vector system. The workflow remains an explicitly labelled illustration. */
+.dp-v2 .card{position:relative;min-width:0;overflow:hidden}
+.dp-v2 .dp-step-icon{
+ position:relative;isolation:isolate;display:grid;place-items:center;
+ width:64px;height:64px;margin-bottom:15px;border:1px solid #407ea8;
+ border-radius:15px;background:linear-gradient(145deg,#234e6e,#103149);
+ color:#b6e6ff;box-shadow:inset 0 1px 0 #ffffff29,0 9px 0 -4px #071b2c,0 15px 22px #0003;
+}
+.dp-v2 .dp-step-icon::before{
+ content:"";position:absolute;z-index:-1;inset:8px -6px -6px 8px;
+ border:1px solid #3d75927a;border-radius:13px;transform:translate(4px,4px);
+ background:#0b1c2c;
+}
+.dp-v2 .dp-step-icon svg{width:38px;height:38px;display:block}
+.dp-v2 .card:nth-child(2) .dp-step-icon{
+ color:#aef1d8;border-color:#3d907a;background:linear-gradient(145deg,#205b4e,#0d302c);
+}
+.dp-v2 .card:nth-child(3) .dp-step-icon{
+ color:#f4d9a8;border-color:#9b7549;background:linear-gradient(145deg,#644a30,#342719);
+}
+.dp-v2 .card .num{display:block;font:750 11px ui-monospace,Consolas,monospace;letter-spacing:.08em}
+.dp-v2 .card h3{margin-top:10px}
+.dp-v2 .demo .file{display:flex;align-items:center;gap:8px;min-width:0}
+.dp-v2 .dp-file-type{
+ display:inline-grid;flex:0 0 35px;place-items:center;min-height:21px;
+ border-radius:4px;border:1px solid #466582;background:#172b40;
+ color:#a8d6f4;font:750 9px ui-monospace,Consolas,monospace;letter-spacing:.01em;
+}
+.dp-v2 .dp-file-type.dp-type-dir{color:#c3dffc;background:#243d57}
+.dp-v2 .dp-file-type.dp-type-ok{color:#aaf1ce;border-color:#326753;background:#12392e}
+.dp-v2 .demo .body>div:not(.arrow){min-width:0}
+@media(max-width:650px){
+ .dp-v2 .card{padding:23px!important}
+ .dp-v2 .dp-step-icon{width:58px;height:58px}
+ .dp-v2 .dp-step-icon svg{width:34px;height:34px}
+}
