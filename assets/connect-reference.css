@@ -62,3 +62,34 @@ body.ff-connect .ffg-header,body.ff-connect .ffg-footer{font-family:Inter,system
 @media(prefers-reduced-motion:reduce){.cx-page *{animation:none!important;transition:none!important}}
 
 .cx-page{max-width:100%;overflow-x:clip}.cx-art,.cx-flow,.cx-chips,.cx-assessment-grid>*{min-width:0}@media(max-width:470px){.cx-art{gap:7px}.cx-flow{gap:6px}.cx-chips{gap:4px}.cx-chip{white-space:normal;font-size:9px;min-width:0}.cx-flow-box{flex-shrink:0}.cx-hero-grid{min-width:0}}
+
+
+/* Deterministic technical pictograms: no font glyphs or implied platform endorsement. */
+.cx-flow-glyph{display:grid;place-items:center;width:47px;height:47px;line-height:1}
+.cx-flow-glyph svg{display:block;width:43px;height:43px}
+.cx-arrow{display:grid;place-items:center;width:44px;min-width:44px;height:24px;letter-spacing:0}
+.cx-arrow svg{display:block;width:100%;height:20px}
+.cx-chip-icon{flex:0 0 29px;font-size:0}
+.cx-chip-icon svg{display:block;width:17px;height:17px}
+@media(max-width:470px){
+ .cx-flow-glyph{width:36px;height:36px}
+ .cx-flow-glyph svg{width:34px;height:34px}
+ .cx-arrow{width:23px;min-width:23px}
+ .cx-chip-icon{flex-basis:23px}
+ .cx-chip-icon svg{width:15px;height:15px}
+}
+
+
+/* Mobile: preserve separation and legibility instead of shrinking chips to 9px. */
+@media(max-width:470px){
+ .cx-art{flex-direction:column;align-items:stretch;justify-content:center;gap:17px;min-height:0;padding:8px 0 0}
+ .cx-flow{justify-content:center;gap:14px}
+ .cx-flow-box{width:92px;height:100px}
+ .cx-flow-glyph{width:39px;height:39px}
+ .cx-flow-glyph svg{width:38px;height:38px}
+ .cx-arrow{width:35px;min-width:35px}
+ .cx-chips{width:100%;display:grid;grid-template-columns:1fr;gap:7px}
+ .cx-chip{min-height:41px;padding:8px 11px;gap:11px;font-size:11px;line-height:1.4}
+ .cx-chip-icon{width:24px;height:24px;flex:0 0 24px}
+ .cx-chip-icon svg{width:16px;height:16px}
+}

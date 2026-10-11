@@ -14,3 +14,18 @@ test('Connect Forge reference layout PL EN avoids unsupported checkout and dupli
   assert.doesNotMatch(s,/within one business day/i);
  }
 });
+
+
+test('Connect Forge migration diagram uses stable SVG pictograms and explicit review language in both locales',()=>{
+ for(const p of ['services/connect-to-forge-assessment/index.html','services/connect-to-forge-assessment/pl/index.html']){
+  const s=read(p);
+  assert.equal((s.match(/class="cx-flow-glyph" aria-hidden="true"><svg /g)||[]).length,2,p);
+  assert.equal((s.match(/class="cx-chip-icon"><svg /g)||[]).length,3,p);
+  assert.match(s,/class="cx-art"[^>]+role="img"/,p);
+  assert.doesNotMatch(s,/cx-flow-glyph">(?:✣|▲)|cx-chip-icon">(?:✓|♙|▣)/,p);
+  assert.doesNotMatch(s,/Preserved behavior|Secure by design|Your data, intact/,p);
+ }
+ const css=read('assets/connect-reference.css');
+ assert.match(css,/\.cx-flow-glyph svg/);
+ assert.match(css,/\.cx-art\{flex-direction:column/);
+});
