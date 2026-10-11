@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Self-service eligibility check for a private Jira or Confluence Connect app. No calls, credentials or attachments.">
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#061724">
+<title>Check your Connect → Forge assessment scope | ForgeFrame Labs</title>
+<link rel="icon" href="https://forgeframelabs.app/assets/forgeframe-avatar.png" type="image/png">
+<link rel="stylesheet" href="https://forgeframelabs.app/assets/forgeframe-global.css">
+<link rel="stylesheet" href="../flow.css">
+<script type="module" src="../flow.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to scope</a>
+<header class="ffg-header"><div class="ffg-inner"><a class="ffg-brand" href="https://forgeframelabs.app/en/"><img class="ffg-brand-logo" src="https://forgeframelabs.app/assets/forgeframe-avatar.png" alt="" width="38" height="38">ForgeFrame <span class="ffg-brand-blue">Labs</span></a><nav class="ffg-nav" aria-label="Site navigation"><a href="https://forgeframelabs.app/services/connect-to-forge-assessment/">Service</a><a href="https://forgeframelabs.app/contact/">Contact ForgeFrame Labs</a><span class="ffg-language"><a class="ffg-locale" href="https://forgeframelabs.app/services/connect-to-forge-assessment/pl/start/" lang="pl">Polski</a></span></nav></div></header>
+<main id="main" class="container">
+<section class="head" aria-labelledby="page-title">
+<span class="tag">FORGEFRAME LABS / SELF-SERVICE ASSESSMENT</span>
+<h1 id="page-title">Know your assessment scope in one step.</h1><p>Check whether your private Connect app qualifies for our bounded technical review. The preflight runs in your browser and does not transmit application data.</p>
+<div class="bar"><span>No sales call</span><span>No credentials</span><span>Written report</span></div>
+</section>
+<div class="layout">
+<section class="panel" aria-labelledby="scope-title">
+<h2 id="scope-title">Your app</h2><p>Answer six short questions. Only the scope is evaluated; no tenant URLs, app names or source code are requested.</p>
+<form id="scope-form">
+<fieldset><legend>Atlassian product</legend><label class="field"><select class="control" name="platform" aria-label="Atlassian product" required><option value="">Select a product</option><option value="jira">Jira Cloud</option><option value="confluence">Confluence Cloud</option></select></label></fieldset>
+<div class="two">
+<div class="field"><label for="modules">Connect module instances</label><input class="control" id="modules" name="moduleCount" type="number" min="1" max="500" step="1" inputmode="numeric" placeholder="1–10" required></div>
+<div class="field"><label for="backends">External backend services</label><input class="control" id="backends" name="backendCount" type="number" min="0" max="100" step="1" inputmode="numeric" placeholder="0–1" required></div>
+</div>
+<p class="small">Count actual module declarations, including repeated module instances.</p>
+<fieldset><legend>Is it a private/custom Connect app?</legend><div class="options"><label class="option"><input type="radio" name="privateApp" value="yes" required>Yes</label><label class="option"><input type="radio" name="privateApp" value="no" required>No</label></div></fieldset>
+<fieldset><legend>Are you authorized to commission its assessment?</legend><div class="options"><label class="option"><input type="radio" name="ownsApp" value="yes" required>Yes</label><label class="option"><input type="radio" name="ownsApp" value="no" required>No</label></div></fieldset>
+<fieldset><legend>Do you need actual data migration?</legend><div class="options"><label class="option"><input type="radio" name="dataMigration" value="yes" required>Yes</label><label class="option"><input type="radio" name="dataMigration" value="no" required>No</label></div></fieldset>
+<fieldset><legend>Do you need us to deploy production changes?</legend><div class="options"><label class="option"><input type="radio" name="productionDeployment" value="yes" required>Yes</label><label class="option"><input type="radio" name="productionDeployment" value="no" required>No</label></div></fieldset>
+<p class="fine">No personal data, source files, secrets or payment details are collected here.</p>
+<button class="ff-button submit" type="submit">Check my scope</button>
+</form>
+<section id="scope-result" class="result" aria-live="polite" aria-atomic="true" hidden></section>
+</section>
+<aside class="panel side" aria-label="Standard desk assessment">
+<p class="tag">Standard desk assessment</p><p class="price">€490 <small>indicative / one-time</small></p>
+<div class="rule"></div><h3>What is included</h3>
+<ul><li>One private Connect app</li><li>Up to 10 module instances</li><li>At most one external backend</li><li>Risk map, staged test plan, rollback criteria</li><li>One factual revision</li></ul>
+<div class="rule"></div><h3>Not included</h3><p>Code migration, production deployment, data conversion, legal advice or permanent support.</p>
+<div class="rule"></div><h3>Payment status</h3><p class="small">Checkout is not enabled. This eligibility check does not create an order or charge a card.</p>
+</aside>
+</div>
+<p class="foot">Independent service, not affiliated with Atlassian. Connect support changes begin 31 January 2027. <a href="https://forgeframelabs.app/services/connect-to-forge-assessment/">Read the full service scope</a></p>
+</main>
+</body></html>
