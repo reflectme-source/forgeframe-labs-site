@@ -63,7 +63,7 @@ purchase.addEventListener('submit',async ev=>{
   try{
     const data=await post('/v1/contract-guard/checkout',{
       assessment_token:assessment,email:$('buyer-email').value.trim(),company:$('buyer-company').value.trim(),
-      country:$('buyer-country').value.trim().toUpperCase(),locale:lang,termsAccepted:$('terms').checked,
+      country:$('buyer-country').value.trim().toUpperCase(),locale:lang,businessPurchaseAccepted:$('business-purchase').checked,termsAccepted:$('terms').checked,
       privacyAccepted:$('privacy').checked,serviceScopeAccepted:$('scope-agree').checked
     });
     const next=new URL(data.checkout_url);
