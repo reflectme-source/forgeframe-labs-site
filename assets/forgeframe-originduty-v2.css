@@ -61,3 +61,24 @@ body:has(.od-v2){background:#080e15!important;color:#ecf4fc!important}
 @media(max-width:1100px){.od-v2 .od-shell,.od-v2 .ff-detail__inner{width:calc(100% - 48px)!important}.od-v2 .od-hero-grid{grid-template-columns:1fr!important}.od-v2 .od-event{max-width:760px}}
 @media(max-width:650px){.od-v2 .od-shell,.od-v2 .ff-detail__inner{width:calc(100% - 32px)!important}.od-v2 .od-hero{padding:55px 0!important}.od-v2 .od-hero h1{font-size:clamp(38px,10vw,52px)!important}.od-v2 .od-lead{font-size:15px!important}.od-v2 .od-event-head{padding:13px!important;font-size:9px!important}.od-v2 .od-event-list{margin-inline:12px!important}.od-v2 .od-event-list>div{padding:11px!important}.od-v2 .od-section{padding:57px 0!important}.od-v2 .od-pack{padding:22px!important}}
 @media(prefers-reduced-motion:reduce){.od-v2 .od-card,.od-v2 .od-button{transition:none!important}.od-v2 .od-card:hover,.od-v2 .od-button:hover{transform:none!important}}
+
+/* OriginDuty conversion and reading refinements */
+.od-v2 [hidden]{display:none!important}
+.od-v2 .od-steps{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:17px!important}
+.od-v2 .od-step{position:relative!important;min-height:210px!important;padding:27px!important;border:1px solid #35536a!important;border-radius:11px!important;background:linear-gradient(145deg,#122436,#0c1722)!important}
+.od-v2 .od-step-number{display:grid!important;place-items:center!important;width:43px!important;height:43px!important;border-radius:9px!important;background:#16476a!important;border:1px solid #39759d!important;color:#b6e4ff!important;font:780 16px Inter,system-ui,sans-serif!important;letter-spacing:0!important;margin-bottom:20px!important}
+.od-v2 .od-step h3{font-size:19px!important;line-height:1.35!important;margin:0 0 12px!important}
+.od-v2 .od-step p{font-size:13px!important;line-height:1.7!important;margin:0!important}
+.od-v2 .od-pack .od-button{margin-top:20px!important;width:100%!important}
+.od-v2 .od-pack .od-price{display:flex!important;align-items:baseline!important;gap:9px!important;font-size:clamp(42px,4.3vw,61px)!important;line-height:1.2!important;letter-spacing:-.065em!important;margin:22px 0!important}
+.od-v2 .od-pack .od-price small{font-size:14px!important;letter-spacing:0!important;font-weight:500!important}
+.od-v2 .od-faq{display:grid!important;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr)!important;gap:clamp(35px,6vw,90px)!important}
+.od-v2 .od-faq>div>h2{font:760 clamp(34px,3.6vw,51px)/1.12 Inter,system-ui,sans-serif!important;letter-spacing:-.06em!important;color:#f1f7fc!important;margin:18px 0!important;max-width:430px!important}
+.od-v2 .od-faq-list{display:flex!important;flex-direction:column!important;gap:10px!important}
+.od-v2 .od-faq-list details{border:1px solid #344d60!important;background:#101e2a!important;border-radius:9px!important;padding:0!important;overflow:hidden}
+.od-v2 .od-faq-list summary{list-style:none!important;display:flex!important;justify-content:space-between!important;align-items:center!important;gap:15px!important;padding:20px 22px!important;color:#edf6fc!important;font-size:14px!important;font-weight:680!important;cursor:pointer!important}
+.od-v2 .od-faq-list summary::-webkit-details-marker{display:none}
+.od-v2 .od-faq-list summary:after{content:"+";display:grid;place-items:center;flex:0 0 25px;width:25px;height:25px;border:1px solid #436783;border-radius:7px;color:#a9d7f5;font-size:20px;font-weight:400}
+.od-v2 .od-faq-list details[open] summary:after{content:"−"}
+.od-v2 .od-faq-list details p{padding:0 22px 21px!important;margin:0!important;font-size:13px!important;line-height:1.75!important;color:#b2c7d6!important}
+@media(max-width:1000px){.od-v2 .od-faq{grid-template-columns:1fr!important}.od-v2 .od-steps{grid-template-columns:1fr!important}.od-v2 .od-step{min-height:0!important}}
