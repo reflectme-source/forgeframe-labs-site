@@ -1,0 +1,106 @@
+/* OTOMOTO Change Intelligence: ForgeFrame Labs visual system */
+body:has(.ot-v2){background:#080e15!important;color:#f0f6fd!important}
+body:has(.ot-v2)>.ffg-header{margin:0!important;padding:0!important;min-height:76px!important;box-shadow:none!important}
+body:has(.ot-v2)>.ffg-footer{margin:0!important;padding:28px 0!important;min-height:108px!important}
+body:has(.ot-v2)>.ffg-footer .ffg-footer-content{width:min(1510px,calc(100% - 64px))!important}
+.ot-v2{font-family:Inter,system-ui,sans-serif;background:#080e15;color:#edf5fd}
+.ot-v2 *{box-sizing:border-box}
+.ot-v2 .wrap{max-width:1240px!important;padding:0 32px!important}
+.ot-v2 .hero{background:radial-gradient(ellipse 60% 80% at 78% 35%,#153b5875,transparent 78%),#08111a!important;padding:88px 0 87px!important;border-bottom:1px solid #284257}
+.ot-v2 .hero-inner{gap:65px!important;align-items:center!important}
+.ot-v2 .kicker,.ot-v2 .eyebrow{font-size:11px!important;letter-spacing:.15em!important;font-weight:770!important;color:#89bde0!important}
+.ot-v2 h1{font:790 clamp(47px,4.8vw,74px)/1.055 Inter,system-ui,sans-serif!important;letter-spacing:-.067em!important;color:#f2f7fd!important;margin:22px 0 26px!important}
+.ot-v2 h1 em,.ot-v2 h1 span{color:#bad1eb!important}
+.ot-v2 .lead{font-size:16px!important;line-height:1.78!important;color:#b6c9d7!important}
+.ot-v2 .actions{display:flex!important;flex-wrap:wrap!important;gap:12px!important}
+.ot-v2 .btn{min-height:45px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:11px 18px!important;border-radius:8px!important;text-decoration:none!important;font:700 12px Inter,system-ui,sans-serif!important}
+.ot-v2 .btn.primary{background:#138df5!important;color:#fff!important;border:1px solid #2b9bfc!important}
+.ot-v2 .btn.secondary{background:#122637!important;color:#d9ebf9!important;border:1px solid #38566d!important}
+.ot-v2 .trust{color:#a8c4d7!important;font-size:11px!important;gap:15px!important}
+.ot-v2 .small{color:#89aabd!important;font-size:11px!important}
+.ot-v2 .mock{border:1px solid #365b74!important;background:#0a1927!important;border-radius:12px!important;box-shadow:0 28px 70px #0007,0 0 65px #127ec319!important;overflow:hidden!important}
+.ot-v2 .mock-top{background:#14293b!important;border-color:#31516a!important;color:#b8d8eb!important;font:11px ui-monospace,Consolas,monospace!important}
+.ot-v2 .mock-body{background:#0b1926!important}
+.ot-v2 .mock-line{background:#102437!important;border:1px solid #294b62!important;border-radius:8px!important;color:#edf7ff!important}
+.ot-v2 .mock-line strong{color:#f1f7fd!important}
+.ot-v2 .mock-line small{color:#a6c0d2!important}
+.ot-v2 .mock-tag{border-radius:6px!important;font-size:10px!important}
+.ot-v2 section:not(.hero){border-color:#2c4355!important}
+.ot-v2 section:not(.hero):not(.ff-detail){padding:76px 0!important;background:#0a141e!important}
+.ot-v2 section:nth-of-type(even):not(.ff-detail){background:#0d1926!important}
+.ot-v2 .ff-detail{background:#0e1b28!important;color:#edf6fd!important;border-block:1px solid #324d62!important;padding:70px 0!important}
+.ot-v2 .ff-detail__title{color:#f2f8fd!important;font-size:clamp(30px,3.4vw,48px)!important;letter-spacing:-.055em!important}
+.ot-v2 .ff-detail__state{background:#123c40!important;border-color:#33716c!important;color:#b7f1dc!important}
+.ot-v2 .ff-detail__grid,.ot-v2 .ff-detail__cell{border-color:#335369!important}
+.ot-v2 .ff-detail__label{color:#9bcae6!important}
+.ot-v2 .ff-detail__body,.ot-v2 .ff-detail__fine{color:#b6cbd8!important}
+.ot-v2 .ff-detail__action{background:#112c40!important;border:1px solid #3b6783!important;color:#d8efff!important;border-radius:8px!important}
+.ot-v2 .ff-detail__action--primary{background:#138bf4!important;color:#fff!important}
+.ot-v2 h2{font:770 clamp(31px,3.5vw,50px)/1.12 Inter,system-ui,sans-serif!important;letter-spacing:-.059em!important;color:#f0f7fd!important}
+.ot-v2 h3{color:#edf7fd!important;letter-spacing:-.03em!important}
+.ot-v2 .section-head p,.ot-v2 section p{color:#b3c9d9}
+.ot-v2 .examples{gap:18px!important}
+.ot-v2 .example{border:1px solid #34546c!important;background:linear-gradient(145deg,#12283a,#0c1926)!important;border-radius:10px!important;padding:25px!important}
+.ot-v2 .example p{color:#b0c7d8!important}
+.ot-v2 .example a{color:#8ed1fc!important}
+.ot-v2 .steps{gap:16px!important}
+.ot-v2 .step{background:#102536!important;border:1px solid #34546c!important;border-radius:10px!important;padding:24px!important}
+.ot-v2 .step span{color:#80caff!important}
+.ot-v2 .step p{color:#b4c9d9!important}
+.ot-v2 .facts{background:#0d1b29!important}
+.ot-v2 .facts p,.ot-v2 .facts li{color:#b8cddd!important}
+.ot-v2 .note{background:#112b3f!important;border:1px solid #3b6682!important;color:#c4dceb!important}
+.ot-v2 .faq{max-width:1240px!important}
+.ot-v2 .faq details{background:#102335!important;border:1px solid #31516a!important;border-radius:9px!important;padding:0!important;margin:8px 0!important}
+.ot-v2 .faq summary{padding:17px 19px!important;color:#eef7fd!important;font-size:14px!important;list-style:none}
+.ot-v2 .faq summary::-webkit-details-marker{display:none}
+.ot-v2 .faq summary:after{content:"+";float:right;color:#80cbff;font-size:20px}
+.ot-v2 .faq details[open] summary:after{content:"−"}
+.ot-v2 .faq details p{padding:0 19px 18px!important;color:#b8cbda!important;font-size:13px!important}
+.ot-v2 .cta{background:#102b40!important;border:1px solid #376380!important;border-radius:11px!important;padding:35px!important}
+.ot-v2 .cta h2{font-size:clamp(28px,2.8vw,40px)!important}
+.ot-v2 a:focus-visible,.ot-v2 summary:focus-visible{outline:2px solid #9ad9ff!important;outline-offset:3px!important}
+@media(max-width:960px){.ot-v2 .hero-inner{grid-template-columns:1fr!important}.ot-v2 .wrap{padding:0 24px!important}}
+@media(max-width:600px){.ot-v2 .wrap{padding:0 16px!important}.ot-v2 .hero{padding:52px 0!important}.ot-v2 h1{font-size:clamp(39px,10vw,55px)!important}.ot-v2 section:not(.hero):not(.ff-detail){padding:52px 0!important}.ot-v2 .ff-detail{padding:50px 0!important}.ot-v2 .cta{padding:24px!important}}
+@media(prefers-reduced-motion:reduce){.ot-v2 *{animation:none!important;transition:none!important}}
+
+/* FAQ aligned to the shared content container; no full-viewport left shift. */
+.ot-v2 section.faq{width:100%!important;max-width:none!important;margin:0!important;padding-inline:0!important}
+.ot-v2 section.faq>.wrap{width:min(1240px,100%)!important;max-width:1240px!important;margin-inline:auto!important;padding-inline:32px!important}
+.ot-v2 section.faq .faq-list,.ot-v2 section.faq details{max-width:100%!important}
+@media(max-width:960px){.ot-v2 section.faq>.wrap{padding-inline:24px!important}}
+@media(max-width:600px){.ot-v2 section.faq>.wrap{padding-inline:16px!important}}
+
+/* Event-specific visual semantics; illustrative events, not live measurements. */
+.ot-v2 .mock-line{grid-template-columns:auto 26px minmax(0,1fr)!important;align-items:start;column-gap:10px!important;padding:13px!important;margin-bottom:8px}
+.ot-v2 .mock-line:last-child{margin-bottom:0}
+.ot-v2 .ot-event-icon{display:grid;place-items:center;width:26px;height:26px;flex:none;border-radius:7px;background:#403121;color:#ffd49a}
+.ot-v2 .ot-event-icon svg{width:17px;height:17px}
+.ot-v2 .ot-event-new{background:#163d32;color:#a4ebcf}
+.ot-v2 .ot-event-left{background:#34283b;color:#d9c0f0}
+.ot-v2 .mock-line>div{min-width:0}
+@media(max-width:600px){.ot-v2 .mock-line{grid-template-columns:auto minmax(0,1fr)!important}.ot-v2 .ot-event-icon{display:none}}
+
+/* ForgeFrame release: OTOMOTO event clarity and mobile data readability */
+.ot-v2 .mock-body{display:grid;gap:9px;padding:17px!important}
+.ot-v2 .mock-line{
+  margin:0!important;
+  border-left:3px solid #a98657!important;
+  padding:14px 15px!important;
+  min-height:84px;
+  background:#102437!important;
+}
+.ot-v2 .mock-line:nth-child(2){border-left-color:#3e9c7f!important}
+.ot-v2 .mock-line:nth-child(3){border-left-color:#8a72ad!important}
+.ot-v2 .mock-line strong{line-height:1.45!important;font-size:13px!important}
+.ot-v2 .mock-line small{line-height:1.6!important;font-size:12px!important;max-width:420px}
+.ot-v2 .mock-tag{display:inline-flex;justify-content:center;min-width:57px;text-align:center;letter-spacing:.02em;line-height:1.4}
+.ot-v2 .mock-top{flex-wrap:wrap;gap:6px 18px;line-height:1.5}
+.ot-v2 .example a{display:inline-flex;min-height:36px;align-items:center;text-underline-offset:5px}
+.ot-v2 .example:focus-within{border-color:#7cc9f9!important}
+@media(max-width:600px){
+ .ot-v2 .mock-body{padding:12px!important}
+ .ot-v2 .mock-line{min-height:0!important;padding:13px!important;gap:10px!important}
+ .ot-v2 .mock-line small{font-size:12px!important}
+ .ot-v2 .mock-top{padding:13px 15px!important}
+}

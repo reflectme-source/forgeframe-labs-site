@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#0b1422" name="theme-color"/>
+<meta content="Monitoring publicznych wyników OTOMOTO na Apify: nowe oferty, zmiany cen ofertowych i historia kolejnych skanów." name="description"/>
+<link href="https://forgeframelabs.app/solutions/otomoto-vehicle-monitoring/" rel="canonical"/>
+<link href="../../assets/forgeframe-avatar.png" rel="icon" type="image/png"/>
+<meta content="website" property="og:type"/>
+<meta content="OTOMOTO Price &amp; Inventory Change Monitoring — ForgeFrame Labs" property="og:title"/>
+<meta content="Stop manually comparing public car searches. See new offers, observed price changes and scoped listing removals in structured reports." property="og:description"/>
+<meta content="https://forgeframelabs.app/solutions/otomoto-vehicle-monitoring.html" property="og:url"/>
+<title>Monitoring zmian ofert OTOMOTO — ForgeFrame Labs</title>
+<style>
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0b1422;color:#edf5ff;font-synthesis:none}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-width:320px;line-height:1.55}button,input{font:inherit}
+a{color:#add8fb;text-underline-offset:3px}a:hover{color:#fff}
+a:focus-visible,button:focus-visible{outline:3px solid #9de4ff;outline-offset:3px}
+.wrap{max-width:1150px;padding:0 30px;margin:auto}
+header{background:#0b1727;border-bottom:1px solid #293d53}
+nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#f3f9ff;font-weight:760;font-size:16px}
+.logo img{height:37px;width:37px;border-radius:9px}
+.navlink{display:flex;gap:25px;align-items:center}.navlink a{font-size:13px;font-weight:650;text-decoration:none;color:#bdcfdf}
+.navlink a:last-child{background:#223d58;border:1px solid #537b9d;padding:9px 13px;border-radius:9px;color:#e3f4ff}
+.hero{background:radial-gradient(ellipse 830px 420px at 80% 25%,#1742688a,transparent 75%);padding:76px 0 58px}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);align-items:center;gap:50px}
+.kicker{display:inline-flex;gap:9px;align-items:center;letter-spacing:.11em;font-size:11px;font-weight:820;text-transform:uppercase;color:#99caf2}
+.kicker:before{content:"";background:#70e0b6;border-radius:50%;width:7px;height:7px;box-shadow:0 0 0 4px #70e0b61c}
+h1{font-size:clamp(40px,5.1vw,65px);line-height:1.075;letter-spacing:-.055em;max-width:740px;margin:20px 0;font-weight:790}
+.lead{font-size:clamp(16px,1.6vw,19px);color:#afc5d8;max-width:720px;line-height:1.7}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:11px;font-size:14px;font-weight:770;padding:12px 20px;border:1px solid #557a9b;min-height:46px}
+.btn.primary{background:#c9e7ff;color:#142438;border-color:#c9e7ff}
+.btn.secondary{background:#213951;color:#e7f4ff}
+.btn:hover{filter:brightness(1.08)}
+.trust{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px;color:#b4cadd;font-size:12px}
+.trust span:before{content:"✓ ";font-weight:850;color:#78e0b3}
+.mock{background:#122237;border:1px solid #3c5975;border-radius:19px;overflow:hidden;box-shadow:0 28px 58px #0004}
+.mock-top{padding:14px 20px;display:flex;justify-content:space-between;border-bottom:1px solid #2c4763;color:#a9c6df;font-size:11px;font-weight:730;letter-spacing:.07em}
+.mock-body{padding:22px}
+.mock-line{display:grid;grid-template-columns:auto 1fr;gap:11px;padding:16px 0;border-bottom:1px solid #2d455e}
+.mock-line:last-child{border-bottom:0}.mock-tag{font-size:10px;font-weight:820;border-radius:7px;padding:5px 8px;align-self:start;white-space:nowrap;border:1px solid}
+.price{background:#2c333d;border-color:#82734a;color:#ffe0ad}.new{background:#1a4036;border-color:#49796b;color:#a6e7d0}.left{background:#3b2d3b;border-color:#7b617f;color:#dfc7ef}
+.mock-line strong{font-size:13px;display:block}.mock-line small{font-size:11px;color:#a1bcd1;display:block;margin-top:4px;line-height:1.5}
+section{padding:62px 0}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.11em;color:#93c5f1;font-weight:800}
+h2{font-size:clamp(29px,3.5vw,43px);letter-spacing:-.045em;line-height:1.2;margin:12px 0 16px}
+.section-lead{color:#b1c5d9;font-size:16px;max-width:770px;line-height:1.7}
+.examples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px}
+.example{border:1px solid #395472;background:#15283c;border-radius:16px;padding:25px;display:flex;flex-direction:column}
+.example b{font-size:17px}.example p{color:#afc5d8;font-size:13px;line-height:1.65;flex:1;margin:12px 0 25px}.example a{font-size:13px;font-weight:760;color:#c7e4ff}
+.small{font-size:12px;color:#97b3c9}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:30px}
+.step{border-top:2px solid #446588;padding-top:19px}
+.step span{font-size:11px;font-weight:830;color:#9acaec}.step h3{font-size:16px;margin:12px 0 8px}
+.step p{font-size:13px;line-height:1.65;color:#b2c5d6;margin:0}
+.facts{background:#0e1d2f;border-top:1px solid #293f57;border-bottom:1px solid #293f57}
+.facts-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px}
+.facts h3{font-size:18px;margin:6px 0 13px}.facts p,.facts li{font-size:14px;color:#b6cadb;line-height:1.78}
+.facts ul{padding-left:21px}
+.note{padding:18px 21px;background:#213247;border:1px solid #45617f;border-radius:11px;color:#cbdeec;font-size:13px;margin-top:20px}
+.faq{max-width:920px}
+.faq details{border-bottom:1px solid #2e445e;padding:17px 0}
+.faq summary{font-weight:760;font-size:15px;cursor:pointer}
+.faq p{margin:12px 0 4px;font-size:14px;line-height:1.75;color:#b1c8da}
+.cta{background:linear-gradient(125deg,#172c45,#203d55);border:1px solid #4a7594;padding:33px 36px;border-radius:16px;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.cta h2{font-size:29px;margin:0 0 10px}.cta p{margin:0;color:#b7cedf;max-width:670px}
+footer{border-top:1px solid #263d53;background:#0a1320;padding:28px 0 42px;font-size:12px;color:#91aabd}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:13px}
+footer a{color:#aec7da}
+@media(max-width:960px){.hero-inner{grid-template-columns:1fr}.mock{max-width:670px}.examples{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.facts-grid{grid-template-columns:1fr}.cta{display:block}.cta a{margin-top:22px}}
+@media(max-width:600px){.wrap{padding:0 18px}.hero{padding:54px 0 40px}h1{font-size:clamp(36px,10.5vw,52px)}.navlink a:first-child{display:none}.examples{gap:12px}.steps{grid-template-columns:1fr}section{padding:46px 0}.cta{padding:22px}.mock-body{padding:14px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+<link href="../../assets/product-details.css" rel="stylesheet"/>
+<link href="../../assets/forgeframe-global.css" rel="stylesheet"/><link href="../../assets/otomoto-v2.css" rel="stylesheet"/></head>
+<body>
+<header class="ffg-header"><div class="ffg-inner"><a class="ffg-brand" href="../../"><img alt="" class="ffg-brand-logo" height="38" src="../../assets/forgeframe-avatar.png" width="38"/>ForgeFrame <span class="ffg-brand-blue">Labs</span></a><nav aria-label="Main navigation" class="ffg-nav"><a href="../../">Strona główna</a><a aria-current="page" href="../../products/">Produkty</a><a href="../../developers/">Dla deweloperów</a><a href="../../about/">O nas</a><a href="../../pl/kontakt.html">Kontakt</a><span aria-label="Language" class="ffg-language"><a aria-current="page" class="ffg-locale" href="../../solutions/otomoto-vehicle-monitoring/" lang="pl">PL</a><a class="ffg-locale" href="../../solutions/otomoto-vehicle-monitoring.html" lang="en">EN</a></span></nav></div></header>
+<main class="ot-v2" id="main">
+<section class="hero"><div class="wrap hero-inner">
+<div>
+<div class="kicker">MONITORING RYNKU MOTORYZACYJNEGO</div>
+<h1>Wiedz, co zmieniło się na rynku aut. Bez ręcznego porównywania ofert.</h1>
+<p class="lead">Monitoruj publiczne wyniki wyszukiwania OTOMOTO. Wykrywaj nowe ogłoszenia, zmiany cen ofertowych i oferty, które zniknęły z obserwowanego zestawu. Dla dealerów, zespołów zakupowych i analityków.</p>
+<div class="actions"><a class="btn primary" href="https://apify.com/green_amazement/otomoto-change-intelligence" rel="noopener noreferrer">Uruchom na Apify →</a><a class="btn secondary" href="#examples">Zobacz przykładowe monitory</a></div>
+<div class="trust"><span>Dostępny Actor Apify</span><span>Historia kolejnych skanów</span><span>Wyniki do automatyzacji</span></div><p class="small" style="margin-top:20px">Dla polskich dealerów: <a href="../../integrations/otomoto-dealer-api.html" lang="pl">monitoring cen i integracja API dla CRM ↗</a></p>
+</div>
+<div aria-label="Illustrative example of monitored change types" class="mock">
+<div class="mock-top"><span>MONITOR RYNKU</span><span>PRZYKŁAD ILUSTRACYJNY</span></div>
+<div class="mock-body">
+<div class="mock-line"><span class="mock-tag price">CENA</span><span class="ot-event-icon ot-event-price"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17h16M5 14l5-5 4 3 5-6"/><path d="M15 6h4v4"/></svg></span><div><strong>BMW Seria 3 — zmiana ceny ofertowej</strong><small>Porównanie aktualnej i poprzednio zaobserwowanej ceny tego samego ogłoszenia.</small></div></div>
+<div class="mock-line"><span class="mock-tag new">NOWE</span><span class="ot-event-icon ot-event-new"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg></span><div><strong>Audi A4 — nowe ogłoszenie w wynikach</strong><small>Oferta pojawiła się w obserwowanych wynikach publicznego wyszukiwania.</small></div></div>
+<div class="mock-line"><span class="mock-tag left">BRAK</span><span class="ot-event-icon ot-event-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M8 12h8"/></svg></span><div><strong>Škoda Octavia — poza obserwowanymi wynikami</strong><small>Oferta zniknęła z wyników. Nie oznacza to potwierdzonej sprzedaży.</small></div></div>
+</div></div>
+</div></section>
+<section aria-label="Product facts" class="ff-detail"><div class="ff-detail__inner"><div class="ff-detail__head"><div><p class="ff-detail__eyebrow">MONITORING ZMIAN / DOSTĘPNY ACTOR</p><h2 class="ff-detail__title">Zacznij od skanu bazowego. Kolejne pokażą zaobserwowane zmiany.</h2></div><span class="ff-detail__state">Dostępne na Apify</span></div><div class="ff-detail__grid"><div class="ff-detail__cell"><span class="ff-detail__label">Dla kogo</span><p class="ff-detail__body">Dealerzy, analitycy i zespoły monitorujące wybrane publiczne wyniki OTOMOTO.</p></div><div class="ff-detail__cell"><span class="ff-detail__label">Jak działa</span><p class="ff-detail__body">Pierwszy skan zapisuje stan bazowy. Kolejne wykrywają nowe ogłoszenia, zmiany cen i zmiany zestawu wyników.</p></div><div class="ff-detail__cell"><span class="ff-detail__label">Koszt i dostęp</span><p class="ff-detail__body"><strong>Rozliczenie za użycie przez Apify.</strong> Aktualna cena i limit kosztu są widoczne na Apify przed uruchomieniem; ta strona nie pobiera opłat.</p></div></div><div class="ff-detail__actions"><a class="ff-detail__action ff-detail__action--primary" href="https://apify.com/green_amazement/otomoto-change-intelligence">Otwórz Actor na Apify <span aria-hidden="true">↗</span></a><a class="ff-detail__action" href="../../guides/otomoto-price-monitoring.html">Przeczytaj przewodnik <span aria-hidden="true">↗</span></a></div><p class="ff-detail__fine">Niezależne narzędzie, nieoficjalna usługa OTOMOTO. Zniknięcie ogłoszenia nie potwierdza sprzedaży. Użytkownik odpowiada za przestrzeganie warunków źródła.</p></div></section>
+<section id="examples"><div class="wrap">
+<div class="eyebrow">GOTOWE PRZYKŁADY</div>
+<h2>Zacznij od wybranego segmentu rynku.</h2>
+<p class="section-lead">Wybierz istniejący przykład zadania Apify. Każdy korzysta z publicznego wyszukiwania OTOMOTO; filtry można zmienić.</p>
+<div class="examples">
+<article class="example"><b>BMW 3 Series</b><p>Monitoruj ceny ofertowe i nowe ogłoszenia w wybranym segmencie modelu.</p><a href="https://apify.com/green_amazement/otomoto-change-intelligence/examples/bmw-3-series-price-changes" rel="noopener noreferrer">Otwórz monitor BMW →</a></article>
+<article class="example"><b>Audi A4</b><p>Porównuj nowe oferty i zmiany cen konkurencyjnych ogłoszeń w kolejnych skanach.</p><a href="https://apify.com/green_amazement/otomoto-change-intelligence/examples/audi-a4-market-price-watch" rel="noopener noreferrer">Otwórz monitor Audi →</a></article>
+<article class="example"><b>Škoda Octavia</b><p>Sprawdź, które ogłoszenia pojawiły się od poprzedniego udanego skanu.</p><a href="https://apify.com/green_amazement/otomoto-change-intelligence/examples/skoda-octavia-new-listing-monitor" rel="noopener noreferrer">Otwórz monitor Octavii →</a></article>
+</div>
+<p class="small">To zapisane przykłady na Apify. Samo otwarcie nie uruchamia skanowania.</p>
+</div></section>
+<section id="how-it-works"><div class="wrap">
+<div class="eyebrow">PROSTY PROCES</div>
+<h2>Od zapisanych filtrów do historii zmian.</h2>
+<div class="steps">
+<div class="step"><span>01 / WYBÓR</span><h3>Użyj publicznego URL wyszukiwania</h3><p>Wybierz przykład albo wklej URL publicznych wyników. Actor nie korzysta z prywatnych kont sprzedawców.</p></div>
+<div class="step"><span>02 / STAN BAZOWY</span><h3>Uruchom pierwszy skan</h3><p>Pierwszy udany skan zapisuje stan bazowy. Opcjonalna migawka pokazuje bieżące oferty.</p></div>
+<div class="step"><span>03 / POWTÓRZENIE</span><h3>Obserwuj ten sam segment</h3><p>Powtarzaj skan z tym samym kontem Apify, URL i kluczem migawki. W razie potrzeby ustaw harmonogram.</p></div>
+<div class="step"><span>04 / WYNIKI</span><h3>Przeglądaj i integruj zmiany</h3><p>Przeglądaj nowe oferty i zmiany cen w danych wynikowych. Podłącz własną automatyzację.</p></div>
+</div>
+</div></section>
+<section class="facts"><div class="wrap facts-grid">
+<div><div class="eyebrow">KONKRETNE ZASTOSOWANIE</div><h2>Monitoring zmian, nie pełny scraper ogłoszeń.</h2><p>Narzędzie zapisuje ograniczoną migawkę publicznych wyników i porównuje ją z poprzednią udaną. Służy do monitorowania segmentów, nie pobierania wszystkich danych z każdego ogłoszenia.</p><ul><li><strong>PRICE_CHANGE:</strong> zaobserwowana zmiana ceny ofertowej lub waluty</li><li><strong>NEW_LISTING:</strong> oferta pojawiła się w obserwowanych wynikach</li><li><strong>REMOVED_LISTING:</strong> oferta zniknęła z obserwowanych wyników</li></ul></div>
+<div><div class="eyebrow">KONTROLA KOSZTÓW</div><h2>Sprawdź koszt przed uruchomieniem.</h2><p>Actor korzysta z rozliczenia pay-per-event. Publiczna oferta wskazuje obecnie cenę od <strong>10 USD za 1000 skanów źródłowych</strong>, z możliwymi dodatkowymi opłatami za zdarzenia. Koszt zależy od liczby stron i zdarzeń.</p><p>Przed uruchomieniem sprawdź aktualny cennik i maksymalny limit kosztu na Apify. Pierwszy skan tworzy stan bazowy i może nie zawierać zmian historycznych.</p><div class="note">Actor monitoruje publiczne wyniki OTOMOTO. Nie gwarantuje pełnego pokrycia rynku, dostępności aut ani natychmiastowych powiadomień. Alerty wymagają konfiguracji harmonogramu i integracji.</div></div>
+</div></section>
+<section class="faq"><div class="wrap">
+<div class="eyebrow">PYTANIA I ODPOWIEDZI</div><h2>Co warto wiedzieć przed pierwszym skanem.</h2>
+<details><summary>Dlaczego nie ma jeszcze zmian cen?</summary><p>Pierwszy udany skan zapisuje stan bazowy. Porównanie wymaga kolejnego skanu z tym samym URL i kluczem. Włącz migawkę bieżącą, aby zobaczyć aktualne oferty.</p></details>
+<details><summary>Czy zniknięcie oznacza sprzedaż?</summary><p>Nie. Oferta mogła wypaść poza filtry, limit stron albo przestać być widoczna z innych przyczyn.</p></details>
+<details><summary>Czy mogę monitorować inny region lub model?</summary><p>Tak. Ustaw filtry na publicznej stronie OTOMOTO i użyj otrzymanego URL. Zachowaj stały klucz migawki.</p></details>
+<details><summary>Czy Actor automatycznie wysyła e-maile?</summary><p>Actor zwraca zdarzenia w danych wynikowych. Alerty wymagają Apify Schedules i własnej integracji powiadomień. Nie ma osobnej subskrypcji e-mail.</p></details>
+<details><summary>Czy to oficjalna usługa OTOMOTO?</summary><p>Nie. ForgeFrame Labs udostępnia niezależne narzędzie na Apify. Nie jest ono oficjalnym API OTOMOTO ani usługą powiązaną z OTOMOTO.</p></details>
+</div></section>
+<section><div class="wrap"><div class="cta"><div><h2>Przestań ręcznie porównywać te same oferty.</h2><p>Wybierz przykładowe zadanie lub otwórz Actor na Apify, aby rozpocząć monitoring wybranego segmentu.</p></div><a class="btn primary" href="https://apify.com/green_amazement/otomoto-change-intelligence" rel="noopener noreferrer">Otwórz Actor →</a></div></div></section>
+</main>
+<footer class="ffg-footer"><div class="ffg-footer-content"><div><div class="ffg-footer-brand"><img alt="" height="29" src="../../assets/forgeframe-avatar.png" width="29"/>ForgeFrame <span>Labs</span></div><div class="ffg-footer-tagline">Technology · People · Real Impact</div></div><nav class="ffg-footer-links"><a href="../../">Strona główna</a><a href="../../products/">Produkty</a><a href="../../developers/">Dla deweloperów</a><a href="../../about/">O nas</a><a href="../../pl/kontakt.html">Kontakt</a></nav><div class="ffg-footer-meta">© 2026 ForgeFrame Labs<br/><a href="../../pl/prywatnosc.html">Prywatność</a><a href="../../pl/regulamin.html">Regulamin</a></div></div></footer>
+<script defer="" src="../../assets/direct-contact.js"></script><script defer="" src="../../assets/forgeframe-shell.js"></script></body>
+</html>

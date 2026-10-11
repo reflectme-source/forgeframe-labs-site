@@ -1,0 +1,115 @@
+/* OriginDuty — ForgeFrame product design v2; preserve feed and purchase gating */
+body:has(.od-v2){background:#080e15!important;color:#ecf4fc!important}
+.od-v2{background:#080e15!important;color:#edf5fd!important}
+.od-v2 .od-shell{width:min(1260px,calc(100% - 80px))!important;max-width:1260px!important}
+.od-v2 .od-hero{padding:82px 0 83px!important;background:radial-gradient(ellipse 62% 88% at 76% 38%,#123c5780,transparent 79%),#080e15!important;border-bottom:1px solid #284257!important}
+.od-v2 .od-hero-grid{display:grid!important;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)!important;gap:clamp(35px,5vw,75px)!important;align-items:center!important}
+.od-v2 .od-eyebrow,.od-v2 .od-kicker{color:#9bc0d7!important;font-size:11px!important;font-weight:750!important;letter-spacing:.15em!important}
+.od-v2 .od-hero h1{font-family:Inter,ui-sans-serif,system-ui,sans-serif!important;font-size:clamp(43px,4.7vw,72px)!important;line-height:1.07!important;letter-spacing:-.065em!important;font-weight:780!important;color:#f1f6fa!important;margin:21px 0 24px!important}
+.od-v2 .od-hero h1 span{color:#bad2e9!important}
+.od-v2 .od-lead{font-size:16px!important;line-height:1.76!important;color:#b6c8d6!important;max-width:565px!important}
+.od-v2 .od-actions{display:flex!important;flex-wrap:wrap!important;gap:12px!important;margin-top:27px!important}
+.od-v2 .od-button{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:45px!important;padding:11px 17px!important;border-radius:8px!important;font:700 12px Inter,system-ui,sans-serif!important;text-decoration:none!important;transition:background .2s,border-color .2s,transform .2s}
+.od-v2 .od-button--primary{background:#138bf6!important;border:1px solid #349df9!important;color:white!important}
+.od-v2 .od-button--secondary{background:#13212e!important;border:1px solid #39536a!important;color:#e4f2fc!important}
+.od-v2 .od-button:hover{transform:translateY(-2px)}
+.od-v2 .od-disclaimer{font-size:11px!important;line-height:1.6!important;color:#8daac0!important;margin-top:17px!important}
+.od-v2 .od-event{border:1px solid #3b627e!important;border-radius:13px!important;background:linear-gradient(145deg,#142a3a,#0a151f 80%)!important;box-shadow:0 25px 70px #0008,0 0 70px #15689c1c!important;padding:0!important;overflow:hidden}
+.od-v2 .od-event-head{display:flex!important;justify-content:space-between!important;align-items:center!important;gap:10px!important;padding:17px 22px!important;background:#13273a!important;border-bottom:1px solid #2b465e!important;color:#a8c9e0!important;font:11px ui-monospace,monospace!important}
+.od-v2 .od-source-pill{border:1px solid #277f69!important;border-radius:100px!important;background:#103b31!important;color:#a6eed3!important;padding:7px 10px!important;font:700 10px Inter,system-ui,sans-serif!important}
+.od-v2 .od-event>h2{font:760 25px Inter,system-ui,sans-serif!important;letter-spacing:-.04em!important;color:#f3f8fc!important;margin:24px 23px 7px!important}
+.od-v2 .od-event>p{color:#88b9d9!important;font-size:11px!important;letter-spacing:.09em!important;margin:0 23px 18px!important}
+.od-v2 .od-event-list{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;margin:0 22px 20px!important}
+.od-v2 .od-event-list>div{padding:15px!important;background:#0c1a27!important;border:1px solid #29455b!important;border-radius:8px!important;min-width:0}
+.od-v2 .od-event-list small{display:block!important;color:#8daec6!important;font-size:10px!important;margin-bottom:7px!important}
+.od-v2 .od-event-list strong{display:block!important;color:#e2eff9!important;font-size:13px!important;line-height:1.4!important}
+.od-v2 .od-event>a{display:inline-flex!important;color:#9ad6ff!important;font-size:12px!important;font-weight:700!important;margin:0 22px 17px!important;text-decoration:none!important}
+.od-v2 .od-event-note{padding:13px 22px!important;border-top:1px solid #2b4357!important;color:#93acbf!important;background:#0b1824!important;font-size:11px!important;line-height:1.6!important}
+.od-v2 .ff-detail{background:#0d1823!important;border-block:1px solid #2c4356!important;color:#ecf5fc!important;padding:65px 0!important}
+.od-v2 .ff-detail__inner{width:min(1200px,calc(100% - 80px))!important;max-width:1200px!important;margin:auto!important;padding:0!important}
+.od-v2 .ff-detail__title{font:760 clamp(29px,3.2vw,46px)/1.13 Inter,system-ui,sans-serif!important;letter-spacing:-.05em!important;color:#f0f7fc!important}
+.od-v2 .ff-detail__eyebrow,.od-v2 .ff-detail__label{color:#8ebddc!important}
+.od-v2 .ff-detail__state{background:#14334a!important;border:1px solid #386481!important;border-radius:100px!important;color:#c2e2f5!important}
+.od-v2 .ff-detail__grid{border-color:#30475b!important}
+.od-v2 .ff-detail__cell{border-color:#30475b!important}
+.od-v2 .ff-detail__body,.od-v2 .ff-detail__fine{color:#b5c7d5!important}
+.od-v2 .ff-detail__action{border:1px solid #39546c!important;border-radius:8px!important;background:#112437!important;color:#d3ecfc!important}
+.od-v2 .od-section{padding:79px 0!important;border-bottom:1px solid #253949!important;background:#080e15!important}
+.od-v2 .od-section--dark,.od-v2 .od-section--slate{background:#0d1721!important}
+.od-v2 .od-section-head{gap:40px!important;align-items:start!important}
+.od-v2 .od-section-head h2{font:760 clamp(32px,3.7vw,51px)/1.13 Inter,system-ui,sans-serif!important;letter-spacing:-.057em!important;color:#f1f7fb!important}
+.od-v2 .od-section-head h2 span{color:#bad0e6!important}
+.od-v2 .od-section-head>p{color:#afc0ce!important;font-size:14px!important;line-height:1.75!important}
+.od-v2 .od-card,.od-v2 .od-case,.od-v2 .od-step,.od-v2 .od-pack{background:linear-gradient(145deg,#111e2a,#0b141e)!important;border:1px solid #30465a!important;border-radius:11px!important;color:#eaf3fa!important;box-shadow:none!important}
+.od-v2 .od-card{padding:25px!important;transition:transform .2s,border-color .2s}
+.od-v2 .od-card:hover{transform:translateY(-3px);border-color:#4b7798!important}
+.od-v2 .od-card-icon{display:grid!important;place-items:center!important;width:51px!important;height:51px!important;border-radius:10px!important;background:#173e60!important;border:1px solid #396d91!important;color:#a4ddff!important}
+.od-v2 .od-card:nth-child(2) .od-card-icon{background:#154939!important;border-color:#32856b!important;color:#a9efd0!important}
+.od-v2 .od-card:nth-child(3) .od-card-icon{background:#322b60!important;border-color:#63549b!important;color:#d6c9ff!important}
+.od-v2 .od-card h3,.od-v2 .od-case h3,.od-v2 .od-step h3,.od-v2 .od-pack h3{color:#f2f7fb!important;font-family:Inter,system-ui,sans-serif!important;letter-spacing:-.035em!important}
+.od-v2 .od-card p,.od-v2 .od-case p,.od-v2 .od-step p,.od-v2 .od-pack p,.od-v2 .od-pack li{color:#b2c3d1!important;line-height:1.7!important}
+.od-v2 .od-card small,.od-v2 .od-pack-name{color:#94c5e7!important}
+.od-v2 .od-pack{padding:31px!important}
+.od-v2 .od-pack--featured{border-color:#3482b9!important;box-shadow:inset 0 1px #408ac1!important}
+.od-v2 .od-price{color:#f1f7fc!important;font-weight:800!important}
+.od-v2 .od-price small{color:#9fb5c8!important}
+.od-v2 .od-pricing-note{color:#9aafc1!important}
+.od-v2 #faq details{border-color:#314657!important;background:#0e1a25!important;color:#edf6fd!important}
+.od-v2 #faq summary{color:#ecf4fb!important}
+.od-v2 #faq details p{color:#b1c4d3!important}
+.od-v2 a:focus-visible,.od-v2 button:focus-visible{outline:2px solid #9ad7ff!important;outline-offset:3px}
+@media(max-width:1100px){.od-v2 .od-shell,.od-v2 .ff-detail__inner{width:calc(100% - 48px)!important}.od-v2 .od-hero-grid{grid-template-columns:1fr!important}.od-v2 .od-event{max-width:760px}}
+@media(max-width:650px){.od-v2 .od-shell,.od-v2 .ff-detail__inner{width:calc(100% - 32px)!important}.od-v2 .od-hero{padding:55px 0!important}.od-v2 .od-hero h1{font-size:clamp(38px,10vw,52px)!important}.od-v2 .od-lead{font-size:15px!important}.od-v2 .od-event-head{padding:13px!important;font-size:9px!important}.od-v2 .od-event-list{margin-inline:12px!important}.od-v2 .od-event-list>div{padding:11px!important}.od-v2 .od-section{padding:57px 0!important}.od-v2 .od-pack{padding:22px!important}}
+@media(prefers-reduced-motion:reduce){.od-v2 .od-card,.od-v2 .od-button{transition:none!important}.od-v2 .od-card:hover,.od-v2 .od-button:hover{transform:none!important}}
+
+/* OriginDuty conversion and reading refinements */
+.od-v2 [hidden]{display:none!important}
+.od-v2 .od-steps{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:17px!important}
+.od-v2 .od-step{position:relative!important;min-height:210px!important;padding:27px!important;border:1px solid #35536a!important;border-radius:11px!important;background:linear-gradient(145deg,#122436,#0c1722)!important}
+.od-v2 .od-step-number{display:grid!important;place-items:center!important;width:43px!important;height:43px!important;border-radius:9px!important;background:#16476a!important;border:1px solid #39759d!important;color:#b6e4ff!important;font:780 16px Inter,system-ui,sans-serif!important;letter-spacing:0!important;margin-bottom:20px!important}
+.od-v2 .od-step h3{font-size:19px!important;line-height:1.35!important;margin:0 0 12px!important}
+.od-v2 .od-step p{font-size:13px!important;line-height:1.7!important;margin:0!important}
+.od-v2 .od-pack .od-button{margin-top:20px!important;width:100%!important}
+.od-v2 .od-pack .od-price{display:flex!important;align-items:baseline!important;gap:9px!important;font-size:clamp(42px,4.3vw,61px)!important;line-height:1.2!important;letter-spacing:-.065em!important;margin:22px 0!important}
+.od-v2 .od-pack .od-price small{font-size:14px!important;letter-spacing:0!important;font-weight:500!important}
+.od-v2 .od-faq{display:grid!important;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr)!important;gap:clamp(35px,6vw,90px)!important}
+.od-v2 .od-faq>div>h2{font:760 clamp(34px,3.6vw,51px)/1.12 Inter,system-ui,sans-serif!important;letter-spacing:-.06em!important;color:#f1f7fc!important;margin:18px 0!important;max-width:430px!important}
+.od-v2 .od-faq-list{display:flex!important;flex-direction:column!important;gap:10px!important}
+.od-v2 .od-faq-list details{border:1px solid #344d60!important;background:#101e2a!important;border-radius:9px!important;padding:0!important;overflow:hidden}
+.od-v2 .od-faq-list summary{list-style:none!important;display:flex!important;justify-content:space-between!important;align-items:center!important;gap:15px!important;padding:20px 22px!important;color:#edf6fc!important;font-size:14px!important;font-weight:680!important;cursor:pointer!important}
+.od-v2 .od-faq-list summary::-webkit-details-marker{display:none}
+.od-v2 .od-faq-list summary:after{content:"+";display:grid;place-items:center;flex:0 0 25px;width:25px;height:25px;border:1px solid #436783;border-radius:7px;color:#a9d7f5;font-size:20px;font-weight:400}
+.od-v2 .od-faq-list details[open] summary:after{content:"−"}
+.od-v2 .od-faq-list details p{padding:0 22px 21px!important;margin:0!important;font-size:13px!important;line-height:1.75!important;color:#b2c7d6!important}
+@media(max-width:1000px){.od-v2 .od-faq{grid-template-columns:1fr!important}.od-v2 .od-steps{grid-template-columns:1fr!important}.od-v2 .od-step{min-height:0!important}}
+
+/* Purchase-first layout: disabled purchase is explicit until trusted backend enables it */
+.od-v2 .od-pack .od-buy-disabled{background:#1b3850!important;border:1px solid #42627b!important;color:#b9d1e2!important;cursor:not-allowed!important;opacity:.76}
+.od-v2 .od-pack .od-buy-disabled:hover{transform:none!important}
+.od-v2 .od-pack .od-buy-helper{display:block!important;text-align:center!important;font-size:12px!important;font-weight:600!important;color:#91cef5!important;text-decoration:underline!important;text-underline-offset:4px!important;margin:13px 0 0!important}
+.od-v2 .od-pack .od-buy-helper:hover{color:#d6f0ff!important}
+
+/* Active plan selection; payment is still gated by backend readiness */
+.od-v2 .od-pack .od-plan-start{background:#1688ec!important;border:1px solid #3aa3fa!important;color:#fff!important;cursor:pointer!important;opacity:1!important}
+.od-v2 .od-pack .od-plan-start:hover{background:#0875d2!important;transform:translateY(-1px)!important}
+
+/* ForgeFrame release: OriginDuty case evidence and scoped plan clarity */
+.od-v2 .od-sample{
+  display:flex;flex-direction:column;min-width:0;gap:0;
+  background:#102131!important;border:1px solid #36546b!important;
+  color:#eaf5fd!important;border-radius:11px!important;
+  padding:27px!important;box-shadow:none!important;
+}
+.od-v2 .od-sample-head{color:#8fc9ed!important;font-size:11px!important;line-height:1.5!important;flex-wrap:wrap}
+.od-v2 .od-sample h3{font:740 21px/1.35 Inter,system-ui,sans-serif!important;letter-spacing:-.04em!important;color:#f2f8ff!important;margin:16px 0 10px!important}
+.od-v2 .od-sample p{color:#b9cdde!important;line-height:1.75!important;font-size:13px!important;margin:0 0 22px!important}
+.od-v2 .od-sample a{color:#8bd2ff!important;display:inline-flex;align-items:center;align-self:flex-start;min-height:40px;font-size:12px!important;margin-top:auto;text-decoration:underline!important;text-underline-offset:5px}
+.od-v2 .od-sample:focus-within{border-color:#7bcafa!important}
+.od-v2 .od-pack .od-plan-start{min-height:48px!important;font-size:13px!important;line-height:1.4!important;text-align:center!important;white-space:normal!important}
+.od-v2 .od-pack .od-buy-helper{min-height:35px;display:inline-flex!important;justify-content:center;align-items:center;margin:9px 0 0!important}
+.od-v2 .od-source-pill{white-space:normal!important;text-align:center!important}
+@media(max-width:650px){
+ .od-v2 .od-samples{grid-template-columns:1fr!important}
+ .od-v2 .od-sample{padding:23px!important}
+ .od-v2 .od-event-head{flex-wrap:wrap!important}
+}

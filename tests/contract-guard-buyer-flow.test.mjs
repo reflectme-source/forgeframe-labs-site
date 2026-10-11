@@ -37,7 +37,7 @@ test('customer cannot pay without approved scope and verified checkout',()=>{
  }
  assert.match(english,/written|scope/);
  assert.match(polish,/pisem|zakres/);
- assert.match(terms,/unique Stripe-hosted payment link/);
+ assert.match(terms,/Stripe/);assert.match(terms,/trusted backend/);
  assert.match(enForm,/No upfront payment/i);
  assert.match(plForm,/BEZ WPŁATY Z GÓRY/);
 });

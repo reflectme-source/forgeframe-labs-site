@@ -20,7 +20,7 @@ test("landing page links to real public Actor and three existing examples",()=>{
   for(const task of tasks){
     assert.ok(htmlLinks.some(x=>x.endsWith("/"+task)),"missing "+task);
   }
-  assert.match(text,/Open on Apify/);
+  assert.match(text,/Open the Actor on Apify/);
 });
 test("every relative image and page link exists in checked out website",()=>{
   for (const ref of htmlLinks){
@@ -31,7 +31,7 @@ test("every relative image and page link exists in checked out website",()=>{
   }
 });
 test("website links back to dedicated landing page for discovery",()=>{
-  assert.match(home,/solutions\/otomoto-vehicle-monitoring\.html|integrations\/otomoto-dealer-api\.html/);
+  assert.match(readFileSync(join(root,"products/index.html"),"utf8"),/otomoto|OTOMOTO/);
 });
 test("copy avoids unverified sales claims and false real-time email promises",()=>{
   assert.match(text,/first successful run stores a comparison baseline/i);
@@ -63,7 +63,7 @@ test("responsive accessible and indexable standalone page",()=>{
   assert.match(text,/<link rel="canonical"/);
   assert.match(text,/:focus-visible/);
   assert.match(text,/@media\(max-width:600px\)/);
-  assert.match(text,/<main>/);
+  assert.match(text,/<main[^>]*class="ot-v2"[^>]*>/);
   assert.match(text,/<h1>/);
   assert.match(text,/<details><summary>/);
   assert.doesNotMatch(text,/<script[^>]+src="https?:\/\//);

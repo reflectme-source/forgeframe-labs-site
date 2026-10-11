@@ -1,0 +1,105 @@
+/* Public Evidence Desk — source-driven dark data workspace */
+.od-evidence-v2{background:#080f16!important;color:#eaf4fb!important}
+.od-evidence-v2 .od-shell{width:min(1260px,calc(100% - 64px))!important;max-width:1260px!important}
+.od-evidence-v2 .od-evidence-hero{background:radial-gradient(ellipse 70% 90% at 80% 15%,#1642696b,transparent 79%),#090f17!important;border-bottom:1px solid #2a4255!important;padding:69px 0 61px!important}
+.od-evidence-v2 .od-breadcrumb{color:#8fbddc!important;font-size:11px!important;letter-spacing:.1em!important}
+.od-evidence-v2 .od-breadcrumb a{color:#b5dfff!important}
+.od-evidence-v2 .od-evidence-hero h1{font:780 clamp(43px,4.9vw,70px)/1.07 Inter,system-ui,sans-serif!important;letter-spacing:-.065em!important;color:#f3f7fb!important;margin:21px 0!important}
+.od-evidence-v2 .od-evidence-hero h1 span{color:#bad2e9!important}
+.od-evidence-v2 .od-lead{font-size:15px!important;line-height:1.75!important;color:#b1c6d5!important;max-width:780px!important}
+.od-evidence-v2 .od-actions{display:flex!important;gap:12px!important;flex-wrap:wrap!important;margin-top:24px!important}
+.od-evidence-v2 .od-button{border-radius:8px!important;background:#12283a!important;border:1px solid #355c79!important;color:#c7e8ff!important;font:700 12px Inter,system-ui,sans-serif!important;padding:11px 15px!important;min-height:42px!important}
+.od-evidence-v2 .od-section{background:#0c1720!important;padding:64px 0 85px!important}
+.od-evidence-v2 #od-updated{color:#94b7d0!important;font-size:12px!important}
+.od-evidence-v2 .od-metrics{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:15px!important;margin-bottom:18px!important}
+.od-evidence-v2 .od-metric{border:1px solid #36516a!important;border-radius:11px!important;background:linear-gradient(135deg,#12283a,#0b1722)!important;padding:23px 25px!important;min-height:146px!important}
+.od-evidence-v2 .od-metric span{color:#9ac7e5!important;font-size:12px!important;font-weight:700!important}
+.od-evidence-v2 .od-metric strong{font:780 clamp(36px,3.8vw,55px)/1.15 Inter,system-ui,sans-serif!important;letter-spacing:-.055em!important;color:#f0f8ff!important;display:block!important;margin:10px 0 5px!important}
+.od-evidence-v2 .od-metric small{font-size:11px!important;color:#93adbf!important}
+.od-evidence-v2 .od-evidence-note{background:#122335!important;border:1px solid #38556c!important;border-left:3px solid #48a5e5!important;border-radius:8px!important;color:#bcd0de!important;font-size:12px!important;line-height:1.75!important;padding:17px 19px!important;margin-bottom:23px!important}
+.od-evidence-v2 .od-evidence-layout{display:grid!important;grid-template-columns:minmax(240px,285px) minmax(0,1fr)!important;gap:22px!important;align-items:start!important}
+.od-evidence-v2 .od-filter-box{background:#101e2b!important;border:1px solid #344d62!important;border-radius:11px!important;padding:24px!important;position:sticky;top:94px}
+.od-evidence-v2 .od-filter-box h2{color:#f0f6fb!important;font:750 19px Inter,system-ui,sans-serif!important;letter-spacing:-.04em!important;margin:0 0 19px!important}
+.od-evidence-v2 .od-filter-box label{display:block!important;color:#acc8da!important;font-size:11px!important;font-weight:650!important;margin:16px 0 8px!important}
+.od-evidence-v2 .od-filter-box input,.od-evidence-v2 .od-filter-box select{background:#0b1721!important;color:#e7f2fc!important;border:1px solid #38566c!important;border-radius:7px!important;min-height:42px!important;padding:9px 12px!important;width:100%!important}
+.od-evidence-v2 #od-clear{margin-top:18px!important;border:1px solid #3c5c73!important;background:#142a3b!important;border-radius:7px!important;color:#bfe3fb!important;padding:10px 13px!important}
+.od-evidence-v2 .od-evidence-layout h2{color:#edf5fc!important;font-family:Inter,system-ui,sans-serif!important;letter-spacing:-.04em!important}
+.od-evidence-v2 .od-evidence-output{min-width:0!important}
+.od-evidence-v2 .od-evidence-output>*,.od-evidence-v2 .od-record{background:#101d29!important;border:1px solid #314b5e!important;border-radius:10px!important;color:#d9e8f4!important}
+.od-evidence-v2 a:focus-visible,.od-evidence-v2 button:focus-visible,.od-evidence-v2 input:focus-visible,.od-evidence-v2 select:focus-visible{outline:2px solid #a2ddff!important;outline-offset:3px}
+@media(max-width:900px){.od-evidence-v2 .od-evidence-layout{grid-template-columns:1fr!important}.od-evidence-v2 .od-filter-box{position:static}.od-evidence-v2 .od-metrics{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media(max-width:650px){.od-evidence-v2 .od-shell{width:calc(100% - 32px)!important}.od-evidence-v2 .od-evidence-hero{padding:50px 0!important}.od-evidence-v2 .od-evidence-hero h1{font-size:clamp(37px,9vw,50px)!important}.od-evidence-v2 .od-metrics{grid-template-columns:1fr!important}.od-evidence-v2 .od-metric{min-height:0!important}.od-evidence-v2 .od-section{padding:48px 0!important}}
+
+/* ForgeFrame release: public evidence status empty results and filter ergonomics */
+.od-evidence-v2 .od-document{
+ background:#112537!important;border:1px solid #35576e!important;
+ color:#edf7ff!important;border-radius:11px!important;
+ padding:23px!important;
+}
+.od-evidence-v2 .od-document .od-document-top{color:#a6cde4!important;line-height:1.5}
+.od-evidence-v2 .od-document .od-tag{background:#16435c!important;color:#c6ebff!important;border:1px solid #306a8d;border-radius:6px!important}
+.od-evidence-v2 .od-document h3{color:#f1f8ff!important;line-height:1.4!important}
+.od-evidence-v2 .od-document p{color:#b6cede!important;line-height:1.75!important}
+.od-evidence-v2 .od-document-bottom{border-color:#2f5269!important}
+.od-evidence-v2 .od-document-bottom a{display:inline-flex;align-items:center;min-height:38px;color:#8fd5ff!important;text-decoration:underline!important;text-underline-offset:4px}
+.od-evidence-v2 .od-code-list{display:flex;flex-wrap:wrap;gap:7px;max-width:100%}
+.od-evidence-v2 .od-code-list code{font-size:12px;color:#c3e9ff!important;background:#132e43!important;border:1px solid #35617e;border-radius:5px;padding:5px 8px}
+.od-evidence-v2 .od-empty{
+ display:flex;justify-content:center;align-items:center;text-align:center;
+ min-height:164px;padding:35px 28px!important;line-height:1.75!important;
+ background:#101f2d!important;border:1px dashed #41627b!important;
+ color:#b6d0e3!important;border-radius:11px!important;
+}
+.od-evidence-v2 #od-stat-feed{font-size:clamp(26px,3vw,44px)!important;overflow-wrap:anywhere;letter-spacing:-.035em!important}
+.od-evidence-v2 #od-updated{color:#aacbdd!important;line-height:1.6}
+.od-evidence-v2 .od-filter-box{scroll-margin-top:100px}
+.od-evidence-v2 .od-filter-box input,.od-evidence-v2 .od-filter-box select{font-size:16px!important}
+.od-evidence-v2 #od-clear{min-height:43px;display:inline-flex;align-items:center;justify-content:center;width:100%;font-size:13px!important;cursor:pointer}
+.od-evidence-v2 #od-clear:hover{background:#1a3b53!important}
+.od-evidence-v2 #od-refresh:disabled{opacity:.55;cursor:wait}
+@media(max-width:650px){
+ .od-evidence-v2 .od-document{padding:18px!important}
+ .od-evidence-v2 .od-evidence-layout{gap:24px!important}
+ .od-evidence-v2 .od-empty{min-height:135px}
+}
+
+
+/* Compact read-first metrics on phones; preserve status visibility and hierarchy. */
+.od-evidence-v2 .od-evidence-bottom{
+  color:#a9c5d8!important;
+  font-size:12px!important;
+  line-height:1.75!important;
+}
+.od-evidence-v2 .od-evidence-bottom a{color:#95d5ff!important;text-underline-offset:4px}
+@media(max-width:650px){
+  .od-evidence-v2 .od-metrics{grid-template-columns:1fr!important;gap:9px!important}
+  .od-evidence-v2 .od-metric{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    grid-template-rows:auto auto!important;
+    align-items:center!important;
+    column-gap:14px!important;
+    row-gap:5px!important;
+    min-height:80px!important;
+    padding:15px 17px!important;
+  }
+  .od-evidence-v2 .od-metric>span{
+    grid-column:1!important;grid-row:1!important;
+    font-size:12px!important;
+  }
+  .od-evidence-v2 .od-metric>small{
+    grid-column:1!important;grid-row:2!important;
+    font-size:11px!important;
+    overflow-wrap:anywhere;
+  }
+  .od-evidence-v2 .od-metric>strong{
+    grid-column:2!important;grid-row:1 / span 2!important;
+    justify-self:end!important;
+    align-self:center!important;
+    margin:0!important;
+    font-size:clamp(20px,7vw,28px)!important;
+    max-width:125px;
+    line-height:1.2!important;
+    text-align:right;
+  }
+}

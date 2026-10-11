@@ -1,0 +1,27 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import {readFileSync} from "node:fs";
+const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
+test("OriginDuty has two active plan selection links without bypassing paid entitlement gating",()=>{
+ for(const [p,locale] of [["products/originduty/index.html","pl"],["products/originduty/en/index.html","en"]]){
+  const s=read(p);
+  assert.equal((s.match(/class="od-button od-button--primary od-plan-start"/g)||[]).length,2);
+  const contactPrefix=locale==="pl"?"../../pl/kontakt.html":"../../../contact/";
+  assert.ok(s.includes('data-od-contact-fallback href="'+contactPrefix+'?product=originduty&amp;plan=importer"'));
+  assert.ok(s.includes('data-od-contact-fallback href="'+contactPrefix+'?product=originduty&amp;plan=agency"'));
+  assert.ok(s.includes("https://originduty-app.forgeframelabs.app/signup?plan=importer&lang="+locale));
+  assert.ok(s.includes("https://originduty-app.forgeframelabs.app/signup?plan=agency&lang="+locale));
+  assert.equal((s.match(/data-od-buy hidden/g)||[]).length,2);
+  assert.match(s,/origin-evidence\.js|origin-status\.js/);
+ }
+});
+test("evidence PL EN bypass stale JS caches and retry temporary failures",()=>{
+ for(const p of ["products/originduty/evidence/index.html","products/originduty/evidence/en/index.html"]){
+  assert.match(read(p),/origin-evidence\.js\?v=20261011c/);
+ }
+ const js=read("products/originduty/origin-evidence.js");
+ assert.match(js,/attempt<3/);
+ assert.match(js,/cache:'no-store'/);
+ const preview=read("origin_live_preview_server.py");
+ assert.match(preview,/Cache-Control/);
+});

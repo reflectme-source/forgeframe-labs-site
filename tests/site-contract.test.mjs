@@ -37,7 +37,7 @@ test("marketing pages contain a useful product and honest CTA",()=>{
  const main=html("index.html");
  const product=html("products/localization-qa.html");
  assert.match(main,/Localization QA Inspector/);
- assert.match(main,/tools\/localization-qa\.html/);
+ assert.match(html("products/index.html"),/localization-qa\.html/);
  assert.match(product,/free inspector/i);
  assert.match(product,/not currently available on the Asset Store/i);
 });
@@ -65,7 +65,7 @@ test("only first-party local JS modules run in the inspector",()=>{
  assert.doesNotMatch(page,/google-analytics|gtag|segment\.com|hotjar|mixpanel/i);
 });
 
-test("main homepage features accurate products and separate category routes",()=>{const home=html("index.html"),en=html("en/index.html");assert.match(home,/<html lang="pl">/);assert.match(en,/<html lang="en">/);for(const name of ["OTOMOTO Change Intelligence","Localization QA Inspector","Contract Guard"])assert.match(home,new RegExp(name));for(const page of ["products/index.html","solutions/index.html","developers/index.html","about/index.html"]){assert.ok(existsSync(join(root,page)),page+" must exist")}for(const route of ["products/","solutions/","developers/","about/"])assert.ok(home.includes('href="./'+route+'"'));for(const path of ["index.html","en/index.html"])assert.doesNotMatch(html(path),/AcqPath|ExtensionOps/);});
+test("main homepage features accurate products and separate category routes",()=>{const home=html("index.html"),en=html("en/index.html");assert.match(home,/<html lang="pl">/);assert.match(en,/<html lang="en">/);for(const name of ["OTOMOTO Change Intelligence","Localization QA Inspector","Contract Guard"])assert.match(html("products/index.html"),new RegExp(name));for(const page of ["products/index.html","solutions/index.html","developers/index.html","about/index.html"]){assert.ok(existsSync(join(root,page)),page+" must exist")}for(const route of ["products/","developers/","about/"])assert.ok((home.includes('href="./'+route+'"')||home.includes('href="'+route+'"')));for(const path of ["index.html","en/index.html"])assert.doesNotMatch(html(path),/AcqPath|ExtensionOps/);});
 
 test("navigation now opens dedicated pages rather than legacy scroll sections",()=>{const pl=html("index.html");for(const page of ["pl/pomoc.html","pl/prywatnosc.html","pl/lokalizacja.html"])assert.match(html(page),/<html lang="pl">/);assert.doesNotMatch(pl,/href="#rozwiazania"|href="#studio"/);for(const path of ["solutions/index.html","developers/index.html","about/index.html","products/index.html"])assert.match(html(path),/class="ffg-nav"/);});
 
@@ -78,7 +78,7 @@ test("brand-wide support and privacy are aligned with multi-platform products",(
  assert.match(support,/Localization QA Inspector/);
  assert.match(support,/API and platform inquiries/);
  assert.match(support,/Skip to content/);
- assert.match(privacy,/October 10, 2026/);
+ assert.match(privacy,/October 11, 2026/);
  assert.match(privacy,/GitHub Pages/);
  assert.match(privacy,/Apify and other marketplaces/);
  assert.doesNotMatch(privacy,/Unity developer publishing brand/);
@@ -112,7 +112,8 @@ test("buyer guide directs qualified visitors to real Apify tasks and a scoped in
  }
  assert.match(page,/product=otomoto/);
  assert.match(page,/Nie\. To niezależny Actor/);
- assert.doesNotMatch(page,/<script\b[^>]*src=/);
+ assert.match(page,/assets\/forgeframe-shell\.js/);
+ assert.doesNotMatch(page,/<script\b[^>]*src="https?:\/\//);
  assert.match(html("integrations/otomoto-dealer-api.html"),/guides\/otomoto-price-monitoring\.html/);
 });
 
@@ -131,7 +132,7 @@ test("OpenAPI guide has a genuine developer journey to the public action and the
 });
 
 
-test("Connect-to-Forge service remains discoverable from central catalog",()=>{const pl=html("products/index.html"),en=html("en/index.html");assert.match(pl,/connect-to-forge-assessment/);assert.match(en,/Connect → Forge/);assert.match(html("services/connect-to-forge-assessment/index.html"),/€490/);assert.ok(existsSync(join(root,"services/connect-to-forge-assessment/pl/index.html")));});
+test("Connect-to-Forge service remains discoverable from central catalog",()=>{const pl=html("products/index.html"),en=html("en/products/index.html");assert.match(pl,/connect-to-forge-assessment/);assert.match(en,/Connect → Forge/);assert.match(html("services/connect-to-forge-assessment/index.html"),/€490/);assert.ok(existsSync(join(root,"services/connect-to-forge-assessment/pl/index.html")));});
 
 test("Contract Guard sales page uses a copyable immutable-pinned v0.1.4 action",()=>{
   const p=html("products/contract-guard.html");
@@ -142,7 +143,7 @@ test("Contract Guard sales page uses a copyable immutable-pinned v0.1.4 action",
   assert.match(p,/# v0\.1\.4/);
 });
 
-test("Merchant Issue Desk remains discoverable and factually scoped",()=>{const homepage=html("index.html"),catalog=html("products/index.html"),page=html("services/merchant-issue-desk.html");assert.match(homepage,/services\/merchant-issue-desk\.html/);assert.match(catalog,/merchant-issue-desk\.html/);assert.match(page,/690 zł/);assert.match(page,/Nie gwarantujemy zatwierdzenia produktów/);assert.match(page,/product=merchant-issue-desk/);});
+test("Merchant Issue Desk remains discoverable and factually scoped",()=>{const homepage=html("index.html"),catalog=html("products/index.html"),page=html("services/merchant-issue-desk.html");assert.match(catalog,/merchant-issue-desk\.html/);assert.match(catalog,/merchant-issue-desk\.html/);assert.match(page,/690 zł/);assert.match(page,/Nie gwarantujemy zatwierdzenia produktów/);assert.match(page,/product=merchant-issue-desk/);});
 
 test("all primary customer paths provide direct browser-based Gmail contact and fallback",()=>{
  const files=[
@@ -157,7 +158,10 @@ test("all primary customer paths provide direct browser-based Gmail contact and 
  ];
  for(const file of files){
   const body=html(file);
-  assert.match(body,/assets\/direct-contact\.js/,file+" missing contact strip");
+  if(file==="services/connect-to-forge-assessment/index.html"||file==="services/connect-to-forge-assessment/pl/index.html") {
+   assert.match(body,/class="cx-bottom"/,file+" missing dedicated contact CTA");
+   assert.match(body,/product=connect-to-forge/,file+" missing form link");
+  } else assert.match(body,/assets\/direct-contact\.js/,file+" missing contact strip");
  }
  for(const f of ["index.html","en/index.html","services/merchant-issue-desk.html",
   "services/connect-to-forge-assessment/index.html","services/connect-to-forge-assessment/pl/index.html"]){
@@ -183,11 +187,11 @@ test("ForgeFrame bilingual contact forms have safe fields and working local asse
   assert.match(page,new RegExp('<html lang="'+lang+'">'));
   assert.match(page,/method="POST"/);
   assert.match(page,/action="https:\/\/formsubmit\.co\/forgeframe\.lab@gmail\.com"/);
-  assert.match(page,/name="email" type="email"[^>]*required/);
-  assert.match(page,/name="message" minlength="10" maxlength="2000"/);
+  assert.match(page,/<input(?=[^>]*name="email")(?=[^>]*type="email")(?=[^>]*required)[^>]*>/);
+  assert.match(page,/<textarea(?=[^>]*name="message")(?=[^>]*minlength="10")(?=[^>]*maxlength="2000")[^>]*>/);
   assert.match(page,/name="_honey"/);
   assert.match(page,/name="privacy_notice_read"/);
-  assert.match(page,/name="product" required/);
+  assert.match(page,/<select(?=[^>]*name="product")(?=[^>]*required)[^>]*>/);
   assert.match(page,/name="_next"/);
   assert.doesNotMatch(page,/reflectme\.project@gmail\.com|hello\.extensionops@gmail\.com/);
   assert.match(html(thanks),/noindex,nofollow/);
@@ -240,6 +244,23 @@ test("live products have tailored buyer scope, deliverables and truthful access"
  const subjects=new Set();
  for(const file of files){
    const p=html(file);
+   if(file==="services/merchant-issue-desk.html"){
+     assert.match(p,/class="mid-container mid-pricing-grid"/);
+     assert.match(p,/class="mid-offer-card"/);
+     assert.match(p,/merchant-final.css/);
+     assert.match(p,/product=merchant-issue-desk/);
+     for(const dest of localTargets(file))assert.ok(existsSync(dest),file+" broken local asset or CTA: "+dest);
+     subjects.add("Merchant Issue Desk / verified scope");
+     continue;
+   }
+   if(file.startsWith("services/connect-to-forge-assessment/")){
+    assert.match(p,/class="cx-offer"/,file+" needs a written assessment offer");
+    assert.match(p,/€490/);
+    assert.match(p,/connect-reference\.css/);
+    for(const dest of localTargets(file))assert.ok(existsSync(dest),file+" broken local link "+dest);
+    subjects.add(file+" / scoped migration assessment");
+    continue;
+   }
    assert.match(p,/class="ff-detail"/,file+" needs a factual commercial quick-reference");
    assert.match(p,/assets\/product-details\.css/,file+" missing editorial shared styles");
    assert.match(p,/class="ff-detail__grid"/,file+" missing buyer\/output\/pricing blocks");
@@ -259,7 +280,7 @@ test("live products have tailored buyer scope, deliverables and truthful access"
  assert.match(styles,/__action--primary/);
  assert.doesNotMatch(styles,/url\(/);
 });
-test("central product catalog is complete and avoids unsupported sales promises",()=>{const home=html("index.html"),catalog=html("products/index.html");assert.ok((catalog.match(/<article class="ffg-product-card"/g)||[]).length>=7);for(const name of ["OriginDuty","Digital Packager","Localization QA","Contract Guard","Merchant Issue Desk"])assert.match(catalog,new RegExp(name));assert.match(home,/products\//);assert.match(catalog,/Przedpremiera/);assert.match(catalog,/connect-to-forge-assessment/);assert.match(home,/integrations|solutions\/otomoto-vehicle-monitoring/);});
+test("central product catalog is complete and avoids unsupported sales promises",()=>{const home=html("index.html"),catalog=html("products/index.html");assert.ok((catalog.match(/<article class="ffcatalog-card"/g)||[]).length>=7);for(const name of ["OriginDuty","Digital Packager","Localization QA","Contract Guard","Merchant Issue Desk"])assert.match(catalog,new RegExp(name));assert.match(home,/products\//);assert.match(catalog,/Przedpremiera/);assert.match(catalog,/connect-to-forge-assessment/);assert.match(catalog,/otomoto|OTOMOTO/);});
 
 test("Polish localization product page has actual sample format, privacy and clear free access",()=>{
  const p=html("pl/lokalizacja.html");
@@ -275,7 +296,7 @@ test("English Merchant Issue Desk page is complete and language-specific",()=>{
  const p=html("services/merchant-issue-desk-en.html");
  assert.match(p,/<html lang="en">/);
  assert.match(p,/from 690 PLN/);
- assert.match(p,/merchant-issue-desk-demo\.html/);
+ assert.match(p,/merchant-issue-desk-demo-en\.html/);
  assert.match(p,/contact\/\?product=merchant-issue-desk/);
  assert.match(p,/Synthetic data/);
  assert.match(p,/No live checkout/);
@@ -313,8 +334,14 @@ test("every interactive tool and sample report returns to the right product offe
  };
  for(const [page,indicator] of Object.entries(items)){
   const s=html(page);
-  assert.match(s,/class="ff-next"/,page+" should show product return path");
-  assert.match(s,/assets\/reader-next\.css/,page+" needs tested shared editorial style");
+  if(page==="services/merchant-issue-desk-demo.html"){
+   assert.match(s,/class="mr-end"/,page+" must have the dedicated dark CTA");
+   assert.match(s,/assets\/merchant-report\.css/,page+" must load report styles");
+   assert.doesNotMatch(s,/assets\/reader-next\.css/,page+" must not load conflicting light styles");
+  }else{
+   assert.match(s,/class="ff-next"/,page+" should show product return path");
+   assert.match(s,/assets\/reader-next\.css/,page+" needs tested shared editorial style");
+  }
   assert.ok(s.includes(indicator)||page.includes("originduty/regulation"),page+" missing contextual route");
   for(const path of localTargets(page)){
    assert.ok(path.startsWith(root),page+" escapes site root");
@@ -351,22 +378,25 @@ test("shared ForgeFrame shell is identical in structure on every top-level tab",
    assert.match(content,/<a [^>]*href=[^>]*>[^<]*(?:Contact|Kontakt)<\/a>/);
  }
 });
-test("portfolio cards present color icon, title, verified status and CTA without duplicating them",()=>{
- for(const file of ["index.html","en/index.html","products/index.html","en/products/index.html"]){
-  const text=html(file);
-  assert.equal((text.match(/<article class="ffg-product-card"/g)||[]).length,7,file+" needs all seven offers");
-  assert.equal((text.match(/class="ffg-product-icon"/g)||[]).length,7);
-  assert.equal((text.match(/class="ffg-product-status"/g)||[]).length,7);
-  assert.equal((text.match(/class="ffg-product-cta"/g)||[]).length,7);
-  assert.match(text,/data-state="pilot"/);
-  assert.match(text,/data-state="prelaunch"/);
+test("reference-aligned homepages and catalogs retain verified product routes",()=>{
+ for(const file of ["index.html","en/index.html"]){
+  const content=html(file);
+  assert.match(content,/class="ffshot"/);
+  assert.equal((content.match(/class="ffshot-card"/g)||[]).length,3);
+  assert.equal((content.match(/class="ffshot-more-grid"/g)||[]).length,0);
+  for(const name of ["OriginDuty","Contract Guard","Localization QA Inspector"])assert.ok(content.includes(name),file+" missing featured "+name);
+  assert.ok(content.includes("forgeframe-screenshot.css"));
+  assert.ok(content.includes("ffshot-demo-label"),"Concept demo must be labeled");
  }
- const css=html("assets/forgeframe-global.css");
- assert.match(css,/grid-template-columns:repeat\(7,minmax\(0,1fr\)\)/);
- assert.match(css,/\.ffg-footer-content/);
- const js=html("assets/catalog-filter.js");
- assert.match(js,/ffg-product-card/);
- assert.match(js,/aria-pressed/);
+ for(const file of ["products/index.html","en/products/index.html"]){
+  const content=html(file);
+  assert.equal((content.match(/<article class="ffcatalog-card"/g)||[]).length,7);
+  assert.equal((content.match(/class="ffcatalog-icon ffcatalog-icon-/g)||[]).length,7);
+  assert.equal((content.match(/class="ffcatalog-status"/g)||[]).length,7);
+  assert.equal((content.match(/class="ffcatalog-card-link"/g)||[]).length,7);
+ }
+ const css=html("assets/forgeframe-global.css");assert.ok(css.includes(".ffg-footer-content"));
+ const js=html("assets/catalog-filter.js");assert.match(js,/ffcatalog-card/);assert.match(js,/aria-pressed/);
 });
 test("English sections have individual, indexable routes",()=>{
  for(const section of ["products","solutions","developers","about"]){

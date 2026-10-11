@@ -1,0 +1,50 @@
+/* ForgeFrame Labs developer experience, aligned to approved product and home design */
+.ffdev{background:#080d13;color:#f2f5fa;font-family:Inter,ui-sans-serif,system-ui,sans-serif}.ffdev *{box-sizing:border-box}
+.ffdev-wrap{width:min(1320px,calc(100% - 80px));margin:auto}.ffdev-eyebrow{font-size:11px;letter-spacing:.17em;color:#a4b7c9;font-weight:750}
+.ffdev-hero{padding:75px 0 78px;background:radial-gradient(ellipse 65% 95% at 70% 20%,#15273b66,transparent 80%),#090f16;border-bottom:1px solid #283746}
+.ffdev-hero-grid{display:grid;grid-template-columns:43% 57%;gap:32px;align-items:center}.ffdev-intro h1{font-size:clamp(47px,4.8vw,74px);line-height:1.055;letter-spacing:-.065em;margin:20px 0 22px;font-weight:780}.ffdev-intro h1 span{color:#b8c9ec}
+.ffdev-intro p{font-size:17px;line-height:1.7;color:#b0becc;max-width:515px;margin:0}.ffdev-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+.ffdev-button{display:inline-flex;align-items:center;justify-content:center;min-height:45px;padding:12px 18px;border-radius:8px;background:#111923;border:1px solid #334253;color:#eaf3fb!important;text-decoration:none;font-size:13px;font-weight:700;transition:background .18s,border-color .18s,transform .18s}
+.ffdev-button.primary{background:#118af8;border-color:#249bf9;color:#fff!important}.ffdev-button:hover{border-color:#8bbde3;transform:translateY(-1px)}
+.ffdev-tech{display:grid;grid-template-columns:minmax(0,1fr) 128px;gap:22px;align-items:center;min-width:0}
+.ffdev-code{background:#0a1119;border:1px solid #2c3e50;border-radius:12px;overflow:hidden;box-shadow:0 22px 60px #0007;min-width:0}
+.ffdev-code-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #293947;gap:10px;padding:10px 14px}
+.ffdev-tabs{display:flex;gap:5px;min-width:0}.ffdev-tabs button{font:600 11px Inter,system-ui,sans-serif;border:0;border-radius:6px;background:transparent;color:#9caebe;cursor:pointer;padding:9px 12px;white-space:nowrap}.ffdev-tabs button[aria-selected=true]{background:#1b2a39;color:#fff}
+.ffdev-copy{font-size:11px;color:#b9cce0;border:1px solid #35475a;border-radius:6px;padding:8px 12px;background:#14202c;cursor:pointer}
+.ffdev-code pre{font:12px/1.85 ui-monospace,SFMono-Regular,Consolas,monospace;color:#a9c7df;white-space:pre;overflow:auto;margin:0;padding:26px 22px;min-height:245px}
+.ffdev-code-result{display:flex;gap:10px;align-items:center;background:#0f1c28;margin:0 13px 13px;border:1px solid #2b3c4d;border-radius:8px;padding:16px;color:#a9c2d3;font:10px/1.5 ui-monospace,monospace}
+.ffdev-status-dot{height:8px;width:8px;border-radius:50%;background:#55cfa0;flex:none}
+.ffdev-steps{display:flex;flex-direction:column;gap:19px}.ffdev-step{display:flex;align-items:center;gap:10px}.ffdev-step-icon{width:42px;height:42px;border:1px solid #284561;border-radius:9px;background:#122c46;display:grid;place-items:center;color:#9cd3ff;font-size:20px;flex:none}
+.ffdev-step strong{display:block;font-size:12px}.ffdev-step small{display:block;color:#8ca0b3;font-size:10px;white-space:nowrap}
+.ffdev-resources{padding:75px 0 85px;border-bottom:1px solid #273440}.ffdev-resources h2{font-size:clamp(32px,3.5vw,52px);letter-spacing:-.06em;line-height:1.1;margin:13px 0 30px}
+.ffdev-resource-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.ffdev-resource{min-height:174px;padding:23px;background:linear-gradient(145deg,#101b27,#0b131c);border:1px solid #2c3c4c;border-radius:11px;display:flex;flex-direction:column;gap:18px;text-decoration:none;color:inherit!important;transition:transform .2s,border-color .2s}
+.ffdev-resource:hover{border-color:#5e8aad;transform:translateY(-3px)}.ffdev-resource-icon{width:44px;height:44px;display:grid;place-items:center;border-radius:9px;background:#183b5e;color:#a9d9ff;font-size:22px}
+.ffdev-resource h3{font-size:18px;letter-spacing:-.035em;margin:8px 0 4px}.ffdev-resource p{color:#a7b7c7;font-size:12px;line-height:1.6;margin:0}
+.ffdev-resource-arrow{font-size:20px;color:#91cefb;margin-top:auto;align-self:flex-end}
+.ffdev-cta{padding:66px 0 80px;background:radial-gradient(ellipse 40% 90% at 90% 50%,#11325777,transparent),#090e15}
+.ffdev-cta-inner{display:flex;justify-content:space-between;align-items:center;gap:30px}.ffdev-cta h2{font-size:clamp(30px,3vw,44px);letter-spacing:-.05em;margin:12px 0}.ffdev-cta p{color:#aab8c7;font-size:14px}
+.ffdev a:focus-visible,.ffdev button:focus-visible{outline:2px solid #a6dcff;outline-offset:3px}
+@media(max-width:1100px){.ffdev-wrap{width:calc(100% - 48px)}.ffdev-hero-grid{grid-template-columns:1fr}.ffdev-tech{max-width:800px}.ffdev-resource-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.ffdev-wrap{width:calc(100% - 32px)}.ffdev-hero{padding:55px 0}.ffdev-intro h1{font-size:clamp(40px,10vw,54px)}.ffdev-intro p{font-size:15px}.ffdev-tech{grid-template-columns:1fr}.ffdev-steps{display:grid;grid-template-columns:1fr 1fr;gap:15px}.ffdev-code pre{font-size:11px;padding:17px 12px;min-height:220px}.ffdev-resource-grid{grid-template-columns:1fr}.ffdev-cta-inner{align-items:flex-start;flex-direction:column}.ffdev-code-head{flex-wrap:wrap}.ffdev-tabs button{padding:9px 8px}}
+@media(prefers-reduced-motion:reduce){.ffdev-button,.ffdev-resource{transition:none!important}.ffdev-button:hover,.ffdev-resource:hover{transform:none!important}}
+
+/* Unified ForgeFrame display typography */
+.ffdev-intro h1{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif!important;font-weight:780!important;letter-spacing:-.065em!important;line-height:1.055!important;text-wrap:balance;}
+
+/* Developer resources: content-first cards, balanced with Products */
+.ffdev-resource-grid{gap:16px!important}
+.ffdev-resource{position:relative;min-height:190px!important;padding:23px!important;display:grid!important;grid-template-columns:54px minmax(0,1fr) 22px;grid-template-rows:auto 1fr;align-items:start;column-gap:15px;row-gap:16px;background:linear-gradient(150deg,#111c29,#0b131c)!important;border-color:#314253!important}
+.ffdev-resource-icon{grid-column:1;grid-row:1;display:grid;place-items:center;width:52px!important;height:52px!important;border-radius:11px!important;font-size:26px!important;background:#173a5c!important;border:1px solid #325e85!important;color:#b4dfff!important}
+.ffdev-resource:nth-child(2) .ffdev-resource-icon{background:#2a2655!important;border-color:#5b4a92!important;color:#d9c9ff!important}
+.ffdev-resource:nth-child(3) .ffdev-resource-icon{background:#125341!important;border-color:#287b63!important;color:#a6efd0!important}
+.ffdev-resource:nth-child(4) .ffdev-resource-icon{background:#453019!important;border-color:#836032!important;color:#f8d5a0!important}
+.ffdev-resource:nth-child(5) .ffdev-resource-icon{background:#153e6d!important;border-color:#326ba7!important;color:#b3ddff!important}
+.ffdev-resource:nth-child(6) .ffdev-resource-icon{background:#27375b!important;border-color:#485e9a!important;color:#c7d6ff!important}
+.ffdev-resource>div{grid-column:2;grid-row:1;min-width:0}
+.ffdev-resource h3{font-family:Inter,ui-sans-serif,system-ui,sans-serif!important;font-size:19px!important;line-height:1.3!important;letter-spacing:-.04em!important;font-weight:740!important;margin:0 0 10px!important;color:#f3f7fb!important}
+.ffdev-resource p{font-size:13px!important;line-height:1.6!important;color:#b4c3d2!important;max-width:290px}
+.ffdev-resource-arrow{grid-column:3;grid-row:1;align-self:start!important;justify-self:end;margin:0!important;font-size:23px!important;color:#a2d7ff!important}
+.ffdev-resource:focus-visible{outline:2px solid #a6dcff!important;outline-offset:3px}
+@media(max-width:650px){.ffdev-resource{min-height:160px!important;padding:19px!important;grid-template-columns:49px minmax(0,1fr) 18px;gap:13px}.ffdev-resource-icon{width:48px!important;height:48px!important}.ffdev-resource h3{font-size:17px!important}}
+@media(prefers-reduced-motion:reduce){.ffdev-resource:hover{transform:none!important}}

@@ -1,0 +1,31 @@
+/* ForgeFrame Labs / Connect-to-Forge public evidence review */
+body.ff-case-review{--ffcase-bg:#080f17;--ffcase-panel:#101f2e;--ffcase-border:#2c465a;--ffcase-text:#eff6fc;--ffcase-muted:#aebfce;--ffcase-link:#8bd2ff;background:#080f17!important;color:#eff6fc!important}
+.ff-case-review .review-hero{padding:85px 0 82px!important;background:radial-gradient(ellipse 60% 90% at 78% 36%,#123e6173,transparent 80%),#08111b!important;border-bottom:1px solid #294458!important}
+.ff-case-review .review-hero .wrap,.ff-case-review .content.wrap{width:min(1240px,calc(100% - 64px))!important;max-width:1240px!important}
+.ff-case-review .eyebrow{font-size:11px!important;color:#87c9f3!important;font-weight:750!important;letter-spacing:.15em!important}
+.ff-case-review h1{font-size:clamp(42px,4.7vw,68px)!important;letter-spacing:-.065em!important;line-height:1.08!important;max-width:950px!important;font-weight:790!important}
+.ff-case-review .review-hero .lead{font-size:16px!important;line-height:1.75!important;color:#b9cbd9!important;max-width:810px!important}
+.ff-case-review .back{display:inline-flex!important;align-items:center!important;min-height:42px!important;padding:9px 16px!important;border:1px solid #345b75!important;background:#102537!important;border-radius:8px!important;text-decoration:none!important;font-size:12px!important;color:#d9ecfa!important}
+.ff-case-review .content{padding:66px 0 95px!important}
+.ff-case-review .disclaimer{background:#112738!important;border:1px solid #39607a!important;border-left:3px solid #48b8ff!important;border-radius:9px!important;color:#c0d4e3!important;padding:22px 24px!important}
+.ff-case-review .disclaimer strong{color:#f0f7fd!important}
+.ff-case-review .metrics{gap:17px!important;margin-bottom:62px!important}
+.ff-case-review .metric{padding:24px!important;background:linear-gradient(145deg,#13293b,#0c1a28)!important;border:1px solid #31526b!important;border-radius:10px!important;min-height:122px!important}
+.ff-case-review .metric span{color:#9dc2db!important;font-size:11px!important;letter-spacing:.04em!important;font-weight:680!important}
+.ff-case-review .metric strong{color:#f1f8fd!important;font-size:35px!important;font-weight:790!important;letter-spacing:-.055em!important;margin-top:13px!important}
+.ff-case-review .content>h2{font-size:clamp(29px,3.4vw,47px)!important;line-height:1.15!important;letter-spacing:-.056em!important;font-weight:780!important;color:#f2f7fd!important;margin:66px 0 21px!important;max-width:900px!important}
+.ff-case-review .content>p,.ff-case-review .content>ul{max-width:900px!important;color:#b5cbd9!important;font-size:14px!important;line-height:1.8!important}
+.ff-case-review .findings{gap:17px!important}
+.ff-case-review .finding{background:linear-gradient(140deg,#112333,#0c1824)!important;border:1px solid #34526a!important;border-radius:10px!important;padding:25px!important}
+.ff-case-review .finding .number{color:#87c9f5!important;font:740 11px ui-monospace,Consolas,monospace!important;letter-spacing:.06em!important}
+.ff-case-review .finding h3{color:#edf7fe!important;font-size:18px!important;letter-spacing:-.035em!important;margin:15px 0 11px!important}
+.ff-case-review .finding p{color:#b5cad8!important;font-size:13px!important;line-height:1.75!important}
+.ff-case-review .mono{background:#0e2131!important;border:1px solid #36536b!important;color:#b7d1e1!important;border-radius:9px!important}
+.ff-case-review .cta{background:linear-gradient(125deg,#11283a,#0b1c2b)!important;border:1px solid #345a74!important;border-radius:11px!important;padding:36px!important;margin-top:62px!important}
+.ff-case-review .cta h2{font-size:clamp(28px,3vw,42px)!important;letter-spacing:-.05em!important}
+.ff-case-review .cta p{font-size:14px!important;color:#b6cbdb!important;max-width:790px!important}
+.ff-case-review .cta a{min-height:45px!important;background:#158df6!important;color:#fff!important;border:1px solid #389cf7!important;font-size:12px!important;border-radius:8px!important;padding:11px 19px!important}
+.ff-case-review .cta a:hover{background:#38a0ff!important}
+.ff-case-review .ffg-header,.ff-case-review .ffg-footer{font-family:Inter,system-ui,sans-serif!important}
+@media(max-width:800px){.ff-case-review .review-hero .wrap,.ff-case-review .content.wrap{width:calc(100% - 40px)!important}.ff-case-review .review-hero{padding:58px 0!important}.ff-case-review .content{padding:43px 0 60px!important}}
+@media(max-width:600px){.ff-case-review .review-hero .wrap,.ff-case-review .content.wrap{width:calc(100% - 32px)!important}.ff-case-review h1{font-size:clamp(37px,10vw,51px)!important}.ff-case-review .cta{padding:23px!important}.ff-case-review .metric{min-height:0!important}}
