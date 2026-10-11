@@ -71,3 +71,15 @@ html{scrollbar-gutter:stable}
 .ffg-header a:focus-visible,.ffg-footer a:focus-visible{outline:2px solid #9dd8ff!important;outline-offset:4px}
 @media(max-width:470px){.ffg-product-card{padding:18px!important}.ffg-nav{row-gap:10px!important}}
 @media(prefers-reduced-motion:reduce){.ffg-product-card,.ffg-nav a{transition:none!important}.ffg-product-card:hover{transform:none}}
+
+/* Mobile navigation: one horizontal scroll row instead of three stacked rows. */
+@media(max-width:760px){
+.ffg-inner{gap:8px!important;flex-wrap:wrap!important;padding:10px 0!important}
+.ffg-brand{font-size:17px!important}
+.ffg-brand-logo{width:32px!important;height:32px!important}
+.ffg-nav{width:100%!important;flex-wrap:nowrap!important;overflow-x:auto!important;overscroll-behavior-x:contain;scrollbar-width:thin;scroll-padding-inline:12px;gap:18px!important;padding:2px 0 5px!important}
+.ffg-nav a{flex:0 0 auto!important;min-height:36px;display:inline-flex;align-items:center}
+.ffg-language{flex:0 0 auto;position:sticky;right:0;background:#080b10;padding:0 0 0 9px!important}
+.ffg-header{min-height:0!important}
+.ffg-footer-content{gap:16px!important}
+}
