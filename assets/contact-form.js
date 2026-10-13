@@ -3,6 +3,7 @@ const form=document.querySelector('[data-forgeframe-contact]');
 if(!form)return;
 const products=new Map([
 ["general","ForgeFrame Labs"],
+["websites","ForgeFrame / Websites"],
 ["merchant-issue-desk","Merchant Issue Desk"],
 ["contract-guard","ForgeFrame Contract Guard"],
 ["connect-to-forge","Connect to Forge assessment"],
@@ -25,6 +26,31 @@ if(select&&Array.from(select.options).some(o=>o.value===product))select.value=pr
 const src=form.elements.namedItem("source_page");
 const value=(params.get("source")||"").trim();
 if(src)src.value=/^[a-z0-9_./-]{1,80}$/i.test(value)?value:"";
+const packageFromUrl=(params.get("package")||"").trim().toLowerCase();
+const allowedPackages=new Map([["starter","Starter"],["business","Business"],["custom","Custom"]]);
+const packageSelect=form.elements.namedItem("service_package");
+const packageBadge=document.querySelector("[data-websites-package]");
+const isWebsites=product==="websites" && select?.value==="websites";
+if(packageSelect)packageSelect.value=isWebsites&&allowedPackages.has(packageFromUrl)?allowedPackages.get(packageFromUrl):"";
+const subject=form.elements.namedItem("_subject");
+const defaultSubject=subject?.value||"ForgeFrame Labs | Website contact inquiry";
+if(subject&&isWebsites)subject.value="ForgeFrame Labs | Websites quote inquiry";
+function syncWebsitesSelection(){
+ const current=select?.value==="websites";
+ if(!current&&packageSelect)packageSelect.value="";
+ if(packageBadge){
+  packageBadge.hidden=!(current&&packageSelect?.value);
+  if(current&&packageSelect?.value){
+   packageBadge.textContent=document.documentElement.lang==="pl"?"Wybrany pakiet: "+packageSelect.value+" · bezpłatna wycena":"Selected package: "+packageSelect.value+" · free estimate";
+  }
+ }
+ if(subject)subject.value=current?"ForgeFrame Labs | Websites quote inquiry":defaultSubject;
+}
+select?.addEventListener("change",syncWebsitesSelection);
+if(packageBadge&&isWebsites&&packageSelect?.value){
+ packageBadge.hidden=false;
+ packageBadge.textContent=document.documentElement.lang==="pl"?"Wybrany pakiet: "+packageSelect.value+" · bezpłatna wycena, bez zobowiązania":"Selected package: "+packageSelect.value+" · free estimate, no obligation";
+}
 const output=document.querySelector("[data-copy-status]");
 document.querySelectorAll("[data-copy-email]").forEach(button=>button.addEventListener("click",async()=>{
  const address="forgeframe.lab@gmail.com";

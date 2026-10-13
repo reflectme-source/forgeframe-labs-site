@@ -6,7 +6,7 @@
 <link rel="icon" href="../assets/forgeframe-avatar.png" type="image/png">
 <link rel="stylesheet" href="../assets/contact-form.css"><link rel="stylesheet" href="../assets/forgeframe-nav.css"><link rel="stylesheet" href="../assets/forgeframe-approved.css">
 <title>Contact &amp; request a quote | ForgeFrame Labs</title>
-<link rel="stylesheet" href="../assets/forgeframe-global.css"><link rel="stylesheet" href="../assets/forgeframe-contact.css"></head>
+<link rel="stylesheet" href="../assets/forgeframe-global.css"><link rel="stylesheet" href="../assets/forgeframe-contact.css"><link rel="stylesheet" href="../assets/forgeframe-websites-entry.css"></head>
 <body>
 <a class="skip" href="#contact-form">Skip to the form</a>
 <header class="ffg-header"><div class="ffg-inner"><a class="ffg-brand" href="../en/"><img class="ffg-brand-logo" src="../assets/forgeframe-avatar.png" alt="" width="38" height="38">ForgeFrame <span class="ffg-brand-blue">Labs</span></a><nav class="ffg-nav" aria-label="Main navigation"><a href="../en/">Home</a><a href="../en/products/">Products</a><a href="../en/developers/">Developers</a><a href="../en/about/">About</a><a href="./" aria-current="page">Contact</a><span class="ffg-language" aria-label="Language"><a class="ffg-locale" lang="pl" href="../pl/kontakt.html">PL</a><a class="ffg-locale" aria-current="page" lang="en" href="./">EN</a></span></nav></div></header>
@@ -14,7 +14,7 @@
 <input name="_subject" type="hidden" value="ForgeFrame Labs | Website contact inquiry"/>
 <input name="_next" type="hidden" value="https://forgeframelabs.app/contact/thanks.html"/>
 <input name="_template" type="hidden" value="table"/>
-<input name="source_page" type="hidden" value=""/>
+<input name="source_page" type="hidden" value=""/><input type="hidden" name="service_package" value="">
 <div aria-hidden="true" class="trap"><label for="trap">Leave blank</label><input autocomplete="off" id="trap" name="_honey" tabindex="-1" type="text"/></div>
 <div class="two"><div><label for="full-name">Name or company (optional)</label><input autocomplete="name" id="full-name" maxlength="90" name="name" placeholder="Company or name"/></div>
 <div><label for="reply-email">Reply-to email <span class="required">*</span></label><input autocomplete="email" id="reply-email" maxlength="180" name="email" placeholder="name@company.com" required="" type="email"/></div></div>
@@ -30,13 +30,13 @@
 
 
 
-<option value="originduty">OriginDuty</option><option value="other">Other product</option></select></div>
+<option value="originduty">OriginDuty</option><option value="websites">ForgeFrame / Websites</option><option value="other">Other product</option></select></div>
 <div><label for="intent">Request type</label><select id="intent" name="request_type" required=""><option value="quote">Paid scope / quote</option>
 <option value="support">Product support</option>
 <option value="integration">API integration</option>
 <option value="partnership">Partnership</option>
 <option value="privacy">General inquiry</option></select></div></div>
-<div><label for="request-message">What do you need done? <span class="required">*</span></label>
+<p class="fw-contact-package" role="status" data-websites-package hidden></p><div><label for="request-message">What do you need done? <span class="required">*</span></label>
 <textarea id="request-message" maxlength="2000" minlength="10" name="message" placeholder="Describe the current issue, desired result and tool or platform. Never include passwords or private client data." required="" rows="7"></textarea></div>
 <div><label for="business-url">Business website (optional)</label><input id="business-url" inputmode="url" maxlength="250" name="website" placeholder="https://company.com" type="url"/></div>
 <div class="privacy-check"><input id="acknowledge" name="privacy_notice_read" required="" type="checkbox" value="yes"/><label for="acknowledge">I understand that this message is sent via the third-party FormSubmit service to receive a reply. I have read the <a href="../privacy.html">privacy information</a>. <span class="required">*</span></label></div>
