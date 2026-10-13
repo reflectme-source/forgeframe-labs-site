@@ -27,7 +27,7 @@ test("Contact preserves real third-party delivery and required privacy consent",
   assert.match(s,/https:\/\/formsubmit\.co\/forgeframe\.lab@gmail\.com/);
   assert.match(s,/name="privacy_notice_read"/);
   assert.match(s,/id="contact-form"/);
-  const productSelect=s.match(/<select[^>]*name="product"[^>]*>[\s\S]*?<\/select>/)?.[0]||"";assert.equal((productSelect.match(/<option value=/g)||[]).length,9);
+  const productSelect=s.match(/<select[^>]*name="product"[^>]*>[\s\S]*?<\/select>/)?.[0]||"";assert.equal((productSelect.match(/<option value=/g)||[]).length,10);
   assert.doesNotMatch(s,/50\+ companies|guaranteed response|24\/7 support/i);
  }
 });

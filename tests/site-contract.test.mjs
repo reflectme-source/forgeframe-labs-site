@@ -390,10 +390,10 @@ test("reference-aligned homepages and catalogs retain verified product routes",(
  }
  for(const file of ["products/index.html","en/products/index.html"]){
   const content=html(file);
-  assert.equal((content.match(/<article class="ffcatalog-card"/g)||[]).length,7);
-  assert.equal((content.match(/class="ffcatalog-icon ffcatalog-icon-/g)||[]).length,7);
-  assert.equal((content.match(/class="ffcatalog-status"/g)||[]).length,7);
-  assert.equal((content.match(/class="ffcatalog-card-link"/g)||[]).length,7);
+  assert.equal((content.match(/<article class="ffcatalog-card"/g)||[]).length,8);
+  assert.equal((content.match(/class="ffcatalog-icon ffcatalog-icon-/g)||[]).length,8);
+  assert.equal((content.match(/class="ffcatalog-status"/g)||[]).length,8);
+  assert.equal((content.match(/class="ffcatalog-card-link"/g)||[]).length,8);
  }
  const css=html("assets/forgeframe-global.css");assert.ok(css.includes(".ffg-footer-content"));
  const js=html("assets/catalog-filter.js");assert.match(js,/ffcatalog-card/);assert.match(js,/aria-pressed/);
