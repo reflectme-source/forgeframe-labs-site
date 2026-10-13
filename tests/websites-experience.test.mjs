@@ -17,7 +17,7 @@ test('Websites EN/PL have complete priced business offer without invented checko
   assert.equal((s.match(/class="fw-package(?: is-featured)?"/g)||[]).length,3);
   assert.equal((s.match(/class="fw-type"/g)||[]).length,6);
   assert.equal((s.match(/class="fw-faq-list"/g)||[]).length,1);
-  assert.equal((s.match(/<details>/g)||[]).length,10);
+  assert.equal((s.match(/<details>/g)||[]).length,5);
   for(const price of ['$990','$1,990','$3,490'])assert.ok(s.includes(price),name+" "+price);
   for(const packageName of ['starter','business','custom']){
    assert.ok(s.includes('package='+packageName),name+" missing package selection "+packageName);
@@ -30,8 +30,22 @@ test('Websites EN/PL have complete priced business offer without invented checko
   assert.match(s,/hreflang="pl"/);
   assert.match(s,/application\/ld\+json/);
   assert.match(s,/property="og:title"/);
+  assert.match(s,/href="https:\/\/getacqpath\.com\//);
+  assert.match(s,/href="https:\/\/reflectme\.app\//);
+  assert.match(s,/websites-acqpath\.webp/);
+  assert.match(s,/websites-reflectme\.webp/);
+  assert.doesNotMatch(s,/RECOMMENDED|REKOMENDOWANY|Free estimate · no meeting required/);
+  assert.doesNotMatch(s,/northline\.concept|atelier-table\.concept/);
+
   assert.equal((s.match(/<h1>/g)||[]).length,1);
  }
+});
+
+test('Real website preview assets are captured, not imaginary client screenshots',()=>{
+  for (const image of ['assets/websites-acqpath.webp','assets/websites-reflectme.webp']) {
+    const file=join(root,image);
+    assert.ok(existsSync(file),image+' not captured');
+  }
 });
 
 test('Original demonstrator websites exist in two languages, and are explicitly not customer work',()=>{
@@ -46,8 +60,7 @@ test('Original demonstrator websites exist in two languages, and are explicitly 
   assert.ok(existsSync(join(root,path)));
  }
  const pl=read('pl/strony-internetowe.html');
- assert.match(pl,/northline-pl\.html/);
- assert.match(pl,/atelier-table-pl\.html/);
+ assert.doesNotMatch(pl,/northline-pl\.html|atelier-table-pl\.html/);
 });
 
 test('Home and catalog lead to Websites without replacing verified original products',()=>{
