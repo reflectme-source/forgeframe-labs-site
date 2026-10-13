@@ -132,3 +132,15 @@
 }
 @media(max-width:1080px){.fw-hero-copy h1 span{display:block}}
 @media(max-width:440px){.fw-hero-copy h1 span{white-space:normal}}
+
+
+/* Verified first-party website screenshots, not concept renderings. */
+.fw-hero-real{min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.fw-real-hero-link{display:block;width:100%;border:1px solid #43637e;border-radius:14px;overflow:hidden;background:#101d28;box-shadow:0 30px 75px #0009;transition:border-color .18s}
+.fw-real-hero-link:hover{border-color:#77b9e4}
+.fw-real-hero-link img{display:block;width:100%;height:auto;aspect-ratio:8/5;object-fit:cover;object-position:top}
+.fw-real-hero-link:focus-visible{outline:2px solid #aadfff;outline-offset:4px}
+.fw-hero-real .fw-hero-caption{margin-top:15px;color:#acc4d7;font-size:11px}
+.fw-live-image{padding:0;background:#0b1723;height:310px}
+.fw-live-image img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+@media(max-width:700px){.fw-hero-real{min-height:0}.fw-live-image{height:250px}}
