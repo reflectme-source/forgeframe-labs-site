@@ -1,0 +1,25 @@
+/* Websites entry points; shared navigation/footer remain controlled by forgeframe-global.css. */
+.fw-home-promo{background:radial-gradient(ellipse 75% 140% at 90% 50%,#113c5b4d,transparent 76%),#0c1a27;border-block:1px solid #324b5f;padding:39px 0}
+.fw-home-promo-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.75fr);gap:65px;align-items:center}
+.fw-home-eyebrow{font-size:10px;color:#8fc8ed;font-weight:770;letter-spacing:.14em}
+.fw-home-promo h2{font-size:clamp(26px,2.7vw,40px);letter-spacing:-.057em;line-height:1.17;color:#f1f6fc;font-weight:770;max-width:720px;margin:13px 0}
+.fw-home-promo p{font-size:13px;line-height:1.7;color:#b5c8d8;max-width:680px;margin:0 0 18px}
+.fw-home-action{display:inline-flex;align-items:center;min-height:43px;padding:10px 16px;background:#1688e8;border:1px solid #3199f9;border-radius:7px;color:#fff!important;text-decoration:none!important;font-weight:730;font-size:12px}
+.fw-home-action:hover{background:#0b70c9}
+.fw-home-promo-art{position:relative;min-height:190px}
+.fw-home-window{position:absolute;left:6%;right:12%;top:0;height:177px;border:1px solid #467694;border-radius:9px;background:linear-gradient(145deg,#101d2a,#153247);box-shadow:0 14px 40px #0007;overflow:hidden}
+.fw-home-bar{font:9px ui-monospace,Consolas,monospace;border-bottom:1px solid #356078;color:#6ca9c9;padding:10px 13px}
+.fw-home-bar span{float:right;color:#8ca9be}
+.fw-home-window-content{padding:20px}
+.fw-home-window-content small{font-size:9px;letter-spacing:.12em;color:#96d4fa}
+.fw-home-window-content strong{font-size:23px;letter-spacing:-.055em;display:block;color:#f5f9ff;margin:10px 0 4px}
+.fw-home-window-content i{font-style:normal;color:#a3c3d8;font-size:11px}
+.fw-home-mobile{position:absolute;right:5%;bottom:-5px;width:86px;height:142px;border:4px solid #2c475a;border-radius:16px;background:linear-gradient(150deg,#163650,#12435e);box-shadow:0 15px 30px #0009}
+.ffcatalog-icon-websites{background:#174a65!important;border-color:#36769e!important;color:#b6e6ff!important}
+.ffcatalog-card[data-product=websites]{border-color:#355b74!important}
+.ffcatalog-card[data-product=websites]:hover{border-color:#4d9ac9!important}
+.fw-contact-package{background:#142b3d;border:1px solid #3d6c8b;border-radius:8px;color:#d2ebff;font-size:12px;line-height:1.65;padding:12px 14px;margin:0}
+.fw-contact-package[hidden]{display:none!important}
+@media(max-width:960px){.fw-home-promo-grid{grid-template-columns:1fr;gap:22px}.fw-home-promo-art{min-height:180px;width:min(100%,600px)}}
+@media(max-width:610px){.fw-home-promo{padding:38px 0}.fw-home-promo h2{font-size:clamp(25px,7vw,36px)}.fw-home-promo-art{min-height:160px}.fw-home-window{height:155px}.fw-home-mobile{height:123px}}
+@media(prefers-reduced-motion:reduce){.fw-home-action{transition:none}}
