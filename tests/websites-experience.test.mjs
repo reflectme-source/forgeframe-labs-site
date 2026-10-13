@@ -30,22 +30,16 @@ test('Websites EN/PL have complete priced business offer without invented checko
   assert.match(s,/hreflang="pl"/);
   assert.match(s,/application\/ld\+json/);
   assert.match(s,/property="og:title"/);
-  assert.match(s,/href="https:\/\/getacqpath\.com\//);
-  assert.match(s,/href="https:\/\/reflectme\.app\//);
-  assert.match(s,/websites-acqpath\.webp/);
-  assert.match(s,/websites-reflectme\.webp/);
+  assert.match(s,/class="fw-hero-desktop"/);
+  assert.match(s,/class="fw-hero-mobile"/);
+  assert.doesNotMatch(s,/class="fw-work-section"|websites-acqpath\.webp|websites-reflectme\.webp/);
+  assert.doesNotMatch(s,/class="fw-legal-note"/);
   assert.doesNotMatch(s,/RECOMMENDED|REKOMENDOWANY|Free estimate · no meeting required/);
-  assert.doesNotMatch(s,/northline\.concept|atelier-table\.concept/);
+  assert.match(s,lang==='en'?/MOST PURCHASED/:/NAJCZĘŚCIEJ KUPOWANY/);
+  assert.match(s,/Original hospitality concept|Autorski koncept strony restauracji/);
 
   assert.equal((s.match(/<h1>/g)||[]).length,1);
  }
-});
-
-test('Real website preview assets are captured, not imaginary client screenshots',()=>{
-  for (const image of ['assets/websites-acqpath.webp','assets/websites-reflectme.webp']) {
-    const file=join(root,image);
-    assert.ok(existsSync(file),image+' not captured');
-  }
 });
 
 test('Original demonstrator websites exist in two languages, and are explicitly not customer work',()=>{
