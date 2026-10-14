@@ -14,7 +14,7 @@ A site with CMS collection features requires a suitable Webflow Site plan to pub
 
 ## End-to-end
 1. Handover readiness: final creative approval, implemented revision requests, actual content and image rights confirmed, accessibility/SEO/privacy checks, form delivery to correct email and anti-spam test, responsive QA, no staging leak of confidential materials.
-2. Written acceptance of agreed scope and payment milestone. Verify Stripe payment state by trustworthy provider event/dashboard before ownership/production release. Don't claim transfer of copyrights and license beyond written agreement.
+2. Written acceptance of agreed scope and separately approved commercial release terms. Payment timing is UNDECIDED: no assumed deposit or final installment until accounting/owner approval. Where applicable, verify Stripe and invoicing evidence before transfer, and do not claim copyright assignment beyond the written agreement.
 3. Client owns domain in registrar account in its name. Client either owns Webflow Workspace upfront or is invited for transfer/Client payments as per choice A/B. No login/password collection.
 4. Client chooses and pays the appropriate Webflow Site plan on client's own billing method. Only user/client can accept paid service plan and payment details. DNS access must be least-privilege, time-limited and delegated.
 5. Document DNS snapshot and safeguard email MX, SPF, DKIM, DMARC, TXT verification etc; add proper Webflow web DNS, verify domain ownership, SSL and www/root redirects. Publish only to explicit approved production domains.
