@@ -199,7 +199,7 @@ test("ForgeFrame bilingual contact forms have safe fields and working local asse
  }
  assert.match(html("privacy.html"),/FormSubmit/);
  assert.match(html("pl/prywatnosc.html"),/FormSubmit/);
- assert.match(html("assets/contact-form.js"),/forgeframe\.lab@gmail\.com/);
+ assert.match(html("contact/index.html"),/data-copy-email="forgeframe\.lab@gmail\.com"/);
  assert.match(html("assets/contact-form.css"),/@media\(max-width:650px\)/);
 });
 
