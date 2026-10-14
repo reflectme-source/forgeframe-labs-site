@@ -1,11 +1,12 @@
 # ForgeFrame Websites — SOP v1 (2026-10-14)
 
 Status: OPERATIONAL DRAFT — not a live offering. Owner approval required for commercial commitments.
+**Canonical commercial model: ONE-OFF BUILD → LAUNCH → TRANSFER → CLOSE, NO AGENCY MAINTENANCE BY DEFAULT.** See [ONE_OFF_DELIVERY_STANDARD.md](ONE_OFF_DELIVERY_STANDARD.md).
 Scope: simple brochure sites, 1–5 pages, no e-commerce, user accounts, custom booking systems or regulated data.
-Target pace: up to two simple site builds/day after validated pilot; never promise two launches/day.
+Target pace: up to two simple site builds/day after validated pilot; never promise two launches/day. Webflow Starter Workspace allows only 2 staging sites and 2 static pages per staging site, so it is a PILOT ONLY tier for multi-page agency work.
 
 ## Decision
-- Default client CMS/hosting: Webflow, with client content-editor role and client-billed Site plan. Confirm seat availability, plan and vendor pricing when quoting.
+- Default client CMS/hosting: Webflow, followed by FULL transfer to customer Workspace while still on the free Site plan, then customer-funded paid Site plan for their own domain. No ForgeFrame hosting resale, client payments or ongoing maintenance by default. Confirm transfer, seat availability, plan and vendor pricing when quoting.
 - Alternative: Wix Studio for built-in business features; WordPress on client hosting if portability is essential.
 - Never promise client-editable content for raw static React unless CMS was included.
 - Client owns domain and controls renewal; agency uses least-privilege delegated DNS access.
@@ -25,13 +26,13 @@ All transitions should have timestamp, actor, evidence link and next action.
 5. Produce information architecture + evidence-backed business brief. Flag unverified claims; NEVER fabricate testimonials, certifications, staff bios, ratings, product pricing or photos of customer premises.
 6. Build in client-editable native CMS; templates/components are reusable but design should fit brand and conversion goal.
 7. Internal QA: responsive viewport, navigation, keyboard accessibility, contrast, image rights, legal/cookie review, Lighthouse, forms delivered, links, metadata, structured data, sitemap, noindex staging, HTTPS.
-8. Send password/access-protected preview and collect one consolidated list of change requests. Two revision rounds included if agreed; scope changes quoted separately.
+8. Send staging preview and collect one consolidated list of change requests. Webflow Starter staging URLs may be public and cannot be treated as password protected. Never stage confidential data publicly. Two revision rounds included if agreed; scope changes quoted separately.
 9. Obtain explicit client approval, settle final milestone, collect client account invitation and DNS delegation.
 10. Preserve existing MX/SPF/DKIM/DMARC while changing web DNS. Set DNS, verify SSL, forms and transactional mailbox delivery. For redesigns, plan 301 redirects and Search Console.
 11. Verify production with screenshots and smoke tests. Publish only after approval and payments. Record deployment details.
-12. Handover: owner/workspace or client payments setup, content-editing role, 3–5 minute video, support instructions, domain renewal responsibility, cancellation/exit and ownership rights.
+12. Handover: by default FULL transfer on free Site plan to customer's own Workspace (not client payments), client billing for the paid Site plan, content-editing demonstration, 3–5 minute video, bug-warranty contact, domain renewal responsibility, cancellation/exit and ownership rights. Re-test form notification settings and third-party access after transfer.
 13. Ask client to demonstrate editing a service, photo, or price and publishing the change without touching site layout.
-14. Close with signed/confirmed acceptance and backup/export where feasible per vendor limits.
+14. Close with signed/confirmed acceptance and backup/export where feasible per vendor limits. No indefinite monitoring, hosting, support subscription or content updates. Delivery defect warranty and mandatory statutory rights remain.
 
 ## Autonomy boundaries
 AI can research public facts, build, test, draft messages, create staging previews, and log status.
@@ -41,7 +42,7 @@ One customer = isolated assets, access and work records. Never paste live Stripe
 
 ## Standard initial offer (unvalidated prices)
 Starter: EUR 590 (one page). Business: EUR 990 (up to five pages).
-50% deposit and 50% before publication. Hosting subscription billed by platform directly to client; optional maintenance quoted separately.
+50% deposit and 50% before transfer/publication. Hosting subscription billed by platform directly to client; ForgeFrame does NOT offer maintenance on standard orders. Future edits beyond delivery defects are newly scoped work orders.
 These are market-test prices, not proven margins or tax advice. Confirm legal invoicing/VAT treatment and terms with accountant.
 
 ## Pilot exit conditions
