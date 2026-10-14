@@ -105,3 +105,27 @@ test('Websites metadata, sitemap and all local asset paths are valid',()=>{
   }
  }
 });
+
+test('Websites header and footer Contact links lead to the matching language form',()=>{
+ for(const [file,contact,localeTarget] of [
+  ['websites/index.html','../contact/','../pl/strony-internetowe.html'],
+  ['pl/strony-internetowe.html','../pl/kontakt.html','../websites/']
+ ]){
+  const s=read(file);
+  const nav=s.match(/<nav[^>]*class="ffg-nav"[^>]*>([\s\S]*?)<\/nav>/)?.[1];
+  const footer=s.match(/<nav[^>]*class="ffg-footer-links"[^>]*>([\s\S]*?)<\/nav>/)?.[1];
+  assert.ok(nav,file+' missing main navigation');
+  assert.ok(footer,file+' missing footer navigation');
+  for(const [section,name] of [[nav,'header'],[footer,'footer']]){
+   assert.ok(section.includes('href="'+contact+'"'),file+' '+name+' Contact must reach correct form');
+  }
+  assert.ok(nav.includes('href="'+localeTarget+'"'),file+' missing counterpart language switch');
+  assert.doesNotMatch(nav,/<a\s+href="\.\/"\s*>Contact<\/a>/,file+' Contact must not link to itself');
+  const contactFile=contact.includes('/pl/kontakt.html')?'pl/kontakt.html':'contact/index.html';
+  assert.ok(existsSync(join(root,contactFile)),file+' points to absent contact page');
+ }
+ const en=read('websites/index.html');
+ assert.match(en,/href="\.\.\/contact\/\?product=websites&amp;source=websites"/);
+ const pl=read('pl/strony-internetowe.html');
+ assert.match(pl,/href="\.\.\/pl\/kontakt\.html\?product=websites&amp;source=websites"/);
+});
