@@ -18,7 +18,7 @@ Project [ID], prepared [date], valid until [date].
 Included: [pages], [features], responsive design, editable CMS fields, content source responsibilities, testing, staging, launch configuration, handover.
 Excluded: paid plugins, domain registration, hosting subscription, licensed photography, advanced booking/e-commerce unless expressly itemized, regulatory legal drafting.
 Fee: [amount] [currency], tax treatment [validated].
-Deposit: 50%; balance: 50% before production launch. Target timeline depends on client's timely feedback and approved content.
+Payment schedule: [UNDECIDED — do not quote or ask for payment until approved by owner and accountant]. Target timeline depends on client's timely feedback and approved content.
 Two consolidated revision rounds on agreed scope. Additional work: change order with quote before execution.
 Ownership/licensing, termination, warranty, privacy and acceptance are as provided in attached terms.
 
