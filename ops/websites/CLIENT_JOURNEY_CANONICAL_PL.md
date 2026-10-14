@@ -49,4 +49,4 @@ Czat/agent może prowadzić proces, ale dopóki nie ma przetestowanego event-dri
 - https://www.parp.gov.pl/component/content/article/83261:umowa-o-przeniesienie-autorskich-praw-majatkowych
 
 ## Decyzje wdrożeniowe
-Wejdziemy na rynek jako B2B, jednorazowe strony firmowe, 50/50, płatny hosting na koncie klienta, dwuetapowa akceptacja: design i handover. Każdą cenę i kontrakt zatwierdza owner. Klienci nie mają nas jako dostawcy hostingu. Obecny demo FORMA służy wyłącznie do testu technicznego; design odrzucony na commercial quality gate.
+Wejdziemy na rynek jako B2B, jednorazowe strony firmowe, 50/50, płatny hosting na koncie klienta, dwuetapowa akceptacja: design i handover. **Obowiązujące publiczne punkty cenowe ze strony /websites: Starter 990 USD, Business 1 990 USD, Custom od 3 490 USD.** Cena potwierdzona po briefie; nie stosować historycznych szkicowych €590/€990. Publiczna strona ma już formularz /contact/?product=websites — bez dublowania formularza i rozbieżnych ofert. Każdą cenę i kontrakt zatwierdza owner. Klienci nie mają nas jako dostawcy hostingu. Obecny demo FORMA służy wyłącznie do testu technicznego; design odrzucony na commercial quality gate.
