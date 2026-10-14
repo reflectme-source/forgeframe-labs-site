@@ -3,7 +3,7 @@ Date: 2026-10-14 | Status: DRAFT, internal | Business decision: **no ongoing mai
 This document is the canonical operating model for simple client sites (the creative/design quality program is separate and not yet approved).
 
 ## What ForgeFrame sells
-One fixed-scope WEBSITE IMPLEMENTATION service: research -> brief -> agreement -> deposit -> build -> staging QA -> revision rounds -> acceptance -> balance -> ownership transfer -> customer-paid hosting/domain -> production launch -> handover/closure.
+One fixed-scope WEBSITE IMPLEMENTATION service (aligned to current public pricing: Starter USD 990 / Business USD 1,990 / Custom from USD 3,490, with individualized accepted final quote): research -> brief -> agreement -> deposit -> build -> staging QA -> revision rounds -> acceptance -> balance -> ownership transfer -> customer-paid hosting/domain -> production launch -> handover/closure.
 ForgeFrame does NOT resell hosting, renew customer domains, monitor sites 24/7, maintain CMS content, or assume open-ended support unless contracted explicitly.
 Warranty for defects in the original delivery is separate from later maintenance; comply with mandatory law and specify term/scope in contract. Optional future tasks require a new quote/order.
 Do not market demo FORMA as premium design evidence: rejected at the creative quality gate.
