@@ -51,9 +51,10 @@ if(packageBadge&&isWebsites&&packageSelect?.value){
  packageBadge.hidden=false;
  packageBadge.textContent=document.documentElement.lang==="pl"?"Wybrany pakiet: "+packageSelect.value+" · bezpłatna wycena, bez zobowiązania":"Selected package: "+packageSelect.value+" · free estimate, no obligation";
 }
-const output=document.querySelector("[data-copy-status]");
 document.querySelectorAll("[data-copy-email]").forEach(button=>button.addEventListener("click",async()=>{
- const address="forgeframe.lab@gmail.com";
+ const address=button.getAttribute("data-copy-email");
+ const output=button.parentElement.querySelector("[data-copy-status]");
+ if(!address)return;
  try{if(!navigator.clipboard?.writeText)throw new Error("Clipboard unavailable");await navigator.clipboard.writeText(address);
  if(output)output.textContent=document.documentElement.lang==="pl"?"Adres skopiowany":"Address copied";
  }catch{if(output)output.textContent=document.documentElement.lang==="pl"?"Zaznacz i skopiuj adres wyświetlony powyżej":"Select and copy the email shown above";}
