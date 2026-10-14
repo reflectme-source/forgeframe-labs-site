@@ -32,3 +32,10 @@ A site with CMS collection features requires a suitable Webflow Site plan to pub
 ## Owner approvals and automation
 Can automate: checklists, tests, CMS and page creation, draft instructions, prelaunch screenshots, deployment where authorized.
 Owner/client: contract acceptance, collecting payments, purchasing paid plans, approving final design, inviting/billing legitimate client, DNS authorization.
+
+## Webflow transfer restriction (verified 2026-10-14)
+- A Starter Workspace cannot transfer a site WITH AN ACTIVE PAID SITE PLAN to a client Workspace. Transfer active paid sites requires Freelancer/Agency Workspace; see https://help.webflow.com/hc/en-us/articles/33961238786963-How-do-I-transfer-a-site-or-plan-to-another-workspace .
+- For a Starter Workspace and a client-owner-first model: transfer the site while on the FREE Starter Site plan, then have the client purchase the appropriate paid Site plan on their own Workspace and configure their domain with delegated assistance. Explicitly verify CMS, images, styles, publishing state, and receiving Workspace before transfer.
+- Client payments (client directly billed while site stays in agency Workspace) is available ONLY on Freelancer/Agency Workspace plans, not Starter; see https://help.webflow.com/hc/en-us/articles/35335039878035-Client-payments .
+- A Content editor may modify content, assets and CMS entries but not site design or new CMS schema; see https://help.webflow.com/hc/en-us/articles/33961251014931-Edit-site-content-as-a-content-editor .
+- Staging .webflow.io may be publicly accessible. For custom domains each site needs its own paid Site plan; CMS-powered production requires CMS-capable tier, currently Premium for new 2026 purchases: https://help.webflow.com/hc/en-us/articles/51059955082387-Updated-pricing-and-simplified-plans-for-May-2026 .
