@@ -31,3 +31,17 @@ test("Contact preserves real third-party delivery and required privacy consent",
   assert.doesNotMatch(s,/50\+ companies|guaranteed response|24\/7 support/i);
  }
 });
+
+test("Contact exposes correct independent mailto and copy targets in both locales",()=>{
+ const js=read("assets/contact-form.js");
+ assert.match(js,/button\.getAttribute\("data-copy-email"\)/);
+ assert.match(js,/button\.parentElement\.querySelector\("\[data-copy-status\]"\)/);
+ for(const page of ["contact/index.html","pl/kontakt.html"]){
+  const html=read(page);
+  for(const email of ["forgeframe.lab@gmail.com","bartek@reflectme.app"]){
+   assert.ok(html.includes('href="mailto:'+email+'"'));
+   assert.ok(html.includes('data-copy-email="'+email+'"'));
+  }
+  assert.ok(!html.includes("refletcme.app"));
+ }
+});
