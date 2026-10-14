@@ -42,15 +42,15 @@ test('Public Evidence Desk PL EN: accessible refresh, honest no-data and source 
  }
 });
 
-test('Connect to Forge PL EN: one inquiry CTA, one informational checklist CTA',()=>{
+test('Connect to Forge PL EN: one contextual contact CTA at bottom, plus quote and checklist paths',()=>{
  const examples=[
   ['services/connect-to-forge-assessment/index.html','checklist.html'],
   ['services/connect-to-forge-assessment/pl/index.html','../checklist.html']
  ];
  for(const [page,checklist] of examples){
   const html=read(page);
-  assert.equal((html.match(/product=connect-to-forge/g)||[]).length,1,page);
-  assert.match(html,/cx-button--secondary/);
+  assert.equal((html.match(/product=connect-to-forge/g)||[]).length,2,page);
+  assert.match(html,/class="cx-bottom"[\s\S]*?cx-button--primary[\s\S]*?product=connect-to-forge/);
   assert.ok(html.includes('href="'+checklist+'"'));
   assert.match(html,/€490/);
  }
