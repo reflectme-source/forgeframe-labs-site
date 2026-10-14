@@ -1,6 +1,6 @@
 # ForgeFrame Labs — Website Implementation Order & Terms (B2B DRAFT)
 Date: __________ | Quote ref / Project ID: FF-__________ | Version: ____
-**NOT FOR SIGNING OR SENDING UNTIL LEGAL/TAX REVIEW.** Prepared for B2B website implementation; other jurisdictions, consumer rights and special business clients need appropriate review.
+**NOT FOR SIGNING OR SENDING UNTIL LEGAL/TAX REVIEW. PAYMENT STRUCTURE IS UNDECIDED.** Do not request deposits, payments or issue real invoices based on this draft. Prepared for B2B website implementation; other jurisdictions, consumer rights and special business clients need appropriate review.
 
 **Service provider:** [Full legal entity name, address, legal registration number and tax number]
 **Customer:** [Full legal entity name, registered address, jurisdiction, company registration/VAT ID]
@@ -16,20 +16,20 @@ We will design, build, quality-check, demonstrate and hand over the following we
 
 ## 2. Price and external costs
 - Fixed implementation fee: ___________ [EUR/USD/PLN], tax treatment and invoice currency: ___________ (confirmed by accounting).
-- Payment milestone 1: **50% advance** before production. Milestone 2: **50% balance** after staging acceptance, before site ownership transfer and publication.
-- The advance is credited toward the total fee. If services are cancelled or cannot continue, parties settle properly earned amounts and refund any excess according to applicable law and agreed terms; an advance is **not automatically non-refundable**.
+- Payment schedule, whether any advance is required, invoice issue dates, due dates and transfer-release conditions: **[TO BE APPROVED WITH ACCOUNTING AND OWNER BEFORE CONTRACT USE]**. No predefined 50/50 policy.
+- If a future approved schedule includes an advance, define whether/how it is refundable, its VAT/invoicing treatment and final reconciliation in legally reviewed terms. A prepayment is not automatically non-refundable; any cancellation settlement must comply with applicable law.
 - Customer purchases and renews Webflow Site plan and domain on their own provider accounts/card, independently of our fee. Estimated hosting tier and monthly/yearly cost disclosed in approved quotation: ___________.
 - Additional out-of-scope work needs a written change order (price + time), accepted before execution.
 
 ## 3. Working procedure
 - Customer supplies accurate facts, rights-cleared photos/trademarks, a representative to approve content, and timely consolidated comments. We do not invent staff credentials, reviews or regulatory statements.
-- Estimated timing: ___________ business days after advance and receipt of required materials, subject to customer approval delays and technical dependencies.
+- Estimated timing: ___________ business days from the written start condition agreed in the final contract and receipt of required materials, subject to customer approval delays and technical dependencies.
 - Preview supplied at staging URL ___________. Client has two consolidated revision rounds on the **agreed** scope. New features and broad redesigns are separately quoted.
 - Client may accept via documented e-mail or agreed electronic signature for project milestones, except documents legally requiring a stricter form.
-- Client supplies acceptance of final staging version before remaining payment and site transfer.
+- Client supplies acceptance of final staging version; commercial release/transfer conditions are separately documented in the final approved order.
 
 ## 4. Site ownership, third-party subscriptions and rights
-- Following full payment, ForgeFrame transfers the Webflow site to the Customer's own Workspace (unless agreed otherwise in writing). Customer accepts transfer and purchases its own Webflow Site plan; customer owns/renews the domain. The Client acknowledges that Webflow and domain fees are payable directly to third-party providers and that the Webflow CMS is platform-specific.
+- After all release conditions established in the final signed agreement are fulfilled, ForgeFrame transfers the Webflow site to the Customer's own Workspace (unless agreed otherwise in writing). Customer accepts transfer and purchases its own Webflow Site plan; customer owns/renews the domain. The Client acknowledges that Webflow and domain fees are payable directly to third-party providers and that the Webflow CMS is platform-specific.
 - **Technical Webflow transfer is distinct from copyright assignment.** Default IP mode for separate legal review: Customer receives a perpetual worldwide, paid-up, non-exclusive licence to use, host, publish, reproduce, modify and procure third-party maintenance of the bespoke deliverables for their business, within the limits of third-party licences and Webflow terms, upon full payment. Client retains rights to its supplied materials. General agency know-how and reusable tools remain with their rightful holders.
 - If customer requires **assignment of transferable economic copyrights**, a separate document specifying works, fields of exploitation, remuneration and timing must be signed with the legally required written form (handwritten or qualified electronic signature where Polish law applies). E-mail-only approval does **not** effect the assignment. Third-party licensed fonts/images/stock assets cannot be reassigned beyond their licence.
 
@@ -51,7 +51,7 @@ We will design, build, quality-check, demonstrate and hand over the following we
 
 **Customer acknowledgement:**
 - I approve the specified scope, price and external Webflow/domain subscription costs.
-- I approve payment milestones and revision policy.
+- I approve the payment arrangements expressly completed in the final agreement and the revision policy.
 - I understand the site is delivered to my own provider accounts with no recurring maintenance from ForgeFrame.
 - I understand ownership/licensing terms as stated in the final reviewed agreement.
 
