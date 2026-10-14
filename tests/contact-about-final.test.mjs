@@ -45,3 +45,10 @@ test("Contact exposes correct independent mailto and copy targets in both locale
   assert.ok(!html.includes("refletcme.app"));
  }
 });
+
+test("Contact labels, email links and separated entries have explicit spacing",()=>{
+ const css=read("assets/forgeframe-contact.css");
+ assert.match(css,/\.ffcontact-email-kind\{[^}]*margin-bottom:10px/);
+ assert.match(css,/\.ffcontact-email-entry>a\{display:inline-block/);
+ assert.match(css,/\.ffcontact-email-secondary\{[^}]*margin-top:24px;padding-top:22px/);
+});
