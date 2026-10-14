@@ -101,3 +101,14 @@ body.ff-connect .ffg-header,body.ff-connect .ffg-footer{font-family:Inter,system
 }
 .cx-bottom .cx-button--secondary:hover{background:#194664!important}
 @media(max-width:750px){.cx-bottom .cx-button--secondary{width:100%;white-space:normal;text-align:center}}
+
+/* Connect contact CTA — one prominent link to the product-selected inquiry form. */
+.cx-bottom .cx-button--primary{
+ min-height:46px!important;padding:11px 20px!important;
+ background:#118cf2!important;color:#fff!important;
+ border:1px solid #299efa!important;border-radius:8px!important;
+ font:700 13px Inter,system-ui,sans-serif!important;
+ text-decoration:none!important;white-space:normal;
+}
+.cx-bottom .cx-button--primary:hover{background:#087bdf!important}
+@media(max-width:750px){.cx-bottom .cx-button--primary{width:100%;text-align:center}}
