@@ -98,3 +98,8 @@ Kind regards,
 ForgeFrame Labs
 www.forgeframelabs.app
 forgeframe.lab@gmail.com
+
+## Alternative ownership-from-day-one flow
+For clients who create the project in their own Webflow Workspace and invite ForgeFrame as an authorized Freelancer/Agency guest, skip site transfer. Client authorizes access to their site; ForgeFrame builds/tests via that access; client activates their own required Site plan and domain; ForgeFrame completes tests and then leaves the customer Workspace. Agency Freelancer/Agency paid plan and verified guest-connected tooling are preconditions. If Webflow staging limits prohibit 5-page build on client's free Workspace, warn client before starting. Do not secretly start paid Site plans.
+
+Alternative handover sentence for the client email: "Since your website was created directly in your Webflow Workspace, no ownership transfer is needed. Your Webflow account has always owned the project. We will finish the approved launch checks, provide the editing guide, and remove our temporary guest access."
