@@ -49,3 +49,6 @@ These are market-test prices, not proven margins or tax advice. Confirm legal in
 Demonstration with a fictional company, no third-party personal data.
 Accept only when (a) CMS editable by nontechnical client, (b) site preview working and reviewed on mobile, (c) lead form verified, (d) mock client invitation/handover rehearsed, (e) actual costs documented, (f) access revocable, (g) copy and design QA signed off.
 No claims of a functioning public demo until URL and deployment are verified.
+
+## Additional customer-owned route (do not promise before pilot)
+Webflow also allows build-inside-client-Workspace using the official Agency/Freelancer guest role, with a PAID agency Freelancer/Agency Workspace plan. Avoids later transfer, but may require earlier activation of a client Site plan for 3–5 page projects because the client's free Starter staging is limited to 2 static pages. Do not choose until test of permissions, guest-access Webflow MCP visibility, and real provider pricing. See [ONE_OFF_DELIVERY_STANDARD.md](ONE_OFF_DELIVERY_STANDARD.md).
