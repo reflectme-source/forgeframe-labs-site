@@ -21,7 +21,7 @@ Budget / currency / tax basis:
 Due date and dependencies:
 Scope exclusions:
 Included revision rounds:
-Deposit invoice and payment verified (reference only, no full payment data):
+Payment policy status (UNDECIDED / REVIEWED / APPROVED) and invoice/payment evidence only if applicable:
 Client acceptance date and proof:
 Launch approval:
 Handover completed:
