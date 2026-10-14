@@ -41,7 +41,7 @@ All external communications comply with local marketing laws, approvals and clie
 One customer = isolated assets, access and work records. Never paste live Stripe/Gmail/customer secrets into source or prompts.
 
 ## Standard initial offer (unvalidated prices)
-Starter: EUR 590 (one page). Business: EUR 990 (up to five pages).
+Public website price anchors as of 2026-10-14: Starter USD 990 (one page), Business USD 1,990 (up to five pages), Custom from USD 3,490. Actual scope/price, tax/currency, invoicing and timing are confirmed in signed quote; no blanket prices in EUR. Source: /websites/ and /pl/strony-internetowe.html.
 50% deposit and 50% before transfer/publication. Hosting subscription billed by platform directly to client; ForgeFrame does NOT offer maintenance on standard orders. Future edits beyond delivery defects are newly scoped work orders.
 These are market-test prices, not proven margins or tax advice. Confirm legal invoicing/VAT treatment and terms with accountant.
 
