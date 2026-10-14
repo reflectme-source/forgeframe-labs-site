@@ -54,7 +54,7 @@ Hello [name],
 
 Your website is ready for final approval: [staging URL].
 
-Please confirm whether the agreed pages, text, images and functionality are approved. Once the agreed final payment is confirmed, we'll transfer the project into your own Webflow account and help you connect your domain.
+Please confirm whether the agreed pages, text, images and functionality are approved. Once you approve the final version, we will confirm the handover conditions agreed in your project order and transfer the site to your Webflow account. We will then help you connect your domain.
 
 You'll pay Webflow and your domain provider directly for ongoing hosting and renewal. ForgeFrame Labs does not charge a recurring maintenance fee under this order. You will be able to update agreed website content yourself.
 
@@ -70,7 +70,7 @@ Subject: Website ownership and hosting setup — [company]
 
 Hello [name],
 
-Please create or sign into your own Webflow account using [approved transfer recipient email]. We will initiate a transfer from our staging Workspace. Please accept the transfer invitation after the agreed payment is confirmed.
+Please create or sign into your own Webflow account using [approved transfer recipient email]. After the agreed release requirements are satisfied, we will initiate a transfer from our staging Workspace. Please accept the transfer invitation.
 
 After receiving the site in your Workspace, select the Site plan appropriate for your required features and add your own payment details directly in Webflow. For a site using the Webflow CMS, choose a CMS-capable Site plan. You own the hosting subscription and its renewals.
 
