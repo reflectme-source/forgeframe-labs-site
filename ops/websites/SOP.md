@@ -52,3 +52,9 @@ No claims of a functioning public demo until URL and deployment are verified.
 
 ## Additional customer-owned route (do not promise before pilot)
 Webflow also allows build-inside-client-Workspace using the official Agency/Freelancer guest role, with a PAID agency Freelancer/Agency Workspace plan. Avoids later transfer, but may require earlier activation of a client Site plan for 3–5 page projects because the client's free Starter staging is limited to 2 static pages. Do not choose until test of permissions, guest-access Webflow MCP visibility, and real provider pricing. See [ONE_OFF_DELIVERY_STANDARD.md](ONE_OFF_DELIVERY_STANDARD.md).
+
+## Canonical customer order documents (2026-10-14)
+- **[CLIENT_JOURNEY_CANONICAL_PL.md](CLIENT_JOURNEY_CANONICAL_PL.md)** — current single source of truth for new customer inquiry -> eight-question intake -> fixed quote -> B2B service terms -> Stripe 50/50 -> staging approval -> free Webflow transfer -> customer-owned hosting and domain -> acceptance -> closed.
+- **[CLIENT_BRIEF_SHORT_EN.md](CLIENT_BRIEF_SHORT_EN.md)** — only eight brief questions visible to customers, not the lengthy internal intake.
+- **[SERVICE_ORDER_B2B_EN_DRAFT.md](SERVICE_ORDER_B2B_EN_DRAFT.md)** — short service order, not legally approved. Must be adapted and validated before first signature or sale. Under Polish IP law, copyright assignment requires signed writing/qualified signature; do NOT equate e-mail acceptance or Webflow site transfer with copyright assignment.
+- The separate creative/design quality gate remains FAIL for existing demo; this operating workflow does not authorize advertising it as premium design.
