@@ -106,18 +106,22 @@ test('Websites metadata, sitemap and all local asset paths are valid',()=>{
  }
 });
 
-test('Websites navigation has working locale-specific Contact links, not self-links',()=>{
- for(const [file,expected,other] of [
-  ['websites/index.html','../contact/','../pl/kontakt.html'],
-  ['pl/strony-internetowe.html','../pl/kontakt.html','../contact/']
+test('Websites header and footer Contact links lead to the matching language form',()=>{
+ for(const [file,contact,localeTarget] of [
+  ['websites/index.html','../contact/','../pl/strony-internetowe.html'],
+  ['pl/strony-internetowe.html','../pl/kontakt.html','../websites/']
  ]){
   const s=read(file);
   const nav=s.match(/<nav[^>]*class="ffg-nav"[^>]*>([\s\S]*?)<\/nav>/)?.[1];
-  assert.ok(nav,file+' missing navigation');
-  assert.ok(nav.includes('href="'+expected+'"'),file+' contact route incorrect');
-  assert.doesNotMatch(nav,/<a\s+href="\.\/"\s*>Contact<\/a>/,file+' contact must not link to itself');
-  assert.ok(s.includes('href="'+other.replace("pl/kontakt.html","pl/strony-internetowe.html").replace("contact/","websites/")+'"')||s.includes('hreflang="en"'),file+' missing localized counterpart');
-  const contactFile=expected.includes('/pl/kontakt.html')?'pl/kontakt.html':'contact/index.html';
+  const footer=s.match(/<nav[^>]*class="ffg-footer-links"[^>]*>([\s\S]*?)<\/nav>/)?.[1];
+  assert.ok(nav,file+' missing main navigation');
+  assert.ok(footer,file+' missing footer navigation');
+  for(const [section,name] of [[nav,'header'],[footer,'footer']]){
+   assert.ok(section.includes('href="'+contact+'"'),file+' '+name+' Contact must reach correct form');
+  }
+  assert.ok(nav.includes('href="'+localeTarget+'"'),file+' missing counterpart language switch');
+  assert.doesNotMatch(nav,/<a\s+href="\.\/"\s*>Contact<\/a>/,file+' Contact must not link to itself');
+  const contactFile=contact.includes('/pl/kontakt.html')?'pl/kontakt.html':'contact/index.html';
   assert.ok(existsSync(join(root,contactFile)),file+' points to absent contact page');
  }
  const en=read('websites/index.html');
