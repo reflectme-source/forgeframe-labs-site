@@ -16,8 +16,9 @@
 .ffcontact-email-card p{font-size:13px;color:#9eafc1;margin:6px 0 10px}
 .ffcontact-email-content{min-width:0;flex:1}
 .ffcontact-email-entry{min-width:0}
-.ffcontact-email-kind{display:block;font-size:11px;line-height:1.6;font-weight:700;color:#b7c7d5;margin-bottom:5px}
-.ffcontact-email-secondary{border-top:1px solid #2b3b4b;margin-top:18px;padding-top:17px}
+.ffcontact-email-kind{display:block;font-size:11px;line-height:1.6;font-weight:700;color:#b7c7d5;margin-bottom:10px}
+.ffcontact-email-entry>a{display:inline-block;line-height:1.55}
+.ffcontact-email-secondary{border-top:1px solid #2b3b4b;margin-top:24px;padding-top:22px}
 .ffcontact-email-card a{color:#9bd5ff!important;font-size:14px;text-decoration:none;font-weight:700;overflow-wrap:anywhere}
 .ffcontact-copy{display:flex;gap:10px;align-items:center;margin-top:11px;flex-wrap:wrap}
 .ffcontact-copy button{background:transparent;border:1px solid #3a5268;border-radius:6px;color:#c6d7e7;padding:7px 10px;font-size:11px;cursor:pointer}
